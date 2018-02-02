@@ -1,0 +1,1722 @@
+[
+  {
+    "Zipcode": 84001,
+    "City": "Altamont",
+    "County": "Duchesne"
+  },
+  {
+    "Zipcode": 84002,
+    "City": "Altonah",
+    "County": "Duchesne"
+  },
+  {
+    "Zipcode": 84003,
+    "City": "American Fork",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84004,
+    "City": "Alpine",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84005,
+    "City": "Eagle Mountain",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84006,
+    "City": "Bingham Canyon",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84007,
+    "City": "Bluebell",
+    "County": "Duchesne"
+  },
+  {
+    "Zipcode": 84008,
+    "City": "Bonanza",
+    "County": "Uintah"
+  },
+  {
+    "Zipcode": 84010,
+    "City": "Bountiful",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84011,
+    "City": "Bountiful",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84013,
+    "City": "Cedar Valley",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84014,
+    "City": "Centerville",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84015,
+    "City": "Clearfield",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84016,
+    "City": "Clearfield",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84017,
+    "City": "Coalville",
+    "County": "Summit"
+  },
+  {
+    "Zipcode": 84018,
+    "City": "Croydon",
+    "County": "Morgan"
+  },
+  {
+    "Zipcode": 84020,
+    "City": "Draper",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84021,
+    "City": "Duchesne",
+    "County": "Duchesne"
+  },
+  {
+    "Zipcode": 84022,
+    "City": "Dugway",
+    "County": "Tooele"
+  },
+  {
+    "Zipcode": 84023,
+    "City": "Dutch John",
+    "County": "Daggett"
+  },
+  {
+    "Zipcode": 84024,
+    "City": "Echo",
+    "County": "Summit"
+  },
+  {
+    "Zipcode": 84025,
+    "City": "Farmington",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84026,
+    "City": "Fort Duchesne",
+    "County": "Uintah"
+  },
+  {
+    "Zipcode": 84027,
+    "City": "Fruitland",
+    "County": "Duchesne"
+  },
+  {
+    "Zipcode": 84028,
+    "City": "Garden City",
+    "County": "Rich"
+  },
+  {
+    "Zipcode": 84029,
+    "City": "Grantsville",
+    "County": "Tooele"
+  },
+  {
+    "Zipcode": 84031,
+    "City": "Hanna",
+    "County": "Duchesne"
+  },
+  {
+    "Zipcode": 84032,
+    "City": "Heber City",
+    "County": "Wasatch"
+  },
+  {
+    "Zipcode": 84033,
+    "City": "Henefer",
+    "County": "Summit"
+  },
+  {
+    "Zipcode": 84034,
+    "City": "Ibapah",
+    "County": "Tooele"
+  },
+  {
+    "Zipcode": 84035,
+    "City": "Jensen",
+    "County": "Uintah"
+  },
+  {
+    "Zipcode": 84036,
+    "City": "Kamas",
+    "County": "Summit"
+  },
+  {
+    "Zipcode": 84037,
+    "City": "Kaysville",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84038,
+    "City": "Laketown",
+    "County": "Rich"
+  },
+  {
+    "Zipcode": 84039,
+    "City": "Lapoint",
+    "County": "Uintah"
+  },
+  {
+    "Zipcode": 84040,
+    "City": "Layton",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84041,
+    "City": "Layton",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84042,
+    "City": "Lindon",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84043,
+    "City": "Lehi",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84044,
+    "City": "Magna",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84045,
+    "City": "Saratoga Springs",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84046,
+    "City": "Manila",
+    "County": "Daggett"
+  },
+  {
+    "Zipcode": 84047,
+    "City": "Midvale",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84049,
+    "City": "Midway",
+    "County": "Wasatch"
+  },
+  {
+    "Zipcode": 84050,
+    "City": "Morgan",
+    "County": "Morgan"
+  },
+  {
+    "Zipcode": 84051,
+    "City": "Mountain Home",
+    "County": "Duchesne"
+  },
+  {
+    "Zipcode": 84052,
+    "City": "Myton",
+    "County": "Duchesne"
+  },
+  {
+    "Zipcode": 84053,
+    "City": "Neola",
+    "County": "Duchesne"
+  },
+  {
+    "Zipcode": 84054,
+    "City": "North Salt Lake",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84055,
+    "City": "Oakley",
+    "County": "Summit"
+  },
+  {
+    "Zipcode": 84056,
+    "City": "Hill Afb",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84057,
+    "City": "Orem",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84058,
+    "City": "Orem",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84059,
+    "City": "Orem",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84060,
+    "City": "Park City",
+    "County": "Summit"
+  },
+  {
+    "Zipcode": 84061,
+    "City": "Peoa",
+    "County": "Summit"
+  },
+  {
+    "Zipcode": 84062,
+    "City": "Pleasant Grove",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84063,
+    "City": "Randlett",
+    "County": "Uintah"
+  },
+  {
+    "Zipcode": 84064,
+    "City": "Randolph",
+    "County": "Rich"
+  },
+  {
+    "Zipcode": 84065,
+    "City": "Riverton",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84066,
+    "City": "Roosevelt",
+    "County": "Duchesne"
+  },
+  {
+    "Zipcode": 84067,
+    "City": "Roy",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84068,
+    "City": "Park City",
+    "County": "Summit"
+  },
+  {
+    "Zipcode": 84069,
+    "City": "Rush Valley",
+    "County": "Tooele"
+  },
+  {
+    "Zipcode": 84070,
+    "City": "Sandy",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84071,
+    "City": "Stockton",
+    "County": "Tooele"
+  },
+  {
+    "Zipcode": 84072,
+    "City": "Tabiona",
+    "County": "Duchesne"
+  },
+  {
+    "Zipcode": 84073,
+    "City": "Talmage",
+    "County": "Duchesne"
+  },
+  {
+    "Zipcode": 84074,
+    "City": "Tooele",
+    "County": "Tooele"
+  },
+  {
+    "Zipcode": 84075,
+    "City": "Syracuse",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84076,
+    "City": "Tridell",
+    "County": "Uintah"
+  },
+  {
+    "Zipcode": 84078,
+    "City": "Vernal",
+    "County": "Uintah"
+  },
+  {
+    "Zipcode": 84079,
+    "City": "Vernal",
+    "County": "Uintah"
+  },
+  {
+    "Zipcode": 84080,
+    "City": "Vernon",
+    "County": "Tooele"
+  },
+  {
+    "Zipcode": 84082,
+    "City": "Wallsburg",
+    "County": "Wasatch"
+  },
+  {
+    "Zipcode": 84083,
+    "City": "Wendover",
+    "County": "Tooele"
+  },
+  {
+    "Zipcode": 84084,
+    "City": "West Jordan",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84085,
+    "City": "Whiterocks",
+    "County": "Uintah"
+  },
+  {
+    "Zipcode": 84086,
+    "City": "Woodruff",
+    "County": "Rich"
+  },
+  {
+    "Zipcode": 84087,
+    "City": "Woods Cross",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84088,
+    "City": "West Jordan",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84089,
+    "City": "Clearfield",
+    "County": "Davis"
+  },
+  {
+    "Zipcode": 84090,
+    "City": "Sandy",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84091,
+    "City": "Sandy",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84092,
+    "City": "Sandy",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84093,
+    "City": "Sandy",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84094,
+    "City": "Sandy",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84095,
+    "City": "South Jordan",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84096,
+    "City": "Herriman",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84097,
+    "City": "Orem",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84098,
+    "City": "Park City",
+    "County": "Summit"
+  },
+  {
+    "Zipcode": 84101,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84102,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84103,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84104,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84105,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84106,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84107,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84108,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84109,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84110,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84111,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84112,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84113,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84114,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84115,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84116,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84117,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84118,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84119,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84120,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84121,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84122,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84123,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84124,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84125,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84126,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84127,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84128,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84130,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84131,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84132,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84133,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84134,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84136,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84138,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84139,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84141,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84143,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84144,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84145,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84147,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84148,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84150,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84151,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84152,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84157,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84158,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84165,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84170,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84171,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84180,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84184,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84189,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84190,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84199,
+    "City": "Salt Lake City",
+    "County": "Salt Lake"
+  },
+  {
+    "Zipcode": 84201,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84244,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84301,
+    "City": "Bear River City",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84302,
+    "City": "Brigham City",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84304,
+    "City": "Cache Junction",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84305,
+    "City": "Clarkston",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84306,
+    "City": "Collinston",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84307,
+    "City": "Corinne",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84308,
+    "City": "Cornish",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84309,
+    "City": "Deweyville",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84310,
+    "City": "Eden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84311,
+    "City": "Fielding",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84312,
+    "City": "Garland",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84313,
+    "City": "Grouse Creek",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84314,
+    "City": "Honeyville",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84315,
+    "City": "Hooper",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84316,
+    "City": "Howell",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84317,
+    "City": "Huntsville",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84318,
+    "City": "Hyde Park",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84319,
+    "City": "Hyrum",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84320,
+    "City": "Lewiston",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84321,
+    "City": "Logan",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84322,
+    "City": "Logan",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84323,
+    "City": "Logan",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84324,
+    "City": "Mantua",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84325,
+    "City": "Mendon",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84326,
+    "City": "Millville",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84327,
+    "City": "Newton",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84328,
+    "City": "Paradise",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84329,
+    "City": "Park Valley",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84330,
+    "City": "Plymouth",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84331,
+    "City": "Portage",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84332,
+    "City": "Providence",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84333,
+    "City": "Richmond",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84334,
+    "City": "Riverside",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84335,
+    "City": "Smithfield",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84336,
+    "City": "Snowville",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84337,
+    "City": "Tremonton",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84338,
+    "City": "Trenton",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84339,
+    "City": "Wellsville",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84340,
+    "City": "Willard",
+    "County": "Box Elder"
+  },
+  {
+    "Zipcode": 84341,
+    "City": "Logan",
+    "County": "Cache"
+  },
+  {
+    "Zipcode": 84401,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84402,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84403,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84404,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84405,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84407,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84408,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84409,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84412,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84414,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84415,
+    "City": "Ogden",
+    "County": "Weber"
+  },
+  {
+    "Zipcode": 84501,
+    "City": "Price",
+    "County": "Carbon"
+  },
+  {
+    "Zipcode": 84510,
+    "City": "Aneth",
+    "County": "San Juan"
+  },
+  {
+    "Zipcode": 84511,
+    "City": "Blanding",
+    "County": "San Juan"
+  },
+  {
+    "Zipcode": 84512,
+    "City": "Bluff",
+    "County": "San Juan"
+  },
+  {
+    "Zipcode": 84513,
+    "City": "Castle Dale",
+    "County": "Emery"
+  },
+  {
+    "Zipcode": 84515,
+    "City": "Cisco",
+    "County": "Grand"
+  },
+  {
+    "Zipcode": 84516,
+    "City": "Clawson",
+    "County": "Emery"
+  },
+  {
+    "Zipcode": 84518,
+    "City": "Cleveland",
+    "County": "Emery"
+  },
+  {
+    "Zipcode": 84520,
+    "City": "East Carbon",
+    "County": "Carbon"
+  },
+  {
+    "Zipcode": 84521,
+    "City": "Elmo",
+    "County": "Emery"
+  },
+  {
+    "Zipcode": 84522,
+    "City": "Emery",
+    "County": "Emery"
+  },
+  {
+    "Zipcode": 84523,
+    "City": "Ferron",
+    "County": "Emery"
+  },
+  {
+    "Zipcode": 84525,
+    "City": "Green River",
+    "County": "Emery"
+  },
+  {
+    "Zipcode": 84526,
+    "City": "Helper",
+    "County": "Carbon"
+  },
+  {
+    "Zipcode": 84528,
+    "City": "Huntington",
+    "County": "Emery"
+  },
+  {
+    "Zipcode": 84529,
+    "City": "Kenilworth",
+    "County": "Carbon"
+  },
+  {
+    "Zipcode": 84530,
+    "City": "La Sal",
+    "County": "San Juan"
+  },
+  {
+    "Zipcode": 84531,
+    "City": "Mexican Hat",
+    "County": "San Juan"
+  },
+  {
+    "Zipcode": 84532,
+    "City": "Moab",
+    "County": "Grand"
+  },
+  {
+    "Zipcode": 84533,
+    "City": "Lake Powell",
+    "County": "San Juan"
+  },
+  {
+    "Zipcode": 84534,
+    "City": "Montezuma Creek",
+    "County": "San Juan"
+  },
+  {
+    "Zipcode": 84535,
+    "City": "Monticello",
+    "County": "San Juan"
+  },
+  {
+    "Zipcode": 84536,
+    "City": "Monument Valley",
+    "County": "San Juan"
+  },
+  {
+    "Zipcode": 84537,
+    "City": "Orangeville",
+    "County": "Emery"
+  },
+  {
+    "Zipcode": 84539,
+    "City": "Sunnyside",
+    "County": "Carbon"
+  },
+  {
+    "Zipcode": 84540,
+    "City": "Thompson",
+    "County": "Grand"
+  },
+  {
+    "Zipcode": 84542,
+    "City": "Wellington",
+    "County": "Carbon"
+  },
+  {
+    "Zipcode": 84601,
+    "City": "Provo",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84602,
+    "City": "Provo",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84603,
+    "City": "Provo",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84604,
+    "City": "Provo",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84605,
+    "City": "Provo",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84606,
+    "City": "Provo",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84620,
+    "City": "Aurora",
+    "County": "Sevier"
+  },
+  {
+    "Zipcode": 84621,
+    "City": "Axtell",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84622,
+    "City": "Centerfield",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84623,
+    "City": "Chester",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84624,
+    "City": "Delta",
+    "County": "Millard"
+  },
+  {
+    "Zipcode": 84626,
+    "City": "Elberta",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84627,
+    "City": "Ephraim",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84628,
+    "City": "Eureka",
+    "County": "Juab"
+  },
+  {
+    "Zipcode": 84629,
+    "City": "Fairview",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84630,
+    "City": "Fayette",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84631,
+    "City": "Fillmore",
+    "County": "Millard"
+  },
+  {
+    "Zipcode": 84632,
+    "City": "Fountain Green",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84633,
+    "City": "Goshen",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84634,
+    "City": "Gunnison",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84635,
+    "City": "Hinckley",
+    "County": "Millard"
+  },
+  {
+    "Zipcode": 84636,
+    "City": "Holden",
+    "County": "Millard"
+  },
+  {
+    "Zipcode": 84637,
+    "City": "Kanosh",
+    "County": "Millard"
+  },
+  {
+    "Zipcode": 84638,
+    "City": "Leamington",
+    "County": "Millard"
+  },
+  {
+    "Zipcode": 84639,
+    "City": "Levan",
+    "County": "Juab"
+  },
+  {
+    "Zipcode": 84640,
+    "City": "Lynndyl",
+    "County": "Millard"
+  },
+  {
+    "Zipcode": 84642,
+    "City": "Manti",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84643,
+    "City": "Mayfield",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84644,
+    "City": "Meadow",
+    "County": "Millard"
+  },
+  {
+    "Zipcode": 84645,
+    "City": "Mona",
+    "County": "Juab"
+  },
+  {
+    "Zipcode": 84646,
+    "City": "Moroni",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84647,
+    "City": "Mount Pleasant",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84648,
+    "City": "Nephi",
+    "County": "Juab"
+  },
+  {
+    "Zipcode": 84649,
+    "City": "Oak City",
+    "County": "Millard"
+  },
+  {
+    "Zipcode": 84651,
+    "City": "Payson",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84652,
+    "City": "Redmond",
+    "County": "Sevier"
+  },
+  {
+    "Zipcode": 84653,
+    "City": "Salem",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84654,
+    "City": "Salina",
+    "County": "Sevier"
+  },
+  {
+    "Zipcode": 84655,
+    "City": "Santaquin",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84656,
+    "City": "Scipio",
+    "County": "Millard"
+  },
+  {
+    "Zipcode": 84657,
+    "City": "Sigurd",
+    "County": "Sevier"
+  },
+  {
+    "Zipcode": 84660,
+    "City": "Spanish Fork",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84662,
+    "City": "Spring City",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84663,
+    "City": "Springville",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84664,
+    "City": "Mapleton",
+    "County": "Utah"
+  },
+  {
+    "Zipcode": 84665,
+    "City": "Sterling",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84667,
+    "City": "Wales",
+    "County": "Sanpete"
+  },
+  {
+    "Zipcode": 84701,
+    "City": "Richfield",
+    "County": "Sevier"
+  },
+  {
+    "Zipcode": 84710,
+    "City": "Alton",
+    "County": "Kane"
+  },
+  {
+    "Zipcode": 84711,
+    "City": "Annabella",
+    "County": "Sevier"
+  },
+  {
+    "Zipcode": 84712,
+    "City": "Antimony",
+    "County": "Garfield"
+  },
+  {
+    "Zipcode": 84713,
+    "City": "Beaver",
+    "County": "Beaver"
+  },
+  {
+    "Zipcode": 84714,
+    "City": "Beryl",
+    "County": "Iron"
+  },
+  {
+    "Zipcode": 84715,
+    "City": "Bicknell",
+    "County": "Wayne"
+  },
+  {
+    "Zipcode": 84716,
+    "City": "Boulder",
+    "County": "Garfield"
+  },
+  {
+    "Zipcode": 84718,
+    "City": "Cannonville",
+    "County": "Garfield"
+  },
+  {
+    "Zipcode": 84719,
+    "City": "Brian Head",
+    "County": "Iron"
+  },
+  {
+    "Zipcode": 84720,
+    "City": "Cedar City",
+    "County": "Iron"
+  },
+  {
+    "Zipcode": 84721,
+    "City": "Cedar City",
+    "County": "Iron"
+  },
+  {
+    "Zipcode": 84722,
+    "City": "Central",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84723,
+    "City": "Circleville",
+    "County": "Piute"
+  },
+  {
+    "Zipcode": 84724,
+    "City": "Elsinore",
+    "County": "Sevier"
+  },
+  {
+    "Zipcode": 84725,
+    "City": "Enterprise",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84726,
+    "City": "Escalante",
+    "County": "Garfield"
+  },
+  {
+    "Zipcode": 84728,
+    "City": "Garrison",
+    "County": "Millard"
+  },
+  {
+    "Zipcode": 84729,
+    "City": "Glendale",
+    "County": "Kane"
+  },
+  {
+    "Zipcode": 84730,
+    "City": "Glenwood",
+    "County": "Sevier"
+  },
+  {
+    "Zipcode": 84731,
+    "City": "Greenville",
+    "County": "Beaver"
+  },
+  {
+    "Zipcode": 84732,
+    "City": "Greenwich",
+    "County": "Piute"
+  },
+  {
+    "Zipcode": 84733,
+    "City": "Gunlock",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84734,
+    "City": "Hanksville",
+    "County": "Wayne"
+  },
+  {
+    "Zipcode": 84735,
+    "City": "Hatch",
+    "County": "Garfield"
+  },
+  {
+    "Zipcode": 84736,
+    "City": "Henrieville",
+    "County": "Garfield"
+  },
+  {
+    "Zipcode": 84737,
+    "City": "Hurricane",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84738,
+    "City": "Ivins",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84739,
+    "City": "Joseph",
+    "County": "Sevier"
+  },
+  {
+    "Zipcode": 84740,
+    "City": "Junction",
+    "County": "Piute"
+  },
+  {
+    "Zipcode": 84741,
+    "City": "Kanab",
+    "County": "Kane"
+  },
+  {
+    "Zipcode": 84742,
+    "City": "Kanarraville",
+    "County": "Iron"
+  },
+  {
+    "Zipcode": 84743,
+    "City": "Kingston",
+    "County": "Piute"
+  },
+  {
+    "Zipcode": 84744,
+    "City": "Koosharem",
+    "County": "Sevier"
+  },
+  {
+    "Zipcode": 84745,
+    "City": "La Verkin",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84746,
+    "City": "Leeds",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84747,
+    "City": "Loa",
+    "County": "Wayne"
+  },
+  {
+    "Zipcode": 84749,
+    "City": "Lyman",
+    "County": "Wayne"
+  },
+  {
+    "Zipcode": 84750,
+    "City": "Marysvale",
+    "County": "Piute"
+  },
+  {
+    "Zipcode": 84751,
+    "City": "Milford",
+    "County": "Beaver"
+  },
+  {
+    "Zipcode": 84752,
+    "City": "Minersville",
+    "County": "Beaver"
+  },
+  {
+    "Zipcode": 84753,
+    "City": "Modena",
+    "County": "Iron"
+  },
+  {
+    "Zipcode": 84754,
+    "City": "Monroe",
+    "County": "Sevier"
+  },
+  {
+    "Zipcode": 84755,
+    "City": "Mount Carmel",
+    "County": "Kane"
+  },
+  {
+    "Zipcode": 84756,
+    "City": "Newcastle",
+    "County": "Iron"
+  },
+  {
+    "Zipcode": 84757,
+    "City": "New Harmony",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84758,
+    "City": "Orderville",
+    "County": "Kane"
+  },
+  {
+    "Zipcode": 84759,
+    "City": "Panguitch",
+    "County": "Garfield"
+  },
+  {
+    "Zipcode": 84760,
+    "City": "Paragonah",
+    "County": "Iron"
+  },
+  {
+    "Zipcode": 84761,
+    "City": "Parowan",
+    "County": "Iron"
+  },
+  {
+    "Zipcode": 84762,
+    "City": "Duck Creek Village",
+    "County": "Kane"
+  },
+  {
+    "Zipcode": 84763,
+    "City": "Rockville",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84764,
+    "City": "Bryce",
+    "County": "Garfield"
+  },
+  {
+    "Zipcode": 84765,
+    "City": "Santa Clara",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84766,
+    "City": "Sevier",
+    "County": "Sevier"
+  },
+  {
+    "Zipcode": 84767,
+    "City": "Springdale",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84770,
+    "City": "Saint George",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84771,
+    "City": "Saint George",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84772,
+    "City": "Summit",
+    "County": "Iron"
+  },
+  {
+    "Zipcode": 84773,
+    "City": "Teasdale",
+    "County": "Wayne"
+  },
+  {
+    "Zipcode": 84774,
+    "City": "Toquerville",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84775,
+    "City": "Torrey",
+    "County": "Wayne"
+  },
+  {
+    "Zipcode": 84776,
+    "City": "Tropic",
+    "County": "Garfield"
+  },
+  {
+    "Zipcode": 84779,
+    "City": "Virgin",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84780,
+    "City": "Washington",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84781,
+    "City": "Pine Valley",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84782,
+    "City": "Veyo",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84783,
+    "City": "Dammeron Valley",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84784,
+    "City": "Hildale",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84790,
+    "City": "Saint George",
+    "County": "Washington"
+  },
+  {
+    "Zipcode": 84791,
+    "City": "Saint George",
+    "County": "Washington"
+  }
+]

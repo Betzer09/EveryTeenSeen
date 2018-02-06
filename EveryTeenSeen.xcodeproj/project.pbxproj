@@ -10,22 +10,28 @@
 		23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CE920242D690033B85D /* WelcomeViewController.swift */; };
 		23250CEF20242EB10033B85D /* UtahZipCodes in Resources */ = {isa = PBXBuildFile; fileRef = 23250CEE20242EB10033B85D /* UtahZipCodes */; };
 		23250CF3202431130033B85D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CF2202431130033B85D /* City.swift */; };
+		235F64C420294C1100E1EC56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 235F64C320294C1100E1EC56 /* GoogleService-Info.plist */; };
 		236155F42023F1850004DC9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236155F32023F1850004DC9F /* AppDelegate.swift */; };
 		236155F92023F1850004DC9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236155F72023F1850004DC9F /* Main.storyboard */; };
 		236155FB2023F1850004DC9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236155FA2023F1850004DC9F /* Assets.xcassets */; };
 		236155FE2023F1850004DC9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236155FC2023F1850004DC9F /* LaunchScreen.storyboard */; };
+		93C3980FB99E5FF62218949C /* Pods_EveryTeenSeen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03564C288DF100113DAE3FBD /* Pods-EveryTeenSeen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.release.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.release.xcconfig"; sourceTree = "<group>"; };
 		23250CE920242D690033B85D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		23250CEE20242EB10033B85D /* UtahZipCodes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UtahZipCodes; sourceTree = "<group>"; };
 		23250CF2202431130033B85D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		235F64C320294C1100E1EC56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		236155F02023F1850004DC9F /* EveryTeenSeen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryTeenSeen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		236155F32023F1850004DC9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		236155F82023F1850004DC9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		236155FA2023F1850004DC9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		236155FD2023F1850004DC9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		236155FF2023F1850004DC9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EveryTeenSeen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5B8742448B544813C4C79FE /* Pods-EveryTeenSeen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,18 +39,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93C3980FB99E5FF62218949C /* Pods_EveryTeenSeen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		228109CE809A79BE8F910B4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		23250CE420242CB30033B85D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				236155F32023F1850004DC9F /* AppDelegate.swift */,
 				236155FA2023F1850004DC9F /* Assets.xcassets */,
 				236155FF2023F1850004DC9F /* Info.plist */,
+				235F64C320294C1100E1EC56 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -94,6 +110,8 @@
 			children = (
 				236155F22023F1850004DC9F /* EveryTeenSeen */,
 				236155F12023F1850004DC9F /* Products */,
+				2C253E60057DC07D34F8F1EC /* Pods */,
+				228109CE809A79BE8F910B4A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +136,15 @@
 			path = EveryTeenSeen;
 			sourceTree = "<group>";
 		};
+		2C253E60057DC07D34F8F1EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C5B8742448B544813C4C79FE /* Pods-EveryTeenSeen.debug.xcconfig */,
+				03564C288DF100113DAE3FBD /* Pods-EveryTeenSeen.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,9 +152,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 236156022023F1850004DC9F /* Build configuration list for PBXNativeTarget "EveryTeenSeen" */;
 			buildPhases = (
+				71FD3FC9823A7464D8BC752A /* [CP] Check Pods Manifest.lock */,
 				236155EC2023F1850004DC9F /* Sources */,
 				236155ED2023F1850004DC9F /* Frameworks */,
 				236155EE2023F1850004DC9F /* Resources */,
+				B7EF1F9AB33CA745A45095AA /* [CP] Embed Pods Frameworks */,
+				3E938A575FB94A9F3D95BDC3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,12 +209,71 @@
 			files = (
 				236155FE2023F1850004DC9F /* LaunchScreen.storyboard in Resources */,
 				236155FB2023F1850004DC9F /* Assets.xcassets in Resources */,
+				235F64C420294C1100E1EC56 /* GoogleService-Info.plist in Resources */,
 				236155F92023F1850004DC9F /* Main.storyboard in Resources */,
 				23250CEF20242EB10033B85D /* UtahZipCodes in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E938A575FB94A9F3D95BDC3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71FD3FC9823A7464D8BC752A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EveryTeenSeen-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7EF1F9AB33CA745A45095AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		236155EC2023F1850004DC9F /* Sources */ = {
@@ -328,6 +417,7 @@
 		};
 		236156032023F1850004DC9F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5B8742448B544813C4C79FE /* Pods-EveryTeenSeen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -343,6 +433,7 @@
 		};
 		236156042023F1850004DC9F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03564C288DF100113DAE3FBD /* Pods-EveryTeenSeen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

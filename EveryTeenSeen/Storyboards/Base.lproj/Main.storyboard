@@ -29,6 +29,7 @@
                                     <color key="titleColor" red="0.40779560804367065" green="0.40787053108215332" blue="0.40779092907905579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="getStartedButtonPressed:" destination="oZW-sK-V4Z" eventType="touchUpInside" id="0RD-F3-q3f"/>
                                     <segue destination="PiJ-I2-EMu" kind="show" id="S1F-Ms-ozv"/>
                                 </connections>
                             </button>
@@ -55,10 +56,10 @@
             </objects>
             <point key="canvasLocation" x="667.5" y="-258.80281690140845"/>
         </scene>
-        <!--View Controller-->
+        <!--Join View Controller-->
         <scene sceneID="45V-T4-nMn">
             <objects>
-                <viewController id="PiJ-I2-EMu" sceneMemberID="viewController">
+                <viewController id="PiJ-I2-EMu" customClass="JoinViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kjc-Fe-74U">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,10 +129,10 @@ events  </string>
             </objects>
             <point key="canvasLocation" x="1733" y="-260"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Profile View Controller-->
         <scene sceneID="FZV-s9-8qI">
             <objects>
-                <viewController id="6oW-ew-fT5" sceneMemberID="viewController">
+                <viewController id="6oW-ew-fT5" customClass="CreateProfileViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dhh-1i-aU1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -10,6 +10,27 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
 
+    // MARK: - Properties
+    
+    // MARK: - Actions
+    @IBAction func getStartedButtonPressed(_ sender: Any) {
+        var zipcodeTextField: UITextField!
+        
+        let alert = UIAlertController(title: "Enter Your Zipcode", message: "Every Teen Seen is a group that is growing rapidly, but we are only in a few locations.", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "83274"
+            textField.keyboardType = .decimalPad
+            zipcodeTextField = textField
+        }
+        
+        let verifyAction = UIAlertAction(title: "Verify", style: .default) { (_) in
+            
+        }
+        
+    }
+    
+    // MARK: - View LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,5 +41,20 @@ class WelcomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - Methods
+    
+    func checkZipCodeWith(zipcode: Int, completion: @escaping(City) -> Void) {
+        
+    }
 
 }
+
+
+
+
+
+
+
+
+

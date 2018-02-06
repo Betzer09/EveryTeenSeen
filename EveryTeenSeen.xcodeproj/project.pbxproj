@@ -13,6 +13,7 @@
 		235F64C420294C1100E1EC56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 235F64C320294C1100E1EC56 /* GoogleService-Info.plist */; };
 		235F66CA202A411400383355 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66C9202A411400383355 /* JoinViewController.swift */; };
 		235F66CC202A413100383355 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66CB202A413100383355 /* CreateProfileViewController.swift */; };
+		235F66CE202A47E000383355 /* CityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66CD202A47E000383355 /* CityController.swift */; };
 		236155F42023F1850004DC9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236155F32023F1850004DC9F /* AppDelegate.swift */; };
 		236155F92023F1850004DC9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236155F72023F1850004DC9F /* Main.storyboard */; };
 		236155FB2023F1850004DC9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236155FA2023F1850004DC9F /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		235F64C320294C1100E1EC56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		235F66C9202A411400383355 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		235F66CB202A413100383355 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
+		235F66CD202A47E000383355 /* CityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityController.swift; sourceTree = "<group>"; };
 		236155F02023F1850004DC9F /* EveryTeenSeen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryTeenSeen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		236155F32023F1850004DC9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		236155F82023F1850004DC9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		23250CE620242CF70033B85D /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
+				235F66CD202A47E000383355 /* CityController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235F66CE202A47E000383355 /* CityController.swift in Sources */,
 				236155F42023F1850004DC9F /* AppDelegate.swift in Sources */,
 				23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */,
 				235F66CA202A411400383355 /* JoinViewController.swift in Sources */,

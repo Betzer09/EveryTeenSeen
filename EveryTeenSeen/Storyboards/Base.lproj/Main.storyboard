@@ -1,29 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oZW-sK-V4Z">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aUe-H6-437">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Welcome View Controller-->
+        <!--Support The Cause In Utah-->
         <scene sceneID="Dvs-d9-Whv">
             <objects>
                 <viewController id="oZW-sK-V4Z" customClass="WelcomeViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ym4-fJ-pMO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EveryTeenSeen" translatesAutoresizingMaskIntoConstraints="NO" id="fGB-vm-UyW">
+                                <rect key="frame" x="40" y="89" width="240" height="284"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWf-80-EZq">
+                                <rect key="frame" x="40.5" y="421" width="240" height="30"/>
+                                <state key="normal" title="Join The Cause In Utah"/>
+                                <connections>
+                                    <segue destination="PiJ-I2-EMu" kind="show" id="QfK-pX-jAB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16078431369999999" green="0.15686274510000001" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="DWf-80-EZq" firstAttribute="centerX" secondItem="ym4-fJ-pMO" secondAttribute="centerX" id="28X-f6-kIF"/>
+                            <constraint firstItem="fGB-vm-UyW" firstAttribute="centerX" secondItem="ym4-fJ-pMO" secondAttribute="centerX" id="9tS-ST-IIj"/>
+                            <constraint firstItem="fGB-vm-UyW" firstAttribute="top" secondItem="ywN-Tc-8hl" secondAttribute="top" constant="25" id="UAH-cb-kpG"/>
+                            <constraint firstItem="DWf-80-EZq" firstAttribute="top" secondItem="fGB-vm-UyW" secondAttribute="bottom" constant="48" id="XMg-UJ-Vir"/>
+                            <constraint firstItem="fGB-vm-UyW" firstAttribute="width" secondItem="ym4-fJ-pMO" secondAttribute="width" multiplier="3/4" id="jdP-9O-fRA"/>
+                            <constraint firstItem="DWf-80-EZq" firstAttribute="width" secondItem="ym4-fJ-pMO" secondAttribute="width" multiplier="3/4" id="vAC-aE-s1O"/>
+                            <constraint firstItem="fGB-vm-UyW" firstAttribute="height" secondItem="ym4-fJ-pMO" secondAttribute="height" multiplier="1/2" id="wwt-ZH-dXn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ywN-Tc-8hl"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Support The Cause In Utah" id="CCa-oG-zQJ">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="c1m-82-LNZ"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9av-bB-tUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-68" y="-258"/>
+            <point key="canvasLocation" x="667.5" y="-258.80281690140845"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="45V-T4-nMn">
+            <objects>
+                <viewController id="PiJ-I2-EMu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kjc-Fe-74U">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ETSLeafLogo" translatesAutoresizingMaskIntoConstraints="NO" id="tDA-Wh-M7w">
+                                <rect key="frame" x="40" y="89" width="240" height="170"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IJ-Ox-1Aw">
+                                <rect key="frame" x="75" y="422" width="170" height="41"/>
+                                <string key="text">You’ll Have To Get 
+Permission To Do This</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.89316695928573608" green="0.93024760484695435" blue="0.89294523000717163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4V-To-b6l">
+                                <rect key="frame" x="80" y="356" width="160" height="30"/>
+                                <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Join The Cause">
+                                    <color key="titleColor" red="0.26663362979888916" green="0.26668566465377808" blue="0.26663035154342651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqs-Ik-mKe">
+                                <rect key="frame" x="80.5" y="488" width="160" height="30"/>
+                                <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Lead The Cause">
+                                    <color key="titleColor" red="0.26663362979888916" green="0.26668566465377808" blue="0.26663035154342651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMw-Vh-1wv">
+                                <rect key="frame" x="60" y="275" width="201" height="61"/>
+                                <string key="text">Join the cause in Utah 
+and hear about upcoming 
+events  </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.89316695928573608" green="0.93024760484695435" blue="0.89294523000717163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16078431369999999" green="0.15686274510000001" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0UG-Fk-AEe" firstAttribute="bottom" secondItem="hqs-Ik-mKe" secondAttribute="bottom" constant="50" id="0YY-12-mVo"/>
+                            <constraint firstItem="p4V-To-b6l" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="6tT-eV-VzW"/>
+                            <constraint firstItem="hqs-Ik-mKe" firstAttribute="top" secondItem="7IJ-Ox-1Aw" secondAttribute="bottom" constant="25" id="7ti-1C-uqJ"/>
+                            <constraint firstItem="nMw-Vh-1wv" firstAttribute="top" secondItem="tDA-Wh-M7w" secondAttribute="bottom" constant="16" id="9up-dP-2KS"/>
+                            <constraint firstItem="tDA-Wh-M7w" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="DJa-2m-k2S"/>
+                            <constraint firstItem="hqs-Ik-mKe" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="YV9-AN-llK"/>
+                            <constraint firstItem="tDA-Wh-M7w" firstAttribute="height" secondItem="kjc-Fe-74U" secondAttribute="height" multiplier="0.3" id="YxS-Oz-LLC"/>
+                            <constraint firstItem="7IJ-Ox-1Aw" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="aD4-dn-WhV"/>
+                            <constraint firstItem="nMw-Vh-1wv" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="bQi-hs-XXt"/>
+                            <constraint firstItem="tDA-Wh-M7w" firstAttribute="width" secondItem="kjc-Fe-74U" secondAttribute="width" multiplier="3/4" id="e87-1R-t87"/>
+                            <constraint firstItem="p4V-To-b6l" firstAttribute="width" secondItem="kjc-Fe-74U" secondAttribute="width" multiplier="1/2" id="go1-3V-c7v"/>
+                            <constraint firstItem="tDA-Wh-M7w" firstAttribute="top" secondItem="0UG-Fk-AEe" secondAttribute="top" constant="25" id="q0N-1K-iMe"/>
+                            <constraint firstItem="p4V-To-b6l" firstAttribute="top" secondItem="nMw-Vh-1wv" secondAttribute="bottom" constant="20" id="qod-43-avW"/>
+                            <constraint firstItem="hqs-Ik-mKe" firstAttribute="width" secondItem="kjc-Fe-74U" secondAttribute="width" multiplier="1/2" id="tXy-TX-hj7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0UG-Fk-AEe"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8e7-DQ-4qw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1640.625" y="-260.91549295774649"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Eze-uA-9y6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aUe-H6-437" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S7c-wm-X6K">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oZW-sK-V4Z" kind="relationship" relationship="rootViewController" id="o5i-4r-5W4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4g5-vE-mAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-512" y="-259"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ETSLeafLogo" width="282" height="197"/>
+        <image name="EveryTeenSeen" width="414" height="502"/>
+    </resources>
 </document>

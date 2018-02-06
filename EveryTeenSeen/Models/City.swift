@@ -10,8 +10,6 @@ import Foundation
 
 class city: Decodable {
     
-    // Added test line
-    
     // MARK: - Properties
     let city: String
     let county: String

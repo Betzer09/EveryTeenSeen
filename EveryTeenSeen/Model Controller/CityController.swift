@@ -44,7 +44,7 @@ class CityController {
         
     }
     
-    func postCityToFirbaseWith(city: String, zipcode: Int, county: String, completion: (_ success: Bool) -> Void) {
+    func postCityToFirbaseWith(city: String, zipcode: Int, county: String, completion: @escaping (_ success: Bool) -> Void) {
         
         let baseURL = URL(string: "https://everyteenseen-2a545.firebaseio.com/")!
         

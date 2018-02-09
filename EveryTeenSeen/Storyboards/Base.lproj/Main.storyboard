@@ -139,7 +139,7 @@ events  </string>
             </objects>
             <point key="canvasLocation" x="1733" y="-260"/>
         </scene>
-        <!--Create Profile View Controller-->
+        <!--Create Account-->
         <scene sceneID="FZV-s9-8qI">
             <objects>
                 <viewController id="6oW-ew-fT5" customClass="CreateProfileViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
@@ -148,7 +148,7 @@ events  </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qN7-U3-U3b">
-                                <rect key="frame" x="16" y="144" width="288" height="132"/>
+                                <rect key="frame" x="16" y="110" width="288" height="166"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tah-5N-dOR">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
@@ -197,7 +197,7 @@ events  </string>
                                                 <rect key="frame" x="146" y="0.0" width="142" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -214,13 +214,31 @@ events  </string>
                                                 <rect key="frame" x="146" y="0.0" width="142" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="h9z-4x-aVY">
+                                        <rect key="frame" x="0.0" y="136" width="288" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin Pass:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFM-uw-8aH">
+                                                <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="John22@gmail.com" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Gv-qH-68U">
+                                                <rect key="frame" x="144" y="0.0" width="144" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="jRs-jq-6P2" firstAttribute="width" secondItem="qN7-U3-U3b" secondAttribute="width" id="LA5-Wd-AlF"/>
+                                    <constraint firstItem="h9z-4x-aVY" firstAttribute="width" secondItem="qN7-U3-U3b" secondAttribute="width" id="Pv3-ip-DTg"/>
                                     <constraint firstItem="tah-5N-dOR" firstAttribute="width" secondItem="qN7-U3-U3b" secondAttribute="width" id="edx-Lm-jho"/>
                                     <constraint firstItem="B9X-cv-D20" firstAttribute="width" secondItem="qN7-U3-U3b" secondAttribute="width" id="f1Z-O8-kY4"/>
                                     <constraint firstItem="t4c-KB-1mG" firstAttribute="width" secondItem="qN7-U3-U3b" secondAttribute="width" id="pIJ-1R-fr0"/>
@@ -245,6 +263,17 @@ events  </string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nFu-Bb-fBT"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Create Account" id="yoG-FG-gUk">
+                        <barButtonItem key="rightBarButtonItem" title="Join" id="18i-d1-PyQ"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="adminPasswordLabel" destination="MFM-uw-8aH" id="NFa-GG-GGK"/>
+                        <outlet property="adminPasswordTextField" destination="9Gv-qH-68U" id="2P4-Uc-jKz"/>
+                        <outlet property="confirmPasswordTextField" destination="MXW-gF-4Nj" id="Rcq-O7-OPp"/>
+                        <outlet property="emailTextField" destination="m38-Aa-JU1" id="7fi-fq-aQZ"/>
+                        <outlet property="fullnameTextField" destination="PyG-xk-SOT" id="2UO-P1-AdQ"/>
+                        <outlet property="passwordTextField" destination="923-W6-OTe" id="vwi-bz-C7p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xni-yT-tpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -274,6 +303,6 @@ events  </string>
         <image name="EveryTeenSeen" width="414" height="502"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JyC-x7-6nO"/>
+        <segue reference="ifg-ZR-3Ww"/>
     </inferredMetricsTieBreakers>
 </document>

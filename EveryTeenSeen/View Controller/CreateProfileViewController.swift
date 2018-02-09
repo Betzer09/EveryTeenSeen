@@ -9,11 +9,22 @@
 import UIKit
 
 class CreateProfileViewController: UIViewController {
-
+    
+    // MARK: - Outlets
+    @IBOutlet weak var fullnameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var adminPasswordTextField: UITextField!
+    @IBOutlet weak var adminPasswordLabel: UILabel!
+    
+    
+    // MARK: - Properties
+    var userType: JoinViewController.UserType?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setUpView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,14 +33,21 @@ class CreateProfileViewController: UIViewController {
     }
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
     }
-    */
+    
+    // MARK: - Methods
+    func setUpView() {
+        guard let userType = userType else {return}
+        if userType == .joinCause {
+            adminPasswordTextField.isHidden = true
+            adminPasswordLabel.isHidden = true
+        }
+    }
 
 }

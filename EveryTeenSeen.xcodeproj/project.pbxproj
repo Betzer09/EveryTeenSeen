@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CE920242D690033B85D /* WelcomeViewController.swift */; };
-		23250CEF20242EB10033B85D /* UtahZipCodes in Resources */ = {isa = PBXBuildFile; fileRef = 23250CEE20242EB10033B85D /* UtahZipCodes */; };
 		23250CF3202431130033B85D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CF2202431130033B85D /* City.swift */; };
 		235F64C420294C1100E1EC56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 235F64C320294C1100E1EC56 /* GoogleService-Info.plist */; };
 		235F66CA202A411400383355 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66C9202A411400383355 /* JoinViewController.swift */; };
@@ -18,13 +17,13 @@
 		236155F92023F1850004DC9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236155F72023F1850004DC9F /* Main.storyboard */; };
 		236155FB2023F1850004DC9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236155FA2023F1850004DC9F /* Assets.xcassets */; };
 		236155FE2023F1850004DC9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236155FC2023F1850004DC9F /* LaunchScreen.storyboard */; };
+		238B5548202E0E21002E128C /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5547202E0E21002E128C /* HelperMethods.swift */; };
 		93C3980FB99E5FF62218949C /* Pods_EveryTeenSeen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03564C288DF100113DAE3FBD /* Pods-EveryTeenSeen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.release.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.release.xcconfig"; sourceTree = "<group>"; };
 		23250CE920242D690033B85D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		23250CEE20242EB10033B85D /* UtahZipCodes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UtahZipCodes; sourceTree = "<group>"; };
 		23250CF2202431130033B85D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		235F64C320294C1100E1EC56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		235F66C9202A411400383355 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +35,7 @@
 		236155FA2023F1850004DC9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		236155FD2023F1850004DC9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		236155FF2023F1850004DC9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		238B5547202E0E21002E128C /* HelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
 		93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EveryTeenSeen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B8742448B544813C4C79FE /* Pods-EveryTeenSeen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,14 +106,6 @@
 			path = "View Controller";
 			sourceTree = "<group>";
 		};
-		23250CEB20242DBA0033B85D /* JSON Files */ = {
-			isa = PBXGroup;
-			children = (
-				23250CEE20242EB10033B85D /* UtahZipCodes */,
-			);
-			path = "JSON Files";
-			sourceTree = "<group>";
-		};
 		236155E72023F1850004DC9F = {
 			isa = PBXGroup;
 			children = (
@@ -140,9 +132,17 @@
 				23250CE820242D080033B85D /* View Controller */,
 				23250CE720242D010033B85D /* Storyboards */,
 				23250CE420242CB30033B85D /* Resources */,
-				23250CEB20242DBA0033B85D /* JSON Files */,
+				238B5546202E0DF1002E128C /* Helper Files */,
 			);
 			path = EveryTeenSeen;
+			sourceTree = "<group>";
+		};
+		238B5546202E0DF1002E128C /* Helper Files */ = {
+			isa = PBXGroup;
+			children = (
+				238B5547202E0E21002E128C /* HelperMethods.swift */,
+			);
+			path = "Helper Files";
 			sourceTree = "<group>";
 		};
 		2C253E60057DC07D34F8F1EC /* Pods */ = {
@@ -220,7 +220,6 @@
 				236155FB2023F1850004DC9F /* Assets.xcassets in Resources */,
 				235F64C420294C1100E1EC56 /* GoogleService-Info.plist in Resources */,
 				236155F92023F1850004DC9F /* Main.storyboard in Resources */,
-				23250CEF20242EB10033B85D /* UtahZipCodes in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +305,7 @@
 				235F66CE202A47E000383355 /* CityController.swift in Sources */,
 				236155F42023F1850004DC9F /* AppDelegate.swift in Sources */,
 				23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */,
+				238B5548202E0E21002E128C /* HelperMethods.swift in Sources */,
 				235F66CA202A411400383355 /* JoinViewController.swift in Sources */,
 				235F66CC202A413100383355 /* CreateProfileViewController.swift in Sources */,
 				23250CF3202431130033B85D /* City.swift in Sources */,

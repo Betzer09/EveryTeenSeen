@@ -41,7 +41,7 @@ class WelcomeViewController: UIViewController {
                 guard CityController.shared.verifyLocationFor(city: City) else {
                     
                     // If the state isn't in utah alert the user
-                    self.presentSimpleAlert(title: "Error", message: "You location is not supported yet!")
+                    presentSimpleAlert(viewController: self, title: "Error", message: "You're location is not supported yet!")
                     return
                 }
                 
@@ -50,7 +50,7 @@ class WelcomeViewController: UIViewController {
                     
                 }
                 DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(vc, animated: true)                    
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
                 
             })
@@ -66,19 +66,6 @@ class WelcomeViewController: UIViewController {
     private func setUpView() {
         
     }
-    
-    // MARK: - Alerts
-    private func presentSimpleAlert(title: String, message: String) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        
-        alert.addAction(dismissAction)
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     
 }
 

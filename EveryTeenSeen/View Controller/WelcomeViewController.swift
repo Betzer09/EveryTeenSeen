@@ -45,11 +45,14 @@ class WelcomeViewController: UIViewController {
                     return
                 }
                 
-                // If they are in the right location post that location to firbase
-                CityController.shared.postCityToFirebaseWith(city: City.city, zipcode: City.zipcode, state: City.state, completion: { (success) in
-                    // TODO: - Remove this later
-                })
+                // show joinViewController
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "joinVC") as? JoinViewController else {return
+                    
+                }
+                self.present(vc, animated: true, completion: nil)
+                
             })
+            
         }
         
         alert.addAction(verifyAction)

@@ -16,9 +16,8 @@ class CityController {
     // MARK: - Fetch City Info Request
     func fetchCityWith(zipcode: Int, completion: @escaping(City) -> Void) {
         
-        var baseURL = URL(string: "https://www.zipcodeapi.com/rest/cAaUBJrBxPeZIcVq8nLnB7yDQcuk2qear2ZmfhasrOfmxDqeR8iUMiaAvl2fildI/info.json")!
-        baseURL.appendPathComponent("\(zipcode)/degress")
-        
+        let baseURL = URL(string: "https://www.zipcodeapi.com/rest/iqHRHoIYixbI2qzb3BOsToizMSuzBDN96ruPmbqnBWvEVKUgWcrlrJ9zSytmqVFQ/info.json/\(zipcode)/degrees")!
+
         URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
             
             if let error = error {

@@ -7,6 +7,6 @@ target 'EveryTeenSeen' do
 
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
-pod 'Firebase/Database'
+pod 'Firebase/Firestore'
 
 end

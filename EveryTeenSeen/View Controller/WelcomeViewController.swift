@@ -9,11 +9,21 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-
+    
     // MARK: - Properties
+    
+    
+    // MARK: - View LifeCycles
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUpView()
+        
+    }
+    
     
     // MARK: - Actions
     @IBAction func getStartedButtonPressed(_ sender: Any) {
+        
         var zipcodeTextField: UITextField!
         
         let alert = UIAlertController(title: "Enter Your Zipcode", message: "Every Teen Seen is a group that is growing rapidly, but we are only in a few locations.", preferredStyle: .alert)
@@ -25,29 +35,46 @@ class WelcomeViewController: UIViewController {
         }
         
         let verifyAction = UIAlertAction(title: "Verify", style: .default) { (_) in
-            
+            guard let zipcodeString = zipcodeTextField.text, let zipcode = Int(zipcodeString) else {return}
+            CityController.shared.fetchCityWith(zipcode: zipcode, completion: { (City) in
+                // Check to see if the state is correct
+                guard CityController.shared.verifyLocationFor(city: City) else {
+                    
+                    // If the state isn't in utah alert the user
+                    self.presentSimpleAlert(title: "Error", message: "You location is not supported yet!")
+                    return
+                }
+                
+                // If they are in the right location post that location to firbase
+                CityController.shared.postCityToFirebaseWith(city: City.city, zipcode: City.zipcode, state: City.state, completion: { (success) in
+                    // TODO: - Remove this later
+                })
+            })
         }
         
+        alert.addAction(verifyAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    // MARK: - View LifeCycles
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    // MARK: - UI Functions
     
-    // MARK: - Methods
-    
-    func checkZipCodeWith(zipcode: Int, completion: @escaping(City) -> Void) {
+    private func setUpView() {
         
     }
-
+    
+    // MARK: - Alerts
+    private func presentSimpleAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(dismissAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
 }
 
 

@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class CityController {
     
     static let shared = CityController()
@@ -36,19 +37,17 @@ class CityController {
             }
             
         }.resume()
-        
-        // Fetch the city
-        
-        // Add the city to firebase
-            // Check to make sure the city isn't already there
-        
     }
     
-    func postCityToFirbaseWith(city: String, zipcode: Int, county: String, completion: @escaping (_ success: Bool) -> Void) {
+    // MARK: - Post the location to firebase
+    func postCityToFirebaseWith(city: String, zipcode: String, state: String, completion: @escaping (_ success: Bool) -> Void) {
         
-        let baseURL = URL(string: "https://everyteenseen-2a545.firebaseio.com/")!
+        let city = City(city: city, zip: zipcode, state: state)
+    
+        var putEndpoint = URL(string: "https://everyteenseen-2a545.firebaseio.com")!
         
-        let city = City(city: city, county: county, zip: zipcode)
+//        guard let identifer = city.identifer, let endpoint = putEndpoint?.appendingPathComponent(identifer.uuidString).appendingPathExtension(".json") else {return}
+        
         var cityData: Data?
         
         // Turn city into Data
@@ -61,8 +60,8 @@ class CityController {
             print("Error encoding city data: \(error.localizedDescription) in function: \(#function)")
         }
         
-        var request = URLRequest(url: baseURL)
-        request.httpMethod = "PUT"
+        var request = URLRequest(url: putEndpoint)
+        request.httpMethod = "POST"
         request.httpBody = cityData
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -77,14 +76,20 @@ class CityController {
             } else if resonceDataString.contains("error") {
                 NSLog("Error: \(resonceDataString)")
             } else {
-                print("Successfully saved ddata to endpoint")
+                print("Successfully saved data to endpoint")
                 success = true
             }
             
         }.resume()
+    }
+    
+    // MARK: - Functions
+    func verifyLocationFor(city: City) -> Bool {
         
-        
-        
+        if city.state == "UT" {
+            return true
+        }
+        return false
     }
 }
 

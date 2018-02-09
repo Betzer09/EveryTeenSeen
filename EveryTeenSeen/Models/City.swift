@@ -12,16 +12,16 @@ class City: Codable {
     
     // MARK: - Properties
     let city: String
-    let county: String
-    let zipcode: Int
+    let zipcode: String
     var count = 0
-    let identifer: UUID
+    let state: String
+    var identifer: UUID?
     
     // MARK: - Init
-    init(city: String, county: String, zip: Int, identifer: UUID = UUID()) {
+    init(city: String, zip: String, identifer: UUID = UUID(), state: String) {
         self.city = city
-        self.county = county
         self.zipcode = zip
+        self.state = state
         self.identifer = identifer
     }
     
@@ -29,13 +29,9 @@ class City: Codable {
     enum CodingKeys: String, CodingKey {
         case zipcode = "zip_code"
         case city
-        case county
+        case state
         case identifer
-        case count
     }
     
 }
 
-struct Cities {
-    var cities: City
-}

@@ -49,7 +49,9 @@ class WelcomeViewController: UIViewController {
                 guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "joinVC") as? JoinViewController else {return
                     
                 }
-                self.present(vc, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(vc, animated: true)                    
+                }
                 
             })
             

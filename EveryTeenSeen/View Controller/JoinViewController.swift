@@ -10,12 +10,6 @@ import UIKit
 
 class JoinViewController: UIViewController {
     
-    // MARK: - Properties
-    public enum UserType: String {
-        case joinCause = "toJoinTheCause"
-        case leadCause = "toLeadTheCause"
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +29,7 @@ class JoinViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let destination = segue.destination as? CreateProfileViewController else {return}
+        
         
         if segue.identifier == UserType.joinCause.rawValue {
             destination.userType = UserType.joinCause

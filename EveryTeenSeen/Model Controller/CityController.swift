@@ -41,7 +41,7 @@ class CityController {
     // MARK: - Post the location to firebase
     func postCityToFirebaseWith(city: String, zipcode: String, state: String, completion: @escaping (_ success: Bool) -> Void) {
         
-        let city = City(city: city, zip: zipcode, state: state)
+        let city = City(city: city, zipcode: zipcode, state: state)
     
         var putEndpoint = URL(string: "https://everyteenseen-2a545.firebaseio.com")!
         

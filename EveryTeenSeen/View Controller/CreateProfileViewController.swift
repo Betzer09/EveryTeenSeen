@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CreateProfileViewController: UIViewController {
     
@@ -20,19 +21,12 @@ class CreateProfileViewController: UIViewController {
     
     
     // MARK: - Properties
-    var userType: JoinViewController.UserType?
+    var userType: UserType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
 
     // MARK: - Navigation
 
@@ -49,5 +43,50 @@ class CreateProfileViewController: UIViewController {
             adminPasswordLabel.isHidden = true
         }
     }
+    
+    private func createFirebaseAuthUser() {
+        guard let email = emailTextField.text, let password = passwordTextField.text,
+            let confirmedPassword = confirmPasswordTextField.text,
+            !password.isEmpty, !confirmedPassword.isEmpty, !email.isEmpty else {
+                
+                // Inform users to fill in all the fields
+                presentSimpleAlert(viewController: self, title: "Fill In all Fields", message: "")
+                return
+        }
+        
+        // Check and make sure the passwords match
+        if password != confirmedPassword {
+            // Passwords don't match
+            presentSimpleAlert(viewController: self, title: "Passowrds do not match!", message: "")
+        } else {
+            
+            // Check user type
+            guard let userType = userType, let adminPass = adminPasswordTextField.text else {return}
+            
+            switch userType {
+            case .joinCause:
+                UserController.shared.createAuthUser(email: email , pass: password)
+            case .leadCause:
+                if adminPass != "ETSMovementUtah2018" {
+                    presentSimpleAlert(viewController: self, title: "Incorrect Admin Passowrd!", message: "")
+                } else {
+                    UserController.shared.createAuthUser(email: email , pass: password)
+                }
+            }
+            print("Succesfully created user")
+        }
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

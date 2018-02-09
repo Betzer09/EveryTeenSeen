@@ -17,9 +17,9 @@ class City: Codable {
     let state: String
     
     // MARK: - Init
-    init(city: String, zip: String, state: String) {
+    init(city: String, zipcode: String, state: String) {
         self.city = city
-        self.zipcode = zip
+        self.zipcode = zipcode
         self.state = state
     }
     

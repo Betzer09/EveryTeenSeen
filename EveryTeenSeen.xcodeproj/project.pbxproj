@@ -18,6 +18,9 @@
 		236155FB2023F1850004DC9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236155FA2023F1850004DC9F /* Assets.xcassets */; };
 		236155FE2023F1850004DC9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236155FC2023F1850004DC9F /* LaunchScreen.storyboard */; };
 		238B5548202E0E21002E128C /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5547202E0E21002E128C /* HelperMethods.swift */; };
+		238B554A202E1210002E128C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5549202E1210002E128C /* User.swift */; };
+		238B554C202E1731002E128C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B554B202E1731002E128C /* UserController.swift */; };
+		238B5550202E1A18002E128C /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B554F202E1A18002E128C /* FirebaseManager.swift */; };
 		93C3980FB99E5FF62218949C /* Pods_EveryTeenSeen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +39,9 @@
 		236155FD2023F1850004DC9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		236155FF2023F1850004DC9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		238B5547202E0E21002E128C /* HelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
+		238B5549202E1210002E128C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		238B554B202E1731002E128C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		238B554F202E1A18002E128C /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EveryTeenSeen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B8742448B544813C4C79FE /* Pods-EveryTeenSeen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				23250CF2202431130033B85D /* City.swift */,
+				238B5549202E1210002E128C /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -83,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				235F66CD202A47E000383355 /* CityController.swift */,
+				238B554B202E1731002E128C /* UserController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -141,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				238B5547202E0E21002E128C /* HelperMethods.swift */,
+				238B554F202E1A18002E128C /* FirebaseManager.swift */,
 			);
 			path = "Helper Files";
 			sourceTree = "<group>";
@@ -302,10 +311,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				238B554C202E1731002E128C /* UserController.swift in Sources */,
 				235F66CE202A47E000383355 /* CityController.swift in Sources */,
+				238B5550202E1A18002E128C /* FirebaseManager.swift in Sources */,
 				236155F42023F1850004DC9F /* AppDelegate.swift in Sources */,
 				23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */,
 				238B5548202E0E21002E128C /* HelperMethods.swift in Sources */,
+				238B554A202E1210002E128C /* User.swift in Sources */,
 				235F66CA202A411400383355 /* JoinViewController.swift in Sources */,
 				235F66CC202A413100383355 /* CreateProfileViewController.swift in Sources */,
 				23250CF3202431130033B85D /* City.swift in Sources */,

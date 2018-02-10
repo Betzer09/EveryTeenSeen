@@ -45,6 +45,8 @@ class SignInViewController: UIViewController {
     private func checkForCurrentUser() {
         if Auth.auth().currentUser != nil {
             
+            
+            // TODO: - Change this to go to the home screen. 
             // If there is a user go to get started page for now
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "getStartedVC") as? WelcomeViewController else {return}
             

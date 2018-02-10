@@ -285,6 +285,7 @@ events  </string>
                         <barButtonItem key="rightBarButtonItem" title="Join" id="18i-d1-PyQ">
                             <connections>
                                 <action selector="joinCauseButtonPressed:" destination="6oW-ew-fT5" id="ctJ-u4-UWp"/>
+                                <segue destination="1o7-hi-mfV" kind="show" id="fdv-kI-aM1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -301,6 +302,14 @@ events  </string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xni-yT-tpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2726" y="-261"/>
+        </scene>
+        <!--UserHome-->
+        <scene sceneID="WKm-CD-dTL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserHome" id="1o7-hi-mfV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="neA-ZH-f5P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3636" y="-262"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="TI3-Xx-7js">

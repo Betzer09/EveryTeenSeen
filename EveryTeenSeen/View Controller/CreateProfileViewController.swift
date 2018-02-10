@@ -33,8 +33,10 @@ class CreateProfileViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func joinCauseButtonPressed(_ sender: Any) {
-        self.createFirebaseAuthUser()
-        self.createUserProfile()
+        self.createFirebaseAuthUser { (success) in
+            guard success else {return}
+            self.createUserProfile()
+        }
     }
     
     // MARK: - Navigation

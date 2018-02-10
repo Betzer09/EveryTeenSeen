@@ -31,8 +31,17 @@ class UserController {
             let data = try JSONEncoder().encode(newUser)
             guard let stringDict = String(data: data, encoding: .utf8) else {return}
             let jsonDict = self.convertStringToDictWith(string: stringDict)
-            userDb.collection("users").addDocument(data: jsonDict)
+            
+            switch userType {
+            case .joinCause:
+                userDb.collection("users").addDocument(data: jsonDict)
+                print("Succesfully Created User")
+            case .leadCause:
+                userDb.collection("admin_users").addDocument(data: jsonDict)
+                print("Succesfully Admin Created User")
+            }
         } catch let e {
+            print("Error Createing User")
             NSLog("Error encoding user data: \(e)")
         }
         

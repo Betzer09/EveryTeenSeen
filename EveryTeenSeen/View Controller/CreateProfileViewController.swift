@@ -34,8 +34,9 @@ class CreateProfileViewController: UIViewController {
     // MARK: - Actions
     @IBAction func joinCauseButtonPressed(_ sender: Any) {
         self.createFirebaseAuthUser { (success) in
-            guard success else {return}
-            self.createUserProfile()
+            if success {
+                self.createUserProfile()
+            }
         }
     }
     
@@ -71,7 +72,7 @@ class CreateProfileViewController: UIViewController {
                 return
         }
         
-        if email != confirmedEmail {
+        if email.lowercased() != confirmedEmail.lowercased() {
             presentSimpleAlert(viewController: self, title: "Email's Don't match!", message: "")
             completion(false)
             return
@@ -81,8 +82,9 @@ class CreateProfileViewController: UIViewController {
         if password != confirmedPassword {
             // Passwords don't match
             presentSimpleAlert(viewController: self, title: "Passowrds do not match!", message: "")
+            passwordTextField.text = ""
+            confirmPasswordTextField.text = ""
             completion(false)
-            return
         } else {
             
             // Check user type
@@ -93,16 +95,14 @@ class CreateProfileViewController: UIViewController {
             
             switch userType {
             case .joinCause:
-                UserController.shared.createAuthUser(email: email , pass: password)
-                print("Succesfully Create User")
+                UserController.shared.createAuthUser(email: email.lowercased() , pass: password)
                 completion(true)
             case .leadCause:
                 if adminPass != "ETSMovementUtah2018" {
                     completion(false)
                     presentSimpleAlert(viewController: self, title: "Incorrect Admin Passowrd!", message: "")
                 } else {
-                    UserController.shared.createAuthUser(email: email , pass: password)
-                    print("Succesfully Create Admin User")
+                    UserController.shared.createAuthUser(email: email.lowercased() , pass: password)
                     completion(true)
                 }
             }

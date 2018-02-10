@@ -10,17 +10,20 @@ import UIKit
 
 class JoinViewController: UIViewController {
     
+    // MARK: - Properties
+    var zipcode: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        self.setUpView()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    // MARK: - Functions
+    private func setUpView() {
+        guard let zipcode = zipcode else {return}
+        self.zipcode = zipcode
+    }
     
     
     // MARK: - Navigation
@@ -37,8 +40,9 @@ class JoinViewController: UIViewController {
             destination.userType = UserType.leadCause
         } else {
             destination.userType = UserType.joinCause
-            
         }
+        
+        destination.userZipcode = zipcode
         
     }
     

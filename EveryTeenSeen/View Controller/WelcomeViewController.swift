@@ -12,7 +12,6 @@ class WelcomeViewController: UIViewController {
     
     // MARK: - Properties
     
-    
     // MARK: - View LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +45,9 @@ class WelcomeViewController: UIViewController {
                 }
                 
                 // show joinViewController
-                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "joinVC") as? JoinViewController else {return
-                    
-                }
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "joinVC") as? JoinViewController else {return}
+                vc.zipcode = zipcodeString
+                
                 DispatchQueue.main.async {
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -66,6 +65,7 @@ class WelcomeViewController: UIViewController {
     private func setUpView() {
         
     }
+    
     
 }
 

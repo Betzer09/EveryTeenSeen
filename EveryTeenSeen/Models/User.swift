@@ -22,7 +22,7 @@ class User: Codable {
     let zipcode: String
     var userType: UserType.RawValue
     
-    init(fullname: String, email: String, zipcode: String, userType: UserType) {
+   @discardableResult init(fullname: String, email: String, zipcode: String, userType: UserType) {
         self.fullname = fullname
         self.email = email
         self.zipcode = zipcode

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class UserController {
     
@@ -20,7 +21,48 @@ class UserController {
     }
     
     // MARK: - Firestore Methods
+    func createUserProfile(fullname: String, email: String, zipcode: String, userType: UserType ) {
+        let userDb = Firestore.firestore()
+        
+        // Create a user
+        let newUser = User(fullname: fullname, email: email, zipcode: zipcode, userType: userType)
+        
+        do {
+            let data = try JSONEncoder().encode(newUser)
+            guard let stringDict = String(data: data, encoding: .utf8) else {return}
+            let jsonDict = self.convertStringToDictWith(string: stringDict)
+            userDb.collection("users").addDocument(data: jsonDict)
+        } catch let e {
+            NSLog("Error encoding user data: \(e)")
+        }
+        
+    }
     
-    
+    // MARK: - String To Dict
+    ///Converts json strings to dictionaries
+    private func convertStringToDictWith(string: String) -> [String: Any] {
+        
+        var dict: [String:Any]?
+        
+        if let data = string.data(using: String.Encoding.utf8) {
+            
+            do {
+                dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        guard let myDictionary = dict else {return [String:Any]()}
+        return myDictionary
+    }
 }
+
+
+
+
+
+
+
+
 

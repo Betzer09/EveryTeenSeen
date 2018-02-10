@@ -30,7 +30,7 @@
                                 </state>
                                 <connections>
                                     <action selector="getStartedButtonPressed:" destination="oZW-sK-V4Z" eventType="touchUpInside" id="0RD-F3-q3f"/>
-                                    <segue destination="PiJ-I2-EMu" kind="show" id="S1F-Ms-ozv"/>
+                                    <segue destination="PiJ-I2-EMu" kind="show" identifier="toSetUpVC" id="S1F-Ms-ozv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -148,7 +148,7 @@ events  </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qN7-U3-U3b">
-                                <rect key="frame" x="16" y="110" width="288" height="166"/>
+                                <rect key="frame" x="16" y="76" width="288" height="200"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tah-5N-dOR">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
@@ -170,7 +170,7 @@ events  </string>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="t4c-KB-1mG">
                                         <rect key="frame" x="0.0" y="34" width="288" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4S-e0-FEh">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4S-e0-FEh">
                                                 <rect key="frame" x="0.0" y="0.0" width="142" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -180,12 +180,29 @@ events  </string>
                                                 <rect key="frame" x="146" y="0.0" width="142" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="emailAddress" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Kb0-Oe-dvs">
+                                        <rect key="frame" x="0.0" y="68" width="288" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkT-VU-ih6">
+                                                <rect key="frame" x="0.0" y="0.0" width="142" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="John22@gmail.com" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f1C-9s-gh4">
+                                                <rect key="frame" x="146" y="0.0" width="142" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="B9X-cv-D20">
-                                        <rect key="frame" x="0.0" y="68" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="102" width="288" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqF-tP-yG8">
                                                 <rect key="frame" x="0.0" y="0.0" width="142" height="30"/>
@@ -202,7 +219,7 @@ events  </string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="jRs-jq-6P2">
-                                        <rect key="frame" x="0.0" y="102" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="136" width="288" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Pass:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OZ-rC-ey6">
                                                 <rect key="frame" x="0.0" y="0.0" width="142" height="30"/>
@@ -219,7 +236,7 @@ events  </string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="h9z-4x-aVY">
-                                        <rect key="frame" x="0.0" y="136" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="170" width="288" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin Pass:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFM-uw-8aH">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
@@ -237,6 +254,7 @@ events  </string>
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Kb0-Oe-dvs" firstAttribute="width" secondItem="qN7-U3-U3b" secondAttribute="width" id="DBW-yL-mbt"/>
                                     <constraint firstItem="jRs-jq-6P2" firstAttribute="width" secondItem="qN7-U3-U3b" secondAttribute="width" id="LA5-Wd-AlF"/>
                                     <constraint firstItem="h9z-4x-aVY" firstAttribute="width" secondItem="qN7-U3-U3b" secondAttribute="width" id="Pv3-ip-DTg"/>
                                     <constraint firstItem="tah-5N-dOR" firstAttribute="width" secondItem="qN7-U3-U3b" secondAttribute="width" id="edx-Lm-jho"/>
@@ -244,7 +262,7 @@ events  </string>
                                     <constraint firstItem="t4c-KB-1mG" firstAttribute="width" secondItem="qN7-U3-U3b" secondAttribute="width" id="pIJ-1R-fr0"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Cx-fB-LQC">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Cx-fB-LQC" userLabel="Middle Marker">
                                 <rect key="frame" x="0.0" y="284" width="320" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -264,11 +282,16 @@ events  </string>
                         <viewLayoutGuide key="safeArea" id="nFu-Bb-fBT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create Account" id="yoG-FG-gUk">
-                        <barButtonItem key="rightBarButtonItem" title="Join" id="18i-d1-PyQ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Join" id="18i-d1-PyQ">
+                            <connections>
+                                <action selector="joinCauseButtonPressed:" destination="6oW-ew-fT5" id="ctJ-u4-UWp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="adminPasswordLabel" destination="MFM-uw-8aH" id="NFa-GG-GGK"/>
                         <outlet property="adminPasswordTextField" destination="9Gv-qH-68U" id="2P4-Uc-jKz"/>
+                        <outlet property="confirmEmailTextField" destination="f1C-9s-gh4" id="PY8-rn-Itr"/>
                         <outlet property="confirmPasswordTextField" destination="MXW-gF-4Nj" id="Rcq-O7-OPp"/>
                         <outlet property="emailTextField" destination="m38-Aa-JU1" id="7fi-fq-aQZ"/>
                         <outlet property="fullnameTextField" destination="PyG-xk-SOT" id="2UO-P1-AdQ"/>
@@ -277,7 +300,7 @@ events  </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xni-yT-tpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2584" y="-259"/>
+            <point key="canvasLocation" x="2518" y="-259"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Eze-uA-9y6">

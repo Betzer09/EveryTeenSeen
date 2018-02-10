@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Support The Cause In Utah-->
+        <!--Welcome View Controller-->
         <scene sceneID="Dvs-d9-Whv">
             <objects>
-                <viewController id="oZW-sK-V4Z" customClass="WelcomeViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="getStartedVC" id="oZW-sK-V4Z" customClass="WelcomeViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ym4-fJ-pMO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,7 +48,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ywN-Tc-8hl"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Support The Cause In Utah" id="CCa-oG-zQJ">
+                    <navigationItem key="navigationItem" id="CCa-oG-zQJ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="c1m-82-LNZ"/>
                     </navigationItem>
                 </viewController>
@@ -95,16 +95,6 @@ Permission To Do This</string>
                                     <segue destination="6oW-ew-fT5" kind="show" identifier="toLeadTheCause" id="JyC-x7-6nO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSf-tF-2pN">
-                                <rect key="frame" x="80" y="489" width="160" height="30"/>
-                                <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Sign In">
-                                    <color key="titleColor" red="0.26663362979999999" green="0.26668566469999999" blue="0.26663035149999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="l2U-82-nE3" kind="show" id="OmF-su-QrQ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMw-Vh-1wv">
                                 <rect key="frame" x="60" y="218.5" width="201" height="61"/>
                                 <string key="text">Join the cause in Utah 
@@ -121,34 +111,23 @@ events  </string>
                                     <constraint firstAttribute="height" id="6oQ-p0-b5h"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already Have an Account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nz2-NL-kHD">
-                                <rect key="frame" x="64" y="448" width="192" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.89316695930000001" green="0.93024760480000002" blue="0.89294523000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.15686274510000001" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="p4V-To-b6l" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="6tT-eV-VzW"/>
                             <constraint firstItem="tDA-Wh-M7w" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="DJa-2m-k2S"/>
-                            <constraint firstItem="lSf-tF-2pN" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="Hr6-FY-vf2"/>
                             <constraint firstItem="ykK-Ig-kZ9" firstAttribute="top" secondItem="nMw-Vh-1wv" secondAttribute="bottom" constant="4" id="Mnh-55-TjM"/>
                             <constraint firstItem="7IJ-Ox-1Aw" firstAttribute="top" secondItem="p4V-To-b6l" secondAttribute="bottom" constant="16" id="O3d-qh-ziv"/>
                             <constraint firstItem="p4V-To-b6l" firstAttribute="top" secondItem="ykK-Ig-kZ9" secondAttribute="bottom" constant="16" id="PRp-nj-3jX"/>
                             <constraint firstItem="hqs-Ik-mKe" firstAttribute="top" secondItem="7IJ-Ox-1Aw" secondAttribute="bottom" constant="16" id="RJM-Jr-roQ"/>
                             <constraint firstItem="ykK-Ig-kZ9" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="RLk-OJ-gSG"/>
                             <constraint firstItem="ykK-Ig-kZ9" firstAttribute="centerY" secondItem="kjc-Fe-74U" secondAttribute="centerY" id="RNU-CM-rDK"/>
-                            <constraint firstItem="lSf-tF-2pN" firstAttribute="top" secondItem="Nz2-NL-kHD" secondAttribute="bottom" constant="20" id="SqG-S7-EuC"/>
                             <constraint firstItem="hqs-Ik-mKe" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="YV9-AN-llK"/>
                             <constraint firstItem="tDA-Wh-M7w" firstAttribute="height" secondItem="kjc-Fe-74U" secondAttribute="height" multiplier="0.2" id="YxS-Oz-LLC"/>
                             <constraint firstItem="7IJ-Ox-1Aw" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="aD4-dn-WhV"/>
                             <constraint firstItem="nMw-Vh-1wv" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="bQi-hs-XXt"/>
                             <constraint firstItem="tDA-Wh-M7w" firstAttribute="width" secondItem="kjc-Fe-74U" secondAttribute="width" multiplier="1/2" id="e87-1R-t87"/>
-                            <constraint firstItem="Nz2-NL-kHD" firstAttribute="centerX" secondItem="kjc-Fe-74U" secondAttribute="centerX" id="eir-Sv-oGi"/>
                             <constraint firstItem="p4V-To-b6l" firstAttribute="width" secondItem="kjc-Fe-74U" secondAttribute="width" multiplier="1/2" id="go1-3V-c7v"/>
-                            <constraint firstItem="lSf-tF-2pN" firstAttribute="width" secondItem="kjc-Fe-74U" secondAttribute="width" multiplier="1/2" id="h79-Ix-RTI"/>
-                            <constraint firstItem="Nz2-NL-kHD" firstAttribute="top" secondItem="hqs-Ik-mKe" secondAttribute="bottom" constant="15" id="lJV-AX-vJB"/>
                             <constraint firstItem="tDA-Wh-M7w" firstAttribute="top" secondItem="0UG-Fk-AEe" secondAttribute="top" constant="20" id="q0N-1K-iMe"/>
                             <constraint firstItem="hqs-Ik-mKe" firstAttribute="width" secondItem="kjc-Fe-74U" secondAttribute="width" multiplier="1/2" id="tXy-TX-hj7"/>
                             <constraint firstItem="ykK-Ig-kZ9" firstAttribute="width" secondItem="kjc-Fe-74U" secondAttribute="width" id="uW9-IQ-RdT"/>
@@ -362,18 +341,29 @@ events  </string>
                                     <action selector="signInButtonPressed:" destination="l2U-82-nE3" eventType="touchUpInside" id="05G-Ts-igJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17x-X3-BH7">
+                                <rect key="frame" x="40" y="260" width="240" height="30"/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signInButtonPressed:" destination="l2U-82-nE3" eventType="touchUpInside" id="kER-nq-LKk"/>
+                                    <segue destination="oZW-sK-V4Z" kind="show" id="dAM-0Q-4mM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.15686274510000001" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="17x-X3-BH7" firstAttribute="centerX" secondItem="itD-7g-Hie" secondAttribute="centerX" id="520-ye-86U"/>
                             <constraint firstItem="tEN-vr-3bJ" firstAttribute="centerX" secondItem="itD-7g-Hie" secondAttribute="centerX" id="6nP-Vx-CmH"/>
                             <constraint firstItem="Msy-Ym-3b5" firstAttribute="width" secondItem="itD-7g-Hie" secondAttribute="width" multiplier="3/4" id="Bg2-7n-05k"/>
                             <constraint firstItem="oVG-1G-d6t" firstAttribute="centerX" secondItem="itD-7g-Hie" secondAttribute="centerX" id="CwC-AD-fPo"/>
+                            <constraint firstItem="17x-X3-BH7" firstAttribute="width" secondItem="RfD-yP-a86" secondAttribute="width" id="JsX-JY-kuL"/>
                             <constraint firstItem="oVG-1G-d6t" firstAttribute="top" secondItem="UXt-IR-At6" secondAttribute="top" constant="16" id="KIX-a2-S3v"/>
                             <constraint firstItem="v8R-8r-rOS" firstAttribute="width" secondItem="itD-7g-Hie" secondAttribute="width" multiplier="3/4" id="OLt-Xf-dfp"/>
                             <constraint firstItem="v8R-8r-rOS" firstAttribute="top" secondItem="Msy-Ym-3b5" secondAttribute="bottom" constant="8" id="QOw-MA-C1f"/>
                             <constraint firstItem="Msy-Ym-3b5" firstAttribute="top" secondItem="tEN-vr-3bJ" secondAttribute="bottom" constant="8" id="WWj-ah-frh"/>
                             <constraint firstItem="RfD-yP-a86" firstAttribute="top" secondItem="v8R-8r-rOS" secondAttribute="bottom" constant="17" id="a2B-h3-KFX"/>
                             <constraint firstItem="oVG-1G-d6t" firstAttribute="width" secondItem="itD-7g-Hie" secondAttribute="width" multiplier="3/4" id="d4x-Nl-x3b"/>
+                            <constraint firstItem="17x-X3-BH7" firstAttribute="top" secondItem="RfD-yP-a86" secondAttribute="bottom" constant="8" id="n4u-M0-HPu"/>
                             <constraint firstItem="tEN-vr-3bJ" firstAttribute="top" secondItem="oVG-1G-d6t" secondAttribute="bottom" constant="8" id="o8y-Ze-ZCv"/>
                             <constraint firstItem="RfD-yP-a86" firstAttribute="centerX" secondItem="itD-7g-Hie" secondAttribute="centerX" id="pvS-uy-6wN"/>
                             <constraint firstItem="RfD-yP-a86" firstAttribute="width" secondItem="itD-7g-Hie" secondAttribute="width" multiplier="3/4" id="rCg-z6-lEG"/>
@@ -383,6 +373,7 @@ events  </string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UXt-IR-At6"/>
                     </view>
+                    <navigationItem key="navigationItem" id="KsT-FL-hVC"/>
                     <connections>
                         <outlet property="emailTextField" destination="tEN-vr-3bJ" id="UzM-yt-MqE"/>
                         <outlet property="passwordTextField" destination="v8R-8r-rOS" id="gMh-jj-gdT"/>
@@ -390,7 +381,7 @@ events  </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1U-da-OGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1732.5" y="558.80281690140851"/>
+            <point key="canvasLocation" x="-264" y="-259"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Eze-uA-9y6">
@@ -403,12 +394,12 @@ events  </string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="oZW-sK-V4Z" kind="relationship" relationship="rootViewController" id="o5i-4r-5W4"/>
+                        <segue destination="l2U-82-nE3" kind="relationship" relationship="rootViewController" id="1BF-Yn-OQi"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4g5-vE-mAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-512" y="-259"/>
+            <point key="canvasLocation" x="-1292" y="-259"/>
         </scene>
     </scenes>
     <resources>

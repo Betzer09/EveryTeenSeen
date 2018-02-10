@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignInViewController: UIViewController {
     
@@ -20,9 +21,9 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        self.checkForCurrentUser()
     }
+    
     
     // MARK: - Actions
     @IBAction func signInButtonPressed(_ sender: Any) {
@@ -37,6 +38,19 @@ class SignInViewController: UIViewController {
             
             // TODO: - Present the Sign in Page
             presentSimpleAlert(viewController: self, title: "Sucess", message: "Nice job signing in :)")
+        }
+    }
+    
+    // MARK: - FireBase Methods
+    private func checkForCurrentUser() {
+        if Auth.auth().currentUser != nil {
+            
+            // If there is a user go to get started page for now
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "getStartedVC") as? WelcomeViewController else {return}
+            
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     

@@ -47,7 +47,14 @@ class UserController {
         
     }
     
+    func signUserInWith(email: String, password: String, completion: @escaping((_ success: Bool, _ error: Error?) -> Void)) {
+        firebaseManger.signUserInWith(email: email, andPass: password) { (success, error) in
+            completion(success, error)
+        }
+    }
+    
     // MARK: - String To Dict
+    
     ///Converts json strings to dictionaries
     private func convertStringToDictWith(string: String) -> [String: Any] {
         
@@ -66,12 +73,4 @@ class UserController {
         return myDictionary
     }
 }
-
-
-
-
-
-
-
-
 

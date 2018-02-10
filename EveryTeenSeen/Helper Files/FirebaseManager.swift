@@ -23,12 +23,15 @@ class FirebaseManager {
     }
     
     // MARK: - Sign User In
-    func signUserInWith(email: String, andPass: String) {
+    func signUserInWith(email: String, andPass: String, completion: @escaping ((_ sucess: Bool, _ error: Error?) -> Void)) {
         
         Auth.auth().signIn(withEmail: email, password: andPass) { (user, error) in
             if let error = error {
+                completion(false, error)
                 NSLog("Error signing user in: \(error.localizedDescription)")
             }
+            
+            completion(true, error)
         }
     }
     

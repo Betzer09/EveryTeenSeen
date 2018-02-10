@@ -21,6 +21,7 @@
 		238B554A202E1210002E128C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5549202E1210002E128C /* User.swift */; };
 		238B554C202E1731002E128C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B554B202E1731002E128C /* UserController.swift */; };
 		238B5550202E1A18002E128C /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B554F202E1A18002E128C /* FirebaseManager.swift */; };
+		238B5554202F8A83002E128C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5553202F8A83002E128C /* SignInViewController.swift */; };
 		93C3980FB99E5FF62218949C /* Pods_EveryTeenSeen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		238B5549202E1210002E128C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		238B554B202E1731002E128C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		238B554F202E1A18002E128C /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		238B5553202F8A83002E128C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EveryTeenSeen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B8742448B544813C4C79FE /* Pods-EveryTeenSeen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 				23250CE920242D690033B85D /* WelcomeViewController.swift */,
 				235F66C9202A411400383355 /* JoinViewController.swift */,
 				235F66CB202A413100383355 /* CreateProfileViewController.swift */,
+				238B5553202F8A83002E128C /* SignInViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				238B5554202F8A83002E128C /* SignInViewController.swift in Sources */,
 				238B554C202E1731002E128C /* UserController.swift in Sources */,
 				235F66CE202A47E000383355 /* CityController.swift in Sources */,
 				238B5550202E1A18002E128C /* FirebaseManager.swift in Sources */,

@@ -45,7 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 viewController = mainView.instantiateInitialViewController()!
             }
-            
         }
         self.window?.makeKeyAndVisible()
         self.window?.rootViewController = viewController

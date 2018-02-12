@@ -77,6 +77,7 @@ class CreateProfileViewController: UIViewController {
             return
         }
         
+        
         // Check and make sure the passwords match
         if password != confirmedPassword {
             // Passwords don't match
@@ -86,11 +87,21 @@ class CreateProfileViewController: UIViewController {
             completion(false)
         } else {
             
+            let isPasswordStrongEnough = checkPasswordStrength(password1: password)
+            
+            guard isPasswordStrongEnough else {
+                presentSimpleAlert(viewController: self, title: "Password Strength Weak!", message: "Password must contain a capital letter and 1 special charctor!")
+                completion(false)
+                return
+            }
+            
             // Check user type
             guard let userType = userType, let adminPass = adminPasswordTextField.text else {
                 completion(false)
                 return
             }
+            
+            // Before creating a user check password strength
             
             switch userType {
             case .joinCause:
@@ -131,6 +142,50 @@ class CreateProfileViewController: UIViewController {
         
     }
     
+    // MARK: - Check password
+    /// Checks password strength passwords must contain a capital letter, and 1 special charactor
+    private func checkPasswordStrength(password1: String) -> Bool {
+        
+        // TODO: - Make special charactors not count as capital letters
+        
+        // Check password strength
+        let specialCharactores = [ "~", "!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "=", "`", "|", "(", ")",
+                                   "{", "}", "[", "]", ":", ";", "'", "<", ">", ",", ".", "?", "/" ]
+        var specialCharactorCount = 0
+        var capitalCharactorCount = 0
+        var strength = false
+        
+        // Has to have one symbole
+        for char in specialCharactores {
+            if password1.contains(char) {
+                specialCharactorCount += 1
+            }
+        }
+        
+        // must have one capital letter
+        for char in password1 {
+            
+            // Take the charactor and uppercase it then check if they are the same
+            let stringCharUppercased = String(char).uppercased()
+            let stringChar = String(char)
+            
+            if stringChar == stringCharUppercased {
+                // this means there is a capital letter
+                capitalCharactorCount += 1
+            }
+        }
+        
+        
+        // has to have 6 charactors
+        if password1.count >= 6 && specialCharactorCount >= 1 && capitalCharactorCount >= 1 {
+            strength = true
+            print("password is strong enough")
+        } else {
+            print("password isn't strong enough")
+        }
+        
+        return strength
+    }
 }
 
 

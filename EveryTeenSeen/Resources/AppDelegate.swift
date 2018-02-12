@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else if user.userType == UserType.leadCause.rawValue {
                 // This is an admin user
                 print("Error: Admin View has not been set up yet!")
+                
+                // TODO: - Change this to Admin View
                 viewController = mainView.instantiateInitialViewController()!
             } else {
                 print("Error: Something is wrong with the usertype of: \(user.userType)")
@@ -40,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Present the sigh in view
             if let vc = signInView.instantiateViewController(withIdentifier: "loginVC") as? SignInViewController {
                 viewController = UINavigationController(rootViewController: vc)
+                viewController.title = "Login"
             } else {
                 viewController = mainView.instantiateInitialViewController()!
             }

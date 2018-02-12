@@ -160,13 +160,13 @@ events  </string>
                                         <rect key="frame" x="0.0" y="0.0" width="337.5" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sm9-Sz-6qF">
-                                                <rect key="frame" x="0.0" y="0.0" width="166.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="John Doe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fWa-xb-goM">
-                                                <rect key="frame" x="170.5" y="0.0" width="167" height="30"/>
+                                                <rect key="frame" x="171" y="0.0" width="166.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
@@ -177,16 +177,16 @@ events  </string>
                                         <rect key="frame" x="0.0" y="34" width="337.5" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KB-eI-hCY">
-                                                <rect key="frame" x="0.0" y="0.0" width="166.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="John22@gmail.com" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnX-eI-wxA">
-                                                <rect key="frame" x="170.5" y="0.0" width="167" height="30"/>
+                                                <rect key="frame" x="171" y="0.0" width="166.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -194,16 +194,16 @@ events  </string>
                                         <rect key="frame" x="0.0" y="68" width="337.5" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwR-2v-ZQq">
-                                                <rect key="frame" x="0.0" y="0.0" width="166.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="John22@gmail.com" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-9a-VFf">
-                                                <rect key="frame" x="170.5" y="0.0" width="167" height="30"/>
+                                                <rect key="frame" x="171" y="0.0" width="166.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -211,13 +211,13 @@ events  </string>
                                         <rect key="frame" x="0.0" y="102" width="337.5" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5j-HY-8eB">
-                                                <rect key="frame" x="0.0" y="0.0" width="166.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N2h-T9-zqI">
-                                                <rect key="frame" x="170.5" y="0.0" width="167" height="30"/>
+                                                <rect key="frame" x="171" y="0.0" width="166.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
@@ -228,13 +228,13 @@ events  </string>
                                         <rect key="frame" x="0.0" y="136" width="337.5" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Pass:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyb-nS-y1j">
-                                                <rect key="frame" x="0.0" y="0.0" width="166.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9GD-HR-XQS">
-                                                <rect key="frame" x="170.5" y="0.0" width="167" height="30"/>
+                                                <rect key="frame" x="171" y="0.0" width="166.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
@@ -245,13 +245,13 @@ events  </string>
                                         <rect key="frame" x="0.0" y="170" width="337.5" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin Pass:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yme-jZ-x02">
-                                                <rect key="frame" x="0.0" y="0.0" width="166.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="John22@gmail.com" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g1k-ze-G4X">
-                                                <rect key="frame" x="170.5" y="0.0" width="167" height="30"/>
+                                                <rect key="frame" x="171" y="0.0" width="166.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
@@ -308,7 +308,7 @@ events  </string>
             </objects>
             <point key="canvasLocation" x="879" y="-794"/>
         </scene>
-        <!--Sign In View Controller-->
+        <!--Login / Sign Up-->
         <scene sceneID="jjC-C6-sTq">
             <objects>
                 <viewController storyboardIdentifier="loginVC" id="j32-fB-YeV" customClass="SignInViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
@@ -351,7 +351,6 @@ events  </string>
                                 <rect key="frame" x="47" y="260" width="281" height="30"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <action selector="signInButtonPressed:" destination="j32-fB-YeV" eventType="touchUpInside" id="Ygc-1M-eOr"/>
                                     <segue destination="TzW-Kg-QDi" kind="show" id="xqx-qt-2Md">
                                         <nil key="action"/>
                                     </segue>
@@ -381,7 +380,9 @@ events  </string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S5l-qU-WwH"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pU2-Tj-55g"/>
+                    <navigationItem key="navigationItem" title="Login / Sign Up" id="pU2-Tj-55g">
+                        <barButtonItem key="backBarButtonItem" title="Home" id="gzV-OE-cFl"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="dEJ-Aq-I9o" id="LVt-gn-MBn"/>
                         <outlet property="passwordTextField" destination="F6j-rO-K4K" id="lco-XW-lZF"/>

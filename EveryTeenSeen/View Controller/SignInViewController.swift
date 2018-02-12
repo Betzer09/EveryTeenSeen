@@ -21,7 +21,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.checkForCurrentUser()
+        
     }
     
     
@@ -29,7 +29,10 @@ class SignInViewController: UIViewController {
     @IBAction func signInButtonPressed(_ sender: Any) {
         
         guard let email = emailTextField.text, let password = passwordTextField.text,
-            !email.isEmpty, !password.isEmpty else {return}
+            !email.isEmpty, !password.isEmpty else {
+                presentSimpleAlert(viewController: self, title: "Error", message: "All fileds must filled")
+                return
+        }
         
         UserController.shared.signUserInWith(email: email, password: password) { (success, error) in
             if let error = error {

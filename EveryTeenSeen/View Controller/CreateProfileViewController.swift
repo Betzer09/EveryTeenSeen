@@ -36,17 +36,17 @@ class CreateProfileViewController: UIViewController {
         self.createFirebaseAuthUser { (success) in
             if success {
                 self.createUserProfile()
+                
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                guard let vc = storyboard.instantiateViewController(withIdentifier: "eventsVC") as? EventViewController else {NSLog("Error: Storyboard not found!"); return}
+                
+                DispatchQueue.main.async {
+                    self.present(vc, animated: true, completion: nil)
+                }
             }
         }
     }
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
-    
+
     // MARK: - Set Up UI
     func setUpView() {
         guard let userType = userType else {return}
@@ -123,8 +123,10 @@ class CreateProfileViewController: UIViewController {
         UserController.shared.createUserProfile(fullname: fullname, email: email, zipcode: zipcode, userType: userType) { (success, error) in
             if let error = error {
                 presentSimpleAlert(viewController: self, title: "Error", message: error.localizedDescription)
-                UserController.shared.saveUserToDefaults(fullname: fullname, email: email, zipcode: zipcode, userType: userType.rawValue)
             }
+            
+            // Save the data to the phone
+            UserController.shared.saveUserToDefaults(fullname: fullname, email: email, zipcode: zipcode, userType: userType.rawValue)
         }
         
         

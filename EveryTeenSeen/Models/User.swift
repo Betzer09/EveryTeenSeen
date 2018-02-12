@@ -20,13 +20,13 @@ class User: Codable {
     let fullname: String
     let email: String
     let zipcode: String
-    var userType: UserType.RawValue
+    var userType: String
     
-   @discardableResult init(fullname: String, email: String, zipcode: String, userType: UserType) {
+   @discardableResult init(fullname: String, email: String, zipcode: String, userType: String) {
         self.fullname = fullname
         self.email = email
         self.zipcode = zipcode
-        self.userType = userType.rawValue
+        self.userType = userType
     }
     
     // MARK: - Codable setUp

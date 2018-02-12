@@ -36,25 +36,24 @@ class SignInViewController: UIViewController {
                 presentSimpleAlert(viewController: self, title: "There was a problem signing in.", message:" \(error.localizedDescription)")
             }
             
-            // TODO: - Present the Sign in Page
-            presentSimpleAlert(viewController: self, title: "Sucess", message: "Nice job signing in :)")
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "eventsVC") as? EventViewController else {return}
+            self.present(vc, animated: true, completion: nil)
+            
+            
         }
     }
     
     // MARK: - FireBase Methods
-    private func checkForCurrentUser() {
+    private func checkForCurrentUser() -> Bool {
         if Auth.auth().currentUser != nil {
-            
-            
-            // TODO: - Change this to go to the home screen. 
-            // If there is a user go to get started page for now
-            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "getStartedVC") as? WelcomeViewController else {return}
-            
-            DispatchQueue.main.async {
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+            return true
+        } else {
+            presentSimpleAlert(viewController: self, title: "No User", message: "There is not user currently signed in.")
+            return false
         }
     }
+    
     
 }
 

@@ -120,7 +120,14 @@ class CreateProfileViewController: UIViewController {
         guard let zipcode = userZipcode else {NSLog("Error: There is no zipcode");return}
         guard let userType = userType else {NSLog("Error: There is no UserType");return}
         // Create User Profile
-        UserController.shared.createUserProfile(fullname: fullname, email: email, zipcode: zipcode , userType: userType)
+        UserController.shared.createUserProfile(fullname: fullname, email: email, zipcode: zipcode, userType: userType) { (success, error) in
+            if let error = error {
+                presentSimpleAlert(viewController: self, title: "Error", message: error.localizedDescription)
+                UserController.shared.saveUserToDefaults(fullname: fullname, email: email, zipcode: zipcode, userType: userType.rawValue)
+            }
+        }
+        
+        
     }
     
 }

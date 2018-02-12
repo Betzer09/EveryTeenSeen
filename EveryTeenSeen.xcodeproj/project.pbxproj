@@ -22,7 +22,7 @@
 		238B554C202E1731002E128C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B554B202E1731002E128C /* UserController.swift */; };
 		238B5550202E1A18002E128C /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B554F202E1A18002E128C /* FirebaseManager.swift */; };
 		238B5554202F8A83002E128C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5553202F8A83002E128C /* SignInViewController.swift */; };
-		238B5556202F9E69002E128C /* UserHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 238B5555202F9E69002E128C /* UserHome.storyboard */; };
+		238B5556202F9E69002E128C /* LoginSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 238B5555202F9E69002E128C /* LoginSignUp.storyboard */; };
 		238B555B202FA04A002E128C /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B555A202FA04A002E128C /* EventViewController.swift */; };
 		93C3980FB99E5FF62218949C /* Pods_EveryTeenSeen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */; };
 /* End PBXBuildFile section */
@@ -46,7 +46,7 @@
 		238B554B202E1731002E128C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		238B554F202E1A18002E128C /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		238B5553202F8A83002E128C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		238B5555202F9E69002E128C /* UserHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserHome.storyboard; sourceTree = "<group>"; };
+		238B5555202F9E69002E128C /* LoginSignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignUp.storyboard; sourceTree = "<group>"; };
 		238B555A202FA04A002E128C /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EveryTeenSeen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B8742448B544813C4C79FE /* Pods-EveryTeenSeen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				236155F72023F1850004DC9F /* Main.storyboard */,
-				238B5555202F9E69002E128C /* UserHome.storyboard */,
+				238B5555202F9E69002E128C /* LoginSignUp.storyboard */,
 				236155FC2023F1850004DC9F /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -234,7 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				238B5556202F9E69002E128C /* UserHome.storyboard in Resources */,
+				238B5556202F9E69002E128C /* LoginSignUp.storyboard in Resources */,
 				236155FE2023F1850004DC9F /* LaunchScreen.storyboard in Resources */,
 				236155FB2023F1850004DC9F /* Assets.xcassets in Resources */,
 				235F64C420294C1100E1EC56 /* GoogleService-Info.plist in Resources */,

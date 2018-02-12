@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-
+import FirebaseFirestore
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,6 +18,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
+        let signInView: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var viewController: UIViewController
+        
+        if let user = UserController.shared.loadUserFromDefaults() {
+            if user.userType == UserType.joinCause.rawValue {
+                // This is a normal user
+                viewController = mainView.instantiateInitialViewController()!
+            } else if user.userType == UserType.leadCause.rawValue {
+                // This is an admin user
+                print("Error: Admin View has not been set up yet!")
+                viewController = mainView.instantiateInitialViewController()!
+            } else {
+                print("Error: Something is wrong with the usertype of: \(user.userType)")
+                viewController = mainView.instantiateInitialViewController()!
+            }
+        } else {
+            // This means there is no User at all
+            // Present the sigh in view
+            if let vc = signInView.instantiateViewController(withIdentifier: "loginVC") as? SignInViewController {
+                viewController = UINavigationController(rootViewController: vc)
+            } else {
+                viewController = mainView.instantiateInitialViewController()!
+            }
+            
+        }
+        self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = viewController
         return true
     }
 

@@ -19,3 +19,6 @@ public func presentSimpleAlert(viewController: UIViewController, title: String, 
     
     viewController.present(alert, animated: true, completion: nil)
 }
+
+
+

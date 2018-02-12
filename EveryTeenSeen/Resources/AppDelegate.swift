@@ -42,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Present the sigh in view
             if let vc = signInView.instantiateViewController(withIdentifier: "loginVC") as? SignInViewController {
                 viewController = UINavigationController(rootViewController: vc)
-                viewController.title = "Login"
             } else {
                 viewController = mainView.instantiateInitialViewController()!
             }

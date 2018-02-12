@@ -38,11 +38,10 @@ class CreateProfileViewController: UIViewController {
                 self.createUserProfile()
                 
                 let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                guard let vc = storyboard.instantiateViewController(withIdentifier: "eventsVC") as? EventViewController else {NSLog("Error: Storyboard not found!"); return}
+                let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")
                 
-                DispatchQueue.main.async {
-                    self.present(vc, animated: true, completion: nil)
-                }
+                self.present(vc, animated: true, completion: nil)
+
             }
         }
     }

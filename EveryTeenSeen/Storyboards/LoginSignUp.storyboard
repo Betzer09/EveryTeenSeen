@@ -311,7 +311,7 @@ events  </string>
         <!--Login / Sign Up-->
         <scene sceneID="jjC-C6-sTq">
             <objects>
-                <viewController storyboardIdentifier="loginVC" id="j32-fB-YeV" customClass="SignInViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="j32-fB-YeV" customClass="SignInViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PJI-lR-FQF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -395,7 +395,7 @@ events  </string>
         <!--Navigation Controller-->
         <scene sceneID="QMw-9a-lAc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fHb-6l-cYu" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginVC" automaticallyAdjustsScrollViewInsets="NO" id="fHb-6l-cYu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wx5-aH-GLy">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

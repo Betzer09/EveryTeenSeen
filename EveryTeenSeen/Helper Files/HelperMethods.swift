@@ -27,4 +27,10 @@ func presentEventsTabBarVC(viewController: UIViewController) {
     viewController.present(vc, animated: true, completion: nil)
 }
 
-
+func presentLogoutAndSignUpPage(viewController: UIViewController) {
+    let storyboard: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
+    let vc = storyboard.instantiateViewController(withIdentifier: "loginVC")
+    
+    viewController.present(vc, animated: true, completion: nil)
+    
+}

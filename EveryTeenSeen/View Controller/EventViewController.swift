@@ -29,10 +29,7 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             // Present the login vc
             // TODO: - Fix the way the view is presented to not have a back button
-            let storyboard: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
-            if let vc = storyboard.instantiateViewController(withIdentifier: "loginVC") as? SignInViewController {
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+            presentLogoutAndSignUpPage(viewController: self)
             
         }
     }

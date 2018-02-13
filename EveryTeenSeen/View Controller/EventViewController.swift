@@ -82,8 +82,8 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
             completion(false)
         }
         
-        alert.addAction(cancelAction)
         alert.addAction(okAction)
+        alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)
     }

@@ -36,6 +36,11 @@ class User: Codable {
         case zipcode
         case userType = "user_type"
     }
-    
-    
 }
+
+
+
+
+
+
+

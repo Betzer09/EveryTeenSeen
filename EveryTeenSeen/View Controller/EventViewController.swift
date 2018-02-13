@@ -7,9 +7,35 @@
 //
 
 import UIKit
+import Firebase
 
 class EventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // MARK: - Outlets
+    
+    // MARK: - Properties
+    
+    
+    // MARK: - Actions
+    
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        UserController.shared.signUserOut { (success, error) in
+            if let error = error {
+                presentSimpleAlert(viewController: self, title: "Error logging out!", message: "Error description: \(error.localizedDescription)")
+            }
+            
+            // If the user has succesfully logged out.
+            guard success else {return}
+            
+            // Present the login vc
+            // TODO: - Fix the way the view is presented to not have a back button
+            let storyboard: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier: "loginVC") as? SignInViewController {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+        }
+    }
     
     
     // MARK: - TableViewDataSource Functions
@@ -31,14 +57,13 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
     }
-    */
+ 
 
 }

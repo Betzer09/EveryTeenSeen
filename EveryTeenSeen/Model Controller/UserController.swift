@@ -26,6 +26,7 @@ class UserController {
         firebaseManger.createFirebaseUserWith(email: email, password: pass)
     }
     
+    
     // MARK: - Firestore Methods
     func createUserProfile(fullname: String, email: String, zipcode: String, userType: UserType, completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) ) {
         let userDb = Firestore.firestore()
@@ -38,16 +39,10 @@ class UserController {
             guard let stringDict = String(data: data, encoding: .utf8) else {completion(false,nil); return}
             let jsonDict = self.convertStringToDictWith(string: stringDict)
             
-            switch userType {
-            case .joinCause:
-                userDb.collection("users").addDocument(data: jsonDict)
-                print("Succesfully Created User")
-                completion(true, nil)
-            case .leadCause:
-                userDb.collection("admin_users").addDocument(data: jsonDict)
-                print("Succesfully Admin Created User")
-                completion(true, nil)
-            }
+            userDb.collection("users").document("\(email)").setData(jsonDict)
+            print("Succesfully Created User")
+            completion(true, nil)
+            
         } catch let e {
             completion(false, e)
             print("Error Createing User")
@@ -56,9 +51,42 @@ class UserController {
         
     }
     
+    // MARK: - Fetch methods
+    func fetchUserInfoFromFirebaseWith(email: String, completion: @escaping ((_ user: User?, _ error: Error?) -> Void)) {
+        firebaseManger.fetchUserFromFirebaseWith(email: email) { (user, error) in
+            if let error = error {
+                completion(nil, error)
+            }
+            
+            guard let user = user else {NSLog("Error: There is no user!"); completion(nil, nil); return}
+            
+            completion(user, nil)
+            
+        }
+    }
+    
+    
+    // MARK: - User State methods
     func signUserInWith(email: String, password: String, completion: @escaping((_ success: Bool, _ error: Error?) -> Void)) {
         firebaseManger.signUserInWith(email: email, andPass: password) { (success, error) in
             completion(success, error)
+        }
+    }
+    
+    func signUserOut(completion: @escaping ((_ success: Bool, _ error: Error?) -> Void)) {
+        
+        firebaseManger.signUserOut { (success, error) in
+            if let error = error {
+                completion(false, error)
+            }
+            
+            // Checks to make sure that success is true
+            guard success else {completion(false, error); return}
+            
+            // Sign the user out of user defaults
+            self.deleteUserFromUserDefaults()
+            
+            completion(true,nil)
         }
     }
     
@@ -95,6 +123,16 @@ class UserController {
         
     }
     
+    /// Removes the user from user defaults
+    private func deleteUserFromUserDefaults() {
+        let defaults = UserDefaults.standard
+        
+        defaults.removeObject(forKey: fullnameKey)
+        defaults.removeObject(forKey: emailKey)
+        defaults.removeObject(forKey: zipcodeKey)
+        defaults.removeObject(forKey: userTypeKey)
+    }
+    
     /// Load from user defaults
     func loadUserFromDefaults() -> User? {
         var loadedUser: User?
@@ -102,30 +140,13 @@ class UserController {
         let defaults = UserDefaults.standard
         
         guard let fullname = defaults.object(forKey: fullnameKey) as? String,
-        let email = defaults.object(forKey: emailKey) as? String,
-        let userType = defaults.object(forKey: userTypeKey) as? String,
+            let email = defaults.object(forKey: emailKey) as? String,
+            let userType = defaults.object(forKey: userTypeKey) as? String,
             let zipcode = defaults.object(forKey: zipcodeKey) as? String else {return nil}
         
         let user = User(fullname: fullname, email: email, zipcode: zipcode, userType: "\(userType)")
         loadedUser = user
-
+        
         return loadedUser
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

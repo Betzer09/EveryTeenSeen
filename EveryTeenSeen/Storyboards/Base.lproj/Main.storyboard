@@ -13,7 +13,6 @@
         <!--Events-->
         <scene sceneID="aPM-Xm-eW4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bjQ-mM-4Pi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="eventsVC" id="xOC-xR-fhi" customClass="EventViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PnI-CN-0Iq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -47,8 +46,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B0A-xo-pWA"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Events" id="mC2-j9-M51"/>
+                    <navigationItem key="navigationItem" title="Events" id="mC2-j9-M51">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="xJ0-vM-5SB">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="xOC-xR-fhi" id="TAN-km-rBQ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5cu-2p-ijF"/>
+                    </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bjQ-mM-4Pi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="769" y="27"/>
         </scene>
@@ -74,6 +81,7 @@
                 <tabBarController storyboardIdentifier="MainUserTab" automaticallyAdjustsScrollViewInsets="NO" id="uok-iz-evz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4pr-sM-cH5">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

@@ -121,7 +121,7 @@ class CreateProfileViewController: UIViewController {
     
     // MARK: - Create User Profile
     private func createUserProfile() {
-        guard let fullname = fullnameTextField.text, let email = emailTextField.text,
+        guard let fullname = fullnameTextField.text, let email = emailTextField.text?.lowercased(),
             !fullname.isEmpty, !email.isEmpty else {
                 presentSimpleAlert(viewController: self, title: "All Field Are Required", message: "")
                 return

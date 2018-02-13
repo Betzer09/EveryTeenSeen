@@ -39,11 +39,21 @@ class SignInViewController: UIViewController {
                 presentSimpleAlert(viewController: self, title: "There was a problem signing in.", message:" \(error.localizedDescription)")
             }
             
-            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "eventsVC") as? EventViewController else {return}
-            self.present(vc, animated: true, completion: nil)
+            // The success is true
+            guard success else {return}
             
-            
+            UserController.shared.fetchUserInfoFromFirebaseWith(email: email, completion: { (user, error) in
+                // If there is a user sign in and fetch the info and save it to the phone
+                guard user == nil else {
+                    presentSimpleAlert(viewController: self, title: "Error", message: "\(error?.localizedDescription)")
+                    return
+                }
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                guard let vc = storyboard.instantiateViewController(withIdentifier: "eventsVC") as? EventViewController else {return}
+                self.present(vc, animated: true, completion: nil)
+                
+                // If there isn't a user they can't sign in..
+            })
         }
     }
     

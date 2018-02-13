@@ -12,6 +12,46 @@ import Firebase
 
 class FirebaseManager {
     
+    // MARK: - Fetch user from firebase
+    
+    /// Fetches the user from FireStore and saves them to the phone
+    func fetchUserFromFirebaseWith(email: String, completion: @escaping ((_ user: User?, _ error: Error?) -> Void)) {
+        
+        var user: User?
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users").whereField("email", isEqualTo: email).getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(nil, error)
+            }
+            
+            guard let document = snapshot?.documents.first else {completion(nil, error) ;return}
+            
+            
+            // Codable does not conform to [String: Any] and all the keys so far are [String: String]
+            // This was an easy fix which should be fixed later
+            let data = document.data() as! [String: String]
+            
+            do {
+                // You have to encode the data before decoding it...
+                
+                let encodedData = try JSONEncoder().encode(data)
+                
+                let decodedUser = try JSONDecoder().decode(User.self, from: encodedData)
+                user = decodedUser
+                // Save to user defaults
+                UserController.shared.saveUserToDefaults(fullname: decodedUser.fullname, email: decodedUser.email,
+                                                         zipcode: decodedUser.zipcode, userType: decodedUser.userType)
+            } catch let e {
+                completion(nil, e)
+            }
+        }
+        
+        completion(user, nil)
+        
+    }
+    
     // MARK: - Create a Firebase User
     func createFirebaseUserWith(email: String, password: String) {
         
@@ -36,15 +76,19 @@ class FirebaseManager {
     }
     
     // MARK: - Sign User Out
-    func signUserOut() {
+    func signUserOut(completion: @escaping ((_ success: Bool, _ error: Error?) -> Void)) {
         let firebaseAuth = Auth.auth()
         
         do {
             try firebaseAuth.signOut()
+            completion(true, nil)
         } catch let error {
+            completion(false, error)
             NSLog("Error signing user out: \(error.localizedDescription)")
         }
         
     }
+    
+    
     
 }

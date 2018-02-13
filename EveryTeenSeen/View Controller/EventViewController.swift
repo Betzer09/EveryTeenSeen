@@ -28,7 +28,6 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
             guard success else {return}
             
             // Present the login vc
-            // TODO: - Fix the way the view is presented to not have a back button
             presentLogoutAndSignUpPage(viewController: self)
             
         }

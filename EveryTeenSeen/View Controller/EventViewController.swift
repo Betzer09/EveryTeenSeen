@@ -16,20 +16,32 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - Properties
     
     
+    // MARK: - View LifeCycles
+    override func viewWillAppear(_ animated: Bool) {
+        
+        guard let user = UserController.shared.loadUserFromDefaults()  else {return}
+        presentSimpleAlert(viewController: self, title: "Welcome!", message: "\(user.fullname), \(user.email)")
+        
+    }
+    
     // MARK: - Actions
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
-        UserController.shared.signUserOut { (success, error) in
-            if let error = error {
-                presentSimpleAlert(viewController: self, title: "Error logging out!", message: "Error description: \(error.localizedDescription)")
+        
+        confirmLogoutAlert { (responce) in
+            guard responce else {return}
+            UserController.shared.signUserOut { (success, error) in
+                if let error = error {
+                    presentSimpleAlert(viewController: self, title: "Error logging out!", message: "Error description: \(error.localizedDescription)")
+                }
+                
+                // If the user has succesfully logged out.
+                guard success else {return}
+                
+                // Present the login vc
+                presentLogoutAndSignUpPage(viewController: self)
+                
             }
-            
-            // If the user has succesfully logged out.
-            guard success else {return}
-            
-            // Present the login vc
-            presentLogoutAndSignUpPage(viewController: self)
-            
         }
     }
     
@@ -47,12 +59,6 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        guard let user = UserController.shared.loadUserFromDefaults()  else {return}
-        presentSimpleAlert(viewController: self, title: "Welcome!", message: "\(user.fullname), \(user.email)")
-        
-    }
     
     // MARK: - Navigation
 
@@ -60,6 +66,35 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
     }
+    
+    // MARK: - Functions
+    
+    /// This checks to make sure the user wants to logout
+    private func confirmLogoutAlert(completion: @escaping(_ success: Bool) -> Void) {
+        
+        let alert = UIAlertController(title: "Confirm Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Okay, Log Me Out", style: .destructive) { (_) in
+            completion(true)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            completion(false)
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
  
 
 }
+
+
+
+
+
+
+
+

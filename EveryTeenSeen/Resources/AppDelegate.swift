@@ -39,12 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else {
             // This means there is no User at all
-            // Present the sigh in view
-            if let vc = signInView.instantiateViewController(withIdentifier: "loginVC") as? SignInViewController {
-                viewController = UINavigationController(rootViewController: vc)
-            } else {
-                viewController = mainView.instantiateInitialViewController()!
-            }
+            viewController = signInView.instantiateViewController(withIdentifier: "loginVC")
         }
         self.window?.makeKeyAndVisible()
         self.window?.rootViewController = viewController

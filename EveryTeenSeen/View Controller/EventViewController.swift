@@ -51,12 +51,12 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(_ animated: Bool) {
+        
+        guard let user = UserController.shared.loadUserFromDefaults()  else {return}
+        presentSimpleAlert(viewController: self, title: "Welcome!", message: "\(user.fullname), \(user.email)")
         
     }
-    
     
     // MARK: - Navigation
 

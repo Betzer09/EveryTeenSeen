@@ -37,15 +37,11 @@ class CreateProfileViewController: UIViewController {
             if success {
                 self.createUserProfile()
                 
-                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")
-                
-                self.present(vc, animated: true, completion: nil)
-
+                presentEventsTabBarVC(viewController: self)
             }
         }
     }
-
+    
     // MARK: - Set Up UI
     func setUpView() {
         guard let userType = userType else {return}

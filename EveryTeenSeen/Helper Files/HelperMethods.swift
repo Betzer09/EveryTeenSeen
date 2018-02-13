@@ -20,5 +20,11 @@ public func presentSimpleAlert(viewController: UIViewController, title: String, 
     viewController.present(alert, animated: true, completion: nil)
 }
 
+func presentEventsTabBarVC(viewController: UIViewController) {
+    let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")
+    
+    viewController.present(vc, animated: true, completion: nil)
+}
 
 

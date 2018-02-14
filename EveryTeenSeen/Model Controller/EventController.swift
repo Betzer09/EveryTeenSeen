@@ -19,7 +19,7 @@ class EventController {
     
     
     // Save events to firestore
-    func saveEventToFireStoreWith(title: String, dateHeld: Date, userWhoPosted: User, address: String, eventInfo: String) {
+    func saveEventToFireStoreWith(title: String, dateHeld: Date, userWhoPosted: String , address: String, eventInfo: String) {
         
         let eventDb = Firestore.firestore()
         
@@ -39,10 +39,44 @@ class EventController {
         
     }
     
+    // Fetch all events from firestore
+    func fetchAllEvents(completion: @escaping(_ success: Bool) -> Void) {
+        let eventdb = Firestore.firestore()
+        
+        var events: [Event] = []
+        
+        eventdb.collection(eventKey).getDocuments { (snapshot, error) in
+            if let error = error {
+                NSLog("Error fetching Events: \(error)")
+                completion(false)
+            }
+            
+            guard let documents = snapshot?.documents else {completion(false); return}
+            
+            for document in documents {
+                let eventData = document.data()
+                do {
+                    // Encode the data first
+                    let data = try JSONEncoder().encode(eventData)
+                    let event = try JSONDecoder().decode(Event.self, from: data)
+                    events.append(event)
+                    
+                } catch let e {
+                    NSLog("Error decoding data: \(e.localizedDescription)")
+                    completion(false)
+                    break
+                }
+            }
+            
+            self.events = events
+            completion(true)
+        }
+    }
+    
     // Update events in firestore
     // Delete events from firestore
     
-    // Fetch all events from firestore
+    
     
     // Filter all events
 }

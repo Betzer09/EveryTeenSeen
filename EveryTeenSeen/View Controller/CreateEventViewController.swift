@@ -49,7 +49,11 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     // MARK: - Actions
     @IBAction func saveBtnPressed(_ sender: Any) {
-        guard let title = eventTitleTextField.text, let eventDateString = dateTextField.text, let address = locationTextField.text, let user = UserController.shared.loadUserFromDefaults(), let eventInfo = eventInfoTextView.text else {return}
+        guard let title = eventTitleTextField.text, let eventDateString = dateTextField.text, let address = locationTextField.text, let user = UserController.shared.loadUserFromDefaults(), let eventInfo =
+            eventInfoTextView.text, !title.isEmpty, !eventDateString.isEmpty, !address.isEmpty, !eventInfo.isEmpty else {
+                presentSimpleAlert(viewController: self, title: "Error Uploaded Event", message: "Make sure all field are filled.")
+                return
+        }
     
         guard let eventDate = returnFormattedDateFor(string: eventDateString) else {
             presentSimpleAlert(viewController: self, title: "Badly Formatted Date", message: "Be sure not to edit the textfield after you press done.")
@@ -57,8 +61,16 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
             return
         }
         
-        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDate, userWhoPosted: user, address: address, eventInfo: eventInfo)
+        if selectedImageView.image == #imageLiteral(resourceName: "EveryTeenSeen") {
+            presentSimpleAlert(viewController: self, title: "Warning", message: "You are trying to upload a default image, that isn't allowed.")
+        }
         
+        guard let image = selectedImageView.image else {return}
+        
+        PhotoController.shared.uploadEventImageToStorageWith(image: image, eventTitle: title)
+        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDate, userWhoPosted: user.fullname, address: address, eventInfo: eventInfo)
+        
+        navigationController?.popViewController(animated: true)
         
     }
     
@@ -152,6 +164,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissKeyboard))
         
         eventDatePicker.datePickerMode = .date
+        eventDatePicker.minimumDate = Date()
         
         toolBar.setItems([cancelButton, spaceButton,doneButton], animated: false)
         dateTextField.inputAccessoryView = toolBar
@@ -179,6 +192,8 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     // MARK: - TextView Methods
     func textViewDidBeginEditing(_ textView: UITextView) {
         textViewBeingEdited = textView
+        
+        textView.text = ""
     }
     
     // MARK: - Keyboard Functions

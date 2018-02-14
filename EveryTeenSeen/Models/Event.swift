@@ -14,13 +14,13 @@ class Event: Codable {
     let title: String
     let datePosted: Date
     let dateHeld: Date
-    let userWhoPosted: User
+    let userWhoPosted: String
     let attending: Int
     let address: String
     let eventInfo: String
     
     // MARK: - Init
-    init(title: String, datePosted: Date = Date(), dateHeld: Date, userWhoPosted: User,
+    init(title: String, datePosted: Date = Date(), dateHeld: Date, userWhoPosted: String,
          attending: Int = 0, address: String, eventInfo: String) {
         self.title = title
         self.datePosted = datePosted

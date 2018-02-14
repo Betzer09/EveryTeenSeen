@@ -12,8 +12,11 @@ import Firebase
 
 class PhotoController {
     
+    static let shared = PhotoController()
+    
     // Create
     func uploadEventImageToStorageWith(image: UIImage, eventTitle: String) {
+        
         let photoStorage = Storage.storage()
         var storageRef = photoStorage.reference()
         

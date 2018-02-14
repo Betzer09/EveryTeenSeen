@@ -19,11 +19,11 @@ class EventController {
     
     
     // Save events to firestore
-    func saveEventToFireStoreWith(title: String, dateHeld: Date, userWhoPosted: User, zipcode: String) {
+    func saveEventToFireStoreWith(title: String, dateHeld: Date, userWhoPosted: User, address: String, eventInfo: String) {
         
         let eventDb = Firestore.firestore()
         
-        let event = Event(title: title, dateHeld: dateHeld, userWhoPosted: userWhoPosted, zipcode: zipcode)
+        let event = Event(title: title, dateHeld: dateHeld, userWhoPosted: userWhoPosted, address: address, eventInfo: eventInfo )
         
         do {
             let data = try JSONEncoder().encode(event)

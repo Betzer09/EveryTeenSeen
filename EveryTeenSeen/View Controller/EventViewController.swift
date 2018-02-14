@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class EventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     
     // MARK: - Outlets
     @IBOutlet weak var createEventBtn: UIBarButtonItem!
@@ -70,10 +71,9 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     }
     
-    // MARK: - Functions
+    
     
     // MARK: - Views
-    
     private func setUpView() {
         
         guard let user = UserController.shared.loadUserFromDefaults()  else {
@@ -91,6 +91,10 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         presentSimpleAlert(viewController: self, title: "Welcome!", message: "\(user.fullname), \(user.email)")
         
     }
+
+    
+    
+    // MARK: - Functions
     
     /// This checks to make sure the user wants to logout
     private func confirmLogoutAlert(completion: @escaping(_ success: Bool) -> Void) {
@@ -111,7 +115,6 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(alert, animated: true, completion: nil)
     }
  
-
 }
 
 

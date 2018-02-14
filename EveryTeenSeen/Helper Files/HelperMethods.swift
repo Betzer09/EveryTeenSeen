@@ -39,6 +39,34 @@ public func convertStringToDictWith(string: String) -> [String: Any] {
     return myDictionary
 }
 
+// MARK: - Date Formatter Functions
+
+//DATE FORMATTING - Get rid of only if able to change date formatting?
+
+/// This function takes in a date and returns a string 
+func returnFormattedDateFor(date: Date) -> String {
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMM dd, yyyy"
+    let strDate = dateFormatter.string(from: date)
+    return strDate
+    
+}
+
+/// This takes in a string and returns a date
+func returnFormattedDateFor(string: String) -> Date? {
+    
+    let dateFormatter = DateFormatter()
+    
+    dateFormatter.dateFormat = "MMM dd, yyyy"
+    
+    guard let dateFromString: Date = dateFormatter.date(from: string) else {return nil}
+    
+    return dateFromString
+}
+
+
+// MARK: - Segue Functions
 func presentEventsTabBarVC(viewController: UIViewController) {
     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")

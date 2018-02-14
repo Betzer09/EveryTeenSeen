@@ -70,7 +70,7 @@
         <!--Create Event-->
         <scene sceneID="TYt-sS-5Yh">
             <objects>
-                <viewController id="1wd-mU-4mC" sceneMemberID="viewController">
+                <viewController id="1wd-mU-4mC" customClass="CreateEventViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zLh-w6-V1h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,6 +93,9 @@
                                         <state key="normal" title="Pick Image">
                                             <color key="titleColor" red="1" green="0.27368244530000002" blue="0.27964192630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pickImageBtnPressed:" destination="1wd-mU-4mC" eventType="touchUpInside" id="ahi-YC-Moa"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="So7-6o-TKQ">
                                         <rect key="frame" x="40" y="160" width="240" height="55"/>
@@ -111,6 +114,9 @@
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="1wd-mU-4mC" id="Gij-J0-DY7"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -167,14 +173,30 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="1wd-mU-4mC" id="7kz-o1-jHc"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter Info Here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oQv-AW-FMc">
+                                        <rect key="frame" x="40" y="82" width="240" height="117.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="1wd-mU-4mC" id="37a-6i-pCt"/>
+                                        </connections>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4281582236" green="0.36345347760000002" blue="0.57051473860000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="4X2-ek-gHa" firstAttribute="height" secondItem="npV-Ww-jUr" secondAttribute="height" multiplier="1/4" id="25z-nA-qGr"/>
+                                    <constraint firstItem="oQv-AW-FMc" firstAttribute="width" secondItem="npV-Ww-jUr" secondAttribute="width" multiplier="3/4" id="2ag-Rx-auR"/>
                                     <constraint firstItem="4X2-ek-gHa" firstAttribute="centerX" secondItem="npV-Ww-jUr" secondAttribute="centerX" id="6aK-sX-bOS"/>
+                                    <constraint firstItem="oQv-AW-FMc" firstAttribute="centerX" secondItem="npV-Ww-jUr" secondAttribute="centerX" id="6ac-6D-lyA"/>
+                                    <constraint firstItem="oQv-AW-FMc" firstAttribute="height" secondItem="npV-Ww-jUr" secondAttribute="height" multiplier="1/2" id="Qh0-TE-3hy"/>
+                                    <constraint firstItem="oQv-AW-FMc" firstAttribute="top" secondItem="4X2-ek-gHa" secondAttribute="bottom" constant="16" id="TNz-U6-g7l"/>
                                     <constraint firstItem="4X2-ek-gHa" firstAttribute="width" secondItem="npV-Ww-jUr" secondAttribute="width" multiplier="3/4" id="mrN-Wb-n8s"/>
                                     <constraint firstItem="4X2-ek-gHa" firstAttribute="top" secondItem="npV-Ww-jUr" secondAttribute="top" constant="8" id="zFI-Lp-8tA"/>
                                 </constraints>
@@ -199,8 +221,18 @@
                         <viewLayoutGuide key="safeArea" id="pdt-1G-QTv"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create Event" id="HPT-Bc-gzk">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="8B6-wa-1pY"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="8B6-wa-1pY">
+                            <connections>
+                                <action selector="saveBtnPressed:" destination="1wd-mU-4mC" id="Ky1-p1-pMY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateTextField" destination="GWB-Qw-NNy" id="nMf-Wd-BpJ"/>
+                        <outlet property="eventTitleTextField" destination="tL2-fX-FVc" id="zZm-l8-7Ar"/>
+                        <outlet property="locationTextField" destination="Aft-yD-duS" id="Way-Ys-JgO"/>
+                        <outlet property="selectedImageView" destination="jBc-UK-IJH" id="uz2-QT-EBu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8z-hF-xWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

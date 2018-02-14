@@ -16,26 +16,29 @@ class Event: Codable {
     let dateHeld: Date
     let userWhoPosted: User
     let attending: Int
-    let zipcode: String
+    let address: String
+    let eventInfo: String
     
     // MARK: - Init
-    init(title: String, datePosted: Date = Date(), dateHeld: Date, userWhoPosted: User, attending: Int = 0, zipcode: String) {
+    init(title: String, datePosted: Date = Date(), dateHeld: Date, userWhoPosted: User,
+         attending: Int = 0, address: String, eventInfo: String) {
         self.title = title
         self.datePosted = datePosted
         self.dateHeld = dateHeld
         self.userWhoPosted = userWhoPosted
         self.attending = attending
-        self.zipcode = zipcode
+        self.address = address
+        self.eventInfo = eventInfo
     }
     
     enum CodingKeys: String, CodingKey {
         case title
         case attending
-        case zipcode
+        case address
         case datePosted  = "date_posted"
         case dateHeld = "date_held"
         case userWhoPosted = "user_who_posted"
-        
+        case eventInfo = "event_info"
     }
     
     

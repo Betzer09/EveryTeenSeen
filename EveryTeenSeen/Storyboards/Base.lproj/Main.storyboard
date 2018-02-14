@@ -229,8 +229,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateTextField" destination="GWB-Qw-NNy" id="nMf-Wd-BpJ"/>
+                        <outlet property="eventInfoTextView" destination="oQv-AW-FMc" id="HdP-pO-WK6"/>
                         <outlet property="eventTitleTextField" destination="tL2-fX-FVc" id="zZm-l8-7Ar"/>
                         <outlet property="locationTextField" destination="Aft-yD-duS" id="Way-Ys-JgO"/>
+                        <outlet property="pickImageButton" destination="pwj-XK-ISL" id="HdC-ge-OZn"/>
                         <outlet property="selectedImageView" destination="jBc-UK-IJH" id="uz2-QT-EBu"/>
                     </connections>
                 </viewController>

@@ -83,9 +83,9 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return
         }
         
-        if user.userType != UserType.leadCause.rawValue {
-            createEventBtn.isEnabled = false
-            createEventBtn.tintColor = UIColor.clear
+        if user.userType == UserType.leadCause.rawValue {
+            createEventBtn.isEnabled = true
+            createEventBtn.tintColor = UIColor(red: 5 / 255.0, green: 122 / 255.0, blue: 255 / 255.0, alpha: 1)
         }
         
         presentSimpleAlert(viewController: self, title: "Welcome!", message: "\(user.fullname), \(user.email)")

@@ -12,16 +12,19 @@ import Firebase
 class EventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Outlets
+    @IBOutlet weak var createEventBtn: UIBarButtonItem!
     
     // MARK: - Properties
     
     
     // MARK: - View LifeCycles
     override func viewWillAppear(_ animated: Bool) {
-        
-        guard let user = UserController.shared.loadUserFromDefaults()  else {return}
-        presentSimpleAlert(viewController: self, title: "Welcome!", message: "\(user.fullname), \(user.email)")
-        
+        self.setUpView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setUpView()
     }
     
     // MARK: - Actions
@@ -68,6 +71,26 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     // MARK: - Functions
+    
+    // MARK: - Views
+    
+    private func setUpView() {
+        
+        guard let user = UserController.shared.loadUserFromDefaults()  else {
+            // If there is no user than don't create events
+            createEventBtn.isEnabled = false
+            createEventBtn.tintColor = UIColor.clear
+            return
+        }
+        
+        if user.userType != UserType.leadCause.rawValue {
+            createEventBtn.isEnabled = false
+            createEventBtn.tintColor = UIColor.clear
+        }
+        
+        presentSimpleAlert(viewController: self, title: "Welcome!", message: "\(user.fullname), \(user.email)")
+        
+    }
     
     /// This checks to make sure the user wants to logout
     private func confirmLogoutAlert(completion: @escaping(_ success: Bool) -> Void) {

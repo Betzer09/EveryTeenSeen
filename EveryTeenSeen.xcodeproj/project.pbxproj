@@ -28,6 +28,7 @@
 		2393D3A62033C2380073F6A5 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A52033C2380073F6A5 /* EventController.swift */; };
 		2393D3A82033D3070073F6A5 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A72033D3070073F6A5 /* Photo.swift */; };
 		2393D3AA2033D5350073F6A5 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A92033D5350073F6A5 /* PhotoController.swift */; };
+		2393D3AC2033E6800073F6A5 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */; };
 		93C3980FB99E5FF62218949C /* Pods_EveryTeenSeen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		2393D3A52033C2380073F6A5 /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		2393D3A72033D3070073F6A5 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		2393D3A92033D5350073F6A5 /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
+		2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EveryTeenSeen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B8742448B544813C4C79FE /* Pods-EveryTeenSeen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 				235F66CB202A413100383355 /* CreateProfileViewController.swift */,
 				238B5553202F8A83002E128C /* SignInViewController.swift */,
 				238B555A202FA04A002E128C /* EventViewController.swift */,
+				2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				2393D3A82033D3070073F6A5 /* Photo.swift in Sources */,
 				235F66CA202A411400383355 /* JoinViewController.swift in Sources */,
 				235F66CC202A413100383355 /* CreateProfileViewController.swift in Sources */,
+				2393D3AC2033E6800073F6A5 /* CreateEventViewController.swift in Sources */,
 				23250CF3202431130033B85D /* City.swift in Sources */,
 				2393D3A62033C2380073F6A5 /* EventController.swift in Sources */,
 				2393D3AA2033D5350073F6A5 /* PhotoController.swift in Sources */,

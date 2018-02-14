@@ -37,7 +37,7 @@ class UserController {
         do {
             let data = try JSONEncoder().encode(newUser)
             guard let stringDict = String(data: data, encoding: .utf8) else {completion(false,nil); return}
-            let jsonDict = self.convertStringToDictWith(string: stringDict)
+            let jsonDict = convertStringToDictWith(string: stringDict)
             
             userDb.collection("users").document("\(email)").setData(jsonDict)
             print("Succesfully Created User")
@@ -88,26 +88,6 @@ class UserController {
             
             completion(true,nil)
         }
-    }
-    
-    // MARK: - String To Dict
-    
-    ///Converts json strings to dictionaries
-    private func convertStringToDictWith(string: String) -> [String: Any] {
-        
-        var dict: [String:Any]?
-        
-        if let data = string.data(using: String.Encoding.utf8) {
-            
-            do {
-                dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
-        guard let myDictionary = dict else {return [String:Any]()}
-        return myDictionary
     }
     
     // MARK: - Save User To Defaults

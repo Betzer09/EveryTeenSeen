@@ -25,6 +25,9 @@
 		238B5556202F9E69002E128C /* LoginSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 238B5555202F9E69002E128C /* LoginSignUp.storyboard */; };
 		238B555B202FA04A002E128C /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B555A202FA04A002E128C /* EventViewController.swift */; };
 		2393D3A42033BFE40073F6A5 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A32033BFE40073F6A5 /* Event.swift */; };
+		2393D3A62033C2380073F6A5 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A52033C2380073F6A5 /* EventController.swift */; };
+		2393D3A82033D3070073F6A5 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A72033D3070073F6A5 /* Photo.swift */; };
+		2393D3AA2033D5350073F6A5 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A92033D5350073F6A5 /* PhotoController.swift */; };
 		93C3980FB99E5FF62218949C /* Pods_EveryTeenSeen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +53,9 @@
 		238B5555202F9E69002E128C /* LoginSignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignUp.storyboard; sourceTree = "<group>"; };
 		238B555A202FA04A002E128C /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		2393D3A32033BFE40073F6A5 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		2393D3A52033C2380073F6A5 /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
+		2393D3A72033D3070073F6A5 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		2393D3A92033D5350073F6A5 /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
 		93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EveryTeenSeen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B8742448B544813C4C79FE /* Pods-EveryTeenSeen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +97,7 @@
 				23250CF2202431130033B85D /* City.swift */,
 				238B5549202E1210002E128C /* User.swift */,
 				2393D3A32033BFE40073F6A5 /* Event.swift */,
+				2393D3A72033D3070073F6A5 /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -100,6 +107,8 @@
 			children = (
 				235F66CD202A47E000383355 /* CityController.swift */,
 				238B554B202E1731002E128C /* UserController.swift */,
+				2393D3A52033C2380073F6A5 /* EventController.swift */,
+				2393D3A92033D5350073F6A5 /* PhotoController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -333,9 +342,12 @@
 				23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */,
 				238B5548202E0E21002E128C /* HelperMethods.swift in Sources */,
 				238B554A202E1210002E128C /* User.swift in Sources */,
+				2393D3A82033D3070073F6A5 /* Photo.swift in Sources */,
 				235F66CA202A411400383355 /* JoinViewController.swift in Sources */,
 				235F66CC202A413100383355 /* CreateProfileViewController.swift in Sources */,
 				23250CF3202431130033B85D /* City.swift in Sources */,
+				2393D3A62033C2380073F6A5 /* EventController.swift in Sources */,
+				2393D3AA2033D5350073F6A5 /* PhotoController.swift in Sources */,
 				2393D3A42033BFE40073F6A5 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

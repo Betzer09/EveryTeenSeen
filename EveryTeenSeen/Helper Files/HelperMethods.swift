@@ -20,6 +20,25 @@ public func presentSimpleAlert(viewController: UIViewController, title: String, 
     viewController.present(alert, animated: true, completion: nil)
 }
 
+// MARK: - String To Dict
+///Converts json strings to dictionaries
+public func convertStringToDictWith(string: String) -> [String: Any] {
+    
+    var dict: [String:Any]?
+    
+    if let data = string.data(using: String.Encoding.utf8) {
+        
+        do {
+            dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    guard let myDictionary = dict else {return [String:Any]()}
+    return myDictionary
+}
+
 func presentEventsTabBarVC(viewController: UIViewController) {
     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")

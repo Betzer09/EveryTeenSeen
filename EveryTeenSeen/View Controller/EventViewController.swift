@@ -25,7 +25,6 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.requestNotificationAuth()
         self.setUpView()
     }
     
@@ -99,12 +98,7 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     private func addEventNotificationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.transactionWasUpdatedNotifcation, object: nil)
     }
-    
-    private func requestNotificationAuth() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (didAllow, error) in
-            
-        }
-    }
+
     
     // MARK: - Functions
     

@@ -20,7 +20,8 @@ public func presentSimpleAlert(viewController: UIViewController, title: String, 
     viewController.present(alert, animated: true, completion: nil)
 }
 
-// MARK: - String To Dict
+// MARK: - Codable Helper Functions 
+
 ///Converts json strings to dictionaries
 public func convertStringToDictWith(string: String) -> [String: Any] {
     
@@ -37,6 +38,18 @@ public func convertStringToDictWith(string: String) -> [String: Any] {
     }
     guard let myDictionary = dict else {return [String:Any]()}
     return myDictionary
+}
+
+/// Converts dictionaries to Data
+func convertJsonToDataWith(json: [String: Any]) -> Data? {
+    
+    do {
+        return try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+    } catch let e {
+        NSLog("Error converting json to data: \(e.localizedDescription)")
+    }
+    
+    return nil
 }
 
 // MARK: - Date Formatter Functions
@@ -63,6 +76,14 @@ func returnFormattedDateFor(string: String) -> Date? {
     guard let dateFromString: Date = dateFormatter.date(from: string) else {return nil}
     
     return dateFromString
+}
+
+extension Formatter {
+    static let iso8601: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return formatter
+    }()
 }
 
 

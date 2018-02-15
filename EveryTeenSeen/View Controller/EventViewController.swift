@@ -14,9 +14,12 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: - Outlets
     @IBOutlet weak var createEventBtn: UIBarButtonItem!
+    @IBOutlet weak var tableview: UITableView!
     
     // MARK: - Properties
     
+    // Source of truth
+    var events: [Event]? = []
     
     // MARK: - View LifeCycles
     override func viewWillAppear(_ animated: Bool) {
@@ -26,6 +29,7 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpView()
+        self.fetchEventContent()
     }
     
     // MARK: - Actions
@@ -53,13 +57,17 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - TableViewDataSource Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: - Fetch the events from firestore
-        return 2
+        return events?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         
+        guard let events = self.events else {NSLog("Error: There are no events!"); return UITableViewCell()}
+        let event = events[indexPath.row]
         
+        cell.textLabel?.text = event.title
+        cell.detailTextLabel?.text = event.address
         return cell
     }
     
@@ -88,8 +96,20 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
             createEventBtn.tintColor = UIColor(red: 5 / 255.0, green: 122 / 255.0, blue: 255 / 255.0, alpha: 1)
         }
         
-        presentSimpleAlert(viewController: self, title: "Welcome!", message: "\(user.fullname), \(user.email)")
+//        presentSimpleAlert(viewController: self, title: "Welcome!", message: "\(user.fullname), \(user.email)")
         
+    }
+    
+    private func fetchEventContent() {
+        EventController.shared.fetchAllEvents { (success) in
+            guard success else {return}
+            
+            self.events = EventController.shared.events
+            guard let events = self.events else {return}
+            PhotoController.shared.downloadAllEventImages(events: events, completion: { (success) in
+                self.tableview.reloadData()
+            })
+        }
     }
 
     

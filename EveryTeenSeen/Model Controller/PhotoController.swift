@@ -14,6 +14,13 @@ class PhotoController {
     
     static let shared = PhotoController()
     
+    // MARK: - Properties
+    var photosGroupDownloadCount: Int = 0 {
+        didSet {
+            NSLog("Image Count: \(photosGroupDownloadCount)")
+        }
+    }
+    
     // Create
     func uploadEventImageToStorageWith(image: UIImage, eventTitle: String) {
         
@@ -67,7 +74,7 @@ class PhotoController {
         }
     }
     
-    func downloadImageFromStorageWith(eventTitle: String, completion: @escaping ((_ image: UIImage?, _ success: Bool) -> Void)) {
+    private func downloadImageFromStorageWith(eventTitle: String, completion: @escaping (_ image: UIImage?) -> Void) {
         let photoStorage = Storage.storage()
         var storageRef = photoStorage.reference()
         
@@ -79,13 +86,13 @@ class PhotoController {
         let downloadTask = storageRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
             if let error = error {
                 NSLog("Error downloaded image: \(error.localizedDescription)")
-                completion(nil, false)
+                completion(nil)
                 return
             }
             
             guard let data = data else {return}
             let image = UIImage(data: data)
-            completion(image, true)
+            completion(image)
             
         }
         
@@ -127,7 +134,35 @@ class PhotoController {
         }
         
     }
-
+    
+    func downloadAllEventImages(events: [Event], completion: @escaping (_ success: Bool) -> Void) {
+        let downloadGroup = DispatchGroup()
+        
+        for event in events {
+            downloadGroup.enter()
+            photosGroupDownloadCount += 1
+            
+            let imageName = "\(event.title).png"
+            
+            downloadImageFromStorageWith(eventTitle: imageName, completion: { (image) in
+                guard let image = image, let data = UIImagePNGRepresentation(image) else {
+                    NSLog("Error: There is no image!")
+                    downloadGroup.leave()
+                    self.photosGroupDownloadCount -= 1
+                    return
+                }
+                
+                // Create an image
+                let photo = Photo(image: data, eventTitle: event.title)
+                event.photo = photo
+            })
+        }
+        
+        downloadGroup.notify(queue: DispatchQueue.main) {
+            completion(true)
+        }
+        
+    }
     
     func deletingImageFromStorageWith(eventTitle: String, completion: @escaping (_ success: Bool ) -> Void) {
         let storage = Storage.storage()

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CE920242D690033B85D /* WelcomeViewController.swift */; };
 		23250CF3202431130033B85D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CF2202431130033B85D /* City.swift */; };
+		2336698B2034E3040070F17F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336698A2034E3040070F17F /* Photo.swift */; };
 		235F64C420294C1100E1EC56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 235F64C320294C1100E1EC56 /* GoogleService-Info.plist */; };
 		235F66CA202A411400383355 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66C9202A411400383355 /* JoinViewController.swift */; };
 		235F66CC202A413100383355 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66CB202A413100383355 /* CreateProfileViewController.swift */; };
@@ -26,7 +27,6 @@
 		238B555B202FA04A002E128C /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B555A202FA04A002E128C /* EventViewController.swift */; };
 		2393D3A42033BFE40073F6A5 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A32033BFE40073F6A5 /* Event.swift */; };
 		2393D3A62033C2380073F6A5 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A52033C2380073F6A5 /* EventController.swift */; };
-		2393D3A82033D3070073F6A5 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A72033D3070073F6A5 /* Photo.swift */; };
 		2393D3AA2033D5350073F6A5 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A92033D5350073F6A5 /* PhotoController.swift */; };
 		2393D3AC2033E6800073F6A5 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */; };
 		93C3980FB99E5FF62218949C /* Pods_EveryTeenSeen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */; };
@@ -36,6 +36,7 @@
 		03564C288DF100113DAE3FBD /* Pods-EveryTeenSeen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.release.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.release.xcconfig"; sourceTree = "<group>"; };
 		23250CE920242D690033B85D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		23250CF2202431130033B85D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		2336698A2034E3040070F17F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		235F64C320294C1100E1EC56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		235F66C9202A411400383355 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		235F66CB202A413100383355 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
@@ -55,7 +56,6 @@
 		238B555A202FA04A002E128C /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		2393D3A32033BFE40073F6A5 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		2393D3A52033C2380073F6A5 /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
-		2393D3A72033D3070073F6A5 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		2393D3A92033D5350073F6A5 /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
 		2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EveryTeenSeen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,7 +99,7 @@
 				23250CF2202431130033B85D /* City.swift */,
 				238B5549202E1210002E128C /* User.swift */,
 				2393D3A32033BFE40073F6A5 /* Event.swift */,
-				2393D3A72033D3070073F6A5 /* Photo.swift */,
+				2336698A2034E3040070F17F /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -345,8 +345,8 @@
 				23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */,
 				238B5548202E0E21002E128C /* HelperMethods.swift in Sources */,
 				238B554A202E1210002E128C /* User.swift in Sources */,
-				2393D3A82033D3070073F6A5 /* Photo.swift in Sources */,
 				235F66CA202A411400383355 /* JoinViewController.swift in Sources */,
+				2336698B2034E3040070F17F /* Photo.swift in Sources */,
 				235F66CC202A413100383355 /* CreateProfileViewController.swift in Sources */,
 				2393D3AC2033E6800073F6A5 /* CreateEventViewController.swift in Sources */,
 				23250CF3202431130033B85D /* City.swift in Sources */,

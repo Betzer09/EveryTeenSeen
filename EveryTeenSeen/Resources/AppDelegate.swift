@@ -24,14 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var viewController: UIViewController
         
         if let user = UserController.shared.loadUserFromDefaults() {
-            if user.userType == UserType.joinCause.rawValue {
+            if user.userType == UserType.joinCause.rawValue  || user.userType == UserType.leadCause.rawValue{
                 // This is a normal user
-                viewController = mainView.instantiateInitialViewController()!
-            } else if user.userType == UserType.leadCause.rawValue {
-                // This is an admin user
-                print("Error: Admin View has not been set up yet!")
-                
-                // TODO: - Change this to Admin View
                 viewController = mainView.instantiateInitialViewController()!
             } else {
                 print("Error: Something is wrong with the usertype of: \(user.userType)")

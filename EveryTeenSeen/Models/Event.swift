@@ -12,18 +12,19 @@ class Event: Codable {
     
     // MARK: - Properties
     let title: String
-    let datePosted: Date
-    let dateHeld: Date
+    let timestamp: String
+    let dateHeld: String
     let userWhoPosted: String
     let attending: Int
     let address: String
     let eventInfo: String
+    var photo: Photo? = nil
     
     // MARK: - Init
-    init(title: String, datePosted: Date = Date(), dateHeld: Date, userWhoPosted: String,
+    init(title: String, timestamp: String = Formatter.iso8601.string(from: Date()), dateHeld: String, userWhoPosted: String,
          attending: Int = 0, address: String, eventInfo: String) {
         self.title = title
-        self.datePosted = datePosted
+        self.timestamp = timestamp
         self.dateHeld = dateHeld
         self.userWhoPosted = userWhoPosted
         self.attending = attending
@@ -35,11 +36,20 @@ class Event: Codable {
         case title
         case attending
         case address
-        case datePosted  = "date_posted"
+        case timestamp
         case dateHeld = "date_held"
         case userWhoPosted = "user_who_posted"
         case eventInfo = "event_info"
     }
     
-    
 }
+
+
+
+
+
+
+
+
+
+

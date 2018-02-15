@@ -17,13 +17,13 @@ class EventController {
     
     var events: [Event] = []
     
-    
     // Save events to firestore
     func saveEventToFireStoreWith(title: String, dateHeld: Date, userWhoPosted: String , address: String, eventInfo: String) {
         
         let eventDb = Firestore.firestore()
+        let stringDate = Formatter.iso8601.string(from: dateHeld)
         
-        let event = Event(title: title, dateHeld: dateHeld, userWhoPosted: userWhoPosted, address: address, eventInfo: eventInfo )
+        let event = Event(title: title, dateHeld: stringDate, userWhoPosted: userWhoPosted, address: address, eventInfo: eventInfo )
         
         do {
             let data = try JSONEncoder().encode(event)
@@ -55,9 +55,11 @@ class EventController {
             
             for document in documents {
                 let eventData = document.data()
+                
                 do {
-                    // Encode the data first
-                    let data = try JSONEncoder().encode(eventData)
+                    // Convert the dictionary to data
+                    guard let data = convertJsonToDataWith(json: eventData) else {return}
+                    
                     let event = try JSONDecoder().decode(Event.self, from: data)
                     events.append(event)
                     

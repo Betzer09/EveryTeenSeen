@@ -10,7 +10,7 @@
 		23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CE920242D690033B85D /* WelcomeViewController.swift */; };
 		23250CF3202431130033B85D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CF2202431130033B85D /* City.swift */; };
 		2336698B2034E3040070F17F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336698A2034E3040070F17F /* Photo.swift */; };
-		235F64C420294C1100E1EC56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 235F64C320294C1100E1EC56 /* GoogleService-Info.plist */; };
+		2336698E203533180070F17F /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2336698D203533180070F17F /* UserNotifications.framework */; };
 		235F66CA202A411400383355 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66C9202A411400383355 /* JoinViewController.swift */; };
 		235F66CC202A413100383355 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66CB202A413100383355 /* CreateProfileViewController.swift */; };
 		235F66CE202A47E000383355 /* CityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66CD202A47E000383355 /* CityController.swift */; };
@@ -18,6 +18,7 @@
 		236155F92023F1850004DC9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236155F72023F1850004DC9F /* Main.storyboard */; };
 		236155FB2023F1850004DC9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236155FA2023F1850004DC9F /* Assets.xcassets */; };
 		236155FE2023F1850004DC9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236155FC2023F1850004DC9F /* LaunchScreen.storyboard */; };
+		236673A320360CDC00F2F485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 236673A220360CDC00F2F485 /* GoogleService-Info.plist */; };
 		238B5548202E0E21002E128C /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5547202E0E21002E128C /* HelperMethods.swift */; };
 		238B554A202E1210002E128C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5549202E1210002E128C /* User.swift */; };
 		238B554C202E1731002E128C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B554B202E1731002E128C /* UserController.swift */; };
@@ -37,7 +38,8 @@
 		23250CE920242D690033B85D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		23250CF2202431130033B85D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		2336698A2034E3040070F17F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		235F64C320294C1100E1EC56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2336698C2035314A0070F17F /* EveryTeenSeen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EveryTeenSeen.entitlements; sourceTree = "<group>"; };
+		2336698D203533180070F17F /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		235F66C9202A411400383355 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		235F66CB202A413100383355 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		235F66CD202A47E000383355 /* CityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 		236155FA2023F1850004DC9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		236155FD2023F1850004DC9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		236155FF2023F1850004DC9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		236673A220360CDC00F2F485 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		238B5547202E0E21002E128C /* HelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
 		238B5549202E1210002E128C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		238B554B202E1731002E128C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2336698E203533180070F17F /* UserNotifications.framework in Frameworks */,
 				93C3980FB99E5FF62218949C /* Pods_EveryTeenSeen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +81,7 @@
 		228109CE809A79BE8F910B4A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2336698D203533180070F17F /* UserNotifications.framework */,
 				93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */,
 			);
 			name = Frameworks;
@@ -88,7 +93,7 @@
 				236155F32023F1850004DC9F /* AppDelegate.swift */,
 				236155FA2023F1850004DC9F /* Assets.xcassets */,
 				236155FF2023F1850004DC9F /* Info.plist */,
-				235F64C320294C1100E1EC56 /* GoogleService-Info.plist */,
+				236673A220360CDC00F2F485 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 		236155F22023F1850004DC9F /* EveryTeenSeen */ = {
 			isa = PBXGroup;
 			children = (
+				2336698C2035314A0070F17F /* EveryTeenSeen.entitlements */,
 				23250CE520242CBE0033B85D /* Models */,
 				23250CE620242CF70033B85D /* Model Controller */,
 				23250CE820242D080033B85D /* View Controller */,
@@ -223,6 +229,11 @@
 					236155EF2023F1850004DC9F = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -252,8 +263,8 @@
 				238B5556202F9E69002E128C /* LoginSignUp.storyboard in Resources */,
 				236155FE2023F1850004DC9F /* LaunchScreen.storyboard in Resources */,
 				236155FB2023F1850004DC9F /* Assets.xcassets in Resources */,
-				235F64C420294C1100E1EC56 /* GoogleService-Info.plist in Resources */,
 				236155F92023F1850004DC9F /* Main.storyboard in Resources */,
+				236673A320360CDC00F2F485 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +501,7 @@
 			baseConfigurationReference = C5B8742448B544813C4C79FE /* Pods-EveryTeenSeen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EveryTeenSeen/EveryTeenSeen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RE524LJXV2;
 				INFOPLIST_FILE = "$(SRCROOT)/EveryTeenSeen/Resources/Info.plist";
@@ -506,6 +518,7 @@
 			baseConfigurationReference = 03564C288DF100113DAE3FBD /* Pods-EveryTeenSeen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EveryTeenSeen/EveryTeenSeen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RE524LJXV2;
 				INFOPLIST_FILE = "$(SRCROOT)/EveryTeenSeen/Resources/Info.plist";

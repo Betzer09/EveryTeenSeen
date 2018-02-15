@@ -63,7 +63,7 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let event = events[indexPath.row]
         
         cell.textLabel?.text = event.title
-        cell.detailTextLabel?.text = event.address
+        cell.detailTextLabel?.text = "\(returnFormattedDateFor(string: event.dateHeld))"
         return cell
     }
     

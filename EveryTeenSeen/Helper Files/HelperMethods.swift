@@ -102,3 +102,21 @@ func presentLogoutAndSignUpPage(viewController: UIViewController) {
     viewController.present(vc, animated: true, completion: nil)
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

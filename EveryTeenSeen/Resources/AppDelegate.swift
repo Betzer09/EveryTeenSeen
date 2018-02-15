@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import UserNotifications
 import Firebase
 import FirebaseFirestore
+import FirebaseInstanceID
+import FirebaseMessaging
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -39,10 +44,95 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = viewController
         
         EventController.shared.fetchAllEvents()
+        
+        // iOS 10 support
+        if #available(iOS 10, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
+            application.registerForRemoteNotifications()
+        }
+            // iOS 9 support
+        else if #available(iOS 9, *) {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+            // iOS 8 support
+        else if #available(iOS 8, *) {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+            // iOS 7 support
+        else {
+            application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notificaiton:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
+        
         return true
     }
 
 
-
+    // Called when APNs has assigned the device a unique token
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Convert token to string
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        
+        // Print it to console
+        print("APNs device token: \(deviceTokenString)")
+        
+        // Persist it in your backend in case it's new
+        guard let token = UserDefaults.standard.object(forKey: UserController.phoneTokenKey) as? String else {
+            // This means we don't have a token
+            UserController.shared .saveDeviceIdentiferToDefaultsWith(token: deviceTokenString)
+            return
+        }
+        
+        // This means we already have a token
+        UserController.shared.updateDeviceTokenToFirebase(newToken: deviceTokenString)
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        FBHandler()
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        
+        // This is to make sure your bandwidth isn't taken up
+        Messaging.messaging().shouldEstablishDirectChannel = false
+    }
+    
+    // Called when APNs failed to register the device for push notifications
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        // Print the error to console (you should alert the user that registration failed)
+        print("APNs registration failed: \(error)")
+    }
+    
+    // This runs when the user actually interatacts with the notification, like when the app is open and it comes down, or they interact with it from the lock screen. 
+    func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
+        // Print notification payload data
+        print("Push notification received: \(data)")
+    }
+    
+    @objc func refreshToken(notificaiton: NSNotification) {
+        guard let refreshToken = InstanceID.instanceID().token() else {return}
+        
+        print("*** \(refreshToken) ***")
+        
+        FBHandler()
+    }
+    
+    func FBHandler() {
+        Messaging.messaging().shouldEstablishDirectChannel = true
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
 

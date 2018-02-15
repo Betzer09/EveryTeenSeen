@@ -130,7 +130,7 @@ class PhotoController {
         }
         
         downloadTask.observe(.success) { snapshot in
-            NSLog("\'\(eventTitle).png\' complete!")
+            NSLog("\'\(eventTitle).png\' photo has completed downloading!")
         }
         
     }

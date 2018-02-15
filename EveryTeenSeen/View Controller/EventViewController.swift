@@ -25,6 +25,7 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.requestNotificationAuth()
         self.setUpView()
     }
     
@@ -69,10 +70,10 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
     }
     
     
@@ -91,14 +92,19 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
             createEventBtn.tintColor = UIColor(red: 5 / 255.0, green: 122 / 255.0, blue: 255 / 255.0, alpha: 1)
         }
         
-//        presentSimpleAlert(viewController: self, title: "Welcome!", message: "\(user.fullname), \(user.email)")
+        //        presentSimpleAlert(viewController: self, title: "Welcome!", message: "\(user.fullname), \(user.email)")
         
     }
     
     private func addEventNotificationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.transactionWasUpdatedNotifcation, object: nil)
     }
-
+    
+    private func requestNotificationAuth() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (didAllow, error) in
+            
+        }
+    }
     
     // MARK: - Functions
     
@@ -127,8 +133,6 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.tableview.reloadData()
         }
     }
-    
- 
 }
 
 

@@ -90,6 +90,44 @@ class EventController {
         }
     }
     
+    func fetchNewEvents(completion: @escaping (_ success: Bool) -> Void = {_ in}) {
+        let eventDB = Firestore.firestore()
+        
+        var events: [Event] = []
+        
+        eventDB.collection(EventController.eventKey).addSnapshotListener { (snapshot, error) in
+            if let error = error {
+                NSLog("Error listening to new events: \(error.localizedDescription)")
+                completion(false)
+            }
+            
+            guard let documents = snapshot?.documents else {return}
+            
+            for document in documents {
+                let eventData = document.data()
+                
+                do {
+                    // Convert the dictionary to data
+                    guard let data = convertJsonToDataWith(json: eventData) else {completion(false);return}
+                    let event = try JSONDecoder().decode(Event.self, from: data)
+                    events.append(event)
+                } catch let e {
+                    NSLog("Error decoding data: \(e.localizedDescription)")
+                    completion(false)
+                    break
+                }
+            }
+
+            PhotoController.shared.downloadAllEventImages(events: events, completion: { (done) in
+                guard done else {return}
+                // Wait for it to be done being added on the backend before updating stuff
+                self.events?.append(contentsOf: events)
+                completion(true)
+            })
+        }
+        
+    }
+    
     // Update events in firestore
     // Delete events from firestore
     

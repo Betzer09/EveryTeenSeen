@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 
 class EventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
     
     // MARK: - Outlets
     @IBOutlet weak var createEventBtn: UIBarButtonItem!
@@ -18,18 +17,15 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: - Properties
     
-    // Source of truth
-    var events: [Event]? = []
-    
     // MARK: - View LifeCycles
     override func viewWillAppear(_ animated: Bool) {
         self.setUpView()
+        addEventNotificationObserver()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpView()
-        self.fetchEventContent()
     }
     
     // MARK: - Actions
@@ -57,13 +53,13 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - TableViewDataSource Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: - Fetch the events from firestore
-        return events?.count ?? 0
+        return EventController.shared.events?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         
-        guard let events = self.events else {NSLog("Error: There are no events!"); return UITableViewCell()}
+        guard let events = EventController.shared.events else {NSLog("Error: There are no events!"); return UITableViewCell()}
         let event = events[indexPath.row]
         
         cell.textLabel?.text = event.title
@@ -83,7 +79,6 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: - Views
     private func setUpView() {
-        
         guard let user = UserController.shared.loadUserFromDefaults()  else {
             // If there is no user than don't create events
             createEventBtn.isEnabled = false
@@ -100,19 +95,10 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    private func fetchEventContent() {
-        EventController.shared.fetchAllEvents { (success) in
-            guard success else {return}
-            
-            self.events = EventController.shared.events
-            guard let events = self.events else {return}
-            PhotoController.shared.downloadAllEventImages(events: events, completion: { (success) in
-                self.tableview.reloadData()
-            })
-        }
+    private func addEventNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.transactionWasUpdatedNotifcation, object: nil)
     }
 
-    
     
     // MARK: - Functions
     
@@ -134,6 +120,14 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    // MARK: - Objective - C functions
+    @objc func reloadTableView() {
+        DispatchQueue.main.async {
+            self.tableview.reloadData()
+        }
+    }
+    
  
 }
 

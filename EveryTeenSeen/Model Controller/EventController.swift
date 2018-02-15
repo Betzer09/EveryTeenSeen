@@ -11,12 +11,19 @@ import FirebaseFirestore
 
 class EventController {
     // MARK: - Keys
-    private let eventKey = "event"
+    static let eventKey = "event"
+    static let transactionWasUpdatedNotifcation =  Notification.Name("transactionWasUpdated")
     
+    // MARK: - Other
     static let shared = EventController()
     
-    var events: [Event] = []
-    
+    // MARK: - Properties
+    var events: [Event]? = [] {
+        didSet {
+            NotificationCenter.default.post(name: EventController.transactionWasUpdatedNotifcation, object: nil)
+        }
+    }
+
     // Save events to firestore
     func saveEventToFireStoreWith(title: String, dateHeld: Date, userWhoPosted: String , address: String, eventInfo: String) {
         
@@ -31,7 +38,9 @@ class EventController {
             
             let jsonDict = convertStringToDictWith(string: stringDict)
             
-            eventDb.collection(eventKey).document(event.title).setData(jsonDict)
+            eventDb.collection(EventController.eventKey).document(event.title).setData(jsonDict)
+            
+            self.fetchAllEvents()
             
         } catch let e {
             NSLog("Error creating event!: \(e.localizedDescription) ")
@@ -40,12 +49,14 @@ class EventController {
     }
     
     // Fetch all events from firestore
-    func fetchAllEvents(completion: @escaping(_ success: Bool) -> Void) {
+    func fetchAllEvents(completion: @escaping(_ success: Bool) -> Void = {_ in}) {
+        
+        // TODO: - Make it so it only updates with new events and not all of them at the same time 
         let eventdb = Firestore.firestore()
         
         var events: [Event] = []
         
-        eventdb.collection(eventKey).getDocuments { (snapshot, error) in
+        eventdb.collection(EventController.eventKey).getDocuments { (snapshot, error) in
             if let error = error {
                 NSLog("Error fetching Events: \(error)")
                 completion(false)
@@ -71,7 +82,11 @@ class EventController {
             }
             
             self.events = events
-            completion(true)
+            
+            PhotoController.shared.downloadAllEventImages(events: events, completion: { (done) in
+                guard done else {return}
+                completion(true)
+            })
         }
     }
     

@@ -83,7 +83,7 @@ class PhotoController {
         
         // Start the download (in this case writing to a file)
         
-        let downloadTask = storageRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+        let downloadTask = storageRef.getData(maxSize: 15 * 1024 * 1024) { data, error in
             if let error = error {
                 NSLog("Error downloaded image: \(error.localizedDescription)")
                 completion(nil)
@@ -142,9 +142,7 @@ class PhotoController {
             downloadGroup.enter()
             photosGroupDownloadCount += 1
             
-            let imageName = "\(event.title).png"
-            
-            downloadImageFromStorageWith(eventTitle: imageName, completion: { (image) in
+            downloadImageFromStorageWith(eventTitle: event.title, completion: { (image) in
                 guard let image = image, let data = UIImagePNGRepresentation(image) else {
                     NSLog("Error: There is no image!")
                     downloadGroup.leave()

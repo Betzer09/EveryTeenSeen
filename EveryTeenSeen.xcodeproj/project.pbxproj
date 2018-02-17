@@ -19,6 +19,7 @@
 		236155FB2023F1850004DC9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236155FA2023F1850004DC9F /* Assets.xcassets */; };
 		236155FE2023F1850004DC9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236155FC2023F1850004DC9F /* LaunchScreen.storyboard */; };
 		236673A320360CDC00F2F485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 236673A220360CDC00F2F485 /* GoogleService-Info.plist */; };
+		236673A620363D3200F2F485 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236673A520363D3200F2F485 /* EventsTableViewCell.swift */; };
 		238B5548202E0E21002E128C /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5547202E0E21002E128C /* HelperMethods.swift */; };
 		238B554A202E1210002E128C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5549202E1210002E128C /* User.swift */; };
 		238B554C202E1731002E128C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B554B202E1731002E128C /* UserController.swift */; };
@@ -50,6 +51,7 @@
 		236155FD2023F1850004DC9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		236155FF2023F1850004DC9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		236673A220360CDC00F2F485 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		236673A520363D3200F2F485 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		238B5547202E0E21002E128C /* HelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
 		238B5549202E1210002E128C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		238B554B202E1731002E128C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -168,11 +170,20 @@
 				23250CE520242CBE0033B85D /* Models */,
 				23250CE620242CF70033B85D /* Model Controller */,
 				23250CE820242D080033B85D /* View Controller */,
+				236673A420363D0600F2F485 /* Views */,
 				23250CE720242D010033B85D /* Storyboards */,
 				23250CE420242CB30033B85D /* Resources */,
 				238B5546202E0DF1002E128C /* Helper Files */,
 			);
 			path = EveryTeenSeen;
+			sourceTree = "<group>";
+		};
+		236673A420363D0600F2F485 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				236673A520363D3200F2F485 /* EventsTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		238B5546202E0DF1002E128C /* Helper Files */ = {
@@ -363,6 +374,7 @@
 				23250CF3202431130033B85D /* City.swift in Sources */,
 				2393D3A62033C2380073F6A5 /* EventController.swift in Sources */,
 				2393D3AA2033D5350073F6A5 /* PhotoController.swift in Sources */,
+				236673A620363D3200F2F485 /* EventsTableViewCell.swift in Sources */,
 				2393D3A42033BFE40073F6A5 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

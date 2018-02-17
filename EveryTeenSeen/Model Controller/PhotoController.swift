@@ -143,7 +143,7 @@ class PhotoController {
             photosGroupDownloadCount += 1
             
             downloadImageFromStorageWith(eventTitle: event.title, completion: { (image) in
-                guard let image = image, let data = UIImagePNGRepresentation(image) else {
+                guard let image = image, let data = UIImageJPEGRepresentation(image, 0.5) else {
                     NSLog("Error: There is no image!")
                     downloadGroup.leave()
                     self.photosGroupDownloadCount -= 1
@@ -153,10 +153,11 @@ class PhotoController {
                 // Create an image
                 let photo = Photo(image: data, eventTitle: event.title)
                 event.photo = photo
+                self.photosGroupDownloadCount -= 1
             })
         }
         
-        downloadGroup.notify(queue: DispatchQueue.main) {
+        downloadGroup.notify(queue: .main) {
             completion(true)
         }
         

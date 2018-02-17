@@ -21,7 +21,7 @@ class Event: Codable {
     var photo: Photo? = nil
     
     // MARK: - Init
-    init(title: String, timestamp: String = Formatter.iso8601.string(from: Date()), dateHeld: String, userWhoPosted: String,
+    init(title: String, timestamp: String = Formatter.ISO8601.string(from: Date()), dateHeld: String, userWhoPosted: String,
          attending: Int = 0, address: String, eventInfo: String) {
         self.title = title
         self.timestamp = timestamp

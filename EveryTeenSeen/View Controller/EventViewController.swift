@@ -15,6 +15,7 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var createEventBtn: UIBarButtonItem!
     @IBOutlet weak var tableview: UITableView!
     
+    
     // MARK: - Properties
     
     // MARK: - View LifeCycles
@@ -57,14 +58,20 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventsTableViewCell else {return UITableViewCell()}
         
         guard let events = EventController.shared.events else {NSLog("Error: There are no events!"); return UITableViewCell()}
-        let event = events[indexPath.row]
         
-        cell.textLabel?.text = event.title
-        cell.detailTextLabel?.text = "\(returnFormattedDateFor(string: event.dateHeld))"
+        let event = events[indexPath.row]
+        cell.updateCellWith(event: event)
+        
         return cell
+    }
+    
+    // MARK: - Table View Functions
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.view.bounds.height * 0.7
     }
     
     
@@ -95,10 +102,19 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    private func addEventNotificationObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.transactionWasUpdatedNotifcation, object: nil)
+    private func loadAllEvents(completion: @escaping (_ success: Bool) -> Void) {
+        EventController.shared.fetchAllEvents { (success) in
+            guard success else {return}
+            DispatchQueue.main.async {
+                self.tableview.reloadData()
+            }
+            completion(true)
+        }
     }
-
+    
+    private func addEventNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.eventWasUpdatedNotifcation, object: nil)
+    }
     
     // MARK: - Functions
     
@@ -119,6 +135,11 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setTableViewHeight() {
+        tableview.estimatedRowHeight = self.view.bounds.height * 0.7
+        tableview.rowHeight = UITableViewAutomaticDimension
     }
     
     // MARK: - Objective - C functions

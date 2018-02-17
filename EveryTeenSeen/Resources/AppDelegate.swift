@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        EventController.shared.fetchAllEvents()
+        
         let signInView: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var viewController: UIViewController
@@ -42,8 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         self.window?.makeKeyAndVisible()
         self.window?.rootViewController = viewController
-        
-        EventController.shared.fetchAllEvents()
         
         // iOS 10 support
         if #available(iOS 10, *) {

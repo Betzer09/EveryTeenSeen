@@ -12,7 +12,7 @@ import FirebaseFirestore
 class EventController {
     // MARK: - Keys
     static let eventKey = "event"
-    static let transactionWasUpdatedNotifcation =  Notification.Name("transactionWasUpdated")
+    static let eventWasUpdatedNotifcation =  Notification.Name("eventWasUpdatedNotifcation")
     
     // MARK: - Other
     static let shared = EventController()
@@ -20,7 +20,7 @@ class EventController {
     // MARK: - Properties
     var events: [Event]? = [] {
         didSet {
-            NotificationCenter.default.post(name: EventController.transactionWasUpdatedNotifcation, object: nil)
+            NotificationCenter.default.post(name: EventController.eventWasUpdatedNotifcation, object: nil)
         }
     }
 
@@ -28,7 +28,7 @@ class EventController {
     func saveEventToFireStoreWith(title: String, dateHeld: Date, userWhoPosted: String , address: String, eventInfo: String) {
         
         let eventDb = Firestore.firestore()
-        let stringDate = Formatter.iso8601.string(from: dateHeld)
+        let stringDate = Formatter.ISO8601.string(from: dateHeld)
         
         let event = Event(title: title, dateHeld: stringDate, userWhoPosted: userWhoPosted, address: address, eventInfo: eventInfo )
         

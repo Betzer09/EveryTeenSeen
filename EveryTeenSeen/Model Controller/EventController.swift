@@ -23,7 +23,7 @@ class EventController {
             NotificationCenter.default.post(name: EventController.eventWasUpdatedNotifcation, object: nil)
         }
     }
-
+    
     // Save events to firestore
     func saveEventToFireStoreWith(title: String, dateHeld: Date, userWhoPosted: String , address: String, eventInfo: String) {
         
@@ -90,6 +90,9 @@ class EventController {
         }
     }
     
+    
+    
+    /// Fetchs the events that are new.
     func fetchNewEvents(completion: @escaping (_ success: Bool) -> Void = {_ in}) {
         let eventDB = Firestore.firestore()
         
@@ -117,7 +120,7 @@ class EventController {
                     break
                 }
             }
-
+            
             PhotoController.shared.downloadAllEventImages(events: events, completion: { (done) in
                 guard done else {return}
                 // Wait for it to be done being added on the backend before updating stuff
@@ -128,10 +131,86 @@ class EventController {
         
     }
     
-    // Update events in firestore
-    // Delete events from firestore
+    func isPlanningOnAttending(event: Event, wantsToJoin: Bool, completion: @escaping (_ error: String?) -> Void) {
+        
+        let db = Firestore.firestore()
+        
+        db.collection("\(EventController.eventKey)").document(event.title).getDocument { (snapshot, error) in
+            if let error = error {
+                NSLog("Error retriving event: \(error.localizedDescription)")
+                completion("\(error)")
+            }
+            
+            guard let data = snapshot?.data() else {completion("Error with the snapshot!"); return}
+            
+            do {
+                guard let data = convertJsonToDataWith(json: data) else {completion("Error converting Json!"); return}
+                
+                // Convert the dictionary to data
+                let event = try JSONDecoder().decode(Event.self, from: data)
+                
+                let updatedEvent = self.updateAttendingFieldFor(event: event, andWantsToJoin: wantsToJoin)
+                
+                // Update the event in the array
+                self.updateEventInTheArrayWith(event: updatedEvent)
+                
+                // Push the updated event to firestore
+                self.updateEventInTheArrayWith(event: updatedEvent)
+                
+            } catch let e {
+                NSLog("Error decoding event! : \(e.localizedDescription)")
+                completion("Error decoding event! : \(e.localizedDescription)")
+            }
+            
+        }
+        
+    }
     
     
+    // MARK: - Functions
+    private func updateAttendingFieldFor(event: Event, andWantsToJoin: Bool) -> Event {
+        
+        if andWantsToJoin {
+            event.attending += 1
+        } else {
+            event.attending -= 1
+        }
+        
+        return event
+    }
     
-    // Filter all events
+    /// Updates the local event in the array
+    private func updateEventInTheArrayWith(event: Event) {
+        guard var events = events, let index = events.index(of: event) else {NSLog("Error: This event doesn't Exist"); return}
+        
+        events.remove(at: index)
+        events.insert(event, at: index)
+    }
+    
+    private func pushUpdatedEventToFirestoreWith(event: Event) {
+        let db = Firestore.firestore()
+        
+        let attendingKey = "attending"
+        
+        db.collection(EventController.eventKey).document(event.title).updateData([attendingKey: event.attending]) { (error) in
+            if let error = error {
+                NSLog("Error updating event: \(event.title) becasue of error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

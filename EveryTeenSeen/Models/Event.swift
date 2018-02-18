@@ -8,14 +8,18 @@
 
 import Foundation
 
-class Event: Codable {
+class Event: Codable, Equatable {
+    
+    static func == (lhs: Event, rhs: Event) -> Bool {
+        return lhs.title == rhs.title && lhs.address == rhs.address && lhs.dateHeld == rhs.dateHeld && lhs.timestamp == rhs.timestamp && lhs.eventInfo == rhs.eventInfo
+    }
     
     // MARK: - Properties
     let title: String
     let timestamp: String
     let dateHeld: String
     let userWhoPosted: String
-    let attending: Int
+    var attending: Int
     let address: String
     let eventInfo: String
     var photo: Photo? = nil

@@ -15,15 +15,16 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var eventPhotoImageView: UIImageView!
     @IBOutlet weak var eventCountLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
-    
+    @IBOutlet weak var eventTitleCell: UILabel!
     
     // MARK: - Actions
     
     @IBAction func settingsButtonPressed(_ sender: Any) {
-        
+        print("Configure View")
     }
     
     @IBAction func goingButtonPressed(_ sender: Any) {
+        // Check the events
     }
     
     // MARK: - Functions
@@ -36,6 +37,7 @@ class EventsTableViewCell: UITableViewCell {
         usernameTextField.text = event.userWhoPosted
         eventCountLabel.text = "Attending: \(event.attending)"
         eventDateLabel.text = event.dateHeld
+        eventTitleCell.text = event.title
         
         
         

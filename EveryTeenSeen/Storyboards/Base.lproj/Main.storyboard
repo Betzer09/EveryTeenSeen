@@ -6,7 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +32,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NGw-uC-Xeb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                                    <rect key="frame" x="0.0" y="-29" width="320" height="59"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XeL-9H-FOp">
                                                             <rect key="frame" x="280" y="14.5" width="32" height="29.5"/>
@@ -98,31 +98,41 @@
                                                         <constraint firstItem="mTE-UF-LlQ" firstAttribute="centerX" secondItem="asY-sK-sLy" secondAttribute="centerX" multiplier="1/4" id="mtC-bp-ODF"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="vnb-qf-rxz">
-                                                    <rect key="frame" x="15" y="59" width="290" height="235"/>
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6f-Wr-mkk">
+                                                    <rect key="frame" x="0.0" y="34" width="320" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="kJs-sC-fgh">
+                                                    <rect key="frame" x="42.5" y="58.5" width="235.5" height="235.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="kJs-sC-fgh" secondAttribute="height" multiplier="1:1" id="uGc-20-QmF"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="NGw-uC-Xeb" firstAttribute="top" secondItem="lLu-ML-wfh" secondAttribute="top" id="5cs-TH-Mfl"/>
+                                                <constraint firstItem="kJs-sC-fgh" firstAttribute="centerY" secondItem="lLu-ML-wfh" secondAttribute="centerY" id="18N-7X-5Fd"/>
                                                 <constraint firstAttribute="bottom" secondItem="asY-sK-sLy" secondAttribute="bottom" id="5hN-mX-U9x"/>
                                                 <constraint firstItem="asY-sK-sLy" firstAttribute="width" secondItem="lLu-ML-wfh" secondAttribute="width" id="BlL-BN-F48"/>
                                                 <constraint firstItem="NGw-uC-Xeb" firstAttribute="centerX" secondItem="lLu-ML-wfh" secondAttribute="centerX" id="Efc-Rq-ucO"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vnb-qf-rxz" secondAttribute="trailing" id="K8B-Tp-xfV"/>
-                                                <constraint firstItem="vnb-qf-rxz" firstAttribute="top" secondItem="NGw-uC-Xeb" secondAttribute="bottom" id="LQQ-ZZ-MMU"/>
-                                                <constraint firstItem="vnb-qf-rxz" firstAttribute="centerY" secondItem="lLu-ML-wfh" secondAttribute="centerY" id="T2N-Lh-pfm"/>
+                                                <constraint firstItem="kJs-sC-fgh" firstAttribute="centerX" secondItem="lLu-ML-wfh" secondAttribute="centerX" id="GUR-mH-eyj"/>
+                                                <constraint firstItem="j6f-Wr-mkk" firstAttribute="centerX" secondItem="lLu-ML-wfh" secondAttribute="centerX" id="LKG-Ky-H3t"/>
+                                                <constraint firstItem="asY-sK-sLy" firstAttribute="top" secondItem="kJs-sC-fgh" secondAttribute="bottom" id="Whm-mm-u0y"/>
                                                 <constraint firstItem="asY-sK-sLy" firstAttribute="height" secondItem="lLu-ML-wfh" secondAttribute="height" multiplier="1/6" id="Y8i-P4-wXz"/>
                                                 <constraint firstItem="NGw-uC-Xeb" firstAttribute="height" secondItem="lLu-ML-wfh" secondAttribute="height" multiplier="1/6" id="c6N-3P-f8i"/>
                                                 <constraint firstItem="NGw-uC-Xeb" firstAttribute="width" secondItem="lLu-ML-wfh" secondAttribute="width" id="enZ-zP-jYO"/>
-                                                <constraint firstItem="vnb-qf-rxz" firstAttribute="centerX" secondItem="lLu-ML-wfh" secondAttribute="centerX" id="laH-bY-HKN"/>
                                                 <constraint firstItem="asY-sK-sLy" firstAttribute="centerX" secondItem="lLu-ML-wfh" secondAttribute="centerX" id="oIE-cp-Z7O"/>
-                                                <constraint firstItem="asY-sK-sLy" firstAttribute="top" secondItem="vnb-qf-rxz" secondAttribute="bottom" id="psC-br-2tb"/>
-                                                <constraint firstItem="vnb-qf-rxz" firstAttribute="leading" secondItem="lLu-ML-wfh" secondAttribute="leadingMargin" id="s5l-zN-DGR"/>
+                                                <constraint firstItem="j6f-Wr-mkk" firstAttribute="top" secondItem="NGw-uC-Xeb" secondAttribute="bottom" constant="4" id="rYH-hs-oR7"/>
+                                                <constraint firstItem="j6f-Wr-mkk" firstAttribute="width" secondItem="lLu-ML-wfh" secondAttribute="width" id="reM-JQ-fbK"/>
+                                                <constraint firstItem="kJs-sC-fgh" firstAttribute="top" secondItem="j6f-Wr-mkk" secondAttribute="bottom" constant="4" id="sIL-JE-RJx"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="eventCountLabel" destination="TTI-5h-rxf" id="Ofa-zt-2Ca"/>
                                             <outlet property="eventDateLabel" destination="US6-Ue-AaT" id="XqP-xv-Roc"/>
-                                            <outlet property="eventPhotoImageView" destination="vnb-qf-rxz" id="cWQ-D7-4yr"/>
+                                            <outlet property="eventPhotoImageView" destination="kJs-sC-fgh" id="5zS-Dc-mB9"/>
+                                            <outlet property="eventTitleCell" destination="j6f-Wr-mkk" id="bu5-kC-mHw"/>
                                             <outlet property="usernameTextField" destination="aGa-ch-vmG" id="A97-f7-nB6"/>
                                         </connections>
                                     </tableViewCell>

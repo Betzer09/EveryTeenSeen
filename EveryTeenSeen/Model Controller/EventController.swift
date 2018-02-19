@@ -155,7 +155,7 @@ class EventController {
                 self.updateEventInTheArrayWith(event: updatedEvent)
                 
                 // Push the updated event to firestore
-                self.updateEventInTheArrayWith(event: updatedEvent)
+                self.pushUpdatedEventToFirestoreWith(event: updatedEvent)
                 
             } catch let e {
                 NSLog("Error decoding event! : \(e.localizedDescription)")

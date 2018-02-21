@@ -45,7 +45,7 @@ class SignInViewController: UIViewController {
             UserController.shared.fetchUserInfoFromFirebaseWith(email: email, completion: { (user, error) in
                 // If there is a user sign in and fetch the info and save it to the phone
                 guard user == nil else {
-                    presentSimpleAlert(viewController: self, title: "Error", message: "\(error?.localizedDescription)")
+                    presentSimpleAlert(viewController: self, title: "Error", message: "\(error!.localizedDescription)")
                     return
                 }
                 

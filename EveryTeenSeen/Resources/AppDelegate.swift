@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        guard let data = UIImagePNGRepresentation(#imageLiteral(resourceName: "Image")) else {return false}
+        PhotoController.shared.postPhotWithURLSession(data: data)
+        
         EventController.shared.fetchAllEvents()
         
         let signInView: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)

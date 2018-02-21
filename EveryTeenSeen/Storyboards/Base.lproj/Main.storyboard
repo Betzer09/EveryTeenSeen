@@ -158,7 +158,7 @@
                                 <action selector="logoutButtonPressed:" destination="xOC-xR-fhi" id="TAN-km-rBQ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5cu-2p-ijF">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="5cu-2p-ijF">
                             <connections>
                                 <segue destination="1wd-mU-4mC" kind="show" id="jTu-o0-gUz"/>
                             </connections>

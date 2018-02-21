@@ -161,7 +161,6 @@ class EventController {
                 NSLog("Error decoding event! : \(e.localizedDescription)")
                 completion("Error decoding event! : \(e.localizedDescription)")
             }
-            
         }
         
     }
@@ -198,7 +197,6 @@ class EventController {
             }
         }
     }
-    
     
 }
 

@@ -178,6 +178,9 @@ class PhotoController {
                 completion(true)
             }
         }
+    }
+    
+    func sendPushNotificaton() {
         
     }
 }

@@ -70,7 +70,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         PhotoController.shared.uploadEventImageToStorageWith(image: image, eventTitle: title)
         EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDate, userWhoPosted: user.fullname, address: address, eventInfo: eventInfo)
-        
+        EventController.shared.sendNotificaiton()
         navigationController?.popViewController(animated: true)
         
     }

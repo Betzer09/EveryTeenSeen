@@ -8,11 +8,13 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseMessaging
 
 class EventController {
     // MARK: - Keys
     static let eventKey = "event"
     static let eventWasUpdatedNotifcation =  Notification.Name("eventWasUpdatedNotifcation")
+    static let newEventsKey = "newEvents"
     
     // MARK: - Other
     static let shared = EventController()
@@ -196,6 +198,47 @@ class EventController {
                 NSLog("Error updating event: \(event.title) becasue of error: \(error.localizedDescription)")
             }
         }
+    }
+    
+    // MARK: - Push Notifications
+    public func subscribeToNewEventsNotification() {
+        DispatchQueue.main.async {
+            Messaging.messaging().subscribe(toTopic: EventController.newEventsKey)
+        }
+    }
+    
+    public func sendNotificaiton() {
+        
+        guard let url = URL(string: "https://fcm.googleapis.com/v1/projects/everyteenseen-2a545/messages:send") else {NSLog("Bad Notificaiton URL"); return}
+
+        let json = [
+            "messages": [
+                "topic": "\(EventController.newEventsKey)",
+                "notification": [
+                    "body": "New Events have been posted!",
+                    "title": "FCM Message"
+                ]
+            ]
+        ]
+        
+        var jsonData: Data? {
+            return (try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted))
+        }
+        
+        
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(AppDelegate.serveryKey)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        
+        guard let endpoint = request.url else {return}
+        URLSession.shared.dataTask(with: endpoint) { (_, _, error) in
+            if let error = error {
+                NSLog("error sending request!: \(error)")
+            }
+        }.resume()
+        
     }
     
 }

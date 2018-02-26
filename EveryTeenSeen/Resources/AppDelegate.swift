@@ -15,19 +15,16 @@ import FirebaseMessaging
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
     var window: UIWindow?
-
+    
+    // MARK: - Keys
+    static let serveryKey = "AAAAano_Vew:APA91bGyn5ql5G-87GSClAy3T1c9MxGNhdxx-rAe99dCrcCtp0UY7GG8pinKSp5FqW6hDB82T8fViu-7JwpzFGBRcTvYxx1a8nWpaBtZNYEHe0VS76YiB_5TjItbV_dRDflLX6lLEru4"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        
-        guard let data = UIImagePNGRepresentation(#imageLiteral(resourceName: "Image")) else {return false}
-        PhotoController.shared.postPhotWithURLSession(data: data)
-        
-        EventController.shared.fetchAllEvents()
         
         let signInView: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -50,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // iOS 10 support
         if #available(iOS 10, *) {
+            UNUserNotificationCenter.current().delegate = self
             UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
             application.registerForRemoteNotifications()
         }
@@ -69,7 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notificaiton:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
-        
         return true
     }
 
@@ -85,12 +82,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Persist it in your backend in case it's new
         guard let token = UserDefaults.standard.object(forKey: UserController.phoneTokenKey) as? String else {
             // This means we don't have a token
-            UserController.shared .saveDeviceIdentiferToDefaultsWith(token: deviceTokenString)
+            UserController.shared.saveDeviceIdentiferToDefaultsWith(token: deviceTokenString)
             return
         }
         
         // This means we already have a token
         UserController.shared.updateDeviceTokenToFirebase(newToken: deviceTokenString)
+        
+        // Subscirbe the user to the events topic
+        EventController.shared.subscribeToNewEventsNotification()
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -125,6 +125,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func FBHandler() {
         Messaging.messaging().shouldEstablishDirectChannel = true
+    }
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let notification = response.notification.request.content.body
+        
+        print(notification)
+        completionHandler()
     }
     
 }

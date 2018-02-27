@@ -53,12 +53,16 @@ class FirebaseManager {
     }
     
     // MARK: - Create a Firebase User
-    func createFirebaseUserWith(email: String, password: String) {
+    func createFirebaseUserWith(email: String, password: String, completion: @escaping(_ success: Bool) -> Void) {
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let error = error {
                 NSLog("Error creating firebase user: \(error.localizedDescription)")
+                completion(false)
             }
+            
+            guard user != nil else {return}
+            completion(true)
         }
     }
     

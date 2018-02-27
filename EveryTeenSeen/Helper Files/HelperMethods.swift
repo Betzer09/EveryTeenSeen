@@ -40,6 +40,14 @@ public func convertStringToDictWith(string: String) -> [String: Any] {
     return myDictionary
 }
 
+/// Converts data to string Dictionaries
+func convertDataToStringDictionary(data: Data) -> String? {
+    
+    guard let stringDict = String(data: data, encoding: .utf8) else {return nil}
+    return stringDict
+    
+}
+
 /// Converts dictionaries to Data
 func convertJsonToDataWith(json: [String: Any]) -> Data? {
     

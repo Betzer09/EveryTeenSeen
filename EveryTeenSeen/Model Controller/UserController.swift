@@ -28,12 +28,12 @@ class UserController {
     private let deviceTokensKey = "device_tokens"
     
     // MARK: - Create Auth User
-    
-    func createAuthUser(email: String, pass: String) {
-        firebaseManger.createFirebaseUserWith(email: email, password: pass)
+    func createAuthUser(email: String, pass: String, completion: @escaping (_ success: Bool) -> Void) {
+        firebaseManger.createFirebaseUserWith(email: email, password: pass) { (success) in
+            guard success else {return}
+            completion(true)
+        }
     }
-    
-    
     // MARK: - Firestore Methods
     func createUserProfile(fullname: String, email: String, zipcode: String, userType: UserType, completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) ) {
         let userDb = Firestore.firestore()
@@ -166,28 +166,3 @@ class UserController {
         
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

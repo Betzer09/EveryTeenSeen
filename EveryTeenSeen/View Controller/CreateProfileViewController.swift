@@ -36,7 +36,6 @@ class CreateProfileViewController: UIViewController {
         self.createFirebaseAuthUser { (success) in
             if success {
                 self.createUserProfile()
-                
                 presentEventsTabBarVC(viewController: self)
             }
         }
@@ -101,21 +100,26 @@ class CreateProfileViewController: UIViewController {
             
             switch userType {
             case .joinCause:
-                UserController.shared.createAuthUser(email: email.lowercased() , pass: password)
-                completion(true)
+                UserController.shared.createAuthUser(email: email.lowercased(), pass: password, completion: { (success) in
+                    guard success else {return}
+                    completion(true)
+                })
             case .leadCause:
                 if adminPass != "ETSMovementUtah2018" {
                     completion(false)
                     presentSimpleAlert(viewController: self, title: "Incorrect Admin Passowrd!", message: "")
                 } else {
-                    UserController.shared.createAuthUser(email: email.lowercased() , pass: password)
-                    completion(true)
+                    UserController.shared.createAuthUser(email: email.lowercased(), pass: password, completion: { (success) in
+                        guard success else {return}
+                        completion(true)
+                    })
                 }
             }
         }
     }
     
     // MARK: - Create User Profile
+    /// This creates a profile for the user in firebase
     private func createUserProfile() {
         guard let fullname = fullnameTextField.text, let email = emailTextField.text?.lowercased(),
             !fullname.isEmpty, !email.isEmpty else {
@@ -133,9 +137,11 @@ class CreateProfileViewController: UIViewController {
             
             // Save the data to the phone
             UserController.shared.saveUserToDefaults(fullname: fullname, email: email, zipcode: zipcode, userType: userType.rawValue)
+            
+            CityController.shared.fetchCityWith(zipcode: zipcode, completion: { (city) in
+                CityController.shared.postCityToFirebaseWith(city: city.city, zipcode: city.zipcode, state: city.state)
+            })
         }
-        
-        
     }
     
     // MARK: - Check password
@@ -183,15 +189,3 @@ class CreateProfileViewController: UIViewController {
         return strength
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

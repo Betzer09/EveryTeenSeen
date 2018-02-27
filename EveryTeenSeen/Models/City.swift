@@ -13,14 +13,15 @@ class City: Codable {
     // MARK: - Properties
     let city: String
     let zipcode: String
-    var count = 0
+    var count: Int? = 0
     let state: String
     
     // MARK: - Init
-    init(city: String, zipcode: String, state: String) {
+    init(city: String, zipcode: String, state: String, count: Int) {
         self.city = city
         self.zipcode = zipcode
         self.state = state
+        self.count = count
     }
     
     // MARK: - Coding Keys
@@ -28,6 +29,7 @@ class City: Codable {
         case zipcode = "zip_code"
         case city
         case state
+        case count
     }
     
 }

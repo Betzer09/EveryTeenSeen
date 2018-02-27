@@ -51,7 +51,7 @@ class EventController {
             
             do {
                 let data = try JSONEncoder().encode(event)
-                guard let stringDict = String(data: data, encoding: .utf8) else {completion(false); return}
+                guard let stringDict = convertDataToStringDictionary(data: data) else {completion(false); return}
                 
                 let jsonDict = convertStringToDictWith(string: stringDict)
                 
@@ -105,12 +105,13 @@ class EventController {
                         guard success else {eventGroup.leave(); self.imageCount -= 1; return }
                         events.append(event)
                         eventGroup.leave()
+                        self.imageCount -= 1
                     })
                 } catch let e {
                     NSLog("Error decoding data: \(e.localizedDescription)")
                     completion(false)
-                    eventGroup.leave()
                     self.imageCount -= 1
+                    eventGroup.leave()
                 }
             }
             

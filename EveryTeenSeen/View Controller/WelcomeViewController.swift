@@ -35,7 +35,7 @@ class WelcomeViewController: UIViewController {
         
         let verifyAction = UIAlertAction(title: "Verify", style: .default) { (_) in
             guard let zipcodeString = zipcodeTextField.text, let zipcode = Int(zipcodeString) else {return}
-            CityController.shared.fetchCityWith(zipcode: zipcode, completion: { (City) in
+            CityController.shared.fetchCityWith(zipcode: "\(zipcode)", completion: { (City) in
                 // Check to see if the state is correct
                 guard CityController.shared.verifyLocationFor(city: City) else {
                     

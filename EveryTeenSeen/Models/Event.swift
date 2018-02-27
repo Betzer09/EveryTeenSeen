@@ -22,6 +22,7 @@ class Event: Codable, Equatable {
     var attending: Int
     let address: String
     let eventInfo: String
+    var photoURL: String? = ""
     var photo: Photo? = nil
     
     // MARK: - Init
@@ -44,6 +45,7 @@ class Event: Codable, Equatable {
         case dateHeld = "date_held"
         case userWhoPosted = "user_who_posted"
         case eventInfo = "event_info"
+        case photoURL = "photo_url"
     }
     
 }

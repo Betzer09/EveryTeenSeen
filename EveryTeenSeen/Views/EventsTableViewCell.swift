@@ -31,7 +31,7 @@ class EventsTableViewCell: UITableViewCell {
     
     func updateCellWith(event: Event) {
         
-        guard let data = event.photo?.image, let image = UIImage(data: data) else {return}
+        guard let data = event.photo?.imageData, let image = UIImage(data: data) else {return}
         
         eventPhotoImageView.image = image
         usernameTextField.text = event.userWhoPosted

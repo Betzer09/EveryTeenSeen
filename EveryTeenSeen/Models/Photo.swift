@@ -12,12 +12,12 @@ import Foundation
 class Photo {
     
     // MARK: - Properties
-    let image: Data
-    let eventTitle: String
+    let imageData: Data
+    let photoPath: String
     
-    @discardableResult init(image: Data, eventTitle: String) {
-        self.image = image
-        self.eventTitle = eventTitle
+    @discardableResult init(imageData: Data, photoPath: String) {
+        self.imageData = imageData
+        self.photoPath = photoPath
     }
     
 }

@@ -68,10 +68,12 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         guard let image = selectedImageView.image else {return}
         
-        PhotoController.shared.uploadEventImageToStorageWith(image: image, eventTitle: title)
-        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDate, userWhoPosted: user.fullname, address: address, eventInfo: eventInfo)
-        EventController.shared.sendNotificaiton()
-        navigationController?.popViewController(animated: true)
+        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDate, userWhoPosted: user.fullname, address: address, eventInfo: eventInfo, image: image) { (success) in
+            guard success else {presentSimpleAlert(viewController: self, title: "Error", message: "There was an error uploading the image, check everything and try again.");return}
+            EventController.shared.sendNotificaiton()
+            self.navigationController?.popViewController(animated: true)
+        }
+        
         
     }
     

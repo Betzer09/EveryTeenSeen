@@ -9,8 +9,10 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseMessaging
+import UIKit
 
 class EventController {
+    
     // MARK: - Keys
     static let eventKey = "event"
     static let eventWasUpdatedNotifcation =  Notification.Name("eventWasUpdatedNotifcation")
@@ -26,32 +28,49 @@ class EventController {
         }
     }
     
+    var imageCount = 0 {
+        didSet {
+            print("Image count: \(imageCount)")
+        }
+    }
+    
     // Save events to firestore
-    func saveEventToFireStoreWith(title: String, dateHeld: Date, userWhoPosted: String , address: String, eventInfo: String) {
+    func saveEventToFireStoreWith(title: String, dateHeld: Date, userWhoPosted: String , address: String, eventInfo: String, image: UIImage, completion: @escaping (_ success: Bool) -> Void) {
         
         let eventDb = Firestore.firestore()
         let stringDate = Formatter.ISO8601.string(from: dateHeld)
         
-        let event = Event(title: title, dateHeld: stringDate, userWhoPosted: userWhoPosted, address: address, eventInfo: eventInfo )
-        
-        do {
-            let data = try JSONEncoder().encode(event)
-            guard let stringDict = String(data: data, encoding: .utf8) else {return}
+        let event = Event(title: title, dateHeld: stringDate, userWhoPosted: userWhoPosted, address: address, eventInfo: eventInfo)
+        // Start uploading the image
+        PhotoController.shared.uploadEventImageToStorageWith(image: image, eventTitle: title, completion: { (imageURL) in
+            guard imageURL != "" else {completion(false); return}
+            event.photoURL = imageURL
             
-            let jsonDict = convertStringToDictWith(string: stringDict)
+        }) { (hasFinishedPreparingURL) in
+            guard hasFinishedPreparingURL else {return}
             
-            eventDb.collection(EventController.eventKey).document(event.title).setData(jsonDict)
-            
-            self.fetchAllEvents()
-            
-        } catch let e {
-            NSLog("Error creating event!: \(e.localizedDescription) ")
+            do {
+                let data = try JSONEncoder().encode(event)
+                guard let stringDict = String(data: data, encoding: .utf8) else {completion(false); return}
+                
+                let jsonDict = convertStringToDictWith(string: stringDict)
+                
+                eventDb.collection(EventController.eventKey).document(event.title).setData(jsonDict)
+                completion(true)
+                self.fetchAllEvents()
+                
+            } catch let e {
+                // Unsuccessfually created an event
+                NSLog("Error creating event!: \(e.localizedDescription) ")
+                completion(false)
+            }
         }
-        
     }
     
     // Fetch all events from firestore
     func fetchAllEvents(completion: @escaping(_ success: Bool) -> Void = {_ in}) {
+        
+        let eventGroup = DispatchGroup()
         
         // TODO: - Make it so it only updates with new events and not all of them at the same time 
         let eventdb = Firestore.firestore()
@@ -67,70 +86,56 @@ class EventController {
             guard let documents = snapshot?.documents else {completion(false); return}
             
             for document in documents {
+                eventGroup.enter()
+                self.imageCount += 1
+                
                 let eventData = document.data()
                 
                 do {
                     // Convert the dictionary to data
-                    guard let data = convertJsonToDataWith(json: eventData) else {return}
+                    guard let data = convertJsonToDataWith(json: eventData) else {
+                        eventGroup.leave()
+                        self.imageCount -= 1
+                        return
+                    }
                     
                     let event = try JSONDecoder().decode(Event.self, from: data)
-                    events.append(event)
                     
+                    self.fetchImageForEventWith(event: event, completion: { (success) in
+                        guard success else {eventGroup.leave(); self.imageCount -= 1; return }
+                        events.append(event)
+                        eventGroup.leave()
+                    })
                 } catch let e {
                     NSLog("Error decoding data: \(e.localizedDescription)")
                     completion(false)
-                    break
+                    eventGroup.leave()
+                    self.imageCount -= 1
                 }
             }
             
-            self.events = events
-            
-            PhotoController.shared.downloadAllEventImages(events: events, completion: { (done) in
-                guard done else {return}
-                completion(true)
+            eventGroup.notify(queue: .main, execute: {
+                self.events = events
             })
         }
     }
     
-    
-    
-    /// Fetchs the events that are new.
-    func fetchNewEvents(completion: @escaping (_ success: Bool) -> Void = {_ in}) {
-        let eventDB = Firestore.firestore()
+    func fetchImageForEventWith(event: Event, completion: @escaping(_ success: Bool) -> Void) {
         
-        var events: [Event] = []
+        guard let stringURL = event.photoURL, let url = URL(string: stringURL) else {NSLog("Error: There is no photoURL for event: \(event.title)"); completion(false); return}
+    
         
-        eventDB.collection(EventController.eventKey).addSnapshotListener { (snapshot, error) in
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
-                NSLog("Error listening to new events: \(error.localizedDescription)")
-                completion(false)
+                NSLog("Error downloading eventImage for Event: \(event.title) because: \(error.localizedDescription)")
             }
             
-            guard let documents = snapshot?.documents else {return}
+            guard let data = data else {completion(false);return}
             
-            for document in documents {
-                let eventData = document.data()
-                
-                do {
-                    // Convert the dictionary to data
-                    guard let data = convertJsonToDataWith(json: eventData) else {completion(false);return}
-                    let event = try JSONDecoder().decode(Event.self, from: data)
-                    events.append(event)
-                } catch let e {
-                    NSLog("Error decoding data: \(e.localizedDescription)")
-                    completion(false)
-                    break
-                }
-            }
+            event.photo = Photo(imageData: data, photoPath: stringURL)
+            completion(true)
             
-            PhotoController.shared.downloadAllEventImages(events: events, completion: { (done) in
-                guard done else {return}
-                // Wait for it to be done being added on the backend before updating stuff
-                self.events?.append(contentsOf: events)
-                completion(true)
-            })
-        }
-        
+        }.resume()
     }
     
     func isPlanningOnAttending(event: Event, wantsToJoin: Bool, completion: @escaping (_ error: String?) -> Void) {
@@ -242,16 +247,4 @@ class EventController {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
 

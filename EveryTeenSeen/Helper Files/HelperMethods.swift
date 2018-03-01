@@ -111,20 +111,9 @@ func presentLogoutAndSignUpPage(viewController: UIViewController) {
     
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func presentAdminTabBarVC(viewController: UIViewController) {
+    let storyboard: UIStoryboard = UIStoryboard(name: "Admin", bundle: nil)
+    let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")
+    
+    viewController.present(vc, animated: true, completion: nil)
+}

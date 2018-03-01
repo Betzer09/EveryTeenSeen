@@ -36,7 +36,16 @@ class CreateProfileViewController: UIViewController {
         self.createFirebaseAuthUser { (success) in
             if success {
                 self.createUserProfile()
-                presentEventsTabBarVC(viewController: self)
+                
+                guard let userType = UserController.shared.loadUserFromDefaults()?.userType else {NSLog("Error there is no usertype!"); return}
+                
+                if userType == UserType.leadCause.rawValue {
+                    presentAdminTabBarVC(viewController: self)
+                    print("User Type: Admin")
+                } else {
+                    presentEventsTabBarVC(viewController: self)
+                    print("User Type: Normal")
+                }
             }
         }
     }

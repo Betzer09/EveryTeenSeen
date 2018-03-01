@@ -41,15 +41,12 @@ class FirebaseManager {
                 let decodedUser = try JSONDecoder().decode(User.self, from: encodedData)
                 user = decodedUser
                 // Save to user defaults
-                UserController.shared.saveUserToDefaults(fullname: decodedUser.fullname, email: decodedUser.email,
-                                                         zipcode: decodedUser.zipcode, userType: decodedUser.userType)
+                UserController.shared.saveUserToDefaults(fullname: decodedUser.fullname, email: decodedUser.email, zipcode: decodedUser.zipcode, userType: decodedUser.userType)
+                completion(user, nil)
             } catch let e {
                 completion(nil, e)
             }
         }
-        
-        completion(user, nil)
-        
     }
     
     // MARK: - Create a Firebase User

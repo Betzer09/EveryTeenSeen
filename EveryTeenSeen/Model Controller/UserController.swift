@@ -64,14 +64,11 @@ class UserController {
             if let error = error {
                 completion(nil, error)
             }
-            
             guard let user = user else {NSLog("Error: There is no user!"); completion(nil, nil); return}
             
             completion(user, nil)
-            
         }
     }
-    
     
     // MARK: - User State methods
     func signUserInWith(email: String, password: String, completion: @escaping((_ success: Bool, _ error: Error?) -> Void)) {
@@ -151,7 +148,6 @@ class UserController {
         db.collection(deviceTokensKey).document("\(deviceUUID)").setData(dict)
         
     }
-    
     
     func updateDeviceTokenToFirebase(newToken: String) {
         

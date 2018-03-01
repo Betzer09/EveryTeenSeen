@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let signInView: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let adminView: UIStoryboard = UIStoryboard(name: "Admin", bundle: nil)
+        
         var viewController: UIViewController
         
         if let user = UserController.shared.loadUserFromDefaults() {

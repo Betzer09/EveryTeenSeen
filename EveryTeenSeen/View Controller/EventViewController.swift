@@ -22,12 +22,10 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         self.setUpView()
         EventController.shared.fetchAllEvents()
-        addEventNotificationObserver()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpView()
     }
     
     // MARK: - Actions
@@ -87,20 +85,7 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: - Views
     private func setUpView() {
-        guard let user = UserController.shared.loadUserFromDefaults()  else {
-            // If there is no user than don't create events
-            createEventBtn.isEnabled = false
-            createEventBtn.tintColor = UIColor.clear
-            return
-        }
-        
-        if user.userType == UserType.leadCause.rawValue {
-            createEventBtn.isEnabled = true
-            createEventBtn.tintColor = UIColor(red: 5 / 255.0, green: 122 / 255.0, blue: 255 / 255.0, alpha: 1)
-        } else {
-            createEventBtn.isEnabled = false
-            createEventBtn.tintColor = UIColor.clear
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.eventWasUpdatedNotifcation, object: nil)
     }
     
     private func loadAllEvents(completion: @escaping (_ success: Bool) -> Void) {
@@ -112,10 +97,7 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
             completion(true)
         }
     }
-    
-    private func addEventNotificationObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.eventWasUpdatedNotifcation, object: nil)
-    }
+
     
     // MARK: - Functions
     

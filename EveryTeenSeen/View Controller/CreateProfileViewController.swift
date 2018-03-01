@@ -46,6 +46,8 @@ class CreateProfileViewController: UIViewController {
                     presentEventsTabBarVC(viewController: self)
                     print("User Type: Normal")
                 }
+                
+                
             }
         }
     }

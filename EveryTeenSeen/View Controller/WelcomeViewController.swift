@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import MapKit
 
 class WelcomeViewController: UIViewController {
+    
+    let locationManager = CLLocationManager()
     
     // MARK: - Properties
     
@@ -61,11 +64,32 @@ class WelcomeViewController: UIViewController {
     }
     
     // MARK: - UI Functions
-    
     private func setUpView() {
-        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+    }
+}
+
+// MARK: - Location Manager Delegate
+extension WelcomeViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            print("location: \(location)")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        NSLog("Error with location Manager: \(error.localizedDescription)")
+    }
     
 }
 

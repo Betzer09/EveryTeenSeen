@@ -21,11 +21,11 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - View LifeCycles
     override func viewWillAppear(_ animated: Bool) {
         self.setUpView()
-        EventController.shared.fetchAllEvents()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        EventController.shared.fetchAllEvents()
     }
     
     // MARK: - Actions

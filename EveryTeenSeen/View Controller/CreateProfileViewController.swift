@@ -162,8 +162,7 @@ class CreateProfileViewController: UIViewController {
         // TODO: - Make special charactors not count as capital letters
         
         // Check password strength
-        let specialCharactores = [ "~", "!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "=", "`", "|", "(", ")",
-                                   "{", "}", "[", "]", ":", ";", "'", "<", ">", ",", ".", "?", "/" ]
+        let specialCharactores = [ "~", "!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "=", "`", "|", "(", ")","{", "}", "[", "]", ":", ";", "'", "<", ">", ",", ".", "?", "/" ]
         var specialCharactorCount = 0
         var capitalCharactorCount = 0
         var strength = false

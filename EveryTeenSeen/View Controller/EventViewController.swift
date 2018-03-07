@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MapKit
 
 class EventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,16 +16,10 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var createEventBtn: UIBarButtonItem!
     @IBOutlet weak var tableview: UITableView!
     
-    
-    // MARK: - Properties
-    
     // MARK: - View LifeCycles
-    override func viewWillAppear(_ animated: Bool) {
-        self.setUpView()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUpView()
         EventController.shared.fetchAllEvents()
     }
     
@@ -86,6 +81,8 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - Views
     private func setUpView() {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.eventWasUpdatedNotifcation, object: nil)
+        
+        
     }
     
     private func loadAllEvents(completion: @escaping (_ success: Bool) -> Void) {
@@ -97,7 +94,7 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
             completion(true)
         }
     }
-
+    
     
     // MARK: - Functions
     
@@ -132,11 +129,3 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 }
-
-
-
-
-
-
-
-

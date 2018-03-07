@@ -9,8 +9,6 @@
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>to display the correct events near you.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Every Teen Seen </string>
 	<key>CFBundleExecutable</key>
@@ -45,6 +43,8 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>to take pictures for upcoming events that way you can share them with others.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>to display the correct events near you.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>to get pictures for upcoming event images and share them with others.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>

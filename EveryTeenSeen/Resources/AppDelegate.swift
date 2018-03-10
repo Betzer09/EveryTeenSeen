@@ -33,9 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         var viewController: UIViewController
         
         if let user = UserController.shared.loadUserFromDefaults() {
-            if user.userType == UserType.joinCause.rawValue  || user.userType == UserType.leadCause.rawValue{
+            if user.userType == UserType.joinCause.rawValue {
                 // This is a normal user
                 viewController = mainView.instantiateInitialViewController()!
+            } else if user.userType == UserType.leadCause.rawValue {
+                // This is an admin user
+                viewController = adminView.instantiateInitialViewController()!
             } else {
                 print("Error: Something is wrong with the usertype of: \(user.userType)")
                 viewController = mainView.instantiateInitialViewController()!

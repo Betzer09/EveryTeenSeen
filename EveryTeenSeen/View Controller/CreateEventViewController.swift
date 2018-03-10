@@ -33,18 +33,13 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     var textFieldBeingEdited: UITextField?
     var textViewBeingEdited: UITextView?
     
-
-    // MARK: - View LifeCycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.setUpView()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         self.setUpView()
     }
     
@@ -152,6 +147,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         view.addGestureRecognizer(tap)
         
         self.showDatePicker()
+        self.showAddressPicker()
     }
     
     // MARK: - Date Picker Functions
@@ -175,10 +171,36 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         
     }
+    // MARK: - Address picker function
+    private func showAddressPicker() {
+        
+        // Set up the toolBar
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneEventLocationPicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissKeyboard))
+        
+        // configure info in the toolbar
+        
+        
+        toolBar.setItems([cancelButton, spaceButton,doneButton], animated: false)
+        
+        locationTextField.inputAccessoryView = toolBar
+        
+        
+    }
     
     // MARK: - Objective - C Functions
     @objc func doneDatePicker() {
         dateTextField.text = returnFormattedDateFor(date: eventDatePicker.date)
+        self.view.endEditing(true)
+    }
+    
+    @objc func doneEventLocationPicker() {
+        // TODO: - Configure done event picker
         self.view.endEditing(true)
     }
     
@@ -195,8 +217,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     // MARK: - TextView Methods
     func textViewDidBeginEditing(_ textView: UITextView) {
         textViewBeingEdited = textView
-        
-        textView.text = ""
     }
     
     // MARK: - Keyboard Functions
@@ -279,14 +299,3 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         view.endEditing(true)
     }
 }
-
-
-
-
-
-
-
-
-
-
-

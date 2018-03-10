@@ -29,7 +29,6 @@ class CreateEventViewController: UIViewController {
     // TableView Properties
     let locationTableViewController = UITableViewController(style: .plain)
     
-    
     // TextField Properties
     let eventDatePicker = UIDatePicker()
     var currentYShiftForKeyboard: CGFloat = 0
@@ -82,12 +81,19 @@ class CreateEventViewController: UIViewController {
         self.presentCameraAndPhotoLibraryOption()
     }
     
-    // MARK: - Set Up View and TableView
+    // MARK: - Functions
+    
+    /// Sets up the view
     private func setUpView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
 
         self.showDatePicker()
+        
+        // Set up Search Bar
+        guard let tableView = locationTableViewController.tableView else {return}
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width , height: 40))
+        tableView.tableHeaderView = searchBar
         
         // Set up table View
         locationTableViewController.tableView.register(EventLocationCell.self, forCellReuseIdentifier: "eventLocationCell")
@@ -96,7 +102,7 @@ class CreateEventViewController: UIViewController {
         self.showAddressPicker()
     }
     
-    // MARK: - Date Picker Functions
+    /// Sets up the Date ToolBar
     private func showDatePicker() {
         // Set up the toolBar
         let toolBar = UIToolbar()
@@ -117,22 +123,22 @@ class CreateEventViewController: UIViewController {
 }
 
 
-// MARK: - Table View Functions
+// MARK: - Search Location Table View Functions
 extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    
+    // MARK: - Table View DataSoure
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventLocationCell", for: indexPath)
+        cell.textLabel?.text = "foo"
         
         return cell
     }
+    
 
-    // MARK: - Address picker function
+    // MARK: - Functions
     private func showAddressPicker() {
         
         // Set up the toolBar
@@ -157,20 +163,6 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
 
 // MARK: - UITextField Functions and Keyboard Funtions
 extension CreateEventViewController:  UITextFieldDelegate, UITextViewDelegate {
-    // MARK: - Objective - C Functions
-    @objc func doneDatePicker() {
-        dateTextField.text = returnFormattedDateFor(date: eventDatePicker.date)
-        self.view.endEditing(true)
-    }
-    
-    @objc func doneEventLocationPicker() {
-        // TODO: - Configure done event picker
-        self.view.endEditing(true)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
     
     // MARK: - TextField Methods
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -178,7 +170,6 @@ extension CreateEventViewController:  UITextFieldDelegate, UITextViewDelegate {
     }
     
     
-    // MARK: - TextView Methods
     func textViewDidBeginEditing(_ textView: UITextView) {
         textViewBeingEdited = textView
     }
@@ -221,6 +212,8 @@ extension CreateEventViewController:  UITextFieldDelegate, UITextViewDelegate {
         }
     }
     
+    
+    // MARK: - Objective - C Functions
     @objc func keyboardWillShow(notification: NSNotification) {
         
         var keyboardSize: CGRect = .zero
@@ -258,6 +251,20 @@ extension CreateEventViewController:  UITextFieldDelegate, UITextViewDelegate {
             self.view.frame.origin.y += currentYShiftForKeyboard
         }
         
+        view.endEditing(true)
+    }
+    
+    @objc func doneDatePicker() {
+        dateTextField.text = returnFormattedDateFor(date: eventDatePicker.date)
+        self.view.endEditing(true)
+    }
+    
+    @objc func doneEventLocationPicker() {
+        // TODO: - Configure done event picker
+        self.view.endEditing(true)
+    }
+    
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 }

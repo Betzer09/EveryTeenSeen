@@ -26,6 +26,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     // MARK: - Properties
     var delegate: PhotoSelectedViewControllerDelegate?
     
+    // TableView Properties
+    let locationTableViewController = UITableViewController(style: .plain)
+    
     
     // TextField Properties
     let eventDatePicker = UIDatePicker()
@@ -141,13 +144,20 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         self.present(actionSheet, animated: true, completion: nil)
     }
     
-    // MARK: - Set Up View
+    // MARK: - Set Up View and TableView
     private func setUpView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
+
         self.showDatePicker()
+        
+        // Set up table View
+        locationTableViewController.tableView.register(EventLocationCell.self, forCellReuseIdentifier: "eventLocationCell")
+        locationTableViewController.tableView.delegate = self
+        locationTableViewController.tableView.dataSource = self
         self.showAddressPicker()
+        
+        
     }
     
     // MARK: - Date Picker Functions
@@ -168,27 +178,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         toolBar.setItems([cancelButton, spaceButton,doneButton], animated: false)
         dateTextField.inputAccessoryView = toolBar
         dateTextField.inputView = eventDatePicker
-        
-        
-    }
-    // MARK: - Address picker function
-    private func showAddressPicker() {
-        
-        // Set up the toolBar
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneEventLocationPicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissKeyboard))
-        
-        // configure info in the toolbar
-        
-        
-        toolBar.setItems([cancelButton, spaceButton,doneButton], animated: false)
-        
-        locationTextField.inputAccessoryView = toolBar
         
         
     }
@@ -257,8 +246,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         }
     }
     
-    
-    
     @objc func keyboardWillShow(notification: NSNotification) {
         
         var keyboardSize: CGRect = .zero
@@ -299,3 +286,49 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         view.endEditing(true)
     }
 }
+
+
+// MARK: - Table View Functions
+extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventLocationCell", for: indexPath)
+        
+        return cell
+    }
+    
+    
+    
+    
+    // MARK: - Address picker function
+    private func showAddressPicker() {
+        
+        // Set up the toolBar
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneEventLocationPicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissKeyboard))
+        
+        // configure info in the toolbar
+        
+        toolBar.setItems([cancelButton, spaceButton,doneButton], animated: false)
+        
+        locationTextField.inputAccessoryView = toolBar
+        locationTextField.inputView = locationTableViewController.tableView
+        
+    }
+    
+}
+
+
+
+

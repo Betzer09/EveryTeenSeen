@@ -12,7 +12,7 @@ protocol PhotoSelectedViewControllerDelegate {
     func photoSelectedWithVC(_ image: UIImage)
 }
 
-class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CreateEventViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var eventTitleTextField: UITextField!
@@ -82,68 +82,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         self.presentCameraAndPhotoLibraryOption()
     }
     
-    
-    // MARK: - Photo Methods
-    
-    // Picking an iamge from libary
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {return}
-        
-        // Assign the iamge in the delegate
-        delegate?.photoSelectedWithVC(image)
-        
-        selectedImageView.image = image
-        dismiss(animated: true, completion: nil)
-        
-    }
-    
-    private func presentCameraAndPhotoLibraryOption() {
-        
-        let actionSheet = UIAlertController(title: "Where do you want your photo from?", message: "", preferredStyle: .actionSheet)
-        
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
-            // Get access to the camara
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = .camera
-                imagePicker.allowsEditing = false
-                self.present(imagePicker, animated: true, completion: nil)
-                
-            }
-        }
-        
-        let libarayAction = UIAlertAction(title: "From library", style: .default) { (_) in
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = .photoLibrary
-                imagePicker.allowsEditing = true
-                imagePicker.modalPresentationStyle = .popover
-                
-                if let popoverPresentation = imagePicker.popoverPresentationController {
-                    popoverPresentation.sourceView = self.view
-                    popoverPresentation.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY / 2, width: 0, height: 0)
-                    popoverPresentation.permittedArrowDirections = .any
-                }
-                
-                self.present(imagePicker, animated: true, completion: nil)
-            }
-        }
-        
-        if let popoverContoller = actionSheet.popoverPresentationController {
-            popoverContoller.sourceView = self.view
-            popoverContoller.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY / 2, width: 0, height: 0)
-            popoverContoller.permittedArrowDirections = []
-        }
-        
-        actionSheet.addAction(cameraAction)
-        actionSheet.addAction(libarayAction)
-        self.present(actionSheet, animated: true, completion: nil)
-    }
-    
     // MARK: - Set Up View and TableView
     private func setUpView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -156,13 +94,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         locationTableViewController.tableView.delegate = self
         locationTableViewController.tableView.dataSource = self
         self.showAddressPicker()
-        
-        
     }
     
     // MARK: - Date Picker Functions
     private func showDatePicker() {
-        
         // Set up the toolBar
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -178,10 +113,50 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
         toolBar.setItems([cancelButton, spaceButton,doneButton], animated: false)
         dateTextField.inputAccessoryView = toolBar
         dateTextField.inputView = eventDatePicker
+    }
+}
+
+
+// MARK: - Table View Functions
+extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventLocationCell", for: indexPath)
         
+        return cell
+    }
+
+    // MARK: - Address picker function
+    private func showAddressPicker() {
+        
+        // Set up the toolBar
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneEventLocationPicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissKeyboard))
+        
+        // configure info in the toolbar
+        
+        toolBar.setItems([cancelButton, spaceButton,doneButton], animated: false)
+        
+        locationTextField.inputAccessoryView = toolBar
+        locationTextField.inputView = locationTableViewController.tableView
         
     }
     
+}
+
+// MARK: - UITextField Functions and Keyboard Funtions
+extension CreateEventViewController:  UITextFieldDelegate, UITextViewDelegate {
     // MARK: - Objective - C Functions
     @objc func doneDatePicker() {
         dateTextField.text = returnFormattedDateFor(date: eventDatePicker.date)
@@ -211,7 +186,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     // MARK: - Keyboard Functions
     
     /// This returns the yShift for a TextField
-   private func yShiftWhenKeyboardAppearsFor(textField: UITextField, keyboardHeight: CGFloat, nextY: CGFloat) -> CGFloat {
+    private func yShiftWhenKeyboardAppearsFor(textField: UITextField, keyboardHeight: CGFloat, nextY: CGFloat) -> CGFloat {
         
         let textFieldOrigin = self.view.convert(textField.frame, from: textField.superview!).origin.y
         let textFieldBottomY = textFieldOrigin + textField.frame.size.height
@@ -287,48 +262,65 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
 }
 
-
-// MARK: - Table View Functions
-extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - Photo Methods
+extension CreateEventViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventLocationCell", for: indexPath)
+    // Picking an iamge from libary
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        return cell
-    }
-    
-    
-    
-    
-    // MARK: - Address picker function
-    private func showAddressPicker() {
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {return}
         
-        // Set up the toolBar
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
+        // Assign the iamge in the delegate
+        delegate?.photoSelectedWithVC(image)
         
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneEventLocationPicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissKeyboard))
-        
-        // configure info in the toolbar
-        
-        toolBar.setItems([cancelButton, spaceButton,doneButton], animated: false)
-        
-        locationTextField.inputAccessoryView = toolBar
-        locationTextField.inputView = locationTableViewController.tableView
+        selectedImageView.image = image
+        dismiss(animated: true, completion: nil)
         
     }
     
+    private func presentCameraAndPhotoLibraryOption() {
+        
+        let actionSheet = UIAlertController(title: "Where do you want your photo from?", message: "", preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
+            // Get access to the camara
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .camera
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+                
+            }
+        }
+        
+        let libarayAction = UIAlertAction(title: "From library", style: .default) { (_) in
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .photoLibrary
+                imagePicker.allowsEditing = true
+                imagePicker.modalPresentationStyle = .popover
+                
+                if let popoverPresentation = imagePicker.popoverPresentationController {
+                    popoverPresentation.sourceView = self.view
+                    popoverPresentation.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY / 2, width: 0, height: 0)
+                    popoverPresentation.permittedArrowDirections = .any
+                }
+                
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }
+        
+        if let popoverContoller = actionSheet.popoverPresentationController {
+            popoverContoller.sourceView = self.view
+            popoverContoller.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY / 2, width: 0, height: 0)
+            popoverContoller.permittedArrowDirections = []
+        }
+        
+        actionSheet.addAction(cameraAction)
+        actionSheet.addAction(libarayAction)
+        self.present(actionSheet, animated: true, completion: nil)
+    }
 }
-
-
-
-

@@ -143,13 +143,3 @@ public func createGradientLayerWith(startpointX: Double, startpointY: Double, en
     
     viewController.view.layer.insertSublayer(gradientLayer, at: 0)
 }
-
-// MARK: - Label Functions
-public func configureLabelForOneLineWith(label: UILabel) {
-    label.numberOfLines = 1
-    label.minimumScaleFactor = 8
-    label.adjustsFontSizeToFitWidth = true
-}
-
-
-

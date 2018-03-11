@@ -429,11 +429,8 @@ events  </string>
                         <barButtonItem key="backBarButtonItem" title="Home" id="gzV-OE-cFl"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="aboutUsLabel" destination="wAB-4T-c5Q" id="v1N-tD-CYa"/>
                         <outlet property="backgroundImage" destination="JLR-1Y-z1d" id="n7j-EK-0sa"/>
-                        <outlet property="contactUsLabel" destination="nbK-Jh-PSa" id="g0w-o7-2Cj"/>
                         <outlet property="emailTextField" destination="dEJ-Aq-I9o" id="LVt-gn-MBn"/>
-                        <outlet property="everyTeenSeenLabel" destination="qlz-tP-LAe" id="Asb-26-Wup"/>
                         <outlet property="passwordTextField" destination="F6j-rO-K4K" id="lco-XW-lZF"/>
                     </connections>
                 </viewController>

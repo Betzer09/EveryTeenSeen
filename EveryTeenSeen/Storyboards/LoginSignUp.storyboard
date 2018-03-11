@@ -11,53 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Welcome View Controller-->
-        <scene sceneID="XoE-D8-KYi">
-            <objects>
-                <viewController storyboardIdentifier="getStartedVC" id="TzW-Kg-QDi" customClass="WelcomeViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hUs-4l-ELY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EveryTeenSeen" translatesAutoresizingMaskIntoConstraints="NO" id="9nb-la-dq3">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tad-0v-raK">
-                                <rect key="frame" x="40" y="508" width="240" height="30"/>
-                                <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Get Started">
-                                    <color key="titleColor" red="0.40779560799999998" green="0.40787053109999999" blue="0.40779092909999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="getStartedButtonPressed:" destination="TzW-Kg-QDi" eventType="touchUpInside" id="kho-BN-fuQ"/>
-                                    <segue destination="Wyr-Vi-NKA" kind="show" identifier="toSetUpVC" id="CPi-at-imw">
-                                        <nil key="action"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.16078431369999999" green="0.15686274510000001" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="9nb-la-dq3" firstAttribute="trailing" secondItem="kEl-Ev-o6H" secondAttribute="trailing" id="7hB-ij-PTB"/>
-                            <constraint firstItem="Tad-0v-raK" firstAttribute="height" secondItem="9nb-la-dq3" secondAttribute="height" multiplier="0.06" id="ECc-K9-Mdh"/>
-                            <constraint firstItem="9nb-la-dq3" firstAttribute="top" secondItem="kEl-Ev-o6H" secondAttribute="top" id="FI6-vR-GVg"/>
-                            <constraint firstItem="9nb-la-dq3" firstAttribute="leading" secondItem="kEl-Ev-o6H" secondAttribute="leading" id="TaF-yE-QQG"/>
-                            <constraint firstItem="Tad-0v-raK" firstAttribute="centerX" secondItem="hUs-4l-ELY" secondAttribute="centerX" id="YhA-qB-pNB"/>
-                            <constraint firstItem="kEl-Ev-o6H" firstAttribute="bottom" secondItem="9nb-la-dq3" secondAttribute="bottom" id="mxu-dc-82T"/>
-                            <constraint firstItem="kEl-Ev-o6H" firstAttribute="bottom" secondItem="Tad-0v-raK" secondAttribute="bottom" constant="30" id="qG2-WI-JIZ"/>
-                            <constraint firstItem="9nb-la-dq3" firstAttribute="centerX" secondItem="hUs-4l-ELY" secondAttribute="centerX" id="wJs-M8-buc"/>
-                            <constraint firstItem="Tad-0v-raK" firstAttribute="width" secondItem="9nb-la-dq3" secondAttribute="width" multiplier="3/4" id="xrI-kj-jfO"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="kEl-Ev-o6H"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="9aO-0x-PQ9">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="tWW-c7-gUt"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZGk-no-Y9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1180" y="-791"/>
-        </scene>
         <!--Join View Controller-->
         <scene sceneID="09y-pB-h8N">
             <objects>
@@ -67,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ETSLeafLogo" translatesAutoresizingMaskIntoConstraints="NO" id="JiR-YW-eJ2">
-                                <rect key="frame" x="80" y="84" width="160" height="113.5"/>
+                                <rect key="frame" x="80" y="40" width="160" height="113.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tX4-N2-CaP">
                                 <rect key="frame" x="75" y="346" width="170" height="41"/>
@@ -143,7 +96,7 @@ events  </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DBd-qr-WDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-116" y="-792"/>
+            <point key="canvasLocation" x="-1298" y="-791"/>
         </scene>
         <!--Create Account-->
         <scene sceneID="y7f-bx-oN4">
@@ -306,7 +259,7 @@ events  </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="leU-wa-Tdo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879" y="-794"/>
+            <point key="canvasLocation" x="-568" y="-791"/>
         </scene>
         <!--Login / Sign Up-->
         <scene sceneID="jjC-C6-sTq">
@@ -350,11 +303,6 @@ events  </string>
                             <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRu-YM-CNG">
                                 <rect key="frame" x="40" y="260" width="240" height="30"/>
                                 <state key="normal" title="Sign Up"/>
-                                <connections>
-                                    <segue destination="TzW-Kg-QDi" kind="show" id="xqx-qt-2Md">
-                                        <nil key="action"/>
-                                    </segue>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.15686274510000001" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
@@ -413,7 +361,6 @@ events  </string>
     </scenes>
     <resources>
         <image name="ETSLeafLogo" width="282" height="197"/>
-        <image name="EveryTeenSeen" width="414" height="502"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PNW-ha-jNZ"/>

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CE920242D690033B85D /* WelcomeViewController.swift */; };
 		23250CF3202431130033B85D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CF2202431130033B85D /* City.swift */; };
 		232EC7F02054BD1400DD21D9 /* EventLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232EC7EF2054BD1400DD21D9 /* EventLocationTableViewController.swift */; };
 		232EC7F22054D55E00DD21D9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232EC7F12054D55E00DD21D9 /* Onboarding.storyboard */; };
@@ -48,7 +47,6 @@
 
 /* Begin PBXFileReference section */
 		03564C288DF100113DAE3FBD /* Pods-EveryTeenSeen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.release.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.release.xcconfig"; sourceTree = "<group>"; };
-		23250CE920242D690033B85D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		23250CF2202431130033B85D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		232EC7EF2054BD1400DD21D9 /* EventLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationTableViewController.swift; sourceTree = "<group>"; };
 		232EC7F12054D55E00DD21D9 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				232EC7F62054DBBE00DD21D9 /* Onboarding View Controllers */,
-				23250CE920242D690033B85D /* WelcomeViewController.swift */,
 				235F66C9202A411400383355 /* JoinViewController.swift */,
 				235F66CB202A413100383355 /* CreateProfileViewController.swift */,
 				238B5553202F8A83002E128C /* SignInViewController.swift */,
@@ -421,7 +418,6 @@
 				236155F42023F1850004DC9F /* AppDelegate.swift in Sources */,
 				2347DAB0204DDF7600124188 /* EveryTeenSeen.xcdatamodeld in Sources */,
 				238B555B202FA04A002E128C /* EventViewController.swift in Sources */,
-				23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */,
 				238B5548202E0E21002E128C /* HelperMethods.swift in Sources */,
 				232EC7F02054BD1400DD21D9 /* EventLocationTableViewController.swift in Sources */,
 				238B554A202E1210002E128C /* User.swift in Sources */,

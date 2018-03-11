@@ -46,7 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         } else {
             // This means there is no User at all
-            viewController = signInView.instantiateViewController(withIdentifier: "loginVC")
+//            viewController = signInView.instantiateViewController(withIdentifier: "loginVC")
+            viewController = onboardingView.instantiateInitialViewController()!
         }
         self.window?.makeKeyAndVisible()
         self.window?.rootViewController = viewController

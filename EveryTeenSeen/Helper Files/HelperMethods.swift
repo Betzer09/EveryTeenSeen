@@ -127,3 +127,5 @@ func presentAdminTabBarVC(viewController: UIViewController) {
  public func divideNumberForColorWith(number: Double) -> CGFloat {
     return CGFloat(number / 255.0)
 }
+
+

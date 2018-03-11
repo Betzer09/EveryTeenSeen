@@ -70,7 +70,6 @@ class CreateEventViewController: UIViewController {
         
         EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDate, userWhoPosted: user.fullname, address: address, eventInfo: eventInfo, image: image) { (success) in
             guard success else {presentSimpleAlert(viewController: self, title: "Error", message: "There was an error uploading the image, check everything and try again.");return}
-            EventController.shared.sendNotificaiton()
             self.navigationController?.popViewController(animated: true)
         }
         

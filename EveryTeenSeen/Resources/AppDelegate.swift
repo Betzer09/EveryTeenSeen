@@ -18,17 +18,17 @@ import FirebaseMessaging
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
-    
-    // MARK: - Keys
-    static let serveryKey = "AAAAano_Vew:APA91bGyn5ql5G-87GSClAy3T1c9MxGNhdxx-rAe99dCrcCtp0UY7GG8pinKSp5FqW6hDB82T8fViu-7JwpzFGBRcTvYxx1a8nWpaBtZNYEHe0VS76YiB_5TjItbV_dRDflLX6lLEru4"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         let signInView: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let adminView: UIStoryboard = UIStoryboard(name: "Admin", bundle: nil)
+        let onboardingView = UIStoryboard(name: "Onboarding", bundle: nil)
         
         var viewController: UIViewController
         
@@ -38,7 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 viewController = mainView.instantiateInitialViewController()!
             } else if user.userType == UserType.leadCause.rawValue {
                 // This is an admin user
-                viewController = adminView.instantiateInitialViewController()!
+//                viewController = adminView.instantiateInitialViewController()!
+                viewController = onboardingView.instantiateInitialViewController()!
             } else {
                 print("Error: Something is wrong with the usertype of: \(user.userType)")
                 viewController = mainView.instantiateInitialViewController()!
@@ -93,9 +94,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         // This means we already have a token
         UserController.shared.updateDeviceTokenToFirebase(newToken: deviceTokenString)
-        
-        // Subscirbe the user to the events topic
-        EventController.shared.subscribeToNewEventsNotification()
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {

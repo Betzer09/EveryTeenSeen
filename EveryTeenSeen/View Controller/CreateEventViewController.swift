@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import MapKit
 
 protocol PhotoSelectedViewControllerDelegate {
     func photoSelectedWithVC(_ image: UIImage)
 }
 
 class CreateEventViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var eventTitleTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
@@ -25,9 +26,7 @@ class CreateEventViewController: UIViewController {
     
     // MARK: - Properties
     var delegate: PhotoSelectedViewControllerDelegate?
-    
-    // TableView Properties
-    let locationTableViewController = UITableViewController(style: .plain)
+
     
     // TextField Properties
     let eventDatePicker = UIDatePicker()
@@ -52,7 +51,7 @@ class CreateEventViewController: UIViewController {
                 presentSimpleAlert(viewController: self, title: "Error Uploaded Event", message: "Make sure all field are filled.")
                 return
         }
-    
+        
         guard let eventDate = returnFormattedDateFor(string: eventDateString) else {
             presentSimpleAlert(viewController: self, title: "Badly Formatted Date", message: "Be sure not to edit the textfield after you press done.")
             dateTextField.text = ""
@@ -87,19 +86,8 @@ class CreateEventViewController: UIViewController {
     private func setUpView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-
+        
         self.showDatePicker()
-        
-        // Set up Search Bar
-        guard let tableView = locationTableViewController.tableView else {return}
-        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width , height: 40))
-        tableView.tableHeaderView = searchBar
-        
-        // Set up table View
-        locationTableViewController.tableView.register(EventLocationCell.self, forCellReuseIdentifier: "eventLocationCell")
-        locationTableViewController.tableView.delegate = self
-        locationTableViewController.tableView.dataSource = self
-        self.showAddressPicker()
     }
     
     /// Sets up the Date ToolBar
@@ -123,50 +111,19 @@ class CreateEventViewController: UIViewController {
 }
 
 
-// MARK: - Search Location Table View Functions
-extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource {
-    // MARK: - Table View DataSoure
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventLocationCell", for: indexPath)
-        cell.textLabel?.text = "foo"
-        
-        return cell
-    }
-    
-
-    // MARK: - Functions
-    private func showAddressPicker() {
-        
-        // Set up the toolBar
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneEventLocationPicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissKeyboard))
-        
-        // configure info in the toolbar
-        
-        toolBar.setItems([cancelButton, spaceButton,doneButton], animated: false)
-        
-        locationTextField.inputAccessoryView = toolBar
-        locationTextField.inputView = locationTableViewController.tableView
-        
-    }
-    
-}
-
 // MARK: - UITextField Functions and Keyboard Funtions
 extension CreateEventViewController:  UITextFieldDelegate, UITextViewDelegate {
     
     // MARK: - TextField Methods
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textFieldBeingEdited = textField
+        if textField != locationTextField {
+            textFieldBeingEdited = textField
+        } else {
+            locationTextField.endEditing(true)
+            let storyboard = UIStoryboard(name: "Admin", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "eventLocationVC") as? EventLocationTableViewController else {return}
+            self.navigationController?.pushViewController(vc, animated: true )
+        }
     }
     
     
@@ -250,7 +207,6 @@ extension CreateEventViewController:  UITextFieldDelegate, UITextViewDelegate {
             
             self.view.frame.origin.y += currentYShiftForKeyboard
         }
-        
         view.endEditing(true)
     }
     

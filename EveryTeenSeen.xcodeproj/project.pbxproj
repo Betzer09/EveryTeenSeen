@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CE920242D690033B85D /* WelcomeViewController.swift */; };
 		23250CF3202431130033B85D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CF2202431130033B85D /* City.swift */; };
-		232EC7EE205497EF00DD21D9 /* EventLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232EC7ED205497EF00DD21D9 /* EventLocationCell.swift */; };
+		232EC7F02054BD1400DD21D9 /* EventLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232EC7EF2054BD1400DD21D9 /* EventLocationTableViewController.swift */; };
 		2336698B2034E3040070F17F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336698A2034E3040070F17F /* Photo.swift */; };
 		2336698E203533180070F17F /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2336698D203533180070F17F /* UserNotifications.framework */; };
 		2347DAB0204DDF7600124188 /* EveryTeenSeen.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2347DAAE204DDF7600124188 /* EveryTeenSeen.xcdatamodeld */; };
@@ -44,7 +44,7 @@
 		03564C288DF100113DAE3FBD /* Pods-EveryTeenSeen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.release.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.release.xcconfig"; sourceTree = "<group>"; };
 		23250CE920242D690033B85D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		23250CF2202431130033B85D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
-		232EC7ED205497EF00DD21D9 /* EventLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationCell.swift; sourceTree = "<group>"; };
+		232EC7EF2054BD1400DD21D9 /* EventLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationTableViewController.swift; sourceTree = "<group>"; };
 		2336698A2034E3040070F17F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		2336698C2035314A0070F17F /* EveryTeenSeen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EveryTeenSeen.entitlements; sourceTree = "<group>"; };
 		2336698D203533180070F17F /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -157,6 +157,7 @@
 				238B5553202F8A83002E128C /* SignInViewController.swift */,
 				238B555A202FA04A002E128C /* EventViewController.swift */,
 				2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */,
+				232EC7EF2054BD1400DD21D9 /* EventLocationTableViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -198,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				236673A520363D3200F2F485 /* EventsTableViewCell.swift */,
-				232EC7ED205497EF00DD21D9 /* EventLocationCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -377,7 +377,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				232EC7EE205497EF00DD21D9 /* EventLocationCell.swift in Sources */,
 				2347DAB4204DE07700124188 /* CoreDataStack.swift in Sources */,
 				238B5554202F8A83002E128C /* SignInViewController.swift in Sources */,
 				238B554C202E1731002E128C /* UserController.swift in Sources */,
@@ -388,6 +387,7 @@
 				238B555B202FA04A002E128C /* EventViewController.swift in Sources */,
 				23250CEA20242D690033B85D /* WelcomeViewController.swift in Sources */,
 				238B5548202E0E21002E128C /* HelperMethods.swift in Sources */,
+				232EC7F02054BD1400DD21D9 /* EventLocationTableViewController.swift in Sources */,
 				238B554A202E1210002E128C /* User.swift in Sources */,
 				2347DAB6204DE1C200124188 /* UserLocationController.swift in Sources */,
 				2347DAB2204DE04900124188 /* UserLocation+Conenience.swift in Sources */,

@@ -166,7 +166,7 @@ events  </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4b-B2-ogD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1463" y="-49"/>
+            <point key="canvasLocation" x="-2784" y="-826"/>
         </scene>
         <!--Create Account-->
         <scene sceneID="y7f-bx-oN4">
@@ -338,7 +338,71 @@ events  </string>
                     <view key="view" contentMode="scaleToFill" id="PJI-lR-FQF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login Background" translatesAutoresizingMaskIntoConstraints="NO" id="JLR-1Y-z1d">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="483"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="72L-fP-eUn" userLabel="ETS Contact Container">
+                                <rect key="frame" x="0.0" y="483" width="320" height="85"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="#EveryTeenSeen" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qlz-tP-LAe">
+                                        <rect key="frame" x="8" y="8" width="304" height="28.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Us" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wAB-4T-c5Q">
+                                        <rect key="frame" x="28.5" y="46.5" width="101.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nbK-Jh-PSa">
+                                        <rect key="frame" x="176" y="46.5" width="101.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LH4-j7-MVB" userLabel="Center Of Contact Container">
+                                        <rect key="frame" x="160" y="-0.5" width="0.0" height="85"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" id="oHJ-4k-9UQ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.38823529411764707" green="0.30980392156862746" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="nbK-Jh-PSa" firstAttribute="height" secondItem="wAB-4T-c5Q" secondAttribute="height" id="0pe-KR-0Xm"/>
+                                    <constraint firstItem="qlz-tP-LAe" firstAttribute="centerX" secondItem="72L-fP-eUn" secondAttribute="centerX" id="2tV-CP-EKU"/>
+                                    <constraint firstItem="wAB-4T-c5Q" firstAttribute="top" secondItem="qlz-tP-LAe" secondAttribute="bottom" constant="10" id="3Fi-Ih-7s4"/>
+                                    <constraint firstItem="nbK-Jh-PSa" firstAttribute="width" secondItem="wAB-4T-c5Q" secondAttribute="width" id="6M1-yf-C9u"/>
+                                    <constraint firstAttribute="trailing" secondItem="qlz-tP-LAe" secondAttribute="trailing" priority="749" constant="8" id="FfK-Xr-8T6"/>
+                                    <constraint firstItem="qlz-tP-LAe" firstAttribute="height" secondItem="72L-fP-eUn" secondAttribute="height" multiplier="1/3" id="NmF-vg-o2g"/>
+                                    <constraint firstItem="LH4-j7-MVB" firstAttribute="centerX" secondItem="72L-fP-eUn" secondAttribute="centerX" id="VTw-SA-8w9"/>
+                                    <constraint firstItem="qlz-tP-LAe" firstAttribute="leading" secondItem="72L-fP-eUn" secondAttribute="leading" constant="8" id="aki-hQ-GpN"/>
+                                    <constraint firstItem="LH4-j7-MVB" firstAttribute="centerY" secondItem="72L-fP-eUn" secondAttribute="centerY" id="czw-R0-iK2"/>
+                                    <constraint firstItem="nbK-Jh-PSa" firstAttribute="leading" secondItem="LH4-j7-MVB" secondAttribute="trailing" constant="16" id="eds-HN-LBB"/>
+                                    <constraint firstItem="nbK-Jh-PSa" firstAttribute="top" secondItem="qlz-tP-LAe" secondAttribute="bottom" constant="10" id="gVW-Qr-W1q"/>
+                                    <constraint firstItem="LH4-j7-MVB" firstAttribute="height" secondItem="72L-fP-eUn" secondAttribute="height" id="l8n-d9-WdG"/>
+                                    <constraint firstItem="LH4-j7-MVB" firstAttribute="leading" secondItem="wAB-4T-c5Q" secondAttribute="trailing" constant="30" id="rmH-TV-UMc"/>
+                                    <constraint firstItem="qlz-tP-LAe" firstAttribute="top" secondItem="72L-fP-eUn" secondAttribute="top" constant="8" id="uSl-If-QEI"/>
+                                    <constraint firstItem="wAB-4T-c5Q" firstAttribute="height" secondItem="qlz-tP-LAe" secondAttribute="height" multiplier="0.75" id="wRR-SP-rT6"/>
+                                    <constraint firstItem="wAB-4T-c5Q" firstAttribute="width" secondItem="qlz-tP-LAe" secondAttribute="width" multiplier="1/3" id="zQm-E8-cOQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="72L-fP-eUn" firstAttribute="top" secondItem="JLR-1Y-z1d" secondAttribute="bottom" id="9kI-0J-pSs"/>
+                            <constraint firstItem="JLR-1Y-z1d" firstAttribute="width" secondItem="PJI-lR-FQF" secondAttribute="width" id="DsI-Wp-H4g"/>
+                            <constraint firstItem="JLR-1Y-z1d" firstAttribute="top" secondItem="PJI-lR-FQF" secondAttribute="top" id="G5g-5d-11T"/>
+                            <constraint firstAttribute="bottom" secondItem="72L-fP-eUn" secondAttribute="bottom" id="L4a-hd-G8X"/>
+                            <constraint firstItem="72L-fP-eUn" firstAttribute="leading" secondItem="S5l-qU-WwH" secondAttribute="leading" id="WFY-Qj-ItJ"/>
+                            <constraint firstItem="JLR-1Y-z1d" firstAttribute="centerX" secondItem="PJI-lR-FQF" secondAttribute="centerX" id="X3L-vc-e7Y"/>
+                            <constraint firstItem="JLR-1Y-z1d" firstAttribute="height" secondItem="PJI-lR-FQF" secondAttribute="height" multiplier="0.85" id="cLU-mS-c8o"/>
+                            <constraint firstItem="S5l-qU-WwH" firstAttribute="trailing" secondItem="72L-fP-eUn" secondAttribute="trailing" id="zq1-1B-mKi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="S5l-qU-WwH"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="FirstColor">
@@ -365,7 +429,11 @@ events  </string>
                         <barButtonItem key="backBarButtonItem" title="Home" id="gzV-OE-cFl"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="aboutUsLabel" destination="wAB-4T-c5Q" id="v1N-tD-CYa"/>
+                        <outlet property="backgroundImage" destination="JLR-1Y-z1d" id="n7j-EK-0sa"/>
+                        <outlet property="contactUsLabel" destination="nbK-Jh-PSa" id="g0w-o7-2Cj"/>
                         <outlet property="emailTextField" destination="dEJ-Aq-I9o" id="LVt-gn-MBn"/>
+                        <outlet property="everyTeenSeenLabel" destination="qlz-tP-LAe" id="Asb-26-Wup"/>
                         <outlet property="passwordTextField" destination="F6j-rO-K4K" id="lco-XW-lZF"/>
                     </connections>
                 </viewController>
@@ -376,6 +444,7 @@ events  </string>
     </scenes>
     <resources>
         <image name="ETSLeafLogo" width="282" height="197"/>
+        <image name="Login Background" width="431" height="585"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PNW-ha-jNZ"/>

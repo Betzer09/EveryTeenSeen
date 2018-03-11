@@ -14,6 +14,10 @@ class SignInViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var everyTeenSeenLabel: UILabel!
+    @IBOutlet weak var aboutUsLabel: UILabel!
+    @IBOutlet weak var contactUsLabel: UILabel!
     
     
     
@@ -63,6 +67,12 @@ class SignInViewController: UIViewController {
     // MARK: - Functions
     private func setupView() {
         createGradientLayerWith(startpointX: 0.5, startpointY: 0.3, endpointX: 0.5, endPointY: 2, firstRed: 226, firstGreen: 206, firstBlue: 244, firstAlpha: 1, secondRed: 131, secondGreen: 0, secondBlue: 252, secondAlpha: 0.25, viewController: self)
+        
+        // Set up the lables
+        configureLabelForOneLineWith(label: everyTeenSeenLabel)
+        configureLabelForOneLineWith(label: aboutUsLabel)
+        configureLabelForOneLineWith(label: contactUsLabel)
+        
     }
     // MARK: - FireBase Methods
     private func checkForCurrentUser() -> Bool {

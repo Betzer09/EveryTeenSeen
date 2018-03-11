@@ -10,26 +10,35 @@ import UIKit
 
 class YoureHeardViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Outlets
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textView: UIImageView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        createGradientLayer()
+        self.view.bringSubview(toFront: imageView)
+        self.view.bringSubview(toFront: textView)
     }
     
+    // MARK: - Properties
+    var gradientLayer: CAGradientLayer!
+    private func createGradientLayer() {
+        gradientLayer = CAGradientLayer()
+        
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: -0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1.25)
 
-    /*
-    // MARK: - Navigation
+        let lightGreen = UIColor(red: divideNumberForColorWith(number: 36), green: divideNumberForColorWith(number: 255), blue: divideNumberForColorWith(number: 158), alpha: 0.8)
+        let purple = UIColor(red: divideNumberForColorWith(number: 129), green: divideNumberForColorWith(number: 27), blue: divideNumberForColorWith(number: 246), alpha: 1)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        gradientLayer.colors = [lightGreen.cgColor, purple.cgColor]
+        
+        self.view.layer.addSublayer(gradientLayer)
     }
-    */
+
 
 }

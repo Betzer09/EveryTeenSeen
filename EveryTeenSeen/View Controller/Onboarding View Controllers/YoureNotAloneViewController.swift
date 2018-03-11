@@ -10,26 +10,38 @@ import UIKit
 
 class YoureNotAloneViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: - Outlets
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textView: UIImageView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.createGradientLayer()
+        self.view.bringSubview(toFront: imageView)
+        self.view.bringSubview(toFront: textView)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
-    */
+    
+    // MARK: - Properties
+    var gradientLayer: CAGradientLayer!
+    private func createGradientLayer() {
+        gradientLayer = CAGradientLayer()
+        
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: -0.25)
+        gradientLayer.endPoint = CGPoint(x: -0.5, y: 2)
+        
+        let yellow = UIColor(red: divideNumberForColorWith(number: 255), green: divideNumberForColorWith(number: 200), blue: divideNumberForColorWith(number: 0), alpha: 0.5)
+        let purple = UIColor(red: divideNumberForColorWith(number: 89), green: divideNumberForColorWith(number: 39), blue: divideNumberForColorWith(number: 255), alpha: 1)
+        
+        gradientLayer.colors = [purple.cgColor, yellow.cgColor]
+        
+        self.view.layer.addSublayer(gradientLayer)
+    }
+
 
 }

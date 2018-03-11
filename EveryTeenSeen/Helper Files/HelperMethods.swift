@@ -89,7 +89,11 @@ func returnFormattedDateFor(string: String) -> Date? {
 extension Formatter {
     static let ISO8601: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        if #available(iOS 11.0, *) {
+            formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        } else {
+            // Fallback on earlier versions
+        }
         return formatter
     }()
 }
@@ -116,4 +120,10 @@ func presentAdminTabBarVC(viewController: UIViewController) {
     let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")
     
     viewController.present(vc, animated: true, completion: nil)
+}
+
+// MARK: - Colors
+/// This divids the given number by 255.0 to return a cgfloat. Used For Colors
+ public func divideNumberForColorWith(number: Double) -> CGFloat {
+    return CGFloat(number / 255.0)
 }

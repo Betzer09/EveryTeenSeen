@@ -26,7 +26,11 @@ class CreateEventViewController: UIViewController {
     
     // MARK: - Properties
     var delegate: PhotoSelectedViewControllerDelegate?
-
+    var address: String? {
+        didSet {
+            locationTextField.text = address
+        }
+    }
     
     // TextField Properties
     let eventDatePicker = UIDatePicker()
@@ -79,6 +83,8 @@ class CreateEventViewController: UIViewController {
         
         self.presentCameraAndPhotoLibraryOption()
     }
+    
+    @IBAction func unwindToCreateEventVC(segue: UIStoryboardSegue) {}
     
     // MARK: - Functions
     

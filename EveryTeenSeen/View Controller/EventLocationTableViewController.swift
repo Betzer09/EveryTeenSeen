@@ -15,6 +15,7 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
     
     // MARK: - Properties
     var matchingItems: [MKMapItem] = []
+    var address: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,22 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
         cell.detailTextLabel?.text = parseAddress(selectedItem: location)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let location = matchingItems[indexPath.row].placemark
+        address = parseAddress(selectedItem: location)
+        
+        self.performSegue(withIdentifier: "unwindToCreateEventVC", sender: nil)
+    }
+    
+    // MARK: - Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "unwindToCreateEventVC" {
+            guard let vc = segue.destination as? CreateEventViewController else {return}
+            vc.address = address
+        }
     }
     
     // MARK: - Functions
@@ -94,4 +111,14 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
         return addressLine
     }
     
+    // MARK: - Segue
+    
+    
 }
+
+
+
+
+
+
+

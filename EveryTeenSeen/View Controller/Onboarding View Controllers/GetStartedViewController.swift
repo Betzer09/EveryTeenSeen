@@ -41,6 +41,19 @@ class GetStartedViewController: UIViewController {
     @IBAction func acceptLocationServicesButtonPressed(_ sender: Any) {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+        
+        // Set a timer that way we know it's saved
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+            guard let zip = UserLocationController.shared.fetchUserLocation()?.zipcode else {return}
+            
+            CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
+                guard CityController.shared.verifyLocationFor(city: city) else {
+                    presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
+                    return
+                }
+                presentLogoutAndSignUpPage(viewController: self)
+            })
+        }
     }
     
     @IBAction func enterzipCodeButtonPressed(_ sender: Any) {
@@ -72,14 +85,11 @@ class GetStartedViewController: UIViewController {
     private func presentLocationServicesAlert() {
         var zipcodeTextField: UITextField!
         
-        guard let zipcode = UserLocationController.shared.fetchUserLocation()?.zipcode else {print("Error: we do not have permission to access thier location"); return}
-        
         let alert = UIAlertController(title: "Enter Your Zipcode", message: "Every Teen Seen is a group that is growing rapidly, but we are only in a few locations.", preferredStyle: .alert)
         
         alert.addTextField { (textField) in
             textField.placeholder = "83274"
             textField.keyboardType = .decimalPad
-            textField.text = zipcode
             zipcodeTextField = textField
         }
         
@@ -90,17 +100,11 @@ class GetStartedViewController: UIViewController {
                 guard CityController.shared.verifyLocationFor(city: City) else {
                     
                     // If the state isn't in utah alert the user
-                    presentSimpleAlert(viewController: self, title: "Error", message: "You're location is not supported yet!")
+                    presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
                     return
                 }
-                
-                // show joinViewController
-                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "joinVC") as? JoinViewController else {return}
-                vc.zipcode = zipcodeString
-                
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
+                // Show the login page
+                presentLogoutAndSignUpPage(viewController: self)
             })
         }
         alert.addAction(verifyAction)
@@ -125,12 +129,23 @@ extension GetStartedViewController: CLLocationManagerDelegate {
             locationManager.requestLocation()
             
             // Check to see if we already have a location
-            guard UserLocationController.shared.fetchUserLocation() == nil else {return}
+            guard UserLocationController.shared.fetchUserLocation() == nil else {
+                return
+            }
             
             // If there isn't a location create and save it
             self.fetchTheUsersLocation(completion: { (location) in
                 guard let location = location, let zip = location.zipcode else {return}
                 UserLocationController.shared.createLocationWith(lat: location.latitude , long: location.longitude, zip: zip)
+                
+                // Make sure they are allowed to create an account
+                CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
+                    guard CityController.shared.verifyLocationFor(city: city) else {
+                        presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
+                        return
+                    }
+                    presentLogoutAndSignUpPage(viewController: self)
+                })
             })
         }
     }
@@ -178,6 +193,15 @@ extension GetStartedViewController: CLLocationManagerDelegate {
             let userLocation = UserLocation(latitude: lat, longitude: long, zip: zip)
             completion(userLocation)
             self.locationManager.stopUpdatingLocation()
+            
+            CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
+                guard CityController.shared.verifyLocationFor(city: city) else {
+                    presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
+                    return
+                }
+                presentLogoutAndSignUpPage(viewController: self)
+            })
+            
         })
     }
     
@@ -201,9 +225,3 @@ extension GetStartedViewController: CLLocationManagerDelegate {
         
     }
 }
-
-
-
-
-
-

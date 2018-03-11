@@ -38,15 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 viewController = mainView.instantiateInitialViewController()!
             } else if user.userType == UserType.leadCause.rawValue {
                 // This is an admin user
-//                viewController = adminView.instantiateInitialViewController()!
-                viewController = onboardingView.instantiateInitialViewController()!
+                viewController = adminView.instantiateInitialViewController()!
             } else {
                 print("Error: Something is wrong with the usertype of: \(user.userType)")
                 viewController = mainView.instantiateInitialViewController()!
             }
         } else {
             // This means there is no User at all
-//            viewController = signInView.instantiateViewController(withIdentifier: "loginVC")
             viewController = onboardingView.instantiateInitialViewController()!
         }
         self.window?.makeKeyAndVisible()

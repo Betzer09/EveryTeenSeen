@@ -128,4 +128,21 @@ func presentAdminTabBarVC(viewController: UIViewController) {
     return CGFloat(number / 255.0)
 }
 
+public func createGradientLayerWith(startpointX: Double, startpointY: Double, endpointX: Double, endPointY: Double, firstRed: Double, firstGreen: Double, firstBlue: Double, firstAlpha: CGFloat, secondRed: Double, secondGreen: Double, secondBlue: Double, secondAlpha: CGFloat, viewController: UIViewController) {
+    let gradientLayer = CAGradientLayer()
+    
+    gradientLayer.frame = viewController.view.bounds
+    gradientLayer.startPoint = CGPoint(x: startpointX, y: startpointY)
+    gradientLayer.endPoint = CGPoint(x: endpointX, y: endPointY)
+    
+    let orange = UIColor(red: divideNumberForColorWith(number: firstRed), green: divideNumberForColorWith(number: firstGreen), blue: divideNumberForColorWith(number: firstBlue), alpha: firstAlpha)
+    
+    let purple = UIColor(red: divideNumberForColorWith(number: secondRed), green: divideNumberForColorWith(number: secondGreen), blue: divideNumberForColorWith(number: secondBlue), alpha: secondAlpha)
+    
+    gradientLayer.colors = [orange.cgColor, purple.cgColor]
+    
+    viewController.view.layer.insertSublayer(gradientLayer, at: 0)
+}
+
+
 

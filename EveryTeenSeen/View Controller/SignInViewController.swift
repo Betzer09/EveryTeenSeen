@@ -16,14 +16,14 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     
+    
     // MARK: - Properties
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    // MARK: - View LifeCycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setupView()
     }
-    
     
     // MARK: - Actions
     @IBAction func signInButtonPressed(_ sender: Any) {
@@ -60,6 +60,10 @@ class SignInViewController: UIViewController {
         }
     }
     
+    // MARK: - Functions
+    private func setupView() {
+        createGradientLayerWith(startpointX: 0.5, startpointY: 0.3, endpointX: 0.5, endPointY: 2, firstRed: 226, firstGreen: 206, firstBlue: 244, firstAlpha: 1, secondRed: 131, secondGreen: 0, secondBlue: 252, secondAlpha: 0.25, viewController: self)
+    }
     // MARK: - FireBase Methods
     private func checkForCurrentUser() -> Bool {
         if Auth.auth().currentUser != nil {

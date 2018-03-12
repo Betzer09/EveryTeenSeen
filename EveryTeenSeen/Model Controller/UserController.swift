@@ -133,32 +133,4 @@ class UserController {
         
         return loadedUser
     }
-    
-    // This will save the token to firebase and user defaults
-    func saveDeviceIdentiferToDefaultsWith(token: String) {
-        
-        let deviceUUID = UUID()
-        let db = Firestore.firestore()
-        
-        let defaults = UserDefaults.standard
-        defaults.set(token, forKey: UserController.phoneTokenKey)
-        defaults.set("\(deviceUUID)", forKey: deviceIDKey)
-        
-        let dict = ["\(deviceUUID)": token]
-        db.collection(deviceTokensKey).document("\(deviceUUID)").setData(dict)
-        
-    }
-    
-    func updateDeviceTokenToFirebase(newToken: String) {
-        
-        let defaults = UserDefaults.standard
-        guard let oldToken = defaults.object(forKey: UserController.phoneTokenKey) as? String, let deviceID = defaults.object(forKey: deviceIDKey) as? String else {NSLog("Error casting!"); return}
-        
-        if newToken != oldToken {
-            let db = Firestore.firestore()
-            let dict = ["\(deviceID)": newToken]
-            db.collection(deviceTokensKey).document("\(deviceID)").setData(dict)
-        }
-        
-    }
 }

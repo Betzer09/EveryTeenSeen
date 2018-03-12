@@ -21,8 +21,6 @@
 		2347DAB2204DE04900124188 /* UserLocation+Conenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347DAB1204DE04900124188 /* UserLocation+Conenience.swift */; };
 		2347DAB4204DE07700124188 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347DAB3204DE07700124188 /* CoreDataStack.swift */; };
 		2347DAB6204DE1C200124188 /* UserLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347DAB5204DE1C200124188 /* UserLocationController.swift */; };
-		235F66CA202A411400383355 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66C9202A411400383355 /* JoinViewController.swift */; };
-		235F66CC202A413100383355 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66CB202A413100383355 /* CreateProfileViewController.swift */; };
 		235F66CE202A47E000383355 /* CityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66CD202A47E000383355 /* CityController.swift */; };
 		236155F42023F1850004DC9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236155F32023F1850004DC9F /* AppDelegate.swift */; };
 		236155F92023F1850004DC9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236155F72023F1850004DC9F /* Main.storyboard */; };
@@ -62,8 +60,6 @@
 		2347DAB1204DE04900124188 /* UserLocation+Conenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserLocation+Conenience.swift"; sourceTree = "<group>"; };
 		2347DAB3204DE07700124188 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		2347DAB5204DE1C200124188 /* UserLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationController.swift; sourceTree = "<group>"; };
-		235F66C9202A411400383355 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
-		235F66CB202A413100383355 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		235F66CD202A47E000383355 /* CityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityController.swift; sourceTree = "<group>"; };
 		236155F02023F1850004DC9F /* EveryTeenSeen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryTeenSeen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		236155F32023F1850004DC9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,8 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				232EC7F62054DBBE00DD21D9 /* Onboarding View Controllers */,
-				235F66C9202A411400383355 /* JoinViewController.swift */,
-				235F66CB202A413100383355 /* CreateProfileViewController.swift */,
 				238B5553202F8A83002E128C /* SignInViewController.swift */,
 				238B555A202FA04A002E128C /* EventViewController.swift */,
 				2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */,
@@ -423,12 +417,10 @@
 				238B554A202E1210002E128C /* User.swift in Sources */,
 				2347DAB6204DE1C200124188 /* UserLocationController.swift in Sources */,
 				2347DAB2204DE04900124188 /* UserLocation+Conenience.swift in Sources */,
-				235F66CA202A411400383355 /* JoinViewController.swift in Sources */,
 				232EC7FA2054DBFA00DD21D9 /* YoureHeardViewController.swift in Sources */,
 				232EC7FC2054DC0700DD21D9 /* YoureNotAloneViewController.swift in Sources */,
 				2336698B2034E3040070F17F /* Photo.swift in Sources */,
 				232EC7FE2054E98900DD21D9 /* GetStartedViewController.swift in Sources */,
-				235F66CC202A413100383355 /* CreateProfileViewController.swift in Sources */,
 				2393D3AC2033E6800073F6A5 /* CreateEventViewController.swift in Sources */,
 				23250CF3202431130033B85D /* City.swift in Sources */,
 				232EC7F52054D67000DD21D9 /* OnboardingViewController.swift in Sources */,

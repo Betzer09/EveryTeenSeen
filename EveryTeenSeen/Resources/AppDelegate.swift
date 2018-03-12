@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import UserNotifications
 import Firebase
 import FirebaseFirestore
 import FirebaseInstanceID
@@ -15,7 +14,7 @@ import FirebaseMessaging
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
 
@@ -51,28 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window?.makeKeyAndVisible()
         self.window?.rootViewController = viewController
         
-        // iOS 10 support
-        if #available(iOS 10, *) {
-            UNUserNotificationCenter.current().delegate = self
-            UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
-            application.registerForRemoteNotifications()
-        }
-            // iOS 9 support
-        else if #available(iOS 9, *) {
-            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
-            UIApplication.shared.registerForRemoteNotifications()
-        }
-            // iOS 8 support
-        else if #available(iOS 8, *) {
-            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
-            UIApplication.shared.registerForRemoteNotifications()
-        }
-            // iOS 7 support
-        else {
-            application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
-        }
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notificaiton:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
+        
         return true
     }
 
@@ -84,16 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         // Print it to console
         print("APNs device token: \(deviceTokenString)")
-        
-        // Persist it in your backend in case it's new
-        guard let token = UserDefaults.standard.object(forKey: UserController.phoneTokenKey) as? String else {
-            // This means we don't have a token
-            UserController.shared.saveDeviceIdentiferToDefaultsWith(token: deviceTokenString)
-            return
-        }
-        
-        // This means we already have a token
-        UserController.shared.updateDeviceTokenToFirebase(newToken: deviceTokenString)
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -128,14 +97,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func FBHandler() {
         Messaging.messaging().shouldEstablishDirectChannel = true
-    }
-    
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        let notification = response.notification.request.content.body
-        
-        print(notification)
-        completionHandler()
     }
     
 }

@@ -8,21 +8,27 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
 class SignInViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var fullnameTextField: UITextField!
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var confirmEmailTextField: UITextField!
+    
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    
     @IBOutlet weak var backgroundImage: UIImageView!
+    
     @IBOutlet weak var signUpToggleButton: UIButton!
     @IBOutlet weak var loginToggleButton: UIButton!
     @IBOutlet weak var signUserUpAndCreateAccountButton: UIButton!
     @IBOutlet weak var skipToEventsButton: UIButton!
     @IBOutlet weak var logUserInButton: UIButton!
+    
     @IBOutlet weak var loginStackView: UIStackView!
     
     // MARK: - Properties
@@ -69,8 +75,10 @@ class SignInViewController: UIViewController {
                 
                 // Check for the kind of user
                 if user.userType == UserType.leadCause.rawValue {
+                    self.requestNotificationPermission()
                     presentAdminTabBarVC(viewController: self)
                 } else {
+                    self.requestNotificationPermission()
                     presentEventsTabBarVC(viewController: self)
                 }
                 
@@ -87,9 +95,11 @@ class SignInViewController: UIViewController {
                 guard let userType = UserController.shared.loadUserFromDefaults()?.userType else {NSLog("Error there is no usertype!"); return}
                 
                 if userType == UserType.leadCause.rawValue {
+                    self.requestNotificationPermission()
                     presentAdminTabBarVC(viewController: self)
                     print("User Type: Admin")
                 } else {
+                    self.requestNotificationPermission()
                     presentEventsTabBarVC(viewController: self)
                     print("User Type: Normal")
                 }
@@ -123,7 +133,7 @@ class SignInViewController: UIViewController {
         logUserInButton.layer.cornerRadius = 15
         signUserUpAndCreateAccountButton.layer.cornerRadius = 15
         
-        
+        textFieldBeingEdited = confirmPasswordTextField
         
     }
     
@@ -194,12 +204,11 @@ extension SignInViewController {
 // MARK: - User Creatation and Sign In
 extension SignInViewController {
     
-    
     // MARK: - Create Firebase Auth User
     private func createFirebaseAuthUser(completion: @escaping (_ success: Bool) -> Void) {
         
-        guard let email = emailTextField.text,
-            let confirmedEmail = confirmEmailTextField.text, let password = passwordTextField.text,
+        guard let email = emailTextField.text?.lowercased(),
+            let confirmedEmail = confirmEmailTextField.text?.lowercased(), let password = passwordTextField.text,
             let confirmedPassword = confirmPasswordTextField.text,
             !password.isEmpty, !confirmedPassword.isEmpty, !email.isEmpty, !confirmedEmail.isEmpty else {
                 
@@ -321,7 +330,7 @@ extension SignInViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textFieldBeingEdited = textField
+//        textFieldBeingEdited = textField
     }
     
     /// This returns the yShift for a TextField
@@ -376,6 +385,39 @@ extension SignInViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
     
+}
+
+extension SignInViewController: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let notification = response.notification.request.content.body
+        
+        print(notification)
+        completionHandler()
+    }
+    
+    // iOS 10 support
+    func requestNotificationPermission() {
+        if #available(iOS 10, *) {
+            UNUserNotificationCenter.current().delegate = self
+            UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+            // iOS 9 support
+        else if #available(iOS 9, *) {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+            // iOS 8 support
+        else if #available(iOS 8, *) {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+            // iOS 7 support
+        else {
+            UIApplication.shared.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
+        }
+    }
 }
 
 

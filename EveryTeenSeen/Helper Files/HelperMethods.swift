@@ -125,6 +125,14 @@ func presentAdminTabBarVC(viewController: UIViewController) {
 }
 
 // MARK: - Colors
+
+extension UIColor {
+    
+    static var signInAndLoginYellowColor: UIColor {
+        return UIColor(red: 255 / 255.0, green: 194 / 255.0, blue: 0, alpha: 1)
+    }
+}
+
 /// This divids the given number by 255.0 to return a cgfloat. Used For Colors
  public func divideNumberForColorWith(number: Double) -> CGFloat {
     return CGFloat(number / 255.0)

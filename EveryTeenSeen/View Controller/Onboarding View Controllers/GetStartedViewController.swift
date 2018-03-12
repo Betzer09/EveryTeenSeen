@@ -13,12 +13,12 @@ class GetStartedViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var viewBehindTheButton: UIView!
     @IBOutlet weak var backgroundLayer: UIView!
-    @IBOutlet weak var locationServicesView: UIView!
+    @IBOutlet weak var locationServicesGroupingView: UIView!
     @IBOutlet weak var getStartedButton: UIButton!
     @IBOutlet weak var acceptLocationButton: UIButton!
+    @IBOutlet weak var enterZipcodeButton: UIButton!
     
     
     // MARK: - Properties
@@ -27,11 +27,6 @@ class GetStartedViewController: UIViewController {
     
     // MARK: - View LifeCycle
     override func viewWillAppear(_ animated: Bool) {
-        getStartedButton.layer.cornerRadius = 25
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         self.createGradientLayer()
         self.setupView()
     }
@@ -41,9 +36,7 @@ class GetStartedViewController: UIViewController {
     @IBAction func acceptLocationServicesButtonPressed(_ sender: Any) {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        
-        // Set a timer that way we know it's saved
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+
             guard let zip = UserLocationController.shared.fetchUserLocation()?.zipcode else {return}
             
             CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
@@ -53,7 +46,6 @@ class GetStartedViewController: UIViewController {
                 }
                 presentLogoutAndSignUpPage(viewController: self)
             })
-        }
     }
     
     @IBAction func enterzipCodeButtonPressed(_ sender: Any) {
@@ -61,7 +53,7 @@ class GetStartedViewController: UIViewController {
     }
     
     @IBAction func getStartedButtonPressed(_ sender: Any) {
-        locationServicesView.isHidden = false
+        locationServicesGroupingView.isHidden = false
     }
     
     
@@ -115,8 +107,13 @@ class GetStartedViewController: UIViewController {
     private func setupView() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        acceptLocationButton.layer.cornerRadius = 20
-        locationServicesView.layer.cornerRadius = 15
+        acceptLocationButton.layer.cornerRadius = 15
+        locationServicesGroupingView.layer.cornerRadius = 15
+        getStartedButton.layer.cornerRadius = 25
+        
+//        configureButtonWith(button: getStartedButton)
+//        configureButtonWith(button: acceptLocationButton)
+//        configureButtonWith(button: enterZipcodeButton)
     }
 }
 

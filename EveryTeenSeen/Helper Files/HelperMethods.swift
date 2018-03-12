@@ -143,3 +143,27 @@ public func createGradientLayerWith(startpointX: Double, startpointY: Double, en
     
     viewController.view.layer.insertSublayer(gradientLayer, at: 0)
 }
+
+// MARK: - Uibutton Proportions
+/// This configures to the button to be proportinal on all screen sizes
+public func configureButtonWith(button: UIButton) {
+    button.titleLabel?.numberOfLines = 1
+    button.titleLabel?.adjustsFontSizeToFitWidth = true
+    button.titleLabel?.minimumScaleFactor = 0.3
+    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 80)
+    button.titleLabel?.lineBreakMode = .byClipping
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

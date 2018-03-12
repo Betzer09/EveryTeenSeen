@@ -15,7 +15,9 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var backgroundImage: UIImageView!
-
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    
     // MARK: - Properties
     
     // MARK: - View LifeCycle
@@ -62,6 +64,8 @@ class SignInViewController: UIViewController {
     // MARK: - Functions
     private func setupView() {
         createGradientLayerWith(startpointX: 0.5, startpointY: 0.3, endpointX: 0.5, endPointY: 2, firstRed: 226, firstGreen: 206, firstBlue: 244, firstAlpha: 1, secondRed: 131, secondGreen: 0, secondBlue: 252, secondAlpha: 0.25, viewController: self)
+        configureButtonWith(button: signUpButton)
+        configureButtonWith(button: loginButton)
     }
     // MARK: - FireBase Methods
     private func checkForCurrentUser() -> Bool {

@@ -202,16 +202,16 @@
                                 <rect key="frame" x="32" y="142" width="256" height="142"/>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAS-j5-2TI">
-                                <rect key="frame" x="32" y="50" width="272" height="483"/>
+                                <rect key="frame" x="24" y="50" width="272" height="483"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Services" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="gpy-wn-O4b">
-                                        <rect key="frame" x="14" y="20" width="245" height="48.5"/>
+                                        <rect key="frame" x="13.5" y="20" width="245" height="48.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Services are required to find events nearby you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="RKd-cI-lNn">
-                                        <rect key="frame" x="14" y="249.5" width="245" height="60.5"/>
+                                        <rect key="frame" x="13.5" y="249.5" width="245" height="60.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -223,11 +223,11 @@
                                             <constraint firstAttribute="height" id="yn8-Z2-69m"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YKU-zf-F3M">
-                                        <rect key="frame" x="14" y="377.5" width="245" height="80.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YKU-zf-F3M">
+                                        <rect key="frame" x="13.5" y="377.5" width="245" height="80.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcu-PH-EV9">
-                                                <rect key="frame" x="0.0" y="0.0" width="245" height="21.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="245" height="35.5"/>
                                                 <color key="backgroundColor" red="0.10196078431372549" green="0.85882352941176465" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Accept">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -237,13 +237,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Koy-2L-RBa">
-                                                <rect key="frame" x="0.0" y="29.5" width="245" height="21.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <rect key="frame" x="0.0" y="43.5" width="245" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVm-4I-8g1">
-                                                <rect key="frame" x="0.0" y="59" width="245" height="21.5"/>
+                                                <rect key="frame" x="0.0" y="68.5" width="245" height="12"/>
                                                 <state key="normal" title="Enter Zipcode Instead">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
@@ -296,6 +296,7 @@
                             <constraint firstItem="yAS-j5-2TI" firstAttribute="centerX" secondItem="HRH-s7-cDw" secondAttribute="centerX" constant="8" id="SpA-Fw-eTm"/>
                             <constraint firstItem="npR-p4-MsY" firstAttribute="leading" secondItem="sxl-BJ-4Nh" secondAttribute="leading" id="Udm-lP-G0j"/>
                             <constraint firstItem="I47-7O-E2v" firstAttribute="centerX" secondItem="HRH-s7-cDw" secondAttribute="centerX" id="Xgz-Sq-X5B"/>
+                            <constraint firstItem="dcu-PH-EV9" firstAttribute="height" secondItem="np1-dj-ZUB" secondAttribute="height" id="ZHs-CE-JSh"/>
                             <constraint firstItem="yAS-j5-2TI" firstAttribute="height" secondItem="HRH-s7-cDw" secondAttribute="height" multiplier="0.85" id="cka-ue-kyU"/>
                             <constraint firstItem="G6g-eu-7QU" firstAttribute="leading" secondItem="sxl-BJ-4Nh" secondAttribute="leading" id="dNH-J2-Oje"/>
                             <constraint firstItem="hIf-wR-lPS" firstAttribute="width" secondItem="HRH-s7-cDw" secondAttribute="width" id="f2V-rz-OmJ"/>

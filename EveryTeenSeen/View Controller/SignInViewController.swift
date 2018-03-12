@@ -17,6 +17,8 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUserUpAndCreateAccountButton: UIButton!
+    @IBOutlet weak var skipToEventsButton: UIButton!
     
     // MARK: - Properties
     
@@ -24,6 +26,11 @@ class SignInViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureAllTextfields()
     }
     
     // MARK: - Actions
@@ -61,11 +68,24 @@ class SignInViewController: UIViewController {
         }
     }
     
+    // MARK: - Sign In Toggle
+    @IBAction func signUpToggleButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func loginToggleButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func skipToEventsButtonPressed(_ sender: Any) {
+    }
+    
+    
     // MARK: - Functions
     private func setupView() {
         createGradientLayerWith(startpointX: 0.5, startpointY: 0.3, endpointX: 0.5, endPointY: 2, firstRed: 226, firstGreen: 206, firstBlue: 244, firstAlpha: 1, secondRed: 131, secondGreen: 0, secondBlue: 252, secondAlpha: 0.25, viewController: self)
         configureButtonWith(button: signUpButton)
         configureButtonWith(button: loginButton)
+        configureButtonWith(button: skipToEventsButton)
+        signUserUpAndCreateAccountButton.layer.cornerRadius = 15
     }
     // MARK: - FireBase Methods
     private func checkForCurrentUser() -> Bool {
@@ -77,3 +97,36 @@ class SignInViewController: UIViewController {
         }
     }
 }
+
+// MARK: - TextField Designs
+extension SignInViewController {
+    // Gets all the textfields in the view
+    private func getTextfield(view: UIView) -> [UITextField] {
+        var results = [UITextField]()
+        for subview in view.subviews as [UIView] {
+            if let textField = subview as? UITextField {
+                results += [textField]
+            } else {
+                results += getTextfield(view: subview)
+            }
+        }
+        return results
+    }
+    
+    private func configureAllTextfields() {
+        let allTextFields = getTextfield(view: self.view)
+        
+        for txtField in allTextFields {
+            txtField.layer.cornerRadius = 10
+            txtField.attributedPlaceholder = NSAttributedString(string: txtField.placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+            txtField.layer.borderColor = UIColor.white.cgColor
+            txtField.layer.borderWidth = 1.0
+        }
+    }
+}
+
+
+
+
+
+

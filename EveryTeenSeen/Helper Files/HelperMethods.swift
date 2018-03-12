@@ -111,7 +111,9 @@ func presentLogoutAndSignUpPage(viewController: UIViewController) {
     let storyboard: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
     let vc = storyboard.instantiateViewController(withIdentifier: "loginVC")
     
-    viewController.present(vc, animated: true, completion: nil)
+    DispatchQueue.main.async {
+        viewController.present(vc, animated: true, completion: nil)        
+    }
     
 }
 
@@ -149,7 +151,7 @@ public func createGradientLayerWith(startpointX: Double, startpointY: Double, en
 public func configureButtonWith(button: UIButton) {
     button.titleLabel?.numberOfLines = 1
     button.titleLabel?.adjustsFontSizeToFitWidth = true
-    button.titleLabel?.minimumScaleFactor = 0.3
+    button.titleLabel?.minimumScaleFactor = 0.1
     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 80)
     button.titleLabel?.lineBreakMode = .byClipping
 }

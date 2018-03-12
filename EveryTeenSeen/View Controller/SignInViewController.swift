@@ -27,6 +27,10 @@ class SignInViewController: UIViewController {
     
     // MARK: - Properties
     
+    // Keyboard Properties
+    var currentYShiftForKeyboard: CGFloat = 0
+    var textFieldBeingEdited: UITextField?
+    
     // MARK: - View LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,6 +40,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureAllTextfields()
+        configureKeyboardNotifications()
     }
     
     // MARK: - Log User In
@@ -298,11 +303,79 @@ extension SignInViewController {
         } else {
             print("password isn't strong enough")
         }
-        
         return strength
     }
+}
 
-
+// MARK: - Keyboard Functions
+extension SignInViewController: UITextFieldDelegate {
+    
+    // Notificaitons
+    func configureKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        // Makes it so the keyboard disappers
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textFieldBeingEdited = textField
+    }
+    
+    /// This returns the yShift for a TextField
+    private func yShiftWhenKeyboardAppearsFor(textField: UITextField, keyboardHeight: CGFloat, nextY: CGFloat) -> CGFloat {
+        
+        let textFieldOrigin = self.view.convert(textField.frame, from: textField.superview!).origin.y
+        let textFieldBottomY = textFieldOrigin + textField.frame.size.height
+        
+        // This is the y point that the textField's bottom can be at before it gets covered by the keyboard
+        let maximumY = self.view.frame.height - keyboardHeight
+        
+        if textFieldBottomY > maximumY {
+            // This makes the view shift the right amount to have the text field being edited 60 points above they keyboard if it would have been covered by the keyboard.
+            return textFieldBottomY - maximumY + 100
+        } else {
+            // It would go off the screen if moved, and it won't be obscured by the keyboard.
+            return 0
+        }
+    }
+    
+    // Objective - C Functions
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        var keyboardSize: CGRect = .zero
+        
+        if let keyboardRect = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? CGRect, keyboardRect.height != 0 {
+            keyboardSize = keyboardRect
+        } else if let keyboardRect = notification.userInfo?["UIKeyboardBoundsUserInfoKey"] as? CGRect {
+            keyboardSize = keyboardRect
+        }
+        
+        if let textField = textFieldBeingEdited {
+            if self.view.frame.origin.y == 0 {
+                
+                let yShift = yShiftWhenKeyboardAppearsFor(textField: textField, keyboardHeight: keyboardSize.height, nextY: keyboardSize.height)
+                self.currentYShiftForKeyboard = yShift
+                self.view.frame.origin.y -= yShift
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        
+        if self.view.frame.origin.y != 0 {
+            
+            self.view.frame.origin.y += currentYShiftForKeyboard
+        }
+        view.endEditing(true)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
 }
 
 

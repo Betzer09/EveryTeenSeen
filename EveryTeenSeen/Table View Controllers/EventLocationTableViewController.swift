@@ -87,7 +87,8 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
         }
     }
     
-    func parseAddress(selectedItem:MKPlacemark) -> String {
+    /// Parses the address so it looks good
+    private func parseAddress(selectedItem:MKPlacemark) -> String {
         // put a space between "4" and "Melrose Place"
         let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : ""
         // put a comma between street and city/state
@@ -110,15 +111,4 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
         )
         return addressLine
     }
-    
-    // MARK: - Segue
-    
-    
 }
-
-
-
-
-
-
-

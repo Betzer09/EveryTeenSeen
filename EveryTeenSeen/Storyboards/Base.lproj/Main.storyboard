@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uok-iz-evz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rfs-7w-Ep4">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,13 +27,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O3t-vv-R1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="317" y="884"/>
+            <point key="canvasLocation" x="-309" y="1089"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar View Controller-->
         <scene sceneID="1cc-bs-1Po">
             <objects>
-                <tabBarController storyboardIdentifier="MainUserTab" automaticallyAdjustsScrollViewInsets="NO" id="uok-iz-evz" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uok-iz-evz" customClass="CustomTabBarViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="tWk-Me-yWL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4pr-sM-cH5">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -52,7 +53,7 @@
         <scene sceneID="jPf-AE-7Iw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aaP-aU-LLT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" id="6v3-sc-otN"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="calendar" selectedImage="calendar" id="6v3-sc-otN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZIn-J5-Wyu">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -273,13 +274,29 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJE-Fr-FXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="375" y="-57.04225352112676"/>
+            <point key="canvasLocation" x="366" y="26"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ds7-EZ-f8x">
+            <objects>
+                <navigationController storyboardIdentifier="MainUserTab" id="rfs-7w-Ep4" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Njm-Iq-Qeb">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uok-iz-evz" kind="relationship" relationship="rootViewController" id="700-Jh-XV4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="txg-Tf-xjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2889" y="292"/>
         </scene>
         <!--Resources-->
         <scene sceneID="koM-uu-e2Y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1yC-kg-32B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Resources" id="vPR-gT-wJx"/>
+                    <tabBarItem key="tabBarItem" title="Resources" image="heart" id="vPR-gT-wJx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mBW-Qy-voJ">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -292,11 +309,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZP-o7-97h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-607" y="799"/>
+            <point key="canvasLocation" x="-1296" y="1089"/>
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" width="20" height="22"/>
         <image name="defaultBackground" width="343" height="280"/>
+        <image name="heart" width="25" height="23"/>
         <image name="plus" width="54" height="54"/>
     </resources>
 </document>

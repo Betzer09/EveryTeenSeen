@@ -28,6 +28,8 @@ class EventsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventsTableViewCell else {return UITableViewCell()}
         
+        cell.layer.cornerRadius = 15
+        
         guard let events = EventController.shared.events else {return UITableViewCell()}
         let event = events[indexPath.row]
         
@@ -38,7 +40,7 @@ class EventsTableViewController: UITableViewController {
     
     // MARK: - Table View Fnctions
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.view.bounds.height * 0.7
+        return self.view.bounds.height * 0.62
     }
     
 

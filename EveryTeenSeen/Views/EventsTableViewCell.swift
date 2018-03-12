@@ -19,6 +19,20 @@ class EventsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var eventPhotoImageView: UIImageView!
     
+    override var frame: CGRect {
+        get {
+            return super.frame
+        }
+        
+        set(newFrame) {
+            let inset: CGFloat = 15
+            var frame = newFrame
+            frame.origin.x += inset
+            frame.size.width -= 2 * inset
+            super.frame = frame
+        }
+    }
+    
     // MARK: - Actions
     @IBAction func goingButton(_ sender: UIButton) {
 //        let indexPath = IndexPath(row: sender.tag, section: 1)

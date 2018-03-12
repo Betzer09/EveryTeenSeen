@@ -19,8 +19,6 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - View LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpView()
-        EventController.shared.fetchAllEvents()
     }
     
     // MARK: - Actions
@@ -62,11 +60,7 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    // MARK: - Table View Functions
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.view.bounds.height * 0.7
-    }
+    // MARK: - Table View Function
     
     
     // MARK: - Navigation
@@ -79,21 +73,6 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     // MARK: - Views
-    private func setUpView() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.eventWasUpdatedNotifcation, object: nil)
-        
-        
-    }
-    
-    private func loadAllEvents(completion: @escaping (_ success: Bool) -> Void) {
-        EventController.shared.fetchAllEvents { (success) in
-            guard success else {return}
-            DispatchQueue.main.async {
-                self.tableview.reloadData()
-            }
-            completion(true)
-        }
-    }
     
     
     // MARK: - Functions
@@ -117,15 +96,8 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(alert, animated: true, completion: nil)
     }
     
-    func setTableViewHeight() {
-        tableview.estimatedRowHeight = self.view.bounds.height * 0.7
-        tableview.rowHeight = UITableViewAutomaticDimension
-    }
+
     
     // MARK: - Objective - C functions
-    @objc func reloadTableView() {
-        DispatchQueue.main.async {
-            self.tableview.reloadData()
-        }
-    }
+
 }

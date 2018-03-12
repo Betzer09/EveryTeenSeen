@@ -11,21 +11,27 @@ import UIKit
 class EventsTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
-    @IBOutlet weak var usernameTextField: UILabel!
-    @IBOutlet weak var eventPhotoImageView: UIImageView!
-    @IBOutlet weak var eventCountLabel: UILabel!
+    @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
-    @IBOutlet weak var eventTitleCell: UILabel!
+    @IBOutlet weak var eventAddressLabel: UILabel!
+    @IBOutlet weak var eventAttendingLabel: UILabel!
+    @IBOutlet weak var goingLabel: UILabel!
+    
+    @IBOutlet weak var eventPhotoImageView: UIImageView!
     
     // MARK: - Actions
-    
-    @IBAction func settingsButtonPressed(_ sender: Any) {
-        print("Configure View")
+    @IBAction func goingButton(_ sender: UIButton) {
+//        let indexPath = IndexPath(row: sender.tag, section: 1)
+//
+//        guard let event = EventController.shared.events?[indexPath.row] else {return}
+//        EventController.shared.isPlanningOnAttending(event: event, wantsToJoin: true) { (errorString) in
+//            guard errorString != nil else {return}
+//            NSLog(errorString!)
+//        }
+        
     }
     
-    @IBAction func goingButtonPressed(_ sender: Any) {
-        // Check the events
-    }
+    
     
     // MARK: - Functions
     
@@ -34,13 +40,12 @@ class EventsTableViewCell: UITableViewCell {
         guard let data = event.photo?.imageData, let image = UIImage(data: data) else {return}
         
         eventPhotoImageView.image = image
-        usernameTextField.text = event.userWhoPosted
-        eventCountLabel.text = "Attending: \(event.attending)"
+        eventAddressLabel.text = event.address
+        eventAttendingLabel.text = "Attending: \(event.attending)"
         eventDateLabel.text = event.dateHeld
-        eventTitleCell.text = event.title
-        
-        
-        
+        eventTitleLabel.text = event.title
     }
+    
+    
 
 }

@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.shared.statusBarStyle = .lightContent
         
-        let signInView: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
+        let singInView: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let adminView: UIStoryboard = UIStoryboard(name: "Admin", bundle: nil)
         let onboardingView = UIStoryboard(name: "Onboarding", bundle: nil)
@@ -44,8 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else {
             // This means there is no User at all
-//            viewController = onboardingView.instantiateInitialViewController()!
-            viewController = signInView.instantiateInitialViewController()!
+            if let _ = UserLocationController.shared.fetchUserLocation()  {
+                // If they have a correct location let them sign in
+                viewController = singInView.instantiateInitialViewController()!
+            } else {
+                viewController = onboardingView.instantiateInitialViewController()!
+            }
+            
         }
         self.window?.makeKeyAndVisible()
         self.window?.rootViewController = viewController
@@ -98,16 +103,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func FBHandler() {
         Messaging.messaging().shouldEstablishDirectChannel = true
     }
-    
 }
-
-
-
-
-
-
-
-
-
-
-

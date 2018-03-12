@@ -109,7 +109,7 @@ class GetStartedViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         acceptLocationButton.layer.cornerRadius = 15
         locationServicesGroupingView.layer.cornerRadius = 15
-        getStartedButton.layer.cornerRadius = 25
+        getStartedButton.layer.cornerRadius = 20
         
 //        configureButtonWith(button: getStartedButton)
 //        configureButtonWith(button: acceptLocationButton)

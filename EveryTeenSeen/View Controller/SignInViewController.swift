@@ -207,19 +207,30 @@ extension SignInViewController {
     // MARK: - Create Firebase Auth User
     private func createFirebaseAuthUser(completion: @escaping (_ success: Bool) -> Void) {
         
+        if emailTextField.text?.last == " " {
+            print("There is a space at the end of the email account")
+            guard let text = emailTextField.text?.dropLast() else {return}
+            emailTextField.text = String(describing: text)
+        }
+        if confirmEmailTextField.text?.last == " " {
+            print("There is a space at the end of the email account")
+            guard let text = confirmEmailTextField.text?.dropLast() else {return}
+            confirmEmailTextField.text = String(describing: text)
+        }
+        
         guard let email = emailTextField.text?.lowercased(),
             let confirmedEmail = confirmEmailTextField.text?.lowercased(), let password = passwordTextField.text,
             let confirmedPassword = confirmPasswordTextField.text,
             !password.isEmpty, !confirmedPassword.isEmpty, !email.isEmpty, !confirmedEmail.isEmpty else {
                 
                 // Inform users to fill in all the fields
-                presentSimpleAlert(viewController: self, title: "Fill In all Fields", message: "")
+                presentSimpleAlert(viewController: self, title: "All of the fields are required!", message: "")
                 completion(false)
                 return
         }
         
         if email.lowercased() != confirmedEmail.lowercased() {
-            presentSimpleAlert(viewController: self, title: "Email's Don't match!", message: "")
+            presentSimpleAlert(viewController: self, title: "Email's Don't match! Check for a space at the end.", message: "")
             completion(false)
             return
         }
@@ -238,7 +249,7 @@ extension SignInViewController {
             
             // Before creating a user check password strength
             guard isPasswordStrongEnough else {
-                presentSimpleAlert(viewController: self, title: "Password Strength Weak!", message: "Password must contain a capital letter and 1 special charctor!")
+                presentSimpleAlert(viewController: self, title: "Password Strength Is Weak!", message: "Password must contain a capital letter and 1 special charctor!")
                 completion(false)
                 return
             }
@@ -327,10 +338,6 @@ extension SignInViewController: UITextFieldDelegate {
         // Makes it so the keyboard disappers
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        textFieldBeingEdited = textField
     }
     
     /// This returns the yShift for a TextField

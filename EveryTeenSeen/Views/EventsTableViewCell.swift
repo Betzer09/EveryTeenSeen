@@ -19,6 +19,12 @@ class EventsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var eventPhotoImageView: UIImageView!
     
+    var event: Event? {
+        didSet {
+            self.updateUI()
+        }
+    }
+    
     override var frame: CGRect {
         get {
             return super.frame
@@ -49,9 +55,8 @@ class EventsTableViewCell: UITableViewCell {
     
     // MARK: - Functions
     
-    func updateCellWith(event: Event) {
-        
-        guard let data = event.photo?.imageData, let image = UIImage(data: data) else {return}
+    func updateUI() {
+        guard let event = event, let data = event.photo?.imageData, let image = UIImage(data: data) else {return}
         
         eventPhotoImageView.image = image
         eventAddressLabel.text = event.address

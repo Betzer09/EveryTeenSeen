@@ -37,7 +37,6 @@
 		238B5550202E1A18002E128C /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B554F202E1A18002E128C /* FirebaseManager.swift */; };
 		238B5554202F8A83002E128C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5553202F8A83002E128C /* SignInViewController.swift */; };
 		238B5556202F9E69002E128C /* LoginSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 238B5555202F9E69002E128C /* LoginSignUp.storyboard */; };
-		238B555B202FA04A002E128C /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B555A202FA04A002E128C /* EventViewController.swift */; };
 		2393D3A42033BFE40073F6A5 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A32033BFE40073F6A5 /* Event.swift */; };
 		2393D3A62033C2380073F6A5 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A52033C2380073F6A5 /* EventController.swift */; };
 		2393D3AA2033D5350073F6A5 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A92033D5350073F6A5 /* PhotoController.swift */; };
@@ -80,7 +79,6 @@
 		238B554F202E1A18002E128C /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		238B5553202F8A83002E128C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		238B5555202F9E69002E128C /* LoginSignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignUp.storyboard; sourceTree = "<group>"; };
-		238B555A202FA04A002E128C /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		2393D3A32033BFE40073F6A5 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		2393D3A52033C2380073F6A5 /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		2393D3A92033D5350073F6A5 /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 			children = (
 				232EC7F62054DBBE00DD21D9 /* Onboarding View Controllers */,
 				238B5553202F8A83002E128C /* SignInViewController.swift */,
-				238B555A202FA04A002E128C /* EventViewController.swift */,
 				2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */,
 				238AD1D020571B7100ADC8DE /* CustomTabBarViewController.swift */,
 			);
@@ -417,7 +414,6 @@
 				238B5550202E1A18002E128C /* FirebaseManager.swift in Sources */,
 				236155F42023F1850004DC9F /* AppDelegate.swift in Sources */,
 				2347DAB0204DDF7600124188 /* EveryTeenSeen.xcdatamodeld in Sources */,
-				238B555B202FA04A002E128C /* EventViewController.swift in Sources */,
 				238B5548202E0E21002E128C /* HelperMethods.swift in Sources */,
 				232EC7F02054BD1400DD21D9 /* EventLocationTableViewController.swift in Sources */,
 				238B554A202E1210002E128C /* User.swift in Sources */,

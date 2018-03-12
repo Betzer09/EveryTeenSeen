@@ -20,23 +20,21 @@ class EventsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return EventController.shared.events?.count ?? 3
-    }
-    
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventsTableViewCell else {return UITableViewCell()}
         
-        cell.layer.cornerRadius = 15
-        
         guard let events = EventController.shared.events else {return UITableViewCell()}
-        let event = events[indexPath.row]
+        cell.event = events[indexPath.row]
         
-        cell.updateCellWith(event: event)
+        cell.layer.cornerRadius = 15
+        cell.selectionStyle = .none
+        
         return cell
     }
-
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return EventController.shared.events?.count ?? 0
+    }
     
     // MARK: - Table View Fnctions
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

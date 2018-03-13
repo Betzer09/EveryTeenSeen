@@ -15,18 +15,104 @@
         <!--Resources-->
         <scene sceneID="wHg-Gq-ISu">
             <objects>
-                <viewController id="Ln1-bx-YZg" sceneMemberID="viewController">
+                <viewController id="Ln1-bx-YZg" customClass="ResourcesViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pft-Oq-xWQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.16078431369999999" green="0.15686274510000001" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Resources Background" translatesAutoresizingMaskIntoConstraints="NO" id="Y3g-bf-lgY">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="2Y3-ns-Ex8">
+                                <rect key="frame" x="10" y="10" width="288" height="52.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">National Suicide Prevention Lifeline
+
+1-800-273-8255</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU are NOT alone. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fvY-gu-fKX">
+                                <rect key="frame" x="16.5" y="96" width="288" height="35"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="kJA-qm-QGh">
+                                <rect key="frame" x="16" y="144" width="288" height="223"/>
+                                <string key="text">As a teen, you face many struggles and turbulent situations. Every Teen Seen is an event platform, but our events are a place where you can feel safe discussing difficult topics and feelings. We hope to reduce teen suicide by making you feel included in the community and providing support and resources for you.
+
+If for any reason you are feeling suicidal or know of someone in distress, please utilize the following prevention and crisis resources. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZGe-SS-lKy">
+                                <rect key="frame" x="16" y="372" width="288" height="52.5"/>
+                                <string key="text">National Suicide Prevention Lifeline
+
+1-800-273-8255</string>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="GfP-fR-WiK">
+                                <rect key="frame" x="16.5" y="443" width="288" height="52.5"/>
+                                <string key="text">Safe UT
+
+Download in the App Store</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.1963317215" green="0.1987611792" blue="0.1417067847" alpha="0.81073943660000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="2" height="1"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSd-xe-MwF">
+                                <rect key="frame" x="16.5" y="469.5" width="192" height="26"/>
+                                <connections>
+                                    <action selector="downloadUTAAppButtonPressed:" destination="Ln1-bx-YZg" eventType="touchUpInside" id="lfJ-HE-w2O"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kJA-qm-QGh" firstAttribute="centerY" secondItem="Pft-Oq-xWQ" secondAttribute="centerY" multiplier="0.9" id="49x-24-mGT"/>
+                            <constraint firstItem="GfP-fR-WiK" firstAttribute="height" secondItem="ZGe-SS-lKy" secondAttribute="height" id="7GR-sh-TBL"/>
+                            <constraint firstItem="ZGe-SS-lKy" firstAttribute="width" secondItem="Y3g-bf-lgY" secondAttribute="width" multiplier="0.9" id="8An-22-n6C"/>
+                            <constraint firstItem="Y3g-bf-lgY" firstAttribute="leading" secondItem="d6t-2G-M9x" secondAttribute="leading" id="8Il-FR-Ki7"/>
+                            <constraint firstItem="GfP-fR-WiK" firstAttribute="width" secondItem="ZGe-SS-lKy" secondAttribute="width" id="AFE-G0-ewp"/>
+                            <constraint firstItem="fvY-gu-fKX" firstAttribute="height" secondItem="Y3g-bf-lgY" secondAttribute="height" multiplier="1/15" id="AJE-2B-bzI"/>
+                            <constraint firstItem="TSd-xe-MwF" firstAttribute="leading" secondItem="GfP-fR-WiK" secondAttribute="leading" id="EHj-MJ-NZE"/>
+                            <constraint firstItem="fvY-gu-fKX" firstAttribute="centerY" secondItem="Pft-Oq-xWQ" secondAttribute="centerY" multiplier="0.4" id="H0f-F2-GZy"/>
+                            <constraint firstItem="ZGe-SS-lKy" firstAttribute="centerX" secondItem="Pft-Oq-xWQ" secondAttribute="centerX" id="OgE-1i-T4F"/>
+                            <constraint firstItem="fvY-gu-fKX" firstAttribute="width" secondItem="Y3g-bf-lgY" secondAttribute="width" multiplier="0.9" id="QHb-zy-Bmz"/>
+                            <constraint firstItem="Y3g-bf-lgY" firstAttribute="top" secondItem="Pft-Oq-xWQ" secondAttribute="top" id="V6e-us-h1e"/>
+                            <constraint firstItem="ZGe-SS-lKy" firstAttribute="top" secondItem="kJA-qm-QGh" secondAttribute="bottom" constant="5" id="Vhv-Oy-qIR"/>
+                            <constraint firstItem="GfP-fR-WiK" firstAttribute="top" secondItem="ZGe-SS-lKy" secondAttribute="bottom" constant="18.5" id="WvS-xK-3Dg"/>
+                            <constraint firstItem="Y3g-bf-lgY" firstAttribute="trailing" secondItem="d6t-2G-M9x" secondAttribute="trailing" id="Ymb-aI-KYe"/>
+                            <constraint firstItem="kJA-qm-QGh" firstAttribute="centerX" secondItem="Pft-Oq-xWQ" secondAttribute="centerX" id="a2g-xe-FSF"/>
+                            <constraint firstItem="kJA-qm-QGh" firstAttribute="height" secondItem="Y3g-bf-lgY" secondAttribute="height" multiplier="0.43" id="bfw-Ik-c4S"/>
+                            <constraint firstItem="ZGe-SS-lKy" firstAttribute="height" secondItem="fvY-gu-fKX" secondAttribute="height" multiplier="1.5" id="dNR-Lt-WcP"/>
+                            <constraint firstItem="fvY-gu-fKX" firstAttribute="centerX" secondItem="Pft-Oq-xWQ" secondAttribute="centerX" id="fYO-6B-Qhj"/>
+                            <constraint firstItem="TSd-xe-MwF" firstAttribute="bottom" secondItem="GfP-fR-WiK" secondAttribute="bottom" id="g9x-u4-Mym"/>
+                            <constraint firstItem="GfP-fR-WiK" firstAttribute="centerX" secondItem="Pft-Oq-xWQ" secondAttribute="centerX" id="pdH-QS-gIj"/>
+                            <constraint firstItem="kJA-qm-QGh" firstAttribute="width" secondItem="Y3g-bf-lgY" secondAttribute="width" multiplier="0.9" id="rB8-Bi-Quv"/>
+                            <constraint firstItem="Y3g-bf-lgY" firstAttribute="bottom" secondItem="d6t-2G-M9x" secondAttribute="bottom" id="tsA-6v-jY2"/>
+                            <constraint firstItem="TSd-xe-MwF" firstAttribute="width" secondItem="GfP-fR-WiK" secondAttribute="width" multiplier="2/3" id="wAU-4S-dAi"/>
+                            <constraint firstItem="TSd-xe-MwF" firstAttribute="height" secondItem="GfP-fR-WiK" secondAttribute="height" multiplier="1/2" id="x7o-vl-GGh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="d6t-2G-M9x"/>
                     </view>
                     <navigationItem key="navigationItem" title="Resources" id="Pwc-6B-iVD"/>
+                    <connections>
+                        <outlet property="downloadUTAAppButton" destination="TSd-xe-MwF" id="XK4-cy-GuV"/>
+                        <outlet property="resouresBackgroundImage" destination="Y3g-bf-lgY" id="fZF-bX-7ey"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O3t-vv-R1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-309" y="1089"/>
+            <point key="canvasLocation" x="-309.375" y="1088.0281690140846"/>
         </scene>
         <!--Custom Tab Bar View Controller-->
         <scene sceneID="1cc-bs-1Po">
@@ -80,7 +166,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Meets" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zr9-gJ-mJU">
-                                    <rect key="frame" x="8" y="4.5" width="80" height="35"/>
+                                    <rect key="frame" x="40" y="4.5" width="80" height="35"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -89,8 +175,8 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Zr9-gJ-mJU" firstAttribute="height" secondItem="V4E-eB-4Wz" secondAttribute="height" multiplier="0.8" id="8Lw-Tc-1L0"/>
+                                <constraint firstItem="Zr9-gJ-mJU" firstAttribute="centerX" secondItem="V4E-eB-4Wz" secondAttribute="centerX" multiplier="0.5" id="KQu-UZ-Eey"/>
                                 <constraint firstItem="Zr9-gJ-mJU" firstAttribute="width" secondItem="V4E-eB-4Wz" secondAttribute="width" multiplier="1/4" id="NeD-T3-GZO"/>
-                                <constraint firstItem="Zr9-gJ-mJU" firstAttribute="leading" secondItem="V4E-eB-4Wz" secondAttribute="leading" constant="8" id="bIK-SS-Rsq"/>
                                 <constraint firstItem="Zr9-gJ-mJU" firstAttribute="centerY" secondItem="V4E-eB-4Wz" secondAttribute="centerY" id="vOP-pC-ouo"/>
                             </constraints>
                         </view>
@@ -309,6 +395,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Resources Background" width="371" height="667"/>
         <image name="calendar" width="20" height="22"/>
         <image name="defaultBackground" width="343" height="280"/>
         <image name="heart" width="25" height="23"/>

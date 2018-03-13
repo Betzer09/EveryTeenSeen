@@ -11,7 +11,10 @@ import UIKit
 class EventsTableViewController: UITableViewController {
     
     // MARK: - Outlets
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationBar(viewController: self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

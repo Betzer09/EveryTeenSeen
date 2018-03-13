@@ -31,7 +31,6 @@
 		236673A620363D3200F2F485 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236673A520363D3200F2F485 /* EventsTableViewCell.swift */; };
 		2383661F20486596002E7391 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2383661E20486596002E7391 /* Admin.storyboard */; };
 		238AD1CF2056F10900ADC8DE /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238AD1CE2056F10900ADC8DE /* EventsTableViewController.swift */; };
-		238AD1D120571B7100ADC8DE /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238AD1D020571B7100ADC8DE /* CustomTabBarViewController.swift */; };
 		238B5548202E0E21002E128C /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5547202E0E21002E128C /* HelperMethods.swift */; };
 		238B554A202E1210002E128C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5549202E1210002E128C /* User.swift */; };
 		238B554C202E1731002E128C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B554B202E1731002E128C /* UserController.swift */; };
@@ -74,7 +73,6 @@
 		236673A520363D3200F2F485 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		2383661E20486596002E7391 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		238AD1CE2056F10900ADC8DE /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
-		238AD1D020571B7100ADC8DE /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		238B5547202E0E21002E128C /* HelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
 		238B5549202E1210002E128C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		238B554B202E1731002E128C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 				232EC7F62054DBBE00DD21D9 /* Onboarding View Controllers */,
 				238B5553202F8A83002E128C /* SignInViewController.swift */,
 				2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */,
-				238AD1D020571B7100ADC8DE /* CustomTabBarViewController.swift */,
 				231F829420573E4C006D5319 /* ResourcesViewController.swift */,
 			);
 			path = "View Controller";
@@ -431,7 +428,6 @@
 				23250CF3202431130033B85D /* City.swift in Sources */,
 				232EC7F52054D67000DD21D9 /* OnboardingViewController.swift in Sources */,
 				2393D3A62033C2380073F6A5 /* EventController.swift in Sources */,
-				238AD1D120571B7100ADC8DE /* CustomTabBarViewController.swift in Sources */,
 				2393D3AA2033D5350073F6A5 /* PhotoController.swift in Sources */,
 				231F829520573E4C006D5319 /* ResourcesViewController.swift in Sources */,
 				236673A620363D3200F2F485 /* EventsTableViewCell.swift in Sources */,

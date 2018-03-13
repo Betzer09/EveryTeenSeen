@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseFirestore
+import UIKit
 
 class UserController {
     
@@ -70,7 +71,7 @@ class UserController {
         }
     }
     
-    // MARK: - User State methods
+    // MARK: - UserState methods
     func signUserInWith(email: String, password: String, completion: @escaping((_ success: Bool, _ error: Error?) -> Void)) {
         firebaseManger.signUserInWith(email: email, andPass: password) { (success, error) in
             completion(success, error)
@@ -93,6 +94,49 @@ class UserController {
             completion(true,nil)
         }
     }
+    
+    /// This checks to make sure the user wants to logout
+     func confirmLogoutAlert(viewController: UIViewController, completion: @escaping(_ success: Bool) -> Void) {
+        
+        let alert = UIAlertController(title: "Confirm Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Okay, Log Me Out", style: .destructive) { (_) in
+            completion(true)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            completion(false)
+        }
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        viewController.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Objective-C Functions
+    @objc func configureLocaiton(viewController: UIViewController) {
+        presentSimpleAlert(viewController: viewController, title: "Coming Soon!", message: "This feature has not yet been configured yet!")
+    }
+    
+    @objc func segueToProfileView(viewController: UIViewController) {
+        UserController.shared.confirmLogoutAlert(viewController: viewController) { (responce) in
+            guard responce else {return}
+            UserController.shared.signUserOut { (success, error) in
+                if let error = error {
+                    presentSimpleAlert(viewController: viewController, title: "Error logging out!", message: "Error description: \(error.localizedDescription)")
+                }
+                
+                // If the user has succesfully logged out.
+                guard success else {return}
+                
+                // Present the login vc
+                presentLogoutAndSignUpPage(viewController: viewController)
+                
+            }
+        }
+    }
+
     
     // MARK: - Save User To Defaults
     

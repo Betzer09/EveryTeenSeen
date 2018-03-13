@@ -114,10 +114,10 @@ Download in the App Store</string>
             </objects>
             <point key="canvasLocation" x="-309.375" y="1088.0281690140846"/>
         </scene>
-        <!--Custom Tab Bar View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="1cc-bs-1Po">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uok-iz-evz" customClass="CustomTabBarViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uok-iz-evz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="tWk-Me-yWL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4pr-sM-cH5">

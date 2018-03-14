@@ -37,6 +37,7 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var successfullyPostedEventLabel: UILabel!
     @IBOutlet weak var eventSuccessDescritpion: UILabel!
     @IBOutlet weak var checkMarkImageView: UIImageView!
+    @IBOutlet weak var exitToEventsButton: UIButton!
     
     
     // MARK: - Properties
@@ -69,27 +70,26 @@ class CreateEventViewController: UIViewController {
         // Show the view
         eventUploadedSuccesfuallyGroupingView.isHidden = false
         
-        guard let title = titleLabel.text, let eventDateString = eventDateLabel.text, let address = eventLocationLabel.text, let user = UserController.shared.loadUserFromDefaults(), let eventInfo =
-            descriptionLabel.text, !title.isEmpty, !eventDateString.isEmpty, !address.isEmpty, !eventInfo.isEmpty else {
+        guard let title = titleLabel.text,
+            let eventDateString = eventDateLabel.text,
+            let address = eventLocationLabel.text,
+            let eventTime = eventTimeLabel.text,
+            let user = UserController.shared.loadUserFromDefaults(),
+            let eventInfo = descriptionLabel.text, !title.isEmpty,
+            !eventDateString.isEmpty, !address.isEmpty, !eventInfo.isEmpty else {
                 presentSimpleAlert(viewController: self, title: "Error Uploaded Event", message: "Make sure all field are filled.")
                 return
         }
         
-        guard let unwrappedStartDateString = eventStartDateString, let unwrappedEndDateString = eventEndDateString else {
-            presentSimpleAlert(viewController: self, title: "Event Time?", message: "You need to have a start and end time!")
-            return
-        }
-        
-        guard let eventDate = returnFormattedDateFor(string: eventDateString),
-            let eventStartDate = returnFormattedStringAsTimeWith(string: unwrappedStartDateString),
-            let eventEndDate = returnFormattedStringAsTimeWith(string: unwrappedEndDateString) else {
-                presentSimpleAlert(viewController: self, title: "Badly Formatted Date", message: "Be sure not to edit the textfield after you press done.")
-                return
-        }
+
         
         guard let image = selectedImageView.image else {return}
         
-        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDate , startTime: eventStartDate , endTime: eventEndDate, userWhoPosted: user.fullname, address: address, eventInfo: eventInfo, image: image) { (success) in
+        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDateString, eventTime: eventTime,
+                                                        userWhoPosted: user.fullname,
+                                                        address: address,
+                                                        eventInfo:eventInfo, image: image) { (success) in
+                                                            
             guard success else {presentSimpleAlert(viewController: self, title: "Error", message: "There was an error uploading the image, check everything and try again.");return}
             
             self.postEventActivityIndicator.stopAnimating()
@@ -97,6 +97,7 @@ class CreateEventViewController: UIViewController {
             self.eventSuccessDescritpion.isHidden = false
             self.successfullyPostedEventLabel.isHidden = false
             self.checkMarkImageView.isHidden = false
+            self.exitToEventsButton.isHidden = false
         }
     }
     

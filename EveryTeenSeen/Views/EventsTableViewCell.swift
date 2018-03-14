@@ -61,10 +61,7 @@ class EventsTableViewCell: UITableViewCell {
         eventPhotoImageView.image = image
         eventAddressLabel.text = event.address
         eventAttendingLabel.text = "Attending: \(event.attending)"
-        eventDateLabel.text = event.dateHeld
         eventTitleLabel.text = event.title
+        eventDateLabel.text = event.dateHeld + "\n" + event.eventTime
     }
-    
-    
-
 }

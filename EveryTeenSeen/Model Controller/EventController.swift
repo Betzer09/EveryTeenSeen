@@ -35,14 +35,11 @@ class EventController {
     }
     
     // Save events to firestore
-    func saveEventToFireStoreWith(title: String, dateHeld: Date, startTime: Date, endTime: Date, userWhoPosted: String , address: String, eventInfo: String, image: UIImage, completion: @escaping (_ success: Bool) -> Void) {
+    func saveEventToFireStoreWith(title: String, dateHeld: String, eventTime: String, userWhoPosted: String , address: String, eventInfo: String, image: UIImage, completion: @escaping (_ success: Bool) -> Void) {
         
         let eventDb = Firestore.firestore()
-        let dateHeldString = Formatter.ISO8601.string(from: dateHeld)
-        let startTimeString = Formatter.ISO8601.string(from: startTime)
-        let endTimeString = Formatter.ISO8601.string(from: endTime)
         
-        let event = Event(title: title, dateHeld: dateHeldString, userWhoPosted: userWhoPosted, address: address, eventInfo: eventInfo, startTime: startTimeString, endTime: endTimeString)
+        let event = Event(title: title, dateHeld: dateHeld, userWhoPosted: userWhoPosted, address: address, eventInfo: eventInfo, eventTime: eventTime)
         
         // Start uploading the image
         PhotoController.shared.uploadEventImageToStorageWith(image: image, eventTitle: title, completion: { (imageURL) in
@@ -210,4 +207,3 @@ class EventController {
         }
     }
 }
-

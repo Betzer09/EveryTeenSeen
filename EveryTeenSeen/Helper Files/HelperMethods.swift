@@ -74,16 +74,17 @@ func returnFormattedDateFor(date: Date) -> String {
     
 }
 
-/// This takes in a string and returns a date
-func returnFormattedDateFor(string: String) -> Date? {
+// Takes in a string and returns a date 
+func returnFormattedDateFor(string: String) -> String? {
     
-    let dateFormatter = DateFormatter()
+    let dateFormatterGet = DateFormatter()
+    dateFormatterGet.dateFormat = "yyyy-MM-dd hh:mm:ssZ"
     
-    dateFormatter.dateFormat = "MMM dd, yyyy"
+    let dateFormatterPrint = DateFormatter()
+    dateFormatterPrint.dateFormat = "MMM d, yyyy"
     
-    guard let dateFromString: Date = dateFormatter.date(from: string) else {return nil}
-    
-    return dateFromString
+    guard let date: Date = dateFormatterGet.date(from: string) else {return nil}
+    return dateFormatterPrint.string(from: date)
 }
 
 /// This takes in a time and returns a string
@@ -95,30 +96,6 @@ func returnFormattedTimeAsStringWith(date: Date) -> String {
     let strDate = dateFormatter.string(from: date)
     return strDate
 }
-
-/// Takes in a string and returns a Time as a Date
-func returnFormattedStringAsTimeWith(string: String) -> Date? {
-    let dateFormatter = DateFormatter()
-    
-    dateFormatter.dateFormat = "h: mm a"
-    
-    guard let dateFromString: Date = dateFormatter.date(from: string) else {return nil}
-    
-    return dateFromString
-}
-
-extension Formatter {
-    static let ISO8601: ISO8601DateFormatter = {
-        let formatter = ISO8601DateFormatter()
-        if #available(iOS 11.0, *) {
-            formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        } else {
-            // Fallback on earlier versions
-        }
-        return formatter
-    }()
-}
-
 
 // MARK: - Segue Functions
 func presentEventsTabBarVC(viewController: UIViewController) {

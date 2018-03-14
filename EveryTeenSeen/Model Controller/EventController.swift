@@ -117,6 +117,7 @@ class EventController {
             
             eventGroup.notify(queue: .main, execute: {
                 self.events = events
+                completion(true)
             })
         }
     }

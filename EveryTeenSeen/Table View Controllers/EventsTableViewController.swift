@@ -21,6 +21,9 @@ class EventsTableViewController: UITableViewController {
         self.setUpView()
         self.loadAllEvents()
     }
+    
+    // MARK: - Actions
+    @IBAction func unwindToEventsVC(segue: UIStoryboardSegue){}
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,8 +47,6 @@ class EventsTableViewController: UITableViewController {
         return self.view.bounds.height * 0.62
     }
     
-
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -79,6 +80,52 @@ class EventsTableViewController: UITableViewController {
     @objc func reloadTableView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - Navigation Bar
+extension EventsTableViewController {
+    
+    /// Configures the navigation bar to have all of the normal stuff
+    func configureNavigationBar(viewController: UIViewController) {
+        let hamburgerButton: UIButton = UIButton(type: .custom)
+        hamburgerButton.setImage(#imageLiteral(resourceName: "Hamburger"), for: .normal)
+        hamburgerButton.addTarget(viewController, action: #selector(configureLocation), for: .touchUpInside)
+        
+        let profileButton: UIButton = UIButton(type: .custom)
+        profileButton.setImage(#imageLiteral(resourceName: "ProfilePicture"), for: .normal)
+        profileButton.addTarget(viewController, action: #selector(segueToProfileView), for: .touchUpInside)
+        
+        let image = #imageLiteral(resourceName: "HappyLogo")
+        let happyImage: UIImageView = UIImageView(image: image)
+        happyImage.contentMode = .scaleAspectFit
+        
+        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: hamburgerButton)
+        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileButton)
+        viewController.navigationItem.titleView = happyImage
+    }
+    
+    // MARK: - Objective-C Functions
+    @objc func configureLocation() {
+        presentSimpleAlert(viewController: self, title: "Coming Soon!", message: "This feature has not yet been configured yet!")
+    }
+    
+    @objc func segueToProfileView() {
+        UserController.shared.confirmLogoutAlert(viewController: self) { (responce) in
+            guard responce else {return}
+            UserController.shared.signUserOut { (success, error) in
+                if let error = error {
+                    presentSimpleAlert(viewController: self, title: "Error logging out!", message: "Error description: \(error.localizedDescription)")
+                }
+                
+                // If the user has succesfully logged out.
+                guard success else {return}
+                
+                // Present the login vc
+                presentLogoutAndSignUpPage(viewController: self)
+                
+            }
         }
     }
 }

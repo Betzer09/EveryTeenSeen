@@ -168,27 +168,6 @@ public func configureButtonWith(button: UIButton) {
     button.titleLabel?.lineBreakMode = .byClipping
 }
 
-// MARK: - Configure Navigation
-/// Configures the navigation bar to have all of the normal stuff
-public func configureNavigationBar(viewController: UIViewController) {
-    let hamburgerButton: UIButton = UIButton(type: .custom)
-    hamburgerButton.setImage(#imageLiteral(resourceName: "Hamburger"), for: .normal)
-    hamburgerButton.addTarget(viewController, action: #selector(UserController.shared.configureLocaiton(viewController: viewController)), for: .touchUpInside)
-    
-    let profileButton: UIButton = UIButton(type: .custom)
-    profileButton.setImage(#imageLiteral(resourceName: "ProfilePicture"), for: .normal)
-    profileButton.addTarget(viewController, action: #selector(UserController.shared.segueToProfileView(viewController: viewController)), for: .touchUpInside)
-    
-    let image = #imageLiteral(resourceName: "HappyLogo")
-    let happyImage: UIImageView = UIImageView(image: image)
-    happyImage.contentMode = .scaleAspectFit
-    
-    viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: hamburgerButton)
-    viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileButton)
-    viewController.navigationItem.titleView = happyImage
-    
-}
-
 
 
 

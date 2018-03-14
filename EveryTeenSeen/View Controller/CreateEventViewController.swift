@@ -39,6 +39,11 @@ class CreateEventViewController: UIViewController {
     var textViewBeingEdited: UITextView?
     
     // MARK: - View Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.configureNavigationBar()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -292,3 +297,30 @@ extension CreateEventViewController: UIImagePickerControllerDelegate, UINavigati
         self.present(actionSheet, animated: true, completion: nil)
     }
 }
+
+// MARK: - Navigation Design
+extension CreateEventViewController {
+    /// Configures the navigation bar to have all of the normal stuff
+    func configureNavigationBar() {
+        
+        let image = #imageLiteral(resourceName: "HappyLogo")
+        let happyImage: UIImageView = UIImageView(image: image)
+        happyImage.contentMode = .scaleAspectFit
+
+        self.navigationItem.titleView = happyImage
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

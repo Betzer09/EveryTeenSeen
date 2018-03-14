@@ -96,7 +96,7 @@ class UserController {
     }
     
     /// This checks to make sure the user wants to logout
-     func confirmLogoutAlert(viewController: UIViewController, completion: @escaping(_ success: Bool) -> Void) {
+    func confirmLogoutAlert(viewController: UIViewController, completion: @escaping(_ success: Bool) -> Void) {
         
         let alert = UIAlertController(title: "Confirm Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
         
@@ -114,32 +114,7 @@ class UserController {
         viewController.present(alert, animated: true, completion: nil)
     }
     
-    // MARK: - Objective-C Functions
-    @objc func configureLocaiton(viewController: UIViewController) {
-        presentSimpleAlert(viewController: viewController, title: "Coming Soon!", message: "This feature has not yet been configured yet!")
-    }
-    
-    @objc func segueToProfileView(viewController: UIViewController) {
-        UserController.shared.confirmLogoutAlert(viewController: viewController) { (responce) in
-            guard responce else {return}
-            UserController.shared.signUserOut { (success, error) in
-                if let error = error {
-                    presentSimpleAlert(viewController: viewController, title: "Error logging out!", message: "Error description: \(error.localizedDescription)")
-                }
-                
-                // If the user has succesfully logged out.
-                guard success else {return}
-                
-                // Present the login vc
-                presentLogoutAndSignUpPage(viewController: viewController)
-                
-            }
-        }
-    }
-
-    
     // MARK: - Save User To Defaults
-    
     /// Saves the currents user to userdefaults
     func saveUserToDefaults(fullname: String, email: String, zipcode: String, userType: String) {
         

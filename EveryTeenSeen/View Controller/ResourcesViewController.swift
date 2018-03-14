@@ -15,6 +15,7 @@ class ResourcesViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.configureNavigationBar()
         setUpView()
     }
     
@@ -61,5 +62,65 @@ class ResourcesViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
-
 }
+
+extension ResourcesViewController {
+    /// Configures the navigation bar to have all of the normal stuff
+    func configureNavigationBar() {
+        let hamburgerButton: UIButton = UIButton(type: .custom)
+        hamburgerButton.setImage(#imageLiteral(resourceName: "Hamburger"), for: .normal)
+        hamburgerButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
+        
+        let profileButton: UIButton = UIButton(type: .custom)
+        profileButton.setImage(#imageLiteral(resourceName: "ProfilePicture"), for: .normal)
+        profileButton.addTarget(self, action: #selector(segueToProfileView), for: .touchUpInside)
+        
+        let image = #imageLiteral(resourceName: "HappyLogo")
+        let happyImage: UIImageView = UIImageView(image: image)
+        happyImage.contentMode = .scaleAspectFit
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: hamburgerButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileButton)
+        self.navigationItem.titleView = happyImage
+    }
+    
+    // MARK: - Objective-C Functions
+    @objc func configureLocation() {
+        presentSimpleAlert(viewController: self, title: "Coming Soon!", message: "This feature has not yet been configured yet!")
+    }
+    
+    @objc func segueToProfileView() {
+        UserController.shared.confirmLogoutAlert(viewController: self) { (responce) in
+            guard responce else {return}
+            UserController.shared.signUserOut { (success, error) in
+                if let error = error {
+                    presentSimpleAlert(viewController: self, title: "Error logging out!", message: "Error description: \(error.localizedDescription)")
+                }
+                
+                // If the user has succesfully logged out.
+                guard success else {return}
+                
+                // Present the login vc
+                presentLogoutAndSignUpPage(viewController: self)
+                
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

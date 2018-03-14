@@ -27,7 +27,7 @@ class Event: Codable, Equatable {
     var photo: Photo? = nil
     
     // MARK: - Init
-    init(title: String, timestamp: String = Formatter.ISO8601.string(from: Date()), dateHeld: String, userWhoPosted: String,
+    init(title: String, timestamp: String = "\(Date())", dateHeld: String, userWhoPosted: String,
          attending: Int = 0, address: String, eventInfo: String, eventTime: String) {
         self.title = title
         self.timestamp = timestamp
@@ -49,16 +49,5 @@ class Event: Codable, Equatable {
         case userWhoPosted = "user_who_posted"
         case eventInfo = "event_info"
         case photoURL = "photo_url"
-    }
-    
+    }    
 }
-
-
-
-
-
-
-
-
-
-

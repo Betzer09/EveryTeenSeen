@@ -57,7 +57,6 @@ class EventController {
                 
                 eventDb.collection(EventController.eventKey).document(event.title).setData(jsonDict)
                 completion(true)
-                self.fetchAllEvents()
                 
             } catch let e {
                 // Unsuccessfually created an event

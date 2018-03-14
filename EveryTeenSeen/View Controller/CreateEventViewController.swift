@@ -104,6 +104,7 @@ class CreateEventViewController: UIViewController {
     
     @IBAction func exitButtonPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+        EventController.shared.fetchAllEvents()
     }
     
     @IBAction func editTitleButtonPressed(_ sender: Any) {

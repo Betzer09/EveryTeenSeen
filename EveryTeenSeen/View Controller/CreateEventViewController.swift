@@ -30,6 +30,14 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var timeDatePicker: UIDatePicker!
     @IBOutlet weak var camaraPhotoButton: UIButton!
     
+    // Successfully Loaded Image View
+    @IBOutlet weak var eventUploadedSuccesfuallyGroupingView: UIView!
+    @IBOutlet weak var postEventActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var postNewEventLabel: UILabel!
+    @IBOutlet weak var successfullyPostedEventLabel: UILabel!
+    @IBOutlet weak var eventSuccessDescritpion: UILabel!
+    @IBOutlet weak var checkMarkImageView: UIImageView!
+    
     
     // MARK: - Properties
     var delegate: PhotoSelectedViewControllerDelegate?
@@ -48,6 +56,7 @@ class CreateEventViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
+        postEventActivityIndicator.transform = CGAffineTransform(scaleX: 2, y: 2)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +65,10 @@ class CreateEventViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func saveBtnPressed(_ sender: Any) {
+        
+        // Show the view
+        eventUploadedSuccesfuallyGroupingView.isHidden = false
+        
         guard let title = titleLabel.text, let eventDateString = eventDateLabel.text, let address = eventLocationLabel.text, let user = UserController.shared.loadUserFromDefaults(), let eventInfo =
             descriptionLabel.text, !title.isEmpty, !eventDateString.isEmpty, !address.isEmpty, !eventInfo.isEmpty else {
                 presentSimpleAlert(viewController: self, title: "Error Uploaded Event", message: "Make sure all field are filled.")
@@ -78,8 +91,18 @@ class CreateEventViewController: UIViewController {
         
         EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDate , startTime: eventStartDate , endTime: eventEndDate, userWhoPosted: user.fullname, address: address, eventInfo: eventInfo, image: image) { (success) in
             guard success else {presentSimpleAlert(viewController: self, title: "Error", message: "There was an error uploading the image, check everything and try again.");return}
-            self.navigationController?.popViewController(animated: true)
+            
+            self.postEventActivityIndicator.stopAnimating()
+            self.postEventActivityIndicator.isHidden = true
+            self.eventSuccessDescritpion.isHidden = false
+            self.successfullyPostedEventLabel.isHidden = false
+            self.checkMarkImageView.isHidden = false
         }
+    }
+    
+    
+    @IBAction func exitButtonPressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func editTitleButtonPressed(_ sender: Any) {

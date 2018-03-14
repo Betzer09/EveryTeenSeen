@@ -17,12 +17,19 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
     var matchingItems: [MKMapItem] = []
     var address: String?
 
+    // MARK: - View Life Cycles
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addressSearchBar.sizeToFit()
         addressSearchBar.placeholder = "Search For Places"
         navigationItem.title = "Search Locations"
+
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

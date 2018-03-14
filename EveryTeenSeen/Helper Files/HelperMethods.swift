@@ -86,6 +86,27 @@ func returnFormattedDateFor(string: String) -> Date? {
     return dateFromString
 }
 
+/// This takes in a time and returns a string
+func returnFormattedTimeAsStringWith(date: Date) -> String {
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "h: mm a"
+    
+    let strDate = dateFormatter.string(from: date)
+    return strDate
+}
+
+/// Takes in a string and returns a Time as a Date
+func returnFormattedStringAsTimeWith(string: String) -> Date? {
+    let dateFormatter = DateFormatter()
+    
+    dateFormatter.dateFormat = "h: mm a"
+    
+    guard let dateFromString: Date = dateFormatter.date(from: string) else {return nil}
+    
+    return dateFromString
+}
+
 extension Formatter {
     static let ISO8601: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
@@ -134,6 +155,14 @@ extension UIColor {
     
     static var signInAndLoginYellowColor: UIColor {
         return UIColor(red: 255 / 255.0, green: 194 / 255.0, blue: 0, alpha: 1)
+    }
+    
+    static var darkBlueAlertColor: UIColor{
+      return UIColor(red: divideNumberForColorWith(number: 97), green: divideNumberForColorWith(number: 121), blue: divideNumberForColorWith(number: 255), alpha: 1)
+    }
+    
+    static var lightGreyTextColor: UIColor {
+        return UIColor(red: divideNumberForColorWith(number: 134), green: divideNumberForColorWith(number: 134), blue: divideNumberForColorWith(number: 134), alpha: 1)
     }
 }
 

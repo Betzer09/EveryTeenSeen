@@ -16,27 +16,32 @@ protocol PhotoSelectedViewControllerDelegate {
 class CreateEventViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var eventTitleTextField: UITextField!
-    @IBOutlet weak var locationTextField: UITextField!
-    @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var selectedImageView: UIImageView!
-    @IBOutlet weak var eventInfoTextView: UITextView!
-    @IBOutlet weak var pickImageButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var eventTimeLabel: UILabel!
+    @IBOutlet weak var eventDateLabel: UILabel!
+    @IBOutlet weak var eventLocationLabel: UILabel!
+    @IBOutlet weak var editDateButton: UIButton!
+    @IBOutlet weak var datePickerBackgroundView: UIView!
+    @IBOutlet weak var editTimeButton: UIButton!
+    @IBOutlet weak var timePickerStackView: UIStackView!
+    @IBOutlet weak var eventDatePicker: UIDatePicker!
+    @IBOutlet weak var timeDatePicker: UIDatePicker!
+    @IBOutlet weak var camaraPhotoButton: UIButton!
     
     
     // MARK: - Properties
     var delegate: PhotoSelectedViewControllerDelegate?
     var address: String? {
         didSet {
-            locationTextField.text = address
+            eventLocationLabel.text = address
         }
     }
     
-    // TextField Properties
-    let eventDatePicker = UIDatePicker()
-    var currentYShiftForKeyboard: CGFloat = 0
-    var textFieldBeingEdited: UITextField?
-    var textViewBeingEdited: UITextView?
+    // Event Properties
+    var eventStartDateString: String?
+    var eventEndDateString: String?
     
     // MARK: - View Life Cycle
     
@@ -46,45 +51,107 @@ class CreateEventViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
         self.setUpView()
     }
     
     // MARK: - Actions
     @IBAction func saveBtnPressed(_ sender: Any) {
-        guard let title = eventTitleTextField.text, let eventDateString = dateTextField.text, let address = locationTextField.text, let user = UserController.shared.loadUserFromDefaults(), let eventInfo =
-            eventInfoTextView.text, !title.isEmpty, !eventDateString.isEmpty, !address.isEmpty, !eventInfo.isEmpty else {
+        guard let title = titleLabel.text, let eventDateString = eventDateLabel.text, let address = eventLocationLabel.text, let user = UserController.shared.loadUserFromDefaults(), let eventInfo =
+            descriptionLabel.text, !title.isEmpty, !eventDateString.isEmpty, !address.isEmpty, !eventInfo.isEmpty else {
                 presentSimpleAlert(viewController: self, title: "Error Uploaded Event", message: "Make sure all field are filled.")
                 return
         }
         
-        guard let eventDate = returnFormattedDateFor(string: eventDateString) else {
-            presentSimpleAlert(viewController: self, title: "Badly Formatted Date", message: "Be sure not to edit the textfield after you press done.")
-            dateTextField.text = ""
+        guard let unwrappedStartDateString = eventStartDateString, let unwrappedEndDateString = eventEndDateString else {
+            presentSimpleAlert(viewController: self, title: "Event Time?", message: "You need to have a start and end time!")
             return
         }
         
-        if selectedImageView.image == #imageLiteral(resourceName: "EveryTeenSeen") {
-            presentSimpleAlert(viewController: self, title: "Warning", message: "You are trying to upload a default image, that isn't allowed.")
+        guard let eventDate = returnFormattedDateFor(string: eventDateString),
+            let eventStartDate = returnFormattedStringAsTimeWith(string: unwrappedStartDateString),
+            let eventEndDate = returnFormattedStringAsTimeWith(string: unwrappedEndDateString) else {
+                presentSimpleAlert(viewController: self, title: "Badly Formatted Date", message: "Be sure not to edit the textfield after you press done.")
+                return
         }
         
         guard let image = selectedImageView.image else {return}
         
-        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDate, userWhoPosted: user.fullname, address: address, eventInfo: eventInfo, image: image) { (success) in
+        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDate , startTime: eventStartDate , endTime: eventEndDate, userWhoPosted: user.fullname, address: address, eventInfo: eventInfo, image: image) { (success) in
             guard success else {presentSimpleAlert(viewController: self, title: "Error", message: "There was an error uploading the image, check everything and try again.");return}
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    @IBAction func editTitleButtonPressed(_ sender: Any) {
+        eventAlertWith(title: "Create a title", message: "What is the name of your event?", placeHolderTextField: "", keyboardType: .default, affectedLabel: titleLabel, capitalizationType: .words)
+    }
+    
+    @IBAction func editDescriptionButtonPressed(_ sender: Any) {
+        self.showEventDescriptionAlert(title: "Event Summary", message: "Tell People a little about the upcoming event!")
+    }
+    
+    @IBAction func editTimeButtonPressed(_ sender: Any) {
+        eventDatePicker.datePickerMode = .time
+        timePickerStackView.insertArrangedSubview(self.timeDatePicker, at: 1)
+        timeDatePicker.isHidden = false
         
+        if datePickerBackgroundView.isHidden {
+            eventDatePicker.isHidden = false
+            editTimeButton.setTitle("Done", for: .normal)
+            editTimeButton.layer.cornerRadius = 10
+            editTimeButton.setTitleColor(UIColor.white, for: .normal)
+            editTimeButton.backgroundColor = UIColor.darkBlueAlertColor
+            datePickerBackgroundView.isHidden = false
+        } else {
+            if editTimeButton.titleLabel?.text == "Done" {
+                eventDatePicker.isHidden = true
+                editTimeButton.setTitle("Edit", for: .normal)
+                editTimeButton.setTitleColor(UIColor.lightGreyTextColor, for: .normal)
+                editTimeButton.backgroundColor = UIColor.clear
+                datePickerBackgroundView.isHidden = true
+                eventTimeLabel.text = "\(returnFormattedTimeAsStringWith(date: self.eventDatePicker.date)) - \(returnFormattedTimeAsStringWith(date: self.timeDatePicker.date))"
+                
+                // Store the properties
+                eventStartDateString = returnFormattedTimeAsStringWith(date: self.eventDatePicker.date)
+                eventEndDateString = returnFormattedTimeAsStringWith(date: self.timeDatePicker.date)
+            }
+        }
         
     }
     
-    @IBAction func pickImageBtnPressed(_ sender: Any) {
-        self.pickImageButton.titleLabel?.text = ""
-        self.pickImageButton.tintColor = UIColor.clear
+    @IBAction func editDateButtonPressed(_ sender: Any) {
+        eventDatePicker.datePickerMode = .date
+        timePickerStackView.removeArrangedSubview(self.timeDatePicker)
+        timeDatePicker.isHidden = true
         
+        if datePickerBackgroundView.isHidden {
+            eventDatePicker.isHidden = false
+            editDateButton.setTitle("Done", for: .normal)
+            editDateButton.layer.cornerRadius = 10
+            editDateButton.setTitleColor(UIColor.white, for: .normal)
+            editDateButton.backgroundColor = UIColor.darkBlueAlertColor
+            datePickerBackgroundView.isHidden = false
+        } else {
+            if editDateButton.titleLabel?.text == "Done" {
+                eventDatePicker.isHidden = true
+                editDateButton.setTitle("Edit", for: .normal)
+                editDateButton.setTitleColor(UIColor.lightGreyTextColor, for: .normal)
+                editDateButton.backgroundColor = UIColor.clear
+                datePickerBackgroundView.isHidden = true
+                eventDateLabel.text = returnFormattedDateFor(date: eventDatePicker.date)
+            }
+        }
+    }
+    
+    @IBAction func editLocationButtonPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Admin", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "eventLocationVC") as? EventLocationTableViewController else {return}
+        self.navigationController?.pushViewController(vc, animated: true )
+    }
+    
+    
+    
+    @IBAction func pickImageBtnPressed(_ sender: Any) {
         self.presentCameraAndPhotoLibraryOption()
     }
     
@@ -96,137 +163,90 @@ class CreateEventViewController: UIViewController {
     private func setUpView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
-        self.showDatePicker()
     }
     
-    /// Sets up the Date ToolBar
-    private func showDatePicker() {
-        // Set up the toolBar
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
+    // MARK: - Alerts
+    private func eventAlertWith(title: String, message: String, placeHolderTextField: String, keyboardType: UIKeyboardType, affectedLabel: UILabel, capitalizationType: UITextAutocapitalizationType) {
         
-        // Done and Cancel Button
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissKeyboard))
+        var myTextField: UITextField?
         
-        eventDatePicker.datePickerMode = .date
-        eventDatePicker.minimumDate = Date()
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        toolBar.setItems([cancelButton, spaceButton,doneButton], animated: false)
-        dateTextField.inputAccessoryView = toolBar
-        dateTextField.inputView = eventDatePicker
-    }
-}
-
-
-// MARK: - UITextField Functions and Keyboard Funtions
-extension CreateEventViewController:  UITextFieldDelegate, UITextViewDelegate {
-    
-    // MARK: - TextField Methods
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField != locationTextField {
-            textFieldBeingEdited = textField
-        } else {
-            locationTextField.endEditing(true)
-            let storyboard = UIStoryboard(name: "Admin", bundle: nil)
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "eventLocationVC") as? EventLocationTableViewController else {return}
-            self.navigationController?.pushViewController(vc, animated: true )
-        }
-    }
-    
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        textViewBeingEdited = textView
-    }
-    
-    // MARK: - Keyboard Functions
-    
-    /// This returns the yShift for a TextField
-    private func yShiftWhenKeyboardAppearsFor(textField: UITextField, keyboardHeight: CGFloat, nextY: CGFloat) -> CGFloat {
+        let subview = (alert.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
+        subview.backgroundColor = UIColor.darkBlueAlertColor
+        alert.view.tintColor = UIColor.white
         
-        let textFieldOrigin = self.view.convert(textField.frame, from: textField.superview!).origin.y
-        let textFieldBottomY = textFieldOrigin + textField.frame.size.height
         
-        // This is the y point that the textField's bottom can be at before it gets covered by the keyboard
-        let maximumY = self.view.frame.height - keyboardHeight
+        alert.setValue(NSAttributedString(string: title, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.white]), forKey: "attributedTitle")
         
-        if textFieldBottomY > maximumY {
-            // This makes the view shift the right amount to have the text field being edited 60 points above they keyboard if it would have been covered by the keyboard.
-            return textFieldBottomY - maximumY + 60
-        } else {
-            // It would go off the screen if moved, and it won't be obscured by the keyboard.
-            return 0
-        }
-    }
-    
-    /// This returns the yShift for a TextView
-    private func yShiftWhenKeyboardAppearsFor(textView: UITextView, keyboardHeight: CGFloat, nextY: CGFloat) -> CGFloat {
+        alert.setValue(NSAttributedString(string: message, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.white]), forKey: "attributedMessage")
         
-        let textFieldOrigin = self.view.convert(textView.frame, from: textView.superview!).origin.y
-        let textFieldBottomY = textFieldOrigin + textView.frame.size.height
-        
-        // This is the y point that the textField's bottom can be at before it gets covered by the keyboard
-        let maximumY = self.view.frame.height - keyboardHeight
-        
-        if textFieldBottomY > maximumY {
-            // This makes the view shift the right amount to have the text field being edited 60 points above they keyboard if it would have been covered by the keyboard.
-            return textFieldBottomY - maximumY + 60
-        } else {
-            // It would go off the screen if moved, and it won't be obscured by the keyboard.
-            return 0
-        }
-    }
-    
-    
-    // MARK: - Objective - C Functions
-    @objc func keyboardWillShow(notification: NSNotification) {
-        
-        var keyboardSize: CGRect = .zero
-        
-        if let keyboardRect = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? CGRect,
-            keyboardRect.height != 0 {
-            keyboardSize = keyboardRect
-        } else if let keyboardRect = notification.userInfo?["UIKeyboardBoundsUserInfoKey"] as? CGRect {
-            keyboardSize = keyboardRect
+        alert.addTextField { (textfield) in
+            textfield.placeholder = placeHolderTextField
+            textfield.keyboardType = keyboardType
+            textfield.autocapitalizationType = capitalizationType
+            textfield.autocorrectionType = .default
+            textfield.tintColor = UIColor.blue
+            myTextField = textfield
         }
         
-        if let textField = textFieldBeingEdited {
-            if self.view.frame.origin.y == 0 {
-                
-                let yShift = yShiftWhenKeyboardAppearsFor(textField: textField, keyboardHeight: keyboardSize.height, nextY: keyboardSize.height)
-                self.currentYShiftForKeyboard = yShift
-                self.view.frame.origin.y -= yShift
+        let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+            guard myTextField?.text != "" else {
+                presentSimpleAlert(viewController: self, title: "Field is required to make an event", message: "")
+                return
             }
+            affectedLabel.text = myTextField?.text
         }
         
-        if let textView = textViewBeingEdited {
-            if self.view.frame.origin.y == 0 {
-                
-                let yShift = yShiftWhenKeyboardAppearsFor(textView: textView, keyboardHeight: keyboardSize.height, nextY: keyboardSize.height)
-                self.currentYShiftForKeyboard = yShift
-                self.view.frame.origin.y -= yShift
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         
-        if self.view.frame.origin.y != 0 {
-            
-            self.view.frame.origin.y += currentYShiftForKeyboard
-        }
-        view.endEditing(true)
+        alert.addAction(okayAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
+    private func showEventDescriptionAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let textView = UITextView()
+        textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        let controller = UIViewController()
+        
+        textView.frame = controller.view.frame
+        controller.view.addSubview(textView)
+        
+        alert.setValue(controller, forKey: "contentViewController")
+        
+        let height: NSLayoutConstraint = NSLayoutConstraint(item: alert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: view.frame.height * 0.5)
+        alert.view.addConstraint(height)
+        
+        let subview = (alert.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
+        subview.backgroundColor = UIColor.darkBlueAlertColor
+        alert.view.bringSubview(toFront: subview)
+        
+        alert.view.tintColor = UIColor.black
+        
+        
+        alert.setValue(NSAttributedString(string: title, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.black]), forKey: "attributedTitle")
+        
+        alert.setValue(NSAttributedString(string: message, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.black]), forKey: "attributedMessage")
+        
+        let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+            self.descriptionLabel.text = textView.text
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(okayAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Objective-C Functions
     @objc func doneDatePicker() {
-        dateTextField.text = returnFormattedDateFor(date: eventDatePicker.date)
-        self.view.endEditing(true)
-    }
-    
-    @objc func doneEventLocationPicker() {
-        // TODO: - Configure done event picker
+        eventDateLabel.text = returnFormattedDateFor(date: eventDatePicker.date)
         self.view.endEditing(true)
     }
     
@@ -240,15 +260,22 @@ extension CreateEventViewController: UIImagePickerControllerDelegate, UINavigati
     
     // Picking an iamge from libary
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        var image: UIImage!
         
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {return}
+        if let img = info[UIImagePickerControllerEditedImage] as? UIImage {
+            image = img
+        } else if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            image = img
+        }
+        
+        picker.dismiss(animated: true,completion: nil)
         
         // Assign the iamge in the delegate
         delegate?.photoSelectedWithVC(image)
         
         selectedImageView.image = image
+        camaraPhotoButton.setImage(nil, for: .normal)
         dismiss(animated: true, completion: nil)
-        
     }
     
     private func presentCameraAndPhotoLibraryOption() {
@@ -292,8 +319,12 @@ extension CreateEventViewController: UIImagePickerControllerDelegate, UINavigati
             popoverContoller.permittedArrowDirections = []
         }
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
         actionSheet.addAction(cameraAction)
         actionSheet.addAction(libarayAction)
+        actionSheet.addAction(cancelAction)
+        
         self.present(actionSheet, animated: true, completion: nil)
     }
 }
@@ -306,21 +337,9 @@ extension CreateEventViewController {
         let image = #imageLiteral(resourceName: "HappyLogo")
         let happyImage: UIImageView = UIImageView(image: image)
         happyImage.contentMode = .scaleAspectFit
-
+        
         self.navigationItem.titleView = happyImage
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

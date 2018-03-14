@@ -18,6 +18,8 @@ class Event: Codable, Equatable {
     let title: String
     let timestamp: String
     let dateHeld: String
+    let startTime: String
+    let endTime: String
     let userWhoPosted: String
     var attending: Int
     let address: String
@@ -27,10 +29,12 @@ class Event: Codable, Equatable {
     
     // MARK: - Init
     init(title: String, timestamp: String = Formatter.ISO8601.string(from: Date()), dateHeld: String, userWhoPosted: String,
-         attending: Int = 0, address: String, eventInfo: String) {
+         attending: Int = 0, address: String, eventInfo: String, startTime: String, endTime: String) {
         self.title = title
         self.timestamp = timestamp
         self.dateHeld = dateHeld
+        self.startTime = startTime
+        self.endTime = endTime
         self.userWhoPosted = userWhoPosted
         self.attending = attending
         self.address = address
@@ -42,6 +46,8 @@ class Event: Codable, Equatable {
         case attending
         case address
         case timestamp
+        case startTime = "start_time"
+        case endTime = "end_time"
         case dateHeld = "date_held"
         case userWhoPosted = "user_who_posted"
         case eventInfo = "event_info"

@@ -29,8 +29,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="kJA-qm-QGh">
-                                <rect key="frame" x="16" y="183" width="288" height="174"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="kJA-qm-QGh">
+                                <rect key="frame" x="16" y="150" width="288" height="254"/>
                                 <string key="text">As a teen, you face many struggles and turbulent situations. Every Teen Seen is an event platform, but our events are a place where you can feel safe discussing difficult topics and feelings. We hope to reduce teen suicide by making you feel included in the community and providing support and resources for you.
 
 If for any reason you are feeling suicidal or know of someone in distress, please utilize the following prevention and crisis resources. </string>
@@ -38,8 +38,8 @@ If for any reason you are feeling suicidal or know of someone in distress, pleas
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZGe-SS-lKy">
-                                <rect key="frame" x="16" y="362" width="288" height="40.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZGe-SS-lKy">
+                                <rect key="frame" x="16" y="412" width="288" height="40.5"/>
                                 <string key="text">National Suicide Prevention Lifeline
 
 1-800-273-8255</string>
@@ -47,8 +47,9 @@ If for any reason you are feeling suicidal or know of someone in distress, pleas
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="GfP-fR-WiK">
-                                <rect key="frame" x="16.5" y="421" width="288" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="GfP-fR-WiK">
+                                <rect key="frame" x="16.5" y="460.5" width="288" height="50.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Safe UT
 
 Press to Download in the App Store</string>
@@ -59,7 +60,7 @@ Press to Download in the App Store</string>
                                 <size key="shadowOffset" width="2" height="1"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSd-xe-MwF">
-                                <rect key="frame" x="16.5" y="441.5" width="192" height="20.5"/>
+                                <rect key="frame" x="16.5" y="486" width="192" height="25"/>
                                 <connections>
                                     <action selector="downloadUTAAppButtonPressed:" destination="Ln1-bx-YZg" eventType="touchUpInside" id="lfJ-HE-w2O"/>
                                 </connections>
@@ -86,9 +87,7 @@ Press to Download in the App Store</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="w0C-Sj-eKY" firstAttribute="height" secondItem="Y3g-bf-lgY" secondAttribute="height" multiplier="1/8" id="3EY-7H-CgD"/>
-                            <constraint firstItem="kJA-qm-QGh" firstAttribute="centerY" secondItem="Pft-Oq-xWQ" secondAttribute="centerY" multiplier="0.95" id="49x-24-mGT"/>
                             <constraint firstItem="d6t-2G-M9x" firstAttribute="trailing" secondItem="w0C-Sj-eKY" secondAttribute="trailing" id="4pi-AI-cdu"/>
-                            <constraint firstItem="GfP-fR-WiK" firstAttribute="height" secondItem="ZGe-SS-lKy" secondAttribute="height" id="7GR-sh-TBL"/>
                             <constraint firstItem="w0C-Sj-eKY" firstAttribute="top" secondItem="d6t-2G-M9x" secondAttribute="top" id="7Y1-qO-mNE"/>
                             <constraint firstItem="ZGe-SS-lKy" firstAttribute="width" secondItem="Y3g-bf-lgY" secondAttribute="width" multiplier="0.9" id="8An-22-n6C"/>
                             <constraint firstItem="Y3g-bf-lgY" firstAttribute="leading" secondItem="d6t-2G-M9x" secondAttribute="leading" id="8Il-FR-Ki7"/>
@@ -96,22 +95,25 @@ Press to Download in the App Store</string>
                             <constraint firstItem="fvY-gu-fKX" firstAttribute="height" secondItem="Y3g-bf-lgY" secondAttribute="height" multiplier="1/15" id="AJE-2B-bzI"/>
                             <constraint firstItem="TSd-xe-MwF" firstAttribute="leading" secondItem="GfP-fR-WiK" secondAttribute="leading" id="EHj-MJ-NZE"/>
                             <constraint firstItem="fvY-gu-fKX" firstAttribute="centerY" secondItem="Pft-Oq-xWQ" secondAttribute="centerY" multiplier="0.45" id="H0f-F2-GZy"/>
+                            <constraint firstItem="kJA-qm-QGh" firstAttribute="top" secondItem="fvY-gu-fKX" secondAttribute="bottom" constant="8" id="KBe-nM-TUE"/>
                             <constraint firstItem="ZGe-SS-lKy" firstAttribute="centerX" secondItem="Pft-Oq-xWQ" secondAttribute="centerX" id="OgE-1i-T4F"/>
                             <constraint firstItem="fvY-gu-fKX" firstAttribute="width" secondItem="Y3g-bf-lgY" secondAttribute="width" multiplier="0.9" id="QHb-zy-Bmz"/>
                             <constraint firstItem="Y3g-bf-lgY" firstAttribute="top" secondItem="w0C-Sj-eKY" secondAttribute="bottom" id="S5m-vH-Tph"/>
-                            <constraint firstItem="ZGe-SS-lKy" firstAttribute="top" secondItem="kJA-qm-QGh" secondAttribute="bottom" constant="5" id="Vhv-Oy-qIR"/>
-                            <constraint firstItem="GfP-fR-WiK" firstAttribute="top" secondItem="ZGe-SS-lKy" secondAttribute="bottom" constant="18.5" id="WvS-xK-3Dg"/>
+                            <constraint firstItem="kJA-qm-QGh" firstAttribute="top" secondItem="ZGe-SS-lKy" secondAttribute="bottom" constant="-303" id="SfU-hD-lu8"/>
                             <constraint firstItem="Y3g-bf-lgY" firstAttribute="trailing" secondItem="d6t-2G-M9x" secondAttribute="trailing" id="Ymb-aI-KYe"/>
                             <constraint firstItem="w0C-Sj-eKY" firstAttribute="leading" secondItem="d6t-2G-M9x" secondAttribute="leading" id="YrS-D7-T4r"/>
+                            <constraint firstItem="d6t-2G-M9x" firstAttribute="bottom" secondItem="GfP-fR-WiK" secondAttribute="bottom" constant="8" id="Z0v-Uj-hGL"/>
                             <constraint firstItem="kJA-qm-QGh" firstAttribute="centerX" secondItem="Pft-Oq-xWQ" secondAttribute="centerX" id="a2g-xe-FSF"/>
-                            <constraint firstItem="kJA-qm-QGh" firstAttribute="height" secondItem="Y3g-bf-lgY" secondAttribute="height" multiplier="0.43" id="bfw-Ik-c4S"/>
                             <constraint firstItem="ZGe-SS-lKy" firstAttribute="height" secondItem="fvY-gu-fKX" secondAttribute="height" multiplier="1.5" id="dNR-Lt-WcP"/>
                             <constraint firstItem="fvY-gu-fKX" firstAttribute="centerX" secondItem="Pft-Oq-xWQ" secondAttribute="centerX" id="fYO-6B-Qhj"/>
                             <constraint firstItem="TSd-xe-MwF" firstAttribute="bottom" secondItem="GfP-fR-WiK" secondAttribute="bottom" id="g9x-u4-Mym"/>
+                            <constraint firstItem="GfP-fR-WiK" firstAttribute="height" secondItem="Y3g-bf-lgY" secondAttribute="height" multiplier="1/8" id="k7a-ut-Jxr"/>
                             <constraint firstItem="GfP-fR-WiK" firstAttribute="centerX" secondItem="Pft-Oq-xWQ" secondAttribute="centerX" id="pdH-QS-gIj"/>
                             <constraint firstItem="kJA-qm-QGh" firstAttribute="width" secondItem="Y3g-bf-lgY" secondAttribute="width" multiplier="0.9" id="rB8-Bi-Quv"/>
                             <constraint firstItem="Y3g-bf-lgY" firstAttribute="bottom" secondItem="d6t-2G-M9x" secondAttribute="bottom" id="tsA-6v-jY2"/>
                             <constraint firstItem="TSd-xe-MwF" firstAttribute="width" secondItem="GfP-fR-WiK" secondAttribute="width" multiplier="2/3" id="wAU-4S-dAi"/>
+                            <constraint firstItem="ZGe-SS-lKy" firstAttribute="top" secondItem="kJA-qm-QGh" secondAttribute="bottom" constant="8" id="wQ2-wC-ZZK"/>
+                            <constraint firstItem="GfP-fR-WiK" firstAttribute="top" secondItem="ZGe-SS-lKy" secondAttribute="bottom" constant="8" id="wR8-Dp-GWG"/>
                             <constraint firstItem="TSd-xe-MwF" firstAttribute="height" secondItem="GfP-fR-WiK" secondAttribute="height" multiplier="1/2" id="x7o-vl-GGh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d6t-2G-M9x"/>

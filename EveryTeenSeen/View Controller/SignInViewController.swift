@@ -111,10 +111,12 @@ class SignInViewController: UIViewController {
     
     // MARK: - Sign In Toggle
     @IBAction func signUpToggleButtonPressed(_ sender: Any) {
+        textFieldBeingEdited = confirmEmailTextField
         self.setUpSignInView()
     }
     
     @IBAction func loginToggleButtonPressed(_ sender: Any) {
+        textFieldBeingEdited = passwordTextField
         self.setUpLoginView()
     }
     
@@ -132,9 +134,6 @@ class SignInViewController: UIViewController {
         
         logUserInButton.layer.cornerRadius = 15
         signUserUpAndCreateAccountButton.layer.cornerRadius = 15
-        
-        textFieldBeingEdited = confirmPasswordTextField
-        
     }
     
     private func setUpLoginView() {

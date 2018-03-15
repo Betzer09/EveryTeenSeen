@@ -296,13 +296,10 @@ extension CreateEventViewController: UIImagePickerControllerDelegate, UINavigati
         }
         
         picker.dismiss(animated: true,completion: nil)
-        
         // Assign the iamge in the delegate
         delegate?.photoSelectedWithVC(image)
-        
         selectedImageView.image = image
         camaraPhotoButton.setImage(nil, for: .normal)
-        dismiss(animated: true, completion: nil)
     }
     
     private func presentCameraAndPhotoLibraryOption() {

@@ -41,6 +41,8 @@ class EventController {
         
         let event = Event(title: title, dateHeld: dateHeld, userWhoPosted: userWhoPosted, address: address, eventInfo: eventInfo, eventTime: eventTime)
         
+        
+        
         // Start uploading the image
         PhotoController.shared.uploadEventImageToStorageWith(image: image, eventTitle: title, completion: { (imageURL) in
             guard imageURL != "" else {completion(false); return}
@@ -177,12 +179,12 @@ class EventController {
     // MARK: - Functions
     private func updateAttendingFieldFor(event: Event, andWantsToJoin: Bool) -> Event {
         
-        if andWantsToJoin {
-            event.attending += 1
-        } else {
-            event.attending -= 1
-        }
-        
+//        if andWantsToJoin {
+//            event.attending += 1
+//        } else {
+//            event.attending -= 1
+//        }
+//
         return event
     }
     

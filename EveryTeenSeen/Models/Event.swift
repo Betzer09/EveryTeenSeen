@@ -20,7 +20,7 @@ class Event: Codable, Equatable {
     let dateHeld: String
     let eventTime: String
     let userWhoPosted: String
-    var attending: Int
+    var attending: [User]? = []
     let address: String
     let eventInfo: String
     var photoURL: String? = ""
@@ -28,7 +28,7 @@ class Event: Codable, Equatable {
     
     // MARK: - Init
     init(title: String, timestamp: String = "\(Date())", dateHeld: String, userWhoPosted: String,
-         attending: Int = 0, address: String, eventInfo: String, eventTime: String) {
+         attending: [User] = [] , address: String, eventInfo: String, eventTime: String) {
         self.title = title
         self.timestamp = timestamp
         self.dateHeld = dateHeld

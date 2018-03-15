@@ -188,6 +188,8 @@ class CreateEventViewController: UIViewController {
     private func setUpView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        eventUploadedSuccesfuallyGroupingView.layer.cornerRadius = 10
     }
     
     // MARK: - Alerts

@@ -756,7 +756,7 @@ If for any reason you are feeling suicidal or know of someone in distress, pleas
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="nui-rc-Lxg">
-                                <rect key="frame" x="16" y="362" width="288" height="41.5"/>
+                                <rect key="frame" x="16" y="362" width="288" height="40.5"/>
                                 <string key="text">National Suicide Prevention Lifeline
 
 1-800-273-8255</string>
@@ -765,7 +765,7 @@ If for any reason you are feeling suicidal or know of someone in distress, pleas
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="0iM-Cf-RJ1">
-                                <rect key="frame" x="16.5" y="422" width="288" height="41"/>
+                                <rect key="frame" x="16.5" y="421" width="288" height="40"/>
                                 <string key="text">Safe UT
 
 Press to Download in the App Store</string>
@@ -776,7 +776,7 @@ Press to Download in the App Store</string>
                                 <size key="shadowOffset" width="2" height="1"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZh-oh-wOD">
-                                <rect key="frame" x="16.5" y="442.5" width="192" height="20.5"/>
+                                <rect key="frame" x="16.5" y="441" width="192" height="20"/>
                                 <connections>
                                     <action selector="downloadUTAAppButtonPressed:" destination="eol-au-ble" eventType="touchUpInside" id="T7Y-yL-y7z"/>
                                 </connections>

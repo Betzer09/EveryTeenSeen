@@ -31,6 +31,9 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var loginStackView: UIStackView!
     
+    @IBOutlet weak var loginIndicator: UIActivityIndicatorView!
+    
+    
     // MARK: - Properties
     
     // Keyboard Properties
@@ -54,17 +57,19 @@ class SignInViewController: UIViewController {
         
         guard let email = emailTextField.text, let password = passwordTextField.text,
             !email.isEmpty, !password.isEmpty else {
-                presentSimpleAlert(viewController: self, title: "Error", message: "All fileds must filled")
+                presentSimpleAlert(viewController: self, title: "Fileds are blank!", message: "All fileds must filled in!")
                 return
         }
         
+        self.showIndicator()
         UserController.shared.signUserInWith(email: email, password: password) { (success, error) in
             if let error = error {
+                self.loginIndicator.stopAnimating()
                 presentSimpleAlert(viewController: self, title: "There was a problem signing in.", message:" \(error.localizedDescription)")
             }
             
             // The success is true
-            guard success else {return}
+            guard success else { self.hideIndicator() ;return}
             
             UserController.shared.fetchUserInfoFromFirebaseWith(email: email, completion: { (user, error) in
                 // If there is a user sign in and fetch the info and save it to the phone
@@ -73,6 +78,7 @@ class SignInViewController: UIViewController {
                     return
                 }
                 
+                self.hideIndicator()
                 // Check for the kind of user
                 if user.userType == UserType.leadCause.rawValue {
                     self.requestNotificationPermission()
@@ -88,12 +94,14 @@ class SignInViewController: UIViewController {
     
     // MARK: - Sign Up
     @IBAction func SignUpButtonPressed(_ sender: Any) {
+        self.showIndicator()
         self.createFirebaseAuthUser { (success) in
             if success {
                 self.createUserProfile()
-                
+
                 guard let userType = UserController.shared.loadUserFromDefaults()?.userType else {NSLog("Error there is no usertype!"); return}
                 
+                self.hideIndicator()
                 if userType == UserType.leadCause.rawValue {
                     self.requestNotificationPermission()
                     presentAdminTabBarVC(viewController: self)
@@ -103,8 +111,8 @@ class SignInViewController: UIViewController {
                     presentEventsTabBarVC(viewController: self)
                     print("User Type: Normal")
                 }
-                
-                
+            } else {
+                self.hideIndicator()
             }
         }
     }
@@ -134,6 +142,9 @@ class SignInViewController: UIViewController {
         
         logUserInButton.layer.cornerRadius = 15
         signUserUpAndCreateAccountButton.layer.cornerRadius = 15
+        
+        self.hideIndicator()
+        loginIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
     }
     
     private func setUpLoginView() {
@@ -171,6 +182,15 @@ class SignInViewController: UIViewController {
         signUpToggleButton.setTitleColor(UIColor.signInAndLoginYellowColor, for: .normal)
     }
     
+    private func showIndicator() {
+        loginIndicator.startAnimating()
+        loginIndicator.isHidden = false
+    }
+    
+    private func hideIndicator() {
+        loginIndicator.stopAnimating()
+        loginIndicator.isHidden = true
+    }
 }
 
 // MARK: - TextField Designs

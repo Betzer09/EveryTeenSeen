@@ -48,7 +48,6 @@ class EventsTableViewCell: UITableViewCell {
 //            guard errorString != nil else {return}
 //            NSLog(errorString!)
 //        }
-        
     }
     
     

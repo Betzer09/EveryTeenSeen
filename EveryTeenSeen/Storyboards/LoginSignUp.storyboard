@@ -200,10 +200,15 @@
                                     <action selector="loginButtonPressed:" destination="j32-fB-YeV" eventType="touchUpInside" id="Vee-Kf-9aE"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="S3w-vx-dOH">
+                                <rect key="frame" x="93.5" y="239" width="187.5" height="189"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZeO-40-OjG" firstAttribute="width" secondItem="sxB-GF-JCy" secondAttribute="width" multiplier="0.8" id="0zu-wQ-cAZ"/>
+                            <constraint firstItem="S3w-vx-dOH" firstAttribute="centerY" secondItem="PJI-lR-FQF" secondAttribute="centerY" id="1b2-dX-Ey9"/>
+                            <constraint firstItem="S3w-vx-dOH" firstAttribute="centerX" secondItem="PJI-lR-FQF" secondAttribute="centerX" id="530-PC-nAv"/>
                             <constraint firstItem="4hy-a7-wht" firstAttribute="top" secondItem="ZeO-40-OjG" secondAttribute="bottom" constant="16" id="5uv-rD-dX1"/>
                             <constraint firstItem="4hy-a7-wht" firstAttribute="width" secondItem="PJI-lR-FQF" secondAttribute="width" multiplier="0.75" id="8Wt-Jj-DeI"/>
                             <constraint firstItem="72L-fP-eUn" firstAttribute="top" secondItem="JLR-1Y-z1d" secondAttribute="bottom" id="9kI-0J-pSs"/>
@@ -216,8 +221,10 @@
                             <constraint firstAttribute="bottom" secondItem="72L-fP-eUn" secondAttribute="bottom" id="L4a-hd-G8X"/>
                             <constraint firstItem="4hy-a7-wht" firstAttribute="top" secondItem="sxB-GF-JCy" secondAttribute="bottom" constant="16" id="OCb-2m-ZyR"/>
                             <constraint firstItem="S13-uT-qJf" firstAttribute="centerY" secondItem="JLR-1Y-z1d" secondAttribute="centerY" id="RaD-aP-tWE"/>
+                            <constraint firstItem="S3w-vx-dOH" firstAttribute="width" secondItem="JLR-1Y-z1d" secondAttribute="width" multiplier="1/2" id="S2j-d0-glo"/>
                             <constraint firstItem="S13-uT-qJf" firstAttribute="width" secondItem="JLR-1Y-z1d" secondAttribute="width" id="U1H-Mm-afB"/>
                             <constraint firstItem="sxB-GF-JCy" firstAttribute="width" secondItem="JLR-1Y-z1d" secondAttribute="width" multiplier="1/4" id="Ue1-mF-Vol"/>
+                            <constraint firstItem="S3w-vx-dOH" firstAttribute="height" secondItem="JLR-1Y-z1d" secondAttribute="height" multiplier="1/3" id="WEy-QK-hfw"/>
                             <constraint firstItem="72L-fP-eUn" firstAttribute="leading" secondItem="S5l-qU-WwH" secondAttribute="leading" id="WFY-Qj-ItJ"/>
                             <constraint firstItem="JLR-1Y-z1d" firstAttribute="centerX" secondItem="PJI-lR-FQF" secondAttribute="centerX" id="X3L-vc-e7Y"/>
                             <constraint firstItem="JLR-1Y-z1d" firstAttribute="height" secondItem="PJI-lR-FQF" secondAttribute="height" multiplier="0.85" id="cLU-mS-c8o"/>
@@ -270,6 +277,7 @@
                         <outlet property="emailTextField" destination="lWt-OI-uNw" id="t21-37-PP2"/>
                         <outlet property="fullnameTextField" destination="N24-hl-ZLX" id="9JA-2G-RgZ"/>
                         <outlet property="logUserInButton" destination="N2J-Yt-uI4" id="8dg-2g-0Ff"/>
+                        <outlet property="loginIndicator" destination="S3w-vx-dOH" id="Jga-K0-Fh5"/>
                         <outlet property="loginStackView" destination="4hy-a7-wht" id="kH5-AM-Av3"/>
                         <outlet property="loginToggleButton" destination="ZeO-40-OjG" id="mPZ-iF-iti"/>
                         <outlet property="passwordTextField" destination="qeA-V6-omZ" id="E2k-Fx-Dqf"/>

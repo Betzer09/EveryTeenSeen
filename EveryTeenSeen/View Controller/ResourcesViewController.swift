@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ResourcesViewController: UIViewController {
+class ResourcesViewController: UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet var backgroundScrollView: UIScrollView!
     @IBOutlet weak var resouresBackgroundImage: UIImageView!
     @IBOutlet weak var downloadUTAAppButton: UIButton!
 
@@ -19,9 +20,13 @@ class ResourcesViewController: UIViewController {
         setUpView()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        backgroundScrollView.delegate = self
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
     }
 
     // MARK: - Actions
@@ -42,8 +47,6 @@ class ResourcesViewController: UIViewController {
     // MARK: - Configure View
     func setUpView() {
         createGradientLayerWith(startpointX: -1, startpointY: -1, endpointX: 2, endPointY: 2, firstRed: 255, firstGreen: 194, firstBlue: 0, firstAlpha: 1, secondRed: 143, secondGreen: 26, secondBlue: 219, secondAlpha: 1, viewController: self)
-        
-        configureButtonWith(button: downloadUTAAppButton)
     }
     
     func alertTheUserToBeRedirected(completion: @escaping(_ wantToRedirect: Bool) -> Void) {

@@ -119,13 +119,15 @@ class SignInViewController: UIViewController {
     
     // MARK: - Sign In Toggle
     @IBAction func signUpToggleButtonPressed(_ sender: Any) {
-        textFieldBeingEdited = confirmEmailTextField
         self.setUpSignInView()
+        textFieldBeingEdited = confirmPasswordTextField
+        self.dismissKeyboard()
     }
     
     @IBAction func loginToggleButtonPressed(_ sender: Any) {
-        textFieldBeingEdited = passwordTextField
         self.setUpLoginView()
+        textFieldBeingEdited = passwordTextField
+        self.dismissKeyboard()
     }
     
     @IBAction func skipToEventsButtonPressed(_ sender: Any) {
@@ -145,6 +147,7 @@ class SignInViewController: UIViewController {
         
         self.hideIndicator()
         loginIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        textFieldBeingEdited = confirmPasswordTextField
     }
     
     private func setUpLoginView() {
@@ -369,11 +372,11 @@ extension SignInViewController: UITextFieldDelegate {
         let maximumY = self.view.frame.height - keyboardHeight
         
         if textFieldBottomY > maximumY {
-            // This makes the view shift the right amount to have the text field being edited 60 points above they keyboard if it would have been covered by the keyboard.
-            return textFieldBottomY - maximumY + 100
+            // This makes the view shift the right amount to have the text field being edited 130 points above the keyboard if it would have been covered by the keyboard.
+            return textFieldBottomY - maximumY + 130
         } else {
             // It would go off the screen if moved, and it won't be obscured by the keyboard.
-            return 0
+            return logUserInButton.bounds.height + 10
         }
     }
     

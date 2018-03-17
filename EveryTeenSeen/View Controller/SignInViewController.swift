@@ -132,7 +132,14 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func skipToEventsButtonPressed(_ sender: Any) {
-        presentSimpleAlert(viewController: self, title: "Coming Soon", message: "This feature has not been set up yet!")
+        UserController.shared.signUserInWith(email: "vieweventspage@gmail.com", password: "Krook123!") { (success, error) in
+            if let error = error {
+                NSLog("Error login user in: \(error)")
+                presentSimpleAlert(viewController: self, title: "Something is going wrong and we will to fix this soon!", message: "")
+            }
+            guard success else {return}
+            presentEventsTabBarVC(viewController: self)
+        }
     }
     
     

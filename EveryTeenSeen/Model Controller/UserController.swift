@@ -95,6 +95,19 @@ class UserController {
         }
     }
     
+    
+    /// This function is used to sign out because they need to create their own account instead of using the view only account
+    func signViewOnlyUserOut(completion: @escaping ((_ success: Bool, _ error: Error?) -> Void)) {
+        firebaseManger.signUserOut { (success, error) in
+            if let error = error {
+                completion(false, error)
+            }
+            // Checks to make sure that success is true
+            guard success else {completion(false, error); return}
+            completion(true,nil)
+        }
+    }
+    
     /// This checks to make sure the user wants to logout
     func confirmLogoutAlert(viewController: UIViewController, completion: @escaping(_ success: Bool) -> Void) {
         

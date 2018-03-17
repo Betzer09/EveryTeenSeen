@@ -25,7 +25,10 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpView()
-        self.loadAllEvents()
+        self.loadAllEvents { (success) in
+            guard success else {return}
+            self.checkIfUserHasAccount()
+        }
     }
     
     // MARK: - Actions
@@ -57,6 +60,12 @@ class EventsViewController: UIViewController {
                 completion(true)
             }
         }
+    }
+    
+    // MARK: - Functions
+    private func checkIfUserHasAccount() {
+        guard UserController.shared.loadUserFromDefaults() == nil else {return}
+        presentLoginAlert(viewController: self)
     }
     
     // MARK: - Objective-C Functions

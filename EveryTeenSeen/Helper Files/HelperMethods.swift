@@ -126,6 +126,26 @@ func presentAdminTabBarVC(viewController: UIViewController) {
     }
 }
 
+// MARK: - Alert Functions
+func presentLoginAlert(viewController: UIViewController) {
+    let alert = UIAlertController(title: "Sign In", message: "You are in view only mode. In order to attend an event you need to create an account", preferredStyle: .alert)
+    
+    let signInAction = UIAlertAction(title: "Sign In", style: .default) { (_) in
+        UserController.shared.signUserOut(completion: { (answer, error) in
+            if let error = error {
+                NSLog("Error signing view only user out! \(error)")
+            }
+            presentLogoutAndSignUpPage(viewController: viewController)
+        })
+    }
+    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+    
+    alert.addAction(cancelAction)
+    alert.addAction(signInAction)
+    
+    viewController.present(alert, animated: true, completion: nil)
+}
+
 // MARK: - Colors
 
 extension UIColor {

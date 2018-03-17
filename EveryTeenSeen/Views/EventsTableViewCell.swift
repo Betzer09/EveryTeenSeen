@@ -32,7 +32,6 @@ class EventsTableViewCell: UITableViewCell {
         get {
             return super.frame
         }
-        
         set(newFrame) {
             let inset: CGFloat = 15
             var frame = newFrame
@@ -44,13 +43,12 @@ class EventsTableViewCell: UITableViewCell {
     
     // MARK: - Actions
     @IBAction func goingButton(_ sender: Any) {
-      
-        guard let indexPath = buttonTag,
-            let user = UserController.shared.loadUserFromDefaults(),
-            let rootvc = UIApplication.shared.keyWindow?.rootViewController,
+        guard let rootvc = UIApplication.shared.keyWindow?.rootViewController else {return}
+        guard let user = UserController.shared.loadUserFromDefaults(),
+            let indexPath = buttonTag,
             let event = EventController.shared.events?[indexPath],
             let count = event.attending?.count else {return}
-        
+
         if goingLabel.text == "Going?" {
             configureLableAsNotGoing()
         
@@ -85,13 +83,14 @@ class EventsTableViewCell: UITableViewCell {
         guard let event = event,
             let data = event.photo?.imageData,
             let image = UIImage(data: data),
-            let user = UserController.shared.loadUserFromDefaults(),
             let attending = event.attending else {return}
         
-        if attending.contains(user.email) {
-            configureLableAsNotGoing()
-        } else {
-            configureLabelAsGoing()
+        if let user = UserController.shared.loadUserFromDefaults() {
+            if attending.contains(user.email) {
+                configureLableAsNotGoing()
+            } else {
+                configureLabelAsGoing()
+            }
         }
         
         eventPhotoImageView.image = image
@@ -109,3 +108,15 @@ class EventsTableViewCell: UITableViewCell {
         goingLabel.text = "Not Going"
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -76,6 +76,7 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let events = EventController.shared.events else {return UITableViewCell()}
         cell.event = events[indexPath.row]
+        cell.buttonTag = indexPath.row
         
         cell.layer.cornerRadius = 15
         cell.selectionStyle = .none

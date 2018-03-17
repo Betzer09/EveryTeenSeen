@@ -81,8 +81,6 @@ class CreateEventViewController: UIViewController {
                 return
         }
         
-
-        
         guard let image = selectedImageView.image else {return}
         
         EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDateString, eventTime: eventTime, userWhoPosted: user.fullname, address: address,

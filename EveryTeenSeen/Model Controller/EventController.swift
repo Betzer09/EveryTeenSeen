@@ -141,7 +141,7 @@ class EventController {
         }.resume()
     }
     
-    func isPlanningOnAttending(event: Event, wantsToJoin: Bool, completion: @escaping (_ error: String?) -> Void) {
+    func isPlanningOnAttending(event: Event, user: User, isGoing: Bool, completion: @escaping (_ stringError: String?) -> Void) {
         
         let db = Firestore.firestore()
         
@@ -156,15 +156,13 @@ class EventController {
             do {
                 guard let data = convertJsonToDataWith(json: data) else {completion("Error converting Json!"); return}
                 
+                // Get event from firebase
                 // Convert the dictionary to data
                 let event = try JSONDecoder().decode(Event.self, from: data)
                 
-                let updatedEvent = self.updateAttendingFieldFor(event: event, andWantsToJoin: wantsToJoin)
-                
-                // Update the event in the array
-                self.updateEventInTheArrayWith(event: updatedEvent)
-                
-                // Push the updated event to firestore
+                // Update the firebase event
+                guard let updatedEvent = self.updateAttendingArrayWithUser(event: event, user: user, isGoing: isGoing) else {NSLog("Error updating event in function: \(#function)"); return}
+                // Push event to firebase
                 self.pushUpdatedEventToFirestoreWith(event: updatedEvent)
                 
             } catch let e {
@@ -177,23 +175,16 @@ class EventController {
     
     
     // MARK: - Functions
-    private func updateAttendingFieldFor(event: Event, andWantsToJoin: Bool) -> Event {
-        
-//        if andWantsToJoin {
-//            event.attending += 1
-//        } else {
-//            event.attending -= 1
-//        }
-//
-        return event
-    }
     
-    /// Updates the local event in the array
-    private func updateEventInTheArrayWith(event: Event) {
-        guard var events = events, let index = events.index(of: event) else {NSLog("Error: This event doesn't Exist"); return}
+    private func updateAttendingArrayWithUser(event: Event, user: User, isGoing: Bool) -> Event? {
+        if isGoing {
+             event.attending?.append(user.email)
+        } else {
+            guard let index = event.attending?.index(of: user.email) else {return nil}
+            event.attending?.remove(at: index)
+        }
         
-        events.remove(at: index)
-        events.insert(event, at: index)
+        return event
     }
     
     private func pushUpdatedEventToFirestoreWith(event: Event) {
@@ -205,6 +196,8 @@ class EventController {
             if let error = error {
                 NSLog("Error updating event: \(event.title) becasue of error: \(error.localizedDescription)")
             }
+            
+            NSLog("Event Updated")
         }
     }
 }

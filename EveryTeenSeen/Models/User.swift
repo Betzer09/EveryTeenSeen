@@ -13,7 +13,11 @@ public enum UserType: String {
     case leadCause = "toLeadTheCause"
 }
 
-class User: Codable {
+class User: Codable, Equatable {
+    
+    static func ==(lhs: User, rhs: User) -> Bool {
+        return  lhs.fullname == rhs.fullname && lhs.email == rhs.email 
+    }
     
     // MARK: - Properties
     
@@ -37,10 +41,3 @@ class User: Codable {
         case userType = "user_type"
     }
 }
-
-
-
-
-
-
-

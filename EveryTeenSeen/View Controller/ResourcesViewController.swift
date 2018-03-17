@@ -8,9 +8,8 @@
 
 import UIKit
 
-class ResourcesViewController: UIViewController, UIScrollViewDelegate {
+class ResourcesViewController: UIViewController {
     
-    @IBOutlet var backgroundScrollView: UIScrollView!
     @IBOutlet weak var resouresBackgroundImage: UIImageView!
     @IBOutlet weak var downloadUTAAppButton: UIButton!
 
@@ -22,7 +21,6 @@ class ResourcesViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundScrollView.delegate = self
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

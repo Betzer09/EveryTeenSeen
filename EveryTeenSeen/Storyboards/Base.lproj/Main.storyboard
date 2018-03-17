@@ -126,35 +126,13 @@ Press to Download in the App Store</string>
                     <navigationItem key="navigationItem" id="Pwc-6B-iVD"/>
                     <size key="freeformSize" width="320" height="800"/>
                     <connections>
-                        <outlet property="backgroundScrollView" destination="avA-94-w2v" id="Uix-rK-05n"/>
+                        <outlet property="downloadUTAAppButton" destination="hpa-SM-mSv" id="CyF-73-9XL"/>
+                        <outlet property="resouresBackgroundImage" destination="E3B-Nr-7t6" id="A3e-2y-uG1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O3t-vv-R1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-326" y="1088"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="h4R-EZ-8eM">
-            <objects>
-                <viewController id="mUO-ab-oz0" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gIj-Kc-1Am">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMA-yl-Whb">
-                                <rect key="frame" x="-67" y="-103" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <viewLayoutGuide key="safeArea" id="ets-4O-HtI"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="raN-r2-OOa"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="b9C-Sa-19E" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="555" y="1202"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1cc-bs-1Po">

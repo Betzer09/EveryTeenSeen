@@ -50,6 +50,7 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         configureAllTextfields()
         configureKeyboardNotifications()
+        loginIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
     }
     
     // MARK: - Log User In
@@ -146,7 +147,6 @@ class SignInViewController: UIViewController {
         signUserUpAndCreateAccountButton.layer.cornerRadius = 15
         
         self.hideIndicator()
-        loginIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         textFieldBeingEdited = confirmPasswordTextField
     }
     

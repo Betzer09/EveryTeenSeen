@@ -12,6 +12,7 @@ import MapKit
 class GetStartedViewController: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var zipcodeCheckActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var viewBehindTheButton: UIView!
     @IBOutlet weak var backgroundLayer: UIView!
@@ -24,6 +25,7 @@ class GetStartedViewController: UIViewController {
     // MARK: - Properties
     var gradientLayer: CAGradientLayer!
     let locationManager = CLLocationManager()
+    var locationIsDenied: Bool? = false
     
     // MARK: - View LifeCycle
     override func viewWillAppear(_ animated: Bool) {
@@ -34,10 +36,20 @@ class GetStartedViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func acceptLocationServicesButtonPressed(_ sender: Any) {
+        
+        if locationIsDenied == true {
+            self.informTheUserAboutLocation()
+        } else {
+        
+        showActivityIndicator()
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
 
-            guard let zip = UserLocationController.shared.fetchUserLocation()?.zipcode else {return}
+            guard let zip = UserLocationController.shared.fetchUserLocation()?.zipcode else {
+                NSLog("Error fetching the users zipcode")
+                hideActivityIndicator()
+                return
+        }
             
             CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
                 guard CityController.shared.verifyLocationFor(city: city) else {
@@ -46,6 +58,7 @@ class GetStartedViewController: UIViewController {
                 }
                 presentLogoutAndSignUpPage(viewController: self)
             })
+        }
     }
     
     @IBAction func enterzipCodeButtonPressed(_ sender: Any) {
@@ -110,10 +123,22 @@ class GetStartedViewController: UIViewController {
         acceptLocationButton.layer.cornerRadius = 15
         locationServicesGroupingView.layer.cornerRadius = 15
         getStartedButton.layer.cornerRadius = 20
+        zipcodeCheckActivityIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        zipcodeCheckActivityIndicator.isHidden = true
         
 //        configureButtonWith(button: getStartedButton)
 //        configureButtonWith(button: acceptLocationButton)
 //        configureButtonWith(button: enterZipcodeButton)
+    }
+    
+    private func showActivityIndicator() {
+        zipcodeCheckActivityIndicator.isHidden = false
+        zipcodeCheckActivityIndicator.startAnimating()
+    }
+    
+    private func hideActivityIndicator() {
+        zipcodeCheckActivityIndicator.isHidden = true
+        zipcodeCheckActivityIndicator.stopAnimating()
     }
 }
 
@@ -124,6 +149,7 @@ extension GetStartedViewController: CLLocationManagerDelegate {
         if status == .authorizedWhenInUse {
             print("We have permission to use the user's location")
             locationManager.requestLocation()
+            locationIsDenied = false
             
             // Check to see if we already have a location
             guard UserLocationController.shared.fetchUserLocation() == nil else {
@@ -145,6 +171,30 @@ extension GetStartedViewController: CLLocationManagerDelegate {
                 })
             })
         }
+        
+        if status == .denied {
+            informTheUserAboutLocation()
+        }
+    }
+    
+    private func informTheUserAboutLocation() {
+        let alert = UIAlertController(title: "Location Services", message: "You have denied access to let ETS use your location while being used. Enter your zipcode in manually or go to settings!", preferredStyle: .alert)
+        
+        let settingsAlert = UIAlertAction(title: "Go to settings", style: .default) { (_) in
+            // Naviate them to settings
+            if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+            }
+        }
+        
+        let enterManualAlert = UIAlertAction(title: "Enter Manually", style: .cancel) { (_) in
+            self.locationIsDenied = true
+        }
+        
+        alert.addAction(enterManualAlert)
+        alert.addAction(settingsAlert)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     // Updates the location if it changes

@@ -195,6 +195,13 @@ class CreateEventViewController: UIViewController {
     }
     
     private func checkLablesWith(eventTime: String, title: String, eventDateString: String, address: String, eventInfo: String) {
+        
+        guard selectedImageView == nil else {
+            hideUploadEventGroup()
+            presentSimpleAlert(viewController: self, title: "Warning", message: "Bes sure to give the event a Image!")
+            return
+        }
+        
         guard eventTime != "Time" else {
             hideUploadEventGroup()
             presentSimpleAlert(viewController: self, title: "Warning", message: "Be sure to give the event a Time!")

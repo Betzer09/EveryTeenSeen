@@ -257,9 +257,14 @@
                                         <rect key="frame" x="13.5" y="72.5" width="245" height="165"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="CQJ-2Q-y3s">
+                                        <rect key="frame" x="0.0" y="0.0" width="272" height="483"/>
+                                        <color key="color" red="0.38823529410000002" green="0.30980392159999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="CQJ-2Q-y3s" firstAttribute="height" secondItem="yAS-j5-2TI" secondAttribute="height" id="1iq-dH-iLQ"/>
                                     <constraint firstItem="YKU-zf-F3M" firstAttribute="centerX" secondItem="yAS-j5-2TI" secondAttribute="centerX" id="4SP-mW-AGN"/>
                                     <constraint firstItem="rVf-Rn-NMt" firstAttribute="width" secondItem="yAS-j5-2TI" secondAttribute="width" multiplier="0.9" id="6CY-Wr-bwl"/>
                                     <constraint firstItem="gpy-wn-O4b" firstAttribute="centerX" secondItem="yAS-j5-2TI" secondAttribute="centerX" id="6fz-j3-JWE"/>
@@ -273,8 +278,11 @@
                                     <constraint firstItem="rVf-Rn-NMt" firstAttribute="centerX" secondItem="yAS-j5-2TI" secondAttribute="centerX" id="M2J-CL-DdI"/>
                                     <constraint firstItem="YKU-zf-F3M" firstAttribute="height" secondItem="yAS-j5-2TI" secondAttribute="height" multiplier="1/6" id="RGY-Y6-U3l"/>
                                     <constraint firstItem="RKd-cI-lNn" firstAttribute="top" secondItem="u7W-ql-xxc" secondAttribute="bottom" constant="8" id="Sao-WD-sxk"/>
+                                    <constraint firstItem="CQJ-2Q-y3s" firstAttribute="centerX" secondItem="yAS-j5-2TI" secondAttribute="centerX" id="Sst-MM-XxB"/>
+                                    <constraint firstItem="CQJ-2Q-y3s" firstAttribute="width" secondItem="yAS-j5-2TI" secondAttribute="width" id="VAR-wo-IOH"/>
                                     <constraint firstItem="RKd-cI-lNn" firstAttribute="width" secondItem="yAS-j5-2TI" secondAttribute="width" multiplier="0.9" id="ZIM-01-oFa"/>
                                     <constraint firstItem="gpy-wn-O4b" firstAttribute="top" secondItem="yAS-j5-2TI" secondAttribute="top" constant="20" id="e6O-aJ-0Yx"/>
+                                    <constraint firstItem="CQJ-2Q-y3s" firstAttribute="centerY" secondItem="yAS-j5-2TI" secondAttribute="centerY" id="epQ-cp-GIh"/>
                                     <constraint firstItem="u7W-ql-xxc" firstAttribute="centerX" secondItem="yAS-j5-2TI" secondAttribute="centerX" id="fG1-I5-06c"/>
                                     <constraint firstItem="RKd-cI-lNn" firstAttribute="height" secondItem="yAS-j5-2TI" secondAttribute="height" multiplier="1/8" id="fcB-VS-Xys"/>
                                     <constraint firstItem="u7W-ql-xxc" firstAttribute="width" secondItem="yAS-j5-2TI" secondAttribute="width" id="gJs-DQ-F2t"/>
@@ -320,6 +328,7 @@
                         <outlet property="getStartedButton" destination="np1-dj-ZUB" id="mwG-zb-wYN"/>
                         <outlet property="locationServicesGroupingView" destination="yAS-j5-2TI" id="Dmt-4d-kjH"/>
                         <outlet property="viewBehindTheButton" destination="itC-uz-PwC" id="F3L-8n-jno"/>
+                        <outlet property="zipcodeCheckActivityIndicator" destination="CQJ-2Q-y3s" id="l8a-K5-2Ur"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QK2-iW-ddg" userLabel="First Responder" sceneMemberID="firstResponder"/>

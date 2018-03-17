@@ -30,7 +30,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>to take pictures for upcoming events that way you can share them with others.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>to display the correct events near you.</string>
+	<string>To display events close to year.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>to get pictures for upcoming event images and share them with others.</string>
 	<key>UILaunchStoryboardName</key>

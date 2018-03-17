@@ -53,31 +53,34 @@ class EventsTableViewCell: UITableViewCell {
         
         if goingLabel.text == "Going?" {
             configureLableAsNotGoing()
-            eventAttendingLabel.text = "Attending: \(count + 1)"
-            
+        
             EventController.shared.isPlanningOnAttending(event: event, user: user, isGoing: true, completion: { (stringError) in
-                guard let error = stringError else {return}
+                guard let error = stringError else {
+                    // This means there is no error update label
+                    return
+                }
                 presentSimpleAlert(viewController: rootvc, title: "Unable to attend event", message: error)
+            }, completionHandler: { (updatedEvent) in
+                guard let updatedEvent = updatedEvent, let updatedCount = updatedEvent.attending?.count else {return}
+                self.eventAttendingLabel.text = "Attending: \(updatedCount)"
             })
-            
         } else {
             configureLabelAsGoing()
             // This shows that there are zero attending
-            if count <= 0 {
-                eventAttendingLabel.text = "Attending: \(count)"
-            } else {
-                eventAttendingLabel.text = "Attending: \(count - 1)"
-            }
-            
             EventController.shared.isPlanningOnAttending(event: event, user: user, isGoing: false, completion: { (stringError) in
-                guard let error = stringError else {return}
+                guard let error = stringError else {
+                    self.eventAttendingLabel.text = "Attending: \(count)"
+                    return
+                }
                 presentSimpleAlert(viewController: rootvc, title: "Unable to attend event", message: error)
+            }, completionHandler: {(updatedEvent) in
+                guard let updatedEvent = updatedEvent, let updatedCount = updatedEvent.attending?.count else {return}
+                self.eventAttendingLabel.text = "Attending: \(updatedCount)"
             })
         }
     }
     
     // MARK: - Functions
-    
     func updateUI() {
         guard let event = event,
             let data = event.photo?.imageData,

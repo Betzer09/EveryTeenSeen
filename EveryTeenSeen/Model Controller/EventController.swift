@@ -141,7 +141,7 @@ class EventController {
         }.resume()
     }
     
-    func isPlanningOnAttending(event: Event, user: User, isGoing: Bool, completion: @escaping (_ stringError: String?) -> Void) {
+    func isPlanningOnAttending(event: Event, user: User, isGoing: Bool, completion: @escaping (_ stringError: String?) -> Void, completionHandler: @escaping (_ updatedEvent: Event?) -> Void) {
         
         let db = Firestore.firestore()
         
@@ -164,10 +164,12 @@ class EventController {
                 guard let updatedEvent = self.updateAttendingArrayWithUser(event: event, user: user, isGoing: isGoing) else {NSLog("Error updating event in function: \(#function)"); return}
                 // Push event to firebase
                 self.pushUpdatedEventToFirestoreWith(event: updatedEvent)
+                completionHandler(updatedEvent)
                 
             } catch let e {
                 NSLog("Error decoding event! : \(e.localizedDescription)")
                 completion("Error decoding event! : \(e.localizedDescription)")
+                completionHandler(nil)
             }
         }
         

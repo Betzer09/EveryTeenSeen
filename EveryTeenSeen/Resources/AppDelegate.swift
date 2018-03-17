@@ -22,8 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        // Navigation Style
         UIApplication.shared.statusBarStyle = .lightContent
         UINavigationBar.appearance().barTintColor = UIColor(red: divideNumberForColorWith(number: 99), green: divideNumberForColorWith(number: 79), blue: divideNumberForColorWith(number: 237), alpha: 1)
+        UINavigationBar.appearance().tintColor = UIColor.white
         
         let singInView: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

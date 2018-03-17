@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		231F829520573E4C006D5319 /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F829420573E4C006D5319 /* ResourcesViewController.swift */; };
+		232344DF205D7A7000BC1DA0 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232344DE205D7A7000BC1DA0 /* UserProfile.storyboard */; };
+		232344E1205D7AAD00BC1DA0 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232344E0205D7AAD00BC1DA0 /* UserProfileViewController.swift */; };
 		23250CF3202431130033B85D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CF2202431130033B85D /* City.swift */; };
 		232EC7F02054BD1400DD21D9 /* EventLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232EC7EF2054BD1400DD21D9 /* EventLocationTableViewController.swift */; };
 		232EC7F22054D55E00DD21D9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232EC7F12054D55E00DD21D9 /* Onboarding.storyboard */; };
@@ -47,6 +49,8 @@
 /* Begin PBXFileReference section */
 		03564C288DF100113DAE3FBD /* Pods-EveryTeenSeen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.release.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.release.xcconfig"; sourceTree = "<group>"; };
 		231F829420573E4C006D5319 /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
+		232344DE205D7A7000BC1DA0 /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		232344E0205D7AAD00BC1DA0 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		23250CF2202431130033B85D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		232EC7EF2054BD1400DD21D9 /* EventLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationTableViewController.swift; sourceTree = "<group>"; };
 		232EC7F12054D55E00DD21D9 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				236155FC2023F1850004DC9F /* LaunchScreen.storyboard */,
 				2383661E20486596002E7391 /* Admin.storyboard */,
 				232EC7F12054D55E00DD21D9 /* Onboarding.storyboard */,
+				232344DE205D7A7000BC1DA0 /* UserProfile.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 				2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */,
 				231F829420573E4C006D5319 /* ResourcesViewController.swift */,
 				238AD1CE2056F10900ADC8DE /* EventsViewController.swift */,
+				232344E0205D7AAD00BC1DA0 /* UserProfileViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 				236155FB2023F1850004DC9F /* Assets.xcassets in Resources */,
 				236155F92023F1850004DC9F /* Main.storyboard in Resources */,
 				232EC7F22054D55E00DD21D9 /* Onboarding.storyboard in Resources */,
+				232344DF205D7A7000BC1DA0 /* UserProfile.storyboard in Resources */,
 				2383661F20486596002E7391 /* Admin.storyboard in Resources */,
 				236673A320360CDC00F2F485 /* GoogleService-Info.plist in Resources */,
 			);
@@ -422,6 +429,7 @@
 				238AD1CF2056F10900ADC8DE /* EventsViewController.swift in Sources */,
 				232EC7FA2054DBFA00DD21D9 /* YoureHeardViewController.swift in Sources */,
 				232EC7FC2054DC0700DD21D9 /* YoureNotAloneViewController.swift in Sources */,
+				232344E1205D7AAD00BC1DA0 /* UserProfileViewController.swift in Sources */,
 				2336698B2034E3040070F17F /* Photo.swift in Sources */,
 				232EC7FE2054E98900DD21D9 /* GetStartedViewController.swift in Sources */,
 				2393D3AC2033E6800073F6A5 /* CreateEventViewController.swift in Sources */,

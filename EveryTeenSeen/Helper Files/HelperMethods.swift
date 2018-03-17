@@ -126,9 +126,29 @@ func presentAdminTabBarVC(viewController: UIViewController) {
     }
 }
 
+func presentUserProfile(viewController: UIViewController) {
+    let storyboard: UIStoryboard = UIStoryboard(name: "UserProfile", bundle: nil)
+    guard let vc = storyboard.instantiateViewController(withIdentifier: "userProfileVC") as? UserProfileViewController else {return}
+    
+    let navController = UINavigationController(rootViewController: vc)
+    DispatchQueue.main.async {
+        viewController.present(navController, animated: true, completion: nil)
+    }
+}
+
+func presentCreateEventVC(viewController: UIViewController) {
+    let storyboard: UIStoryboard = UIStoryboard(name: "Admin", bundle: nil)
+    guard let vc = storyboard.instantiateViewController(withIdentifier: "createEventVC") as? CreateEventViewController else {return}
+    
+    let navController = UINavigationController(rootViewController: vc)
+    DispatchQueue.main.async {
+        viewController.present(navController, animated: true, completion: nil)
+    }
+}
+
 // MARK: - Alert Functions
 func presentLoginAlert(viewController: UIViewController) {
-    let alert = UIAlertController(title: "Sign In", message: "You are in view only mode. In order to attend an event you need to create an account", preferredStyle: .alert)
+    let alert = UIAlertController(title: "Sign In", message: "You are in \"View Only\" mode. In order to attend a event or view your profile you must Sign In.", preferredStyle: .alert)
     
     let signInAction = UIAlertAction(title: "Sign In", style: .default) { (_) in
         UserController.shared.signUserOut(completion: { (answer, error) in

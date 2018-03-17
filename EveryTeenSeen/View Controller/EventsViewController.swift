@@ -131,21 +131,11 @@ extension EventsViewController {
     }
     
     @objc func segueToProfileView() {
-        UserController.shared.confirmLogoutAlert(viewController: self) { (responce) in
-            guard responce else {return}
-            UserController.shared.signUserOut { (success, error) in
-                if let error = error {
-                    presentSimpleAlert(viewController: self, title: "Error logging out!", message: "Error description: \(error.localizedDescription)")
-                }
-                
-                // If the user has succesfully logged out.
-                guard success else {return}
-                
-                // Present the login vc
-                presentLogoutAndSignUpPage(viewController: self)
-                
-            }
+        guard UserController.shared.loadUserFromDefaults() != nil else {
+            presentLoginAlert(viewController: self)
+            return
         }
+        presentUserProfile(viewController: self)
     }
 }
 

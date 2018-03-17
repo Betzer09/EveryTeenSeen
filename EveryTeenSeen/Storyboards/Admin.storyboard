@@ -15,7 +15,7 @@
         <!--Create Event View Controller-->
         <scene sceneID="peY-0K-jdb">
             <objects>
-                <viewController id="IsB-aI-zU1" customClass="CreateEventViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="createEventVC" id="IsB-aI-zU1" customClass="CreateEventViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KKH-35-hAb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -68,18 +68,24 @@ class CreateEventViewController: UIViewController {
     @IBAction func saveBtnPressed(_ sender: Any) {
         
         // Show the view
-        eventUploadedSuccesfuallyGroupingView.isHidden = false
+        self.showUPloadEventGroup()
         
         guard let title = titleLabel.text,
             let eventDateString = eventDateLabel.text,
             let address = eventLocationLabel.text,
             let eventTime = eventTimeLabel.text,
             let user = UserController.shared.loadUserFromDefaults(),
-            let eventInfo = descriptionLabel.text, !title.isEmpty,
-            !eventDateString.isEmpty, !address.isEmpty, !eventInfo.isEmpty else {
+            let eventInfo = descriptionLabel.text,
+            !eventTime.isEmpty,
+            !title.isEmpty,
+            !eventDateString.isEmpty,
+            !address.isEmpty,
+            !eventInfo.isEmpty else {
                 presentSimpleAlert(viewController: self, title: "Error Uploaded Event", message: "Make sure all field are filled.")
                 return
         }
+        
+        self.checkLablesWith(eventTime: eventTime, title: title, eventDateString: eventDateString, address: address, eventInfo: eventInfo)
         
         guard let image = selectedImageView.image else {return}
         
@@ -186,6 +192,50 @@ class CreateEventViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         eventUploadedSuccesfuallyGroupingView.layer.cornerRadius = 10
+    }
+    
+    private func checkLablesWith(eventTime: String, title: String, eventDateString: String, address: String, eventInfo: String) {
+        guard eventTime != "Time" else {
+            hideUploadEventGroup()
+            presentSimpleAlert(viewController: self, title: "Warning", message: "Be sure to give the event a Time!")
+            return
+        }
+        
+        guard title != "Title" else {
+            presentSimpleAlert(viewController: self, title: "Warning", message: "Be sure to give the event a Title!")
+            hideUploadEventGroup()
+            return
+        }
+        
+        guard eventDateString != "Date" else {
+            hideUploadEventGroup()
+            presentSimpleAlert(viewController: self, title: "Warning", message: "Be sure to give the event a Date!")
+            return
+        }
+        
+        guard address != "Location" else {
+            hideUploadEventGroup()
+            presentSimpleAlert(viewController: self, title: "Warning", message: "Be sure to give the event a Address!")
+            return
+        }
+        
+        guard eventInfo != "Description" else {
+            hideUploadEventGroup()
+            presentSimpleAlert(viewController: self, title: "Warning", message: "Be sure to give the event a Description!")
+            return
+        }
+    }
+    
+    /// Shows the group and Starts the Activity Indicator
+    private func hideUploadEventGroup() {
+        eventUploadedSuccesfuallyGroupingView.isHidden = true
+        postEventActivityIndicator.stopAnimating()
+    }
+    
+    /// Shows the group and Stops the Activity Indicator
+    private func showUPloadEventGroup() {
+        eventUploadedSuccesfuallyGroupingView.isHidden = false
+        postEventActivityIndicator.startAnimating()
     }
     
     // MARK: - Alerts

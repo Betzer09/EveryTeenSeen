@@ -20,6 +20,7 @@ class UserController {
     private let emailKey = "email"
     private let zipcodeKey = "zipcode"
     private let userTypeKey = "user_type"
+    private let userDistanceKey = "user_distance"
     
     /// This is the phone key that allows for push notifications
     static let phoneTokenKey = "phone_token"
@@ -129,13 +130,15 @@ class UserController {
     
     // MARK: - Save User To Defaults
     /// Saves the currents user to userdefaults
-    func saveUserToDefaults(fullname: String, email: String, zipcode: String, userType: String) {
+    func saveUserToDefaults(fullname: String, email: String, zipcode: String, userType: String, distance: Int) {
         
         let defaults = UserDefaults.standard
         defaults.set(fullname, forKey: fullnameKey)
         defaults.set(email, forKey: emailKey)
         defaults.set(zipcode, forKey: zipcodeKey)
         defaults.set(userType, forKey: userTypeKey)
+        defaults.set(distance, forKey: userDistanceKey)
+        
         
     }
     
@@ -158,11 +161,18 @@ class UserController {
         guard let fullname = defaults.object(forKey: fullnameKey) as? String,
             let email = defaults.object(forKey: emailKey) as? String,
             let userType = defaults.object(forKey: userTypeKey) as? String,
-            let zipcode = defaults.object(forKey: zipcodeKey) as? String else {return nil}
+            let zipcode = defaults.object(forKey: zipcodeKey) as? String,
+            let distance = defaults.object(forKey: userDistanceKey) as? Int else {return nil}
         
-        let user = User(fullname: fullname, email: email, zipcode: zipcode, userType: "\(userType)")
+        let user = User(fullname: fullname, email: email, zipcode: zipcode, userType: "\(userType)", distance: distance)
         loadedUser = user
-        
         return loadedUser
     }
+
 }
+
+
+
+
+
+

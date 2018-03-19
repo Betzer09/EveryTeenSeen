@@ -25,8 +25,9 @@ class User: Codable, Equatable {
     let email: String
     let zipcode: String
     var userType: String
+    var distance: Int?
     
-   @discardableResult init(fullname: String, email: String, zipcode: String, userType: String) {
+    @discardableResult init(fullname: String, email: String, zipcode: String, userType: String, distance: Int = 25) {
         self.fullname = fullname
         self.email = email
         self.zipcode = zipcode
@@ -38,6 +39,7 @@ class User: Codable, Equatable {
         case fullname
         case email
         case zipcode
+        case distance
         case userType = "user_type"
     }
 }

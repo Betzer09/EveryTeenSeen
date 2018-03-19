@@ -43,11 +43,18 @@ class UserProfileViewController: UIViewController {
     private func setUpView() {
         createEventButton.layer.cornerRadius = createEventButton.bounds.height / 2
         
-        guard let user = UserController.shared.loadUserFromDefaults()?.userType else {return}
-        if user == UserType.leadCause.rawValue {
+        guard let user = UserController.shared.loadUserFromDefaults(), let userLocation = UserLocationController.shared.fetchUserLocation(), let cityName = userLocation.cityname,
+            let distance = user.distance else {return}
+        
+        if user.userType == UserType.leadCause.rawValue {
+            usertypeLabel.text = "Admin"
             createEventButton.isHidden = false
             tableView.isHidden = false
         }
+        
+        addressLabel.text = "\(cityName), \(userLocation.zipcode ?? "")"
+        fullnameLabel.text = user.fullname
+        distanceLabel.text = "\(distance)"
     }
 }
 

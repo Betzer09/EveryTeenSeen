@@ -212,7 +212,10 @@ extension GetStartedViewController: CLLocationManagerDelegate {
             self.fetchTheUsersLocation { (location) in
                 guard let location = location, let zip = location.zipcode else {return}
                 
-                UserLocationController.shared.update(lat: location.latitude, long: location.longitude, zip: zip)
+                CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
+                    UserLocationController.shared.update(lat: location.latitude, long: location.longitude, zip: zip, cityName: city.city)
+                })
+                
             }
         }
         

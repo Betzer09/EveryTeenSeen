@@ -307,7 +307,7 @@ extension SignInViewController {
             }
             
             // Save the data to the phone
-            UserController.shared.saveUserToDefaults(fullname: fullname, email: email, zipcode: zipcode, userType: UserType.joinCause.rawValue)
+            UserController.shared.saveUserToDefaults(fullname: fullname, email: email, zipcode: zipcode, userType: UserType.joinCause.rawValue, distance: 25)
             
             CityController.shared.fetchCityWith(zipcode: zipcode, completion: { (city) in
                 CityController.shared.postCityToFirebaseWith(city: city.city, zipcode: city.zipcode, state: city.state)

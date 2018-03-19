@@ -41,7 +41,9 @@ class FirebaseManager {
                 let decodedUser = try JSONDecoder().decode(User.self, from: encodedData)
                 user = decodedUser
                 // Save to user defaults
-                UserController.shared.saveUserToDefaults(fullname: decodedUser.fullname, email: decodedUser.email, zipcode: decodedUser.zipcode, userType: decodedUser.userType)
+                guard let distance = decodedUser.distance else {return}
+                UserController.shared.saveUserToDefaults(fullname: decodedUser.fullname, email: decodedUser.email, zipcode: decodedUser.zipcode, userType: decodedUser.userType, distance:  distance)
+                
                 completion(user, nil)
             } catch let e {
                 completion(nil, e)

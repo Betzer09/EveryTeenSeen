@@ -56,7 +56,7 @@ class UserController {
                 completion(nil, error)
             }
             guard let user = user else {NSLog("Error: There is no user!"); completion(nil, nil); return}
-            
+            self.saveUserToCoreData(email: user.email, fullname: user.fullname, usertype: user.usertype, zipcode: user.zipcode, distance: user.eventDistance)
             completion(user, nil)
         }
     }

@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseFirestore
 import UIKit
+import CoreData
 
 class UserController {
     
@@ -37,27 +38,15 @@ class UserController {
         }
     }
     // MARK: - Firestore Methods
-    func createUserProfile(fullname: String, email: String, zipcode: String, userType: UserType, completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) ) {
+    func createUserProfile(fullname: String, email: String, zipcode: String, usertype: UserType, completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) ) {
         let userDb = Firestore.firestore()
         
         // Create a user
-        let newUser = User(fullname: fullname, email: email, zipcode: zipcode, userType: userType.rawValue)
+        let newUser = User(email: email, fullname: fullname, usertype: usertype.rawValue, zipcode: zipcode, eventDistance: 25)
         
-        do {
-            let data = try JSONEncoder().encode(newUser)
-            guard let stringDict = String(data: data, encoding: .utf8) else {completion(false,nil); return}
-            let jsonDict = convertStringToDictWith(string: stringDict)
-            
-            userDb.collection("users").document("\(email)").setData(jsonDict)
-            print("Succesfully Created User")
-            completion(true, nil)
-            
-        } catch let e {
-            completion(false, e)
-            print("Error Createing User")
-            NSLog("Error encoding user data: \(e)")
-        }
-        
+        userDb.collection("users").document("\(email)").setData(newUser.dictionaryRepresentation)
+        print("Succesfully Created User")
+        completion(true, nil)
     }
     
     // MARK: - Fetch methods
@@ -90,7 +79,8 @@ class UserController {
             guard success else {completion(false, error); return}
             
             // Sign the user out of user defaults
-            self.deleteUserFromUserDefaults()
+            guard let user = self.loadUserProfile() else {return}
+            self.remove(user: user)
             
             completion(true,nil)
         }
@@ -127,48 +117,52 @@ class UserController {
         
         viewController.present(alert, animated: true, completion: nil)
     }
-    
-    // MARK: - Save User To Defaults
-    /// Saves the currents user to userdefaults
-    func saveUserToDefaults(fullname: String, email: String, zipcode: String, userType: String, distance: Int) {
-        
-        let defaults = UserDefaults.standard
-        defaults.set(fullname, forKey: fullnameKey)
-        defaults.set(email, forKey: emailKey)
-        defaults.set(zipcode, forKey: zipcodeKey)
-        defaults.set(userType, forKey: userTypeKey)
-        defaults.set(distance, forKey: userDistanceKey)
-        
-        
-    }
-    
-    /// Removes the user from user defaults
-    private func deleteUserFromUserDefaults() {
-        let defaults = UserDefaults.standard
-        
-        defaults.removeObject(forKey: fullnameKey)
-        defaults.removeObject(forKey: emailKey)
-        defaults.removeObject(forKey: zipcodeKey)
-        defaults.removeObject(forKey: userTypeKey)
-    }
-    
-    /// Load from user defaults
-    func loadUserFromDefaults() -> User? {
-        var loadedUser: User?
-        
-        let defaults = UserDefaults.standard
-        
-        guard let fullname = defaults.object(forKey: fullnameKey) as? String,
-            let email = defaults.object(forKey: emailKey) as? String,
-            let userType = defaults.object(forKey: userTypeKey) as? String,
-            let zipcode = defaults.object(forKey: zipcodeKey) as? String,
-            let distance = defaults.object(forKey: userDistanceKey) as? Int else {return nil}
-        
-        let user = User(fullname: fullname, email: email, zipcode: zipcode, userType: "\(userType)", distance: distance)
-        loadedUser = user
-        return loadedUser
-    }
+}
 
+// MARK: - Coredata Functions
+extension UserController {
+    
+    // Saves the user to CoreData
+    func saveUserToCoreData(email: String, fullname: String, usertype: String, zipcode: String, distance: Int64) {
+        User(email: email, fullname: fullname, usertype: usertype, zipcode: zipcode, eventDistance: distance)
+        saveToPersistentStore()
+    }
+    
+    // Updates the User In CoreData
+    func updateUserInCoredata(user: User, email: String, fullname: String, usertype: String, zipcode: String, profileImageStringURL: String, eventDistance: Int64) {
+        user.email = email
+        user.fullname = fullname
+        user.usertype = usertype
+        user.zipcode = zipcode
+        user.profileImageURLString = profileImageStringURL
+        user.eventDistance = eventDistance
+        
+        saveToPersistentStore()
+    }
+    
+    /// Removes Users profile from CoreData
+    func remove(user: User) {
+        guard let moc = user.managedObjectContext else {return} 
+        moc.delete(user)
+        saveToPersistentStore()
+    }
+    
+    /// Loads user profiel from CoreDate
+    func loadUserProfile() -> User? {
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        guard let user = try? CoreDataStack.context.fetch(request).first else {return nil}
+        return user
+    }
+    
+    func saveToPersistentStore() {
+        let moc = CoreDataStack.context
+        
+        do {
+            try moc.save()
+        } catch let error {
+            NSLog("There was a problem saving the users location to the persitent store: \(error) in function \(#function)")
+        }
+    }
 }
 
 

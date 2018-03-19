@@ -10,6 +10,9 @@
 		231F829520573E4C006D5319 /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F829420573E4C006D5319 /* ResourcesViewController.swift */; };
 		232344DF205D7A7000BC1DA0 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232344DE205D7A7000BC1DA0 /* UserProfile.storyboard */; };
 		232344E1205D7AAD00BC1DA0 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232344E0205D7AAD00BC1DA0 /* UserProfileViewController.swift */; };
+		232344E420601A5A00BC1DA0 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232344E220601A5900BC1DA0 /* User+CoreDataProperties.swift */; };
+		232344E520601A5A00BC1DA0 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232344E320601A5900BC1DA0 /* User+CoreDataClass.swift */; };
+		232344E7206021FA00BC1DA0 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232344E6206021FA00BC1DA0 /* User+Convenience.swift */; };
 		23250CF3202431130033B85D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23250CF2202431130033B85D /* City.swift */; };
 		232EC7F02054BD1400DD21D9 /* EventLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232EC7EF2054BD1400DD21D9 /* EventLocationTableViewController.swift */; };
 		232EC7F22054D55E00DD21D9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232EC7F12054D55E00DD21D9 /* Onboarding.storyboard */; };
@@ -21,7 +24,7 @@
 		2336698B2034E3040070F17F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336698A2034E3040070F17F /* Photo.swift */; };
 		2336698E203533180070F17F /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2336698D203533180070F17F /* UserNotifications.framework */; };
 		2347DAB0204DDF7600124188 /* EveryTeenSeen.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2347DAAE204DDF7600124188 /* EveryTeenSeen.xcdatamodeld */; };
-		2347DAB2204DE04900124188 /* UserLocation+Conenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347DAB1204DE04900124188 /* UserLocation+Conenience.swift */; };
+		2347DAB2204DE04900124188 /* UserLocation+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347DAB1204DE04900124188 /* UserLocation+Convenience.swift */; };
 		2347DAB4204DE07700124188 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347DAB3204DE07700124188 /* CoreDataStack.swift */; };
 		2347DAB6204DE1C200124188 /* UserLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347DAB5204DE1C200124188 /* UserLocationController.swift */; };
 		235F66CE202A47E000383355 /* CityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66CD202A47E000383355 /* CityController.swift */; };
@@ -34,7 +37,6 @@
 		2383661F20486596002E7391 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2383661E20486596002E7391 /* Admin.storyboard */; };
 		238AD1CF2056F10900ADC8DE /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238AD1CE2056F10900ADC8DE /* EventsViewController.swift */; };
 		238B5548202E0E21002E128C /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5547202E0E21002E128C /* HelperMethods.swift */; };
-		238B554A202E1210002E128C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5549202E1210002E128C /* User.swift */; };
 		238B554C202E1731002E128C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B554B202E1731002E128C /* UserController.swift */; };
 		238B5550202E1A18002E128C /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B554F202E1A18002E128C /* FirebaseManager.swift */; };
 		238B5554202F8A83002E128C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B5553202F8A83002E128C /* SignInViewController.swift */; };
@@ -51,6 +53,9 @@
 		231F829420573E4C006D5319 /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
 		232344DE205D7A7000BC1DA0 /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		232344E0205D7AAD00BC1DA0 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		232344E220601A5900BC1DA0 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		232344E320601A5900BC1DA0 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		232344E6206021FA00BC1DA0 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
 		23250CF2202431130033B85D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		232EC7EF2054BD1400DD21D9 /* EventLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationTableViewController.swift; sourceTree = "<group>"; };
 		232EC7F12054D55E00DD21D9 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -63,7 +68,7 @@
 		2336698C2035314A0070F17F /* EveryTeenSeen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EveryTeenSeen.entitlements; sourceTree = "<group>"; };
 		2336698D203533180070F17F /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		2347DAAF204DDF7600124188 /* EveryTeenSeen.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EveryTeenSeen.xcdatamodel; sourceTree = "<group>"; };
-		2347DAB1204DE04900124188 /* UserLocation+Conenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserLocation+Conenience.swift"; sourceTree = "<group>"; };
+		2347DAB1204DE04900124188 /* UserLocation+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserLocation+Convenience.swift"; sourceTree = "<group>"; };
 		2347DAB3204DE07700124188 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		2347DAB5204DE1C200124188 /* UserLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationController.swift; sourceTree = "<group>"; };
 		235F66CD202A47E000383355 /* CityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityController.swift; sourceTree = "<group>"; };
@@ -78,7 +83,6 @@
 		2383661E20486596002E7391 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		238AD1CE2056F10900ADC8DE /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		238B5547202E0E21002E128C /* HelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
-		238B5549202E1210002E128C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		238B554B202E1731002E128C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		238B554F202E1A18002E128C /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		238B5553202F8A83002E128C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +117,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		232344E82060225400BC1DA0 /* NSManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				232344E320601A5900BC1DA0 /* User+CoreDataClass.swift */,
+				232344E220601A5900BC1DA0 /* User+CoreDataProperties.swift */,
+			);
+			path = NSManagedObjects;
+			sourceTree = "<group>";
+		};
 		23250CE420242CB30033B85D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,11 +141,12 @@
 			isa = PBXGroup;
 			children = (
 				2347DAAE204DDF7600124188 /* EveryTeenSeen.xcdatamodeld */,
+				232344E82060225400BC1DA0 /* NSManagedObjects */,
 				23250CF2202431130033B85D /* City.swift */,
-				238B5549202E1210002E128C /* User.swift */,
 				2393D3A32033BFE40073F6A5 /* Event.swift */,
 				2336698A2034E3040070F17F /* Photo.swift */,
-				2347DAB1204DE04900124188 /* UserLocation+Conenience.swift */,
+				232344E6206021FA00BC1DA0 /* User+Convenience.swift */,
+				2347DAB1204DE04900124188 /* UserLocation+Convenience.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -414,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2347DAB4204DE07700124188 /* CoreDataStack.swift in Sources */,
+				232344E7206021FA00BC1DA0 /* User+Convenience.swift in Sources */,
 				238B5554202F8A83002E128C /* SignInViewController.swift in Sources */,
 				238B554C202E1731002E128C /* UserController.swift in Sources */,
 				232EC7F82054DBEC00DD21D9 /* YoureSeenViewController.swift in Sources */,
@@ -423,9 +438,8 @@
 				2347DAB0204DDF7600124188 /* EveryTeenSeen.xcdatamodeld in Sources */,
 				238B5548202E0E21002E128C /* HelperMethods.swift in Sources */,
 				232EC7F02054BD1400DD21D9 /* EventLocationTableViewController.swift in Sources */,
-				238B554A202E1210002E128C /* User.swift in Sources */,
 				2347DAB6204DE1C200124188 /* UserLocationController.swift in Sources */,
-				2347DAB2204DE04900124188 /* UserLocation+Conenience.swift in Sources */,
+				2347DAB2204DE04900124188 /* UserLocation+Convenience.swift in Sources */,
 				238AD1CF2056F10900ADC8DE /* EventsViewController.swift in Sources */,
 				232EC7FA2054DBFA00DD21D9 /* YoureHeardViewController.swift in Sources */,
 				232EC7FC2054DC0700DD21D9 /* YoureNotAloneViewController.swift in Sources */,
@@ -436,6 +450,8 @@
 				23250CF3202431130033B85D /* City.swift in Sources */,
 				232EC7F52054D67000DD21D9 /* OnboardingViewController.swift in Sources */,
 				2393D3A62033C2380073F6A5 /* EventController.swift in Sources */,
+				232344E520601A5A00BC1DA0 /* User+CoreDataClass.swift in Sources */,
+				232344E420601A5A00BC1DA0 /* User+CoreDataProperties.swift in Sources */,
 				2393D3AA2033D5350073F6A5 /* PhotoController.swift in Sources */,
 				231F829520573E4C006D5319 /* ResourcesViewController.swift in Sources */,
 				236673A620363D3200F2F485 /* EventsTableViewCell.swift in Sources */,

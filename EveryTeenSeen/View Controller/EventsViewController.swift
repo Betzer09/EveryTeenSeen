@@ -64,7 +64,7 @@ class EventsViewController: UIViewController {
     
     // MARK: - Functions
     private func checkIfUserHasAccount() {
-        guard UserController.shared.loadUserFromDefaults() == nil else {return}
+        guard UserController.shared.loadUserProfile() == nil else {return}
         presentLoginAlert(viewController: self)
     }
     
@@ -131,7 +131,7 @@ extension EventsViewController {
     }
     
     @objc func segueToProfileView() {
-        guard UserController.shared.loadUserFromDefaults() != nil else {
+        guard UserController.shared.loadUserProfile() != nil else {
             presentLoginAlert(viewController: self)
             return
         }

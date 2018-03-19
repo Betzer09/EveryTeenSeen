@@ -17,7 +17,6 @@ class FirebaseManager {
     /// Fetches the user from FireStore and saves them to the phone
     func fetchUserFromFirebaseWith(email: String, completion: @escaping ((_ user: User?, _ error: Error?) -> Void)) {
         
-        var user: User?
         
         let db = Firestore.firestore()
         
@@ -27,27 +26,11 @@ class FirebaseManager {
             }
             
             guard let document = snapshot?.documents.first else {completion(nil, error) ;return}
+
+            let data = document.data()
             
-            
-            // Codable does not conform to [String: Any] and all the keys so far are [String: String]
-            // This was an easy fix which should be fixed later
-            let data = document.data() as! [String: String]
-            
-            do {
-                // You have to encode the data before decoding it...
-                
-                let encodedData = try JSONEncoder().encode(data)
-                
-                let decodedUser = try JSONDecoder().decode(User.self, from: encodedData)
-                user = decodedUser
-                // Save to user defaults
-                guard let distance = decodedUser.distance else {return}
-                UserController.shared.saveUserToDefaults(fullname: decodedUser.fullname, email: decodedUser.email, zipcode: decodedUser.zipcode, userType: decodedUser.userType, distance:  distance)
-                
-                completion(user, nil)
-            } catch let e {
-                completion(nil, e)
-            }
+            let user  = User(dictionary: data)
+            completion(user, nil)
         }
     }
     

@@ -74,7 +74,7 @@ class CreateEventViewController: UIViewController {
             let eventDateString = eventDateLabel.text,
             let address = eventLocationLabel.text,
             let eventTime = eventTimeLabel.text,
-            let user = UserController.shared.loadUserFromDefaults(),
+            let user = UserController.shared.loadUserProfile(),
             let eventInfo = descriptionLabel.text,
             !eventTime.isEmpty,
             !title.isEmpty,

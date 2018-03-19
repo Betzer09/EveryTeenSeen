@@ -81,7 +81,7 @@ class SignInViewController: UIViewController {
                 
                 self.hideIndicator()
                 // Check for the kind of user
-                if user.userType == UserType.leadCause.rawValue {
+                if user.usertype == UserType.leadCause.rawValue {
                     self.requestNotificationPermission()
                     presentAdminTabBarVC(viewController: self)
                 } else {
@@ -100,7 +100,7 @@ class SignInViewController: UIViewController {
             if success {
                 self.createUserProfile()
 
-                guard let userType = UserController.shared.loadUserFromDefaults()?.userType else {NSLog("Error there is no usertype!"); return}
+                guard let userType = UserController.shared.loadUserProfile()?.usertype else {NSLog("Error there is no usertype!"); return}
                 
                 self.hideIndicator()
                 if userType == UserType.leadCause.rawValue {
@@ -301,13 +301,13 @@ extension SignInViewController {
         
         guard let zipcode = UserLocationController.shared.fetchUserLocation()?.zipcode else {NSLog("Error: There is no zipcode");return}
         // Create User Profile
-        UserController.shared.createUserProfile(fullname: fullname, email: email, zipcode: zipcode, userType: UserType.joinCause) { (success, error) in
+        UserController.shared.createUserProfile(fullname: fullname, email: email, zipcode: zipcode, usertype: UserType.joinCause) { (success, error) in
             if let error = error {
                 presentSimpleAlert(viewController: self, title: "Error", message: error.localizedDescription)
             }
             
             // Save the data to the phone
-            UserController.shared.saveUserToDefaults(fullname: fullname, email: email, zipcode: zipcode, userType: UserType.joinCause.rawValue, distance: 25)
+            UserController.shared.saveUserToCoreData(email: email, fullname: fullname, usertype: UserType.joinCause.rawValue, zipcode: zipcode, distance: 25)
             
             CityController.shared.fetchCityWith(zipcode: zipcode, completion: { (city) in
                 CityController.shared.postCityToFirebaseWith(city: city.city, zipcode: city.zipcode, state: city.state)

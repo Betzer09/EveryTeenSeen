@@ -34,15 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var viewController: UIViewController
         
-        if let user = UserController.shared.loadUserFromDefaults() {
-            if user.userType == UserType.joinCause.rawValue {
+        if let user = UserController.shared.loadUserProfile() {
+            if user.usertype == UserType.joinCause.rawValue {
                 // This is a normal user
                 viewController = mainView.instantiateInitialViewController()!
-            } else if user.userType == UserType.leadCause.rawValue {
+            } else if user.usertype == UserType.leadCause.rawValue {
                 // This is an admin user
                 viewController = adminView.instantiateInitialViewController()!
             } else {
-                print("Error: Something is wrong with the usertype of: \(user.userType)")
+                print("Error: Something is wrong with the usertype of: \(user.usertype)")
                 viewController = mainView.instantiateInitialViewController()!
             }
         } else {

@@ -115,6 +115,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85N-vp-ciz">
                                                 <rect key="frame" x="118.5" y="329" width="91" height="30"/>
                                                 <state key="normal" title="Add Interests"/>
+                                                <connections>
+                                                    <action selector="addInterestButtonPressed:" destination="vXv-m3-yDA" eventType="touchUpInside" id="h0C-J3-b62"/>
+                                                </connections>
                                             </button>
                                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PAp-gs-G0m">
                                                 <rect key="frame" x="0.0" y="538.5" width="375" height="561.5"/>

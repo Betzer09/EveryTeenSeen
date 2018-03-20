@@ -22,11 +22,11 @@ public class User: NSManagedObject {
     private let zipcodeKey = "zipcode"
     private let profileURLStringKey = "profile_url_string"
     private let eventDistanceKey = "event_distance"
+    private let userInteretsKey = "user_intrests"
     
     var dictionaryRepresentation: [String: Any] {
-        return [emailKey: email, fullnameKey: fullname, userTypeKey: usertype, zipcodeKey: zipcode, profileURLStringKey: profileImageURLString, eventDistanceKey: eventDistance]
+        return [emailKey: email, fullnameKey: fullname, userTypeKey: usertype, zipcodeKey: zipcode, profileURLStringKey: profileImageURLString, eventDistanceKey: eventDistance, userInteretsKey: interests?.array]
     }
-    
     
     convenience init?(dictionary: [String: Any], context: NSManagedObjectContext = CoreDataStack.context) {
         
@@ -37,8 +37,8 @@ public class User: NSManagedObject {
             let usertype = dictionary[self.userTypeKey] as? String,
             let zipcode = dictionary[self.zipcodeKey] as? String,
             let profileURLString = dictionary[self.profileURLStringKey] as? String,
-            let eventDistance = dictionary[self.eventDistanceKey] as? Int64 else {return nil}
-        
+            let eventDistance = dictionary[self.eventDistanceKey] as? Int64,
+            let interests = dictionary[self.userInteretsKey] as? [Interest] else {return nil}
         
         self.email = email
         self.fullname = fullname
@@ -46,6 +46,7 @@ public class User: NSManagedObject {
         self.zipcode = zipcode
         self.profileImageURLString = profileURLString
         self.eventDistance = eventDistance
+        self.interests = NSOrderedSet(array: interests)
     }
     
     var jsonData: Data? {

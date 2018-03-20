@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class UserProfileViewController: UIViewController {
     
@@ -18,6 +19,10 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var createEventButton: UIButton!
     
+    // MARK: - Properties
+    var fetchedResultsController: NSFetchedResultsController<Interest>!
+    
+    var user: User?
     
     // Table View Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -39,11 +44,36 @@ class UserProfileViewController: UIViewController {
         presentCreateEventVC(viewController: self)
     }
     
+    @IBAction func addInterestButtonPressed(_ sender: Any) {
+    
+        var interestTextField: UITextField!
+        
+        let alert = UIAlertController(title: "Create an Interest!", message: "These will be public to Admin users in your area to help plan future events.", preferredStyle: .alert)
+        
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "Snowboarding"
+            textfield.autocapitalizationType = .words
+            interestTextField = textfield
+        }
+        
+        let okActions = UIAlertAction(title: "Create Interest", style: .default) { (_) in
+            guard let text = interestTextField.text else {return}
+            
+            InterestController.shared.createInterest(name: text)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        alert.addAction(okActions)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     // MARK: - Functions 
     private func setUpView() {
         createEventButton.layer.cornerRadius = createEventButton.bounds.height / 2
-        
-        guard let user = UserController.shared.loadUserProfile(), let userLocation = UserLocationController.shared.fetchUserLocation(), let cityName = userLocation.cityname else {return}
+        guard let user = UserController.shared.loadUserProfile(), let userLocation = UserLocationController.shared.fetchUserLocation() else {return}
+        self.user = user
         
         if user.usertype == UserType.leadCause.rawValue {
             usertypeLabel.text = "Admin"
@@ -51,9 +81,9 @@ class UserProfileViewController: UIViewController {
             tableView.isHidden = false
         }
         
-        addressLabel.text = "\(cityName), \(userLocation.zipcode ?? "")"
+        addressLabel.text = "You're zipcode location is: \(userLocation.zipcode ?? "")"
         fullnameLabel.text = user.fullname
-        distanceLabel.text = "\(user.eventDistance)"
+        distanceLabel.text = "\(user.eventDistance) mile radius"
     }
 }
 

@@ -10,6 +10,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseMessaging
 import UIKit
+import MapKit
 
 class EventController {
     
@@ -177,7 +178,6 @@ class EventController {
     
     
     // MARK: - Functions
-    
     private func updateAttendingArrayWithUser(event: Event, user: User, isGoing: Bool) -> Event? {
         if isGoing {
              event.attending?.append(user.email)

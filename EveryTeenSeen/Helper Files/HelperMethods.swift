@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 public func presentSimpleAlert(viewController: UIViewController, title: String, message: String) {
     
@@ -214,16 +215,24 @@ public func configureButtonWith(button: UIButton) {
     button.titleLabel?.lineBreakMode = .byClipping
 }
 
+// MARK: - User Location Functions
 
-
-
-
-
-
-
-
-
-
-
-
-
+/// This function is used to see if we need to update the location on the phone
+func findTheDistanceWith(lat: Double, long: Double) -> Bool {
+    guard let savedLocation = UserLocationController.shared.fetchUserLocation() else {return false}
+    
+    var shouldWeUpdateDistance = false
+    
+    let firstCoordinate = CLLocation(latitude: savedLocation.latitude, longitude: savedLocation.longitude)
+    let secondCoordinate = CLLocation(latitude: lat, longitude: long)
+    
+    let distanceInMeters = firstCoordinate.distance(from: secondCoordinate)
+    
+    // 1609 meters is one mile 40,000 meters = 24.86 miles
+    if distanceInMeters >= 40000 {
+        shouldWeUpdateDistance = true
+    }
+    
+    return shouldWeUpdateDistance
+    
+}

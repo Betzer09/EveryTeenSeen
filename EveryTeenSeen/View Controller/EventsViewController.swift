@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class EventsViewController: UIViewController {
     // MARK: - Outlets
@@ -14,10 +15,12 @@ class EventsViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
+    let locationManager = CLLocationManager()
     
     // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        locationManager.requestLocation()
         self.configureNavigationBar()
         activityIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
     }
@@ -37,12 +40,14 @@ class EventsViewController: UIViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
     }
 
     // MARK: - Set Up View
     private func setUpView() {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.eventWasUpdatedNotifcation, object: nil)
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     private func setTableViewHeight() {
@@ -139,7 +144,58 @@ extension EventsViewController {
     }
 }
 
-
+// MARK: - User Location Updater
+extension EventsViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            print("location: \(location)")
+            
+            // Checks if the location should be updated
+            guard findTheDistanceWith(lat: location.coordinate.latitude , long: location.coordinate.longitude) == true else {
+                print("Location does not need updated")
+                return
+            }
+            
+            // Write a function to grab and update the user's location
+            self.fetchTheUsersLocation { (location) in
+                guard let location = location, let zip = location.zipcode else {return}
+                
+                CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
+                    guard let location = UserLocationController.shared.fetchUserLocation() else {return}
+                    UserLocationController.shared.update(location: location, lat: location.latitude, long: location.longitude, zip: zip)
+                    
+                })
+                
+            }
+        }
+    }
+    
+    // Required function is case there is a failure.
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        NSLog("Error with location Manager: \(error.localizedDescription)")
+    }
+    
+    /// Fetches the users location and gets the lat long and zip and returns a UserLocation
+    func fetchTheUsersLocation(completion: @escaping(_ location: UserLocation?) -> Void) {
+        guard let userLocation = locationManager.location else {completion(nil); return}
+        CLGeocoder().reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) in
+            
+            if let error = error {
+                NSLog("Error getting the zip code: \(error.localizedDescription) in function: \(#function) ")
+            }
+            
+            guard let placemark = placemarks?.first, let zip = placemark.postalCode else {completion(nil); return}
+            
+            let lat = userLocation.coordinate.latitude
+            let long = userLocation.coordinate.longitude
+            
+            let userLocation = UserLocation(latitude: lat, longitude: long, zip: zip)
+            completion(userLocation)
+            self.locationManager.stopUpdatingLocation()
+        })
+    }
+}
 
 
 

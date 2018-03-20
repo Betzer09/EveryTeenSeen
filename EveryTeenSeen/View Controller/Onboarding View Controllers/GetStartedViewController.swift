@@ -197,30 +197,6 @@ extension GetStartedViewController: CLLocationManagerDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    // Updates the location if it changes
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            print("location: \(location)")
-            
-            // Checks if the location should be updated
-            guard findTheDistanceWith(lat: location.coordinate.latitude , long: location.coordinate.longitude) else {
-                print("Location does not need updated")
-                return
-            }
-            
-            // Write a function to grab and update the user's location
-            self.fetchTheUsersLocation { (location) in
-                guard let location = location, let zip = location.zipcode else {return}
-                
-                CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
-                    UserLocationController.shared.update(lat: location.latitude, long: location.longitude, zip: zip, cityName: city.city)
-                })
-                
-            }
-        }
-        
-    }
-    
     // Required function is case there is a failure.
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         NSLog("Error with location Manager: \(error.localizedDescription)")
@@ -253,25 +229,5 @@ extension GetStartedViewController: CLLocationManagerDelegate {
             })
             
         })
-    }
-    
-    /// This function is used to see if we need to update the location on the phone
-    func findTheDistanceWith(lat: Double, long: Double) -> Bool {
-        guard let savedLocation = UserLocationController.shared.fetchUserLocation() else {return false}
-        
-        var shouldWeUpdateDistance = false
-        
-        let firstCoordinate = CLLocation(latitude: savedLocation.latitude, longitude: savedLocation.longitude)
-        let secondCoordinate = CLLocation(latitude: lat, longitude: long)
-        
-        let distanceInMeters = firstCoordinate.distance(from: secondCoordinate)
-        
-        // 1609 meters is one mile 40,000 meters = 24.86 miles
-        if distanceInMeters >= 40000 {
-            shouldWeUpdateDistance = true
-        }
-        
-        return shouldWeUpdateDistance
-        
     }
 }

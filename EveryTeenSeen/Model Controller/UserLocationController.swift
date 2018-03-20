@@ -18,13 +18,10 @@ class UserLocationController {
         saveToPersistentStore()
     }
     
-    func update(lat: Double, long: Double, zip: String, cityName: String) {
-        guard let oldLocation = fetchUserLocation() else {return}
-        oldLocation.latitude = lat
-        oldLocation.longitude = long
-        oldLocation.zipcode = zip
-        oldLocation.cityname = cityName
-        
+    func update(location: UserLocation, lat: Double, long: Double, zip: String) {
+        location.latitude = lat
+        location.longitude = long
+        location.zipcode = zip
         saveToPersistentStore()
     }
     

@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  EveryTeenSeen
 //
-//  Created by Austin Betzer on 3/19/18.
+//  Created by Austin Betzer on 3/20/18.
 //  Copyright © 2018 Austin Betzer. All rights reserved.
 //
 //
@@ -18,11 +18,12 @@ extension User {
     }
 
     @NSManaged public var email: String
-    @NSManaged public var eventDistance: Int64
+    @NSManaged public var eventDistance: Int
     @NSManaged public var fullname: String
     @NSManaged public var profileImageURLString: String?
     @NSManaged public var usertype: String
     @NSManaged public var zipcode: String
+    @NSManaged public var lastUpdate: Date
     @NSManaged public var interests: NSOrderedSet?
 
 }

@@ -8,19 +8,21 @@
         <attribute name="email" attributeType="String" syncable="YES"/>
         <attribute name="eventDistance" attributeType="Integer 64" defaultValueString="25" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="fullname" attributeType="String" syncable="YES"/>
+        <attribute name="lastUpdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="profileImageURLString" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
         <attribute name="usertype" attributeType="String" syncable="YES"/>
         <attribute name="zipcode" attributeType="String" syncable="YES"/>
         <relationship name="interests" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Interest" inverseName="user" inverseEntity="Interest" syncable="YES"/>
     </entity>
     <entity name="UserLocation" representedClassName="UserLocation" syncable="YES" codeGenerationType="class">
+        <attribute name="cityName" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="zipcode" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-272" positionY="18" width="128" height="148"/>
-        <element name="UserLocation" positionX="-63" positionY="-18" width="128" height="88"/>
         <element name="Interest" positionX="198" positionY="93" width="128" height="73"/>
+        <element name="User" positionX="-272" positionY="18" width="128" height="165"/>
+        <element name="UserLocation" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

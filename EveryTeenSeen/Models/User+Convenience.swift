@@ -11,7 +11,7 @@ import CoreData
 
 extension User {
     
-    @discardableResult convenience init(email: String, fullname: String, usertype: String, zipcode: String, profileImageURLString: String = "", eventDistance: Int64, context: NSManagedObjectContext = CoreDataStack.context){
+    @discardableResult convenience init(email: String, fullname: String, usertype: String, zipcode: String, profileImageURLString: String = "", eventDistance: Int, lastUpdate: Date = Date(), context: NSManagedObjectContext = CoreDataStack.context){
         
         self.init(context: context)
         
@@ -20,6 +20,7 @@ extension User {
         self.usertype = usertype
         self.zipcode = zipcode
         self.eventDistance = eventDistance
+        self.lastUpdate = lastUpdate
     }
     
 }

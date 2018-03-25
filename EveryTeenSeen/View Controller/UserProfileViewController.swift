@@ -72,7 +72,7 @@ class UserProfileViewController: UIViewController {
     // MARK: - Functions 
     private func setUpView() {
         createEventButton.layer.cornerRadius = createEventButton.bounds.height / 2
-        guard let user = UserController.shared.loadUserProfile(), let userLocation = UserLocationController.shared.fetchUserLocation() else {return}
+        guard let user = UserController.shared.fetchTheNewestUser(), let userLocation = UserLocationController.shared.fetchUserLocation() else {return}
         self.user = user
         
         if user.usertype == UserType.leadCause.rawValue {

@@ -23,9 +23,10 @@ public class User: NSManagedObject {
     private let profileURLStringKey = "profile_url_string"
     private let eventDistanceKey = "event_distance"
     private let userInteretsKey = "user_intrests"
+    private let lastUpdateKey = "last_update"
     
     var dictionaryRepresentation: [String: Any] {
-        return [emailKey: email, fullnameKey: fullname, userTypeKey: usertype, zipcodeKey: zipcode, profileURLStringKey: profileImageURLString, eventDistanceKey: eventDistance, userInteretsKey: interests?.array]
+        return [emailKey: email, fullnameKey: fullname, userTypeKey: usertype, zipcodeKey: zipcode, profileURLStringKey: profileImageURLString, eventDistanceKey: eventDistance, userInteretsKey: interests?.array, lastUpdateKey: lastUpdate]
     }
     
     convenience init?(dictionary: [String: Any], context: NSManagedObjectContext = CoreDataStack.context) {
@@ -37,8 +38,9 @@ public class User: NSManagedObject {
             let usertype = dictionary[self.userTypeKey] as? String,
             let zipcode = dictionary[self.zipcodeKey] as? String,
             let profileURLString = dictionary[self.profileURLStringKey] as? String,
-            let eventDistance = dictionary[self.eventDistanceKey] as? Int64,
-            let interests = dictionary[self.userInteretsKey] as? [Interest] else {return nil}
+            let eventDistance = dictionary[self.eventDistanceKey] as? Int,
+            let interests = dictionary[self.userInteretsKey] as? [Interest],
+            let lastUpdate = dictionary[self.lastUpdateKey] as? Date else {return nil}
         
         self.email = email
         self.fullname = fullname
@@ -47,6 +49,7 @@ public class User: NSManagedObject {
         self.profileImageURLString = profileURLString
         self.eventDistance = eventDistance
         self.interests = NSOrderedSet(array: interests)
+        self.lastUpdate = lastUpdate
     }
     
     var jsonData: Data? {

@@ -117,26 +117,52 @@ class UserController {
         
         viewController.present(alert, animated: true, completion: nil)
     }
+    
+    /// This functions checks to see which updated is newest and returns the newest User
+    func fetchTheNewestUser() -> User? {
+        // Load the user on the phone
+        guard let loadedUser = loadUserProfile() else {return nil}
+        
+        // User in the cloud
+        var firebaseUser: User?
+        
+        fetchUserInfoFromFirebaseWith(email: loadedUser.email) { (user, error) in
+            if let error = error {
+                NSLog("Error fetching user: \(error.localizedDescription)")
+                return
+            }
+          firebaseUser = user
+        }
+        
+        guard let unwrappredFirebaseUser = firebaseUser else {return nil}
+        if loadedUser.lastUpdate > unwrappredFirebaseUser.lastUpdate {
+            return loadedUser
+        } else {
+            // Update the user in coredata with the newest info
+            self.updateUserInCoredata(user: loadedUser, email: unwrappredFirebaseUser.email, fullname: unwrappredFirebaseUser.fullname, usertype: unwrappredFirebaseUser.usertype, zipcode: unwrappredFirebaseUser.zipcode, profileImageStringURL: unwrappredFirebaseUser.profileImageURLString!, eventDistance: unwrappredFirebaseUser.eventDistance)
+            return unwrappredFirebaseUser
+        }
+    }
 }
 
 // MARK: - Coredata Functions
 extension UserController {
     
     // Saves the user to CoreData
-    func saveUserToCoreData(email: String, fullname: String, usertype: String, zipcode: String, distance: Int64) {
+    func saveUserToCoreData(email: String, fullname: String, usertype: String, zipcode: String, distance: Int) {
         User(email: email, fullname: fullname, usertype: usertype, zipcode: zipcode, eventDistance: distance)
         saveToPersistentStore()
     }
     
     // Updates the User In CoreData
-    func updateUserInCoredata(user: User, email: String, fullname: String, usertype: String, zipcode: String, profileImageStringURL: String, eventDistance: Int64) {
+    func updateUserInCoredata(user: User, email: String, fullname: String, usertype: String, zipcode: String, profileImageStringURL: String, eventDistance: Int) {
         user.email = email
         user.fullname = fullname
         user.usertype = usertype
         user.zipcode = zipcode
         user.profileImageURLString = profileImageStringURL
         user.eventDistance = eventDistance
-        
+        user.lastUpdate = Date()
         saveToPersistentStore()
     }
     

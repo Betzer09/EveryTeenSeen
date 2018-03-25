@@ -246,26 +246,6 @@
                             <constraint firstItem="N2J-Yt-uI4" firstAttribute="width" secondItem="kC0-hs-jeT" secondAttribute="width" id="zzs-OC-aZ4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S5l-qU-WwH"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="FirstColor">
-                                <color key="value" red="0.73725490196078436" green="0.45098039215686275" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="SecondColor">
-                                <color key="value" red="0.51372549019607838" green="0.0" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="FirstColorStartPointX">
-                                <real key="value" value="0.5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="FirstColorStartPointY">
-                                <real key="value" value="-10"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="SecondColorEndpointX">
-                                <real key="value" value="0.5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="SecondColorEndpointY">
-                                <real key="value" value="100"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="Login / Sign Up" id="pU2-Tj-55g">
                         <barButtonItem key="backBarButtonItem" title="Home" id="gzV-OE-cFl"/>

@@ -11,12 +11,13 @@ import CoreData
 
 extension UserLocation {
     
-    @discardableResult convenience init(latitude: Double, longitude: Double, zip: String, context: NSManagedObjectContext = CoreDataStack.context) {
+    @discardableResult convenience init(latitude: Double, longitude: Double, zip: String, cityName: String, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         
         self.latitude = latitude
         self.longitude = longitude
         self.zipcode = zip
+        self.cityName = cityName
     }
     
 }

@@ -163,10 +163,8 @@ extension EventsViewController: CLLocationManagerDelegate {
                 
                 CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
                     guard let location = UserLocationController.shared.fetchUserLocation() else {return}
-                    UserLocationController.shared.update(location: location, lat: location.latitude, long: location.longitude, zip: zip)
-                    
+                    UserLocationController.shared.update(location: location, lat: location.latitude, long: location.longitude, zip: zip, cityName: city.city)
                 })
-                
             }
         }
     }
@@ -190,7 +188,7 @@ extension EventsViewController: CLLocationManagerDelegate {
             let lat = userLocation.coordinate.latitude
             let long = userLocation.coordinate.longitude
             
-            let userLocation = UserLocation(latitude: lat, longitude: long, zip: zip)
+            let userLocation = UserLocation(latitude: lat, longitude: long, zip: zip, cityName: "")
             completion(userLocation)
             self.locationManager.stopUpdatingLocation()
         })

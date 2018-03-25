@@ -135,6 +135,7 @@ class CityController {
     }
     
     // MARK: - Functions
+    /// Checks to make sure the city is in the right location
     func verifyLocationFor(city: City) -> Bool {
         
         if city.state == "UT" {

@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var viewController: UIViewController
         
         if let user = UserController.shared.loadUserProfile() {
+            UserController.shared.fetchUserInfoFromFirebaseWith(email: user.email)
             if user.usertype == UserType.joinCause.rawValue {
                 // This is a normal user
                 viewController = mainView.instantiateInitialViewController()!

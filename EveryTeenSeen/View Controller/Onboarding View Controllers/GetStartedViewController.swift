@@ -166,15 +166,15 @@ extension GetStartedViewController: CLLocationManagerDelegate {
             }
             
             // If there isn't a location create and save it
-            self.fetchTheUsersLocation(completion: { (location) in
-                guard let location = location, let zip = location.zipcode else {return}
+            self.fetchTheUsersLocation(completion: { (lat, long, zipcode) in
+                guard let latitude = lat, let longitude = long, let zip = zipcode else {return}
                 // Make sure they are allowed to create an account
                 
                 CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
                     guard CityController.shared.verifyLocationFor(city: city) else {
                         presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!"); return }
                     
-                    UserLocationController.shared.createLocationWith(lat: location.latitude , long: location.longitude, zip: zip, cityName: city.city)
+                    UserLocationController.shared.createLocationWith(lat: latitude, long: longitude, zip: zip, cityName: city.city, state: city.state)
                     self.hideActivityIndicator()
                     presentLogoutAndSignUpPage(viewController: self)
                 })
@@ -195,10 +195,11 @@ extension GetStartedViewController: CLLocationManagerDelegate {
             }
             
             // Write a function to grab and update the user's location
-            fetchTheUsersLocation { (location) in
-                guard let location = location, let zip = location.zipcode else {return}
+            fetchTheUsersLocation { (lat,long,zip)  in
+                guard let latitude = lat, let longitude = long, let zipcode = zip else {return}
                 
-                CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
+                CityController.shared.fetchCityWith(zipcode: zipcode, completion: { (city) in
+                    // Fetch the users location so we can update it
                     guard let location = UserLocationController.shared.fetchUserLocation() else {return}
                     
                     guard CityController.shared.verifyLocationFor(city: city) else {
@@ -207,8 +208,8 @@ extension GetStartedViewController: CLLocationManagerDelegate {
                     }
                     
                     // Update locaiotn in CoreData
-                    UserLocationController.shared.update(location: location, lat: location.latitude,
-                                                         long: location.longitude, zip: zip, cityName: city.city)
+                    UserLocationController.shared.update(location: location, lat: latitude,
+                                                         long: longitude, zip: zipcode, cityName: city.city, state: city.state)
                     
                     presentLogoutAndSignUpPage(viewController: self)
                 })
@@ -244,21 +245,19 @@ extension GetStartedViewController: CLLocationManagerDelegate {
     }
     
     /// Fetches the users location and gets the lat long and zip and returns a UserLocation
-    func fetchTheUsersLocation(completion: @escaping(_ location: UserLocation?) -> Void) {
-        guard let userLocation = locationManager.location else {completion(nil); return}
+    func fetchTheUsersLocation(completion: @escaping(_ lat: CLLocationDegrees?, _ long: CLLocationDegrees?, _ zipcode: String?) -> Void) {
+        guard let userLocation = locationManager.location else {completion(nil, nil, nil); return}
         CLGeocoder().reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) in
             
             if let error = error {
                 NSLog("Error getting the zip code: \(error.localizedDescription) in function: \(#function) ")
             }
             
-            guard let placemark = placemarks?.first, let zip = placemark.postalCode else {completion(nil); return}
+            guard let placemark = placemarks?.first, let zip = placemark.postalCode else {completion(nil,nil, nil); return}
             
             let lat = userLocation.coordinate.latitude
             let long = userLocation.coordinate.longitude
             
-            let userLocation = UserLocation(latitude: lat, longitude: long, zip: zip, cityName: "")
-            completion(userLocation)
             self.locationManager.stopUpdatingLocation()
             
             CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
@@ -266,6 +265,7 @@ extension GetStartedViewController: CLLocationManagerDelegate {
                     presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
                     return
                 }
+                completion(lat, long, zip)
                 presentLogoutAndSignUpPage(viewController: self)
             })
             

@@ -14,16 +14,17 @@ class UserLocationController {
     static let shared = UserLocationController() 
     
     /// Create a location for the user and saves it to CoreData
-    func createLocationWith(lat: Double, long: Double, zip: String, cityName: String) {
-        UserLocation(latitude: lat, longitude: long, zip: zip, cityName: cityName)
+    func createLocationWith(lat: Double, long: Double, zip: String, cityName: String, state: String) {
+        UserLocation(latitude: lat, longitude: long, zip: zip, cityName: cityName, state: state)
         saveToPersistentStore()
     }
     
-    func update(location: UserLocation, lat: Double, long: Double, zip: String, cityName: String) {
+    func update(location: UserLocation, lat: Double, long: Double, zip: String, cityName: String, state: String) {
         location.latitude = lat
         location.longitude = long
         location.zipcode = zip
         location.cityName = cityName
+        location.state = state
         saveToPersistentStore()
     }
     

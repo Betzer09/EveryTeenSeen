@@ -19,11 +19,6 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var createEventButton: UIButton!
     
-    // MARK: - Properties
-    var fetchedResultsController: NSFetchedResultsController<Interest>!
-    
-    var user: User?
-    
     // Table View Outlets
     @IBOutlet weak var tableView: UITableView!
 
@@ -72,8 +67,8 @@ class UserProfileViewController: UIViewController {
     // MARK: - Functions 
     private func setUpView() {
         createEventButton.layer.cornerRadius = createEventButton.bounds.height / 2
-        guard let user = UserController.shared.fetchTheNewestUser(), let userLocation = UserLocationController.shared.fetchUserLocation() else {return}
-        self.user = user
+        
+        guard let user = UserController.shared.loadUserProfile(), let userLocation = UserLocationController.shared.fetchUserLocation() else {return}
         
         if user.usertype == UserType.leadCause.rawValue {
             usertypeLabel.text = "Admin"
@@ -81,7 +76,7 @@ class UserProfileViewController: UIViewController {
             tableView.isHidden = false
         }
         
-        addressLabel.text = "You're zipcode location is: \(userLocation.zipcode ?? "")"
+        addressLabel.text = "\(userLocation.cityName ?? ""), UT, \(userLocation.zipcode ?? "")"
         fullnameLabel.text = user.fullname
         distanceLabel.text = "\(user.eventDistance) mile radius"
     }

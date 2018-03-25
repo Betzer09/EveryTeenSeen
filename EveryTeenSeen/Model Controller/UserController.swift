@@ -50,7 +50,7 @@ class UserController {
     }
     
     // MARK: - Fetch methods
-    func fetchUserInfoFromFirebaseWith(email: String, completion: @escaping ((_ user: User?, _ error: Error?) -> Void)) {
+    func fetchUserInfoFromFirebaseWith(email: String, completion: @escaping ((_ user: User?, _ error: Error?) -> Void) = {_,_  in} ) {
         firebaseManger.fetchUserFromFirebaseWith(email: email) { (user, error) in
             if let error = error {
                 completion(nil, error)
@@ -116,32 +116,6 @@ class UserController {
         alert.addAction(cancelAction)
         
         viewController.present(alert, animated: true, completion: nil)
-    }
-    
-    /// This functions checks to see which updated is newest and returns the newest User
-    func fetchTheNewestUser() -> User? {
-        // Load the user on the phone
-        guard let loadedUser = loadUserProfile() else {return nil}
-        
-        // User in the cloud
-        var firebaseUser: User?
-        
-        fetchUserInfoFromFirebaseWith(email: loadedUser.email) { (user, error) in
-            if let error = error {
-                NSLog("Error fetching user: \(error.localizedDescription)")
-                return
-            }
-          firebaseUser = user
-        }
-        
-        guard let unwrappredFirebaseUser = firebaseUser else {return nil}
-        if loadedUser.lastUpdate > unwrappredFirebaseUser.lastUpdate {
-            return loadedUser
-        } else {
-            // Update the user in coredata with the newest info
-            self.updateUserInCoredata(user: loadedUser, email: unwrappredFirebaseUser.email, fullname: unwrappredFirebaseUser.fullname, usertype: unwrappredFirebaseUser.usertype, zipcode: unwrappredFirebaseUser.zipcode, profileImageStringURL: unwrappredFirebaseUser.profileImageURLString!, eventDistance: unwrappredFirebaseUser.eventDistance)
-            return unwrappredFirebaseUser
-        }
     }
 }
 

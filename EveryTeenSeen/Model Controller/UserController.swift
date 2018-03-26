@@ -117,6 +117,29 @@ class UserController {
         
         viewController.present(alert, animated: true, completion: nil)
     }
+    
+    // MARK: - Confirm password
+    /// Fetching the password from firebase to confirm it
+    func confirmPasswordWith(password: String, completion: @escaping(_ success: Bool) -> Void) {
+        let db = Firestore.firestore()
+        
+        db.collection("admin_password").document("passwordID").getDocument { (snapshot, error) in
+            if let error = error {
+                NSLog("Error fetching the password: \(error.localizedDescription)")
+            }
+            
+            guard let jsonData = snapshot?.data(), let data = convertJsonToDataWith(json: jsonData) else {return}
+            
+            let adminPassword = try? JSONDecoder().decode(AdminPassword.self, from: data)
+            guard let firebasePassword = adminPassword?.password else {return}
+            
+            if firebasePassword == password {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
 }
 
 // MARK: - Coredata Functions

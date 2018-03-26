@@ -89,8 +89,7 @@ class CreateEventViewController: UIViewController {
         
         guard let image = selectedImageView.image else {return}
         
-        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDateString, eventTime: eventTime, userWhoPosted: user.fullname, address: address,
-                                                        eventInfo:eventInfo, image: image) { (success) in
+        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDateString, eventTime: eventTime, userWhoPosted: user.email, address: address,eventInfo:eventInfo, image: image) { (success) in
                                                             
             guard success else {presentSimpleAlert(viewController: self, title: "Error", message: "There was an error uploading the image, check everything and try again.");return}
             

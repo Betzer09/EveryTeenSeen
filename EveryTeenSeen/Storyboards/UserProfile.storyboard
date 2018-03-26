@@ -119,7 +119,7 @@
                                                     <action selector="addInterestButtonPressed:" destination="vXv-m3-yDA" eventType="touchUpInside" id="h0C-J3-b62"/>
                                                 </connections>
                                             </button>
-                                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PAp-gs-G0m">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PAp-gs-G0m">
                                                 <rect key="frame" x="0.0" y="538.5" width="375" height="561.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <view key="tableHeaderView" contentMode="scaleToFill" id="UBg-8n-6od">
@@ -329,6 +329,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRY-kV-mXQ">
+                                                <rect key="frame" x="94" y="496" width="187.5" height="30"/>
+                                                <state key="normal" title="Log Out"/>
+                                                <connections>
+                                                    <action selector="logUserOutButtonPressed:" destination="vXv-m3-yDA" eventType="touchUpInside" id="Age-F6-gk8"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -336,7 +343,6 @@
                                             <constraint firstItem="xOl-0y-k96" firstAttribute="top" secondItem="I2x-5c-7Pv" secondAttribute="bottom" constant="50" id="0do-XU-ROu"/>
                                             <constraint firstItem="I2x-5c-7Pv" firstAttribute="height" secondItem="Y9b-u5-278" secondAttribute="height" multiplier="1.5" id="1WD-46-2eb"/>
                                             <constraint firstItem="gHX-FH-qDe" firstAttribute="top" secondItem="Y9b-u5-278" secondAttribute="bottom" constant="4" id="24y-db-cLy"/>
-                                            <constraint firstItem="PAp-gs-G0m" firstAttribute="top" secondItem="xOl-0y-k96" secondAttribute="bottom" constant="50" id="25C-Fs-2BL"/>
                                             <constraint firstItem="2zG-UC-eRT" firstAttribute="centerX" secondItem="F8d-BC-7Ox" secondAttribute="centerX" id="53e-lc-rlK"/>
                                             <constraint firstItem="2zG-UC-eRT" firstAttribute="top" secondItem="ubc-5h-osd" secondAttribute="bottom" constant="4" id="5Xr-TI-4f3"/>
                                             <constraint firstItem="Y9b-u5-278" firstAttribute="top" secondItem="2zG-UC-eRT" secondAttribute="bottom" constant="4" id="84O-xw-Wkl"/>
@@ -361,12 +367,16 @@
                                             <constraint firstItem="xOl-0y-k96" firstAttribute="height" secondItem="F8d-BC-7Ox" secondAttribute="height" multiplier="1/9" id="eTZ-yn-vZA"/>
                                             <constraint firstItem="ytf-oi-3q0" firstAttribute="leading" secondItem="xOl-0y-k96" secondAttribute="leading" id="gNb-1n-h56"/>
                                             <constraint firstItem="eKW-co-BSt" firstAttribute="centerX" secondItem="F8d-BC-7Ox" secondAttribute="centerX" id="goC-Eh-0uV"/>
+                                            <constraint firstItem="PAp-gs-G0m" firstAttribute="top" secondItem="yRY-kV-mXQ" secondAttribute="bottom" constant="12.5" id="gra-pF-evt"/>
                                             <constraint firstItem="Y9b-u5-278" firstAttribute="width" secondItem="ubc-5h-osd" secondAttribute="width" id="hDy-4z-KGU"/>
+                                            <constraint firstItem="yRY-kV-mXQ" firstAttribute="centerX" secondItem="F8d-BC-7Ox" secondAttribute="centerX" id="iws-ks-ajC"/>
                                             <constraint firstItem="eKW-co-BSt" firstAttribute="top" secondItem="F8d-BC-7Ox" secondAttribute="top" constant="8" id="js6-5g-bPi"/>
                                             <constraint firstItem="eKW-co-BSt" firstAttribute="width" secondItem="eKW-co-BSt" secondAttribute="height" multiplier="1:1" id="khc-pJ-CXV"/>
                                             <constraint firstItem="ubc-5h-osd" firstAttribute="height" secondItem="F8d-BC-7Ox" secondAttribute="height" multiplier="0.025" id="ndP-6B-kow"/>
                                             <constraint firstItem="gHX-FH-qDe" firstAttribute="width" secondItem="2zG-UC-eRT" secondAttribute="width" id="qO9-0g-k3t"/>
                                             <constraint firstItem="I2x-5c-7Pv" firstAttribute="centerX" secondItem="F8d-BC-7Ox" secondAttribute="centerX" id="rKv-jo-oOf"/>
+                                            <constraint firstItem="yRY-kV-mXQ" firstAttribute="width" secondItem="F8d-BC-7Ox" secondAttribute="width" multiplier="1/2" id="rna-9u-hem"/>
+                                            <constraint firstItem="yRY-kV-mXQ" firstAttribute="top" secondItem="xOl-0y-k96" secondAttribute="bottom" constant="7.5" id="sZC-zM-JGo"/>
                                             <constraint firstAttribute="trailing" secondItem="PAp-gs-G0m" secondAttribute="trailing" id="uZX-wi-f8P"/>
                                             <constraint firstItem="85N-vp-ciz" firstAttribute="height" secondItem="ytf-oi-3q0" secondAttribute="height" id="vK9-7t-piU"/>
                                             <constraint firstItem="gHX-FH-qDe" firstAttribute="centerX" secondItem="F8d-BC-7Ox" secondAttribute="centerX" id="zlE-HB-azh"/>
@@ -412,6 +422,7 @@
                         <outlet property="fullnameLabel" destination="ubc-5h-osd" id="HIX-YV-dun"/>
                         <outlet property="profileImageView" destination="eKW-co-BSt" id="23v-qS-moh"/>
                         <outlet property="tableView" destination="PAp-gs-G0m" id="Cst-cU-44k"/>
+                        <outlet property="tableviewHeaderLabel" destination="OZD-A1-En6" id="fSA-IG-lRP"/>
                         <outlet property="usertypeLabel" destination="2zG-UC-eRT" id="CQp-YP-zza"/>
                     </connections>
                 </viewController>

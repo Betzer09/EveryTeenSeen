@@ -30,6 +30,9 @@ class UserProfileViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let interests = UserController.shared.loadUserProfile()?.interests else {return}
+        presentSimpleAlert(viewController: self, title: "Amount Of Interests", message: "\(interests.array.count)")
 
         // Do any additional setup after loading the view.
     }
@@ -52,9 +55,9 @@ class UserProfileViewController: UIViewController {
         }
         
         let okActions = UIAlertAction(title: "Create Interest", style: .default) { (_) in
-            guard let text = interestTextField.text else {return}
+            guard let name = interestTextField.text, let user = UserController.shared.loadUserProfile() else {return}
             
-            InterestController.shared.createInterest(name: text)
+            InterestController.shared.createInterestWith(user: user, and: name)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -76,7 +79,7 @@ class UserProfileViewController: UIViewController {
             tableView.isHidden = false
         }
         
-        addressLabel.text = "\(userLocation.cityName ?? ""), UT, \(userLocation.zipcode ?? "")"
+        addressLabel.text = "\(userLocation.cityName ?? ""), \(userLocation.state ?? ""), \(userLocation.zipcode ?? "")"
         fullnameLabel.text = user.fullname
         distanceLabel.text = "\(user.eventDistance) mile radius"
     }

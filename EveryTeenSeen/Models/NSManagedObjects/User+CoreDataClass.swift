@@ -26,7 +26,13 @@ public class User: NSManagedObject {
     private let lastUpdateKey = "last_update"
     
     var dictionaryRepresentation: [String: Any] {
-        return [emailKey: email, fullnameKey: fullname, userTypeKey: usertype, zipcodeKey: zipcode, profileURLStringKey: profileImageURLString, eventDistanceKey: eventDistance, userInteretsKey: interests?.array, lastUpdateKey: lastUpdate]
+        
+        var interestNames: [String] = []
+        if let interests = UserController.shared.loadUserProfile()?.interests {
+            guard let castedInterests = interests.array as? [Interest] else {return [:]}
+            interestNames = castedInterests.flatMap( { $0.name } )
+        }
+        return [emailKey: email, fullnameKey: fullname, userTypeKey: usertype, zipcodeKey: zipcode, profileURLStringKey: profileImageURLString, eventDistanceKey: eventDistance, userInteretsKey: interestNames, lastUpdateKey: lastUpdate]
     }
     
     convenience init?(dictionary: [String: Any], context: NSManagedObjectContext = CoreDataStack.context) {

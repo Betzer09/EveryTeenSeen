@@ -8,15 +8,16 @@
 
 import Foundation
 import CoreData
+import Firebase
 
 class InterestController {
     static let shared = InterestController()
     
-    var fetchedResultsController: NSFetchedResultsController<Interest>!
-    
-    func createInterest(name: String) {
-        Interest(name: name)
+    func createInterestWith(user: User, and nameOfInterest: String) {
+        let newInterest = Interest(name: nameOfInterest, user: user)
+        user.addToInterests(newInterest)
         UserController.shared.saveToPersistentStore()
+        addInterestToFirebase()
     }
     
     func delete(interest: Interest) {
@@ -24,4 +25,11 @@ class InterestController {
         moc.delete(interest)
         UserController.shared.saveToPersistentStore()
     }
+    
+    func addInterestToFirebase() {
+        guard let user = UserController.shared.loadUserProfile() else {NSLog("Error updating user's interest!"); return}
+        let db = Firestore.firestore()
+        db.collection("users").document(user.email).setData(user.dictionaryRepresentation)
+    }
 }
+

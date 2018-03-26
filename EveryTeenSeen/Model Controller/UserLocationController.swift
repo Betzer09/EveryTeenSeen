@@ -41,6 +41,7 @@ class UserLocationController {
         
         do {
             try moc.save()
+            NSLog("Saved Succesfully")
         } catch let error {
             NSLog("There was a problem saving the users location to the persitent store: \(error) in function \(#function)")
         }

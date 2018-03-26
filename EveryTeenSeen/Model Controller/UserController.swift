@@ -159,8 +159,9 @@ extension UserController {
         
         do {
             try moc.save()
+            NSLog("Saves user Succesfully")
         } catch let error {
-            NSLog("There was a problem saving the users location to the persitent store: \(error) in function \(#function)")
+            NSLog("There was a problem saving the user to persitent store: \(error) in function \(#function)")
         }
     }
 }

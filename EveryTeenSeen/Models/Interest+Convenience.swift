@@ -11,9 +11,10 @@ import CoreData
 
 extension Interest {
     
-    @discardableResult convenience init(name: String, context: NSManagedObjectContext = CoreDataStack.context) {
+    @discardableResult convenience init(name: String, user: User, context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
         self.name = name
+        self.user = user
     }
 }

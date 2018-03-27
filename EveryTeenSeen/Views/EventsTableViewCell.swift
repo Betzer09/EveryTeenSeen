@@ -20,7 +20,6 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var eventPhotoImageView: UIImageView!
     
     // MARK: - Properties
-    var buttonTag: Int?
     
     var event: Event? {
         didSet {
@@ -43,11 +42,14 @@ class EventsTableViewCell: UITableViewCell {
     
     // MARK: - Actions
     @IBAction func goingButton(_ sender: Any) {
+        
         guard let rootvc = UIApplication.shared.keyWindow?.rootViewController else {return}
         guard let user = UserController.shared.loadUserProfile(),
-            let indexPath = buttonTag,
+            let eventPassedInToCell = event,
+            let indexPath = EventController.shared.events?.index(of: eventPassedInToCell),
             let event = EventController.shared.events?[indexPath],
             let count = event.attending?.count else {return}
+        
 
         if goingLabel.text == "Going?" {
             configureLableAsNotGoing()

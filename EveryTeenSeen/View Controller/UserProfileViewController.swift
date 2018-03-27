@@ -162,9 +162,9 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventsTableViewCell else {return UITableViewCell()}
         
-        cell.buttonTag = indexPath.row
         cell.layer.cornerRadius = 15
         cell.selectionStyle = .none
+        
         
         guard let allEvents = EventController.shared.events else {return UITableViewCell()}
         let events = setUpTableViewWith(events: allEvents)

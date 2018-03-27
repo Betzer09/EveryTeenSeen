@@ -22,7 +22,6 @@ class EventsViewController: UIViewController {
         super.viewWillAppear(animated)
         locationManager.requestLocation()
         self.configureNavigationBar()
-        activityIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
     }
 
     override func viewDidLoad() {
@@ -48,6 +47,7 @@ class EventsViewController: UIViewController {
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        activityIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
     }
     
     private func setTableViewHeight() {
@@ -90,7 +90,6 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let events = EventController.shared.events else {return UITableViewCell()}
         cell.event = events[indexPath.row]
-        cell.buttonTag = indexPath.row
         
         cell.layer.cornerRadius = 15
         cell.selectionStyle = .none
@@ -149,7 +148,6 @@ extension EventsViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            print("location: \(location)")
             
             // Checks if the location should be updated
             guard findTheDistanceWith(lat: location.coordinate.latitude , long: location.coordinate.longitude) == true else {

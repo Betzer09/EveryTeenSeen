@@ -17,6 +17,7 @@ class UpdateUserProfileViewController: UIViewController {
     @IBOutlet weak var distanceSlider: UISlider!
     @IBOutlet weak var areYouAnAdminLabel: UILabel!
     @IBOutlet weak var activateAdminAccountButton: UIButton!
+    @IBOutlet weak var cameraButton: UIButton!
     
     
     // Admin Group View Outlets
@@ -46,11 +47,13 @@ class UpdateUserProfileViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func activateAdminAccountButtonPressed(_ sender: Any) {
-        self.activateAdminGroupView.isHidden = false
+        self.fadeActivateAdminGroupIn()
+        
         activateAdminAccountButton.isHidden = true
         areYouAnAdminLabel.isHidden = true
         incorrectPasswordMessage.isHidden = true
         adminPasswordTextfield.text = ""
+        cameraButton.isHidden = true
     }
     
     @IBAction func chooseProfileImageButtonPressed(_ sender: Any) {
@@ -62,6 +65,9 @@ class UpdateUserProfileViewController: UIViewController {
         self.activateAdminGroupView.isHidden = true
         areYouAnAdminLabel.isHidden = false
         activateAdminAccountButton.isHidden = false
+        cameraButton.isHidden = false
+        
+        self.fadeActivateAdminGroupOut()
         view.endEditing(true)
     }
     
@@ -111,7 +117,28 @@ class UpdateUserProfileViewController: UIViewController {
         
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         profileImageView.clipsToBounds = true
+        cameraButton.isHidden = false
         
+    }
+    
+    func fadeActivateAdminGroupIn() {
+        activateAdminGroupView.alpha = 0
+        self.activateAdminGroupView.isHidden = false
+        
+        UIView.animate(withDuration: 0.5) {
+            self.activateAdminGroupView.alpha = 1
+            self.view.backgroundColor = UIColor.darkGray
+        }
+    }
+    
+    func fadeActivateAdminGroupOut() {
+        activateAdminGroupView.alpha = 1
+        
+        UIView.animate(withDuration: 0.5) {
+            self.activateAdminGroupView.alpha = 0
+            self.activateAdminGroupView.isHidden = false
+            self.view.backgroundColor = UIColor.white
+        }
     }
     
     @objc func dismissKeyboard() {

@@ -671,6 +671,7 @@
                         <outlet property="activateAdminGroupView" destination="33N-YW-pdW" id="Sya-Yp-1kL"/>
                         <outlet property="adminPasswordTextfield" destination="dQP-Yg-gUy" id="Pbt-zg-Z8P"/>
                         <outlet property="areYouAnAdminLabel" destination="gco-xz-4Vv" id="Z6C-Qe-ygI"/>
+                        <outlet property="cameraButton" destination="oaE-CP-B3n" id="Evg-zo-eX7"/>
                         <outlet property="distanceSlider" destination="IYJ-Ce-cyB" id="rUv-h4-BlX"/>
                         <outlet property="fullnameTextfield" destination="Y86-vL-kSK" id="6Tz-81-c1B"/>
                         <outlet property="incorrectPasswordMessage" destination="Rmc-Vf-odZ" id="Bls-kk-yHg"/>

@@ -31,8 +31,8 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let interests = UserController.shared.loadUserProfile()?.interests else {return}
-        presentSimpleAlert(viewController: self, title: "Amount Of Interests", message: "\(interests.array.count)")
+//        guard let interests = UserController.shared.loadUserProfile()?.interests else {return}
+//        presentSimpleAlert(viewController: self, title: "Amount Of Interests", message: "\(interests.array.count)")
 
         // Do any additional setup after loading the view.
     }

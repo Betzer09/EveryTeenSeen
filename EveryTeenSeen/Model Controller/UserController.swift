@@ -49,6 +49,22 @@ class UserController {
         completion(true, nil)
     }
     
+    func updateUserProfileWith(user: User, fullname: String, profileImageURL: String, maxDistance: Int, usertype: UserType) {
+        let userDb = Firestore.firestore()
+        
+        user.fullname = fullname
+        user.profileImageURLString = profileImageURL
+        user.eventDistance = maxDistance
+        user.usertype = usertype.rawValue
+        
+        // Update the user in Coredata
+        guard let profileImageURL = user.profileImageURLString else {NSLog("Error updating user in function \(#function)");  return}
+        updateUserInCoredata(user: user, email: user.email, fullname: user.fullname, usertype: user.usertype, zipcode: user.zipcode, profileImageStringURL: profileImageURL, eventDistance: user.eventDistance)
+        
+        // Update the user in firebase
+        userDb.collection("users").document(user.email).setData(user.dictionaryRepresentation)
+    }
+    
     // MARK: - Fetch methods
     func fetchUserInfoFromFirebaseWith(email: String, completion: @escaping ((_ user: User?, _ error: Error?) -> Void) = {_,_  in} ) {
         firebaseManger.fetchUserFromFirebaseWith(email: email) { (user, error) in
@@ -119,8 +135,8 @@ class UserController {
     }
     
     // MARK: - Confirm password
-    /// Fetching the password from firebase to confirm it
-    func confirmPasswordWith(password: String, completion: @escaping(_ success: Bool) -> Void) {
+    /// Fetches the admin password from firebase to confirm it
+    func confirmAdminPasswordWith(password: String, completion: @escaping(_ success: Bool) -> Void) {
         let db = Firestore.firestore()
         
         db.collection("admin_password").document("passwordID").getDocument { (snapshot, error) in

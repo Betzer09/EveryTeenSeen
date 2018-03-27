@@ -17,54 +17,19 @@ import FirebaseMessaging
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
-        // Navigation Style
-        UIApplication.shared.statusBarStyle = .lightContent
-        UINavigationBar.appearance().barTintColor = UIColor(red: divideNumberForColorWith(number: 99), green: divideNumberForColorWith(number: 79), blue: divideNumberForColorWith(number: 237), alpha: 1)
-        UINavigationBar.appearance().tintColor = UIColor.white
-        
-        let singInView: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
-        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let adminView: UIStoryboard = UIStoryboard(name: "Admin", bundle: nil)
-        let onboardingView = UIStoryboard(name: "Onboarding", bundle: nil)
-        
-        var viewController: UIViewController
-        
-        if let user = UserController.shared.loadUserProfile() {
-            UserController.shared.fetchUserInfoFromFirebaseWith(email: user.email)
-            if user.usertype == UserType.joinCause.rawValue {
-                // This is a normal user
-                viewController = mainView.instantiateInitialViewController()!
-            } else if user.usertype == UserType.leadCause.rawValue {
-                // This is an admin user
-                viewController = adminView.instantiateInitialViewController()!
-            } else {
-                print("Error: Something is wrong with the usertype of: \(user.usertype)")
-                viewController = mainView.instantiateInitialViewController()!
-            }
-        } else {
-            // This means there is no User at all
-            if let _ = UserLocationController.shared.fetchUserLocation()  {
-                // If they have a correct location let them sign in
-                viewController = singInView.instantiateInitialViewController()!
-            } else {
-                viewController = onboardingView.instantiateInitialViewController()!
-            }
-            
-        }
-        self.window?.makeKeyAndVisible()
-        self.window?.rootViewController = viewController
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notificaiton:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
+        self.setUpNavigationBar()
+        self.configureUserToSignIn()
+        self.setUpNotificationObserver()
         
         return true
     }
-
-
+    
+    
     // Called when APNs has assigned the device a unique token
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // Convert token to string
@@ -106,5 +71,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func FBHandler() {
         Messaging.messaging().shouldEstablishDirectChannel = true
+    }
+}
+
+extension AppDelegate {
+    func setUpNavigationBar() {
+        // Navigation Style
+        UIApplication.shared.statusBarStyle = .lightContent
+        UINavigationBar.appearance().barTintColor = UIColor(red: divideNumberForColorWith(number: 99), green: divideNumberForColorWith(number: 79), blue: divideNumberForColorWith(number: 237), alpha: 1)
+        UINavigationBar.appearance().tintColor = UIColor.white
+    }
+    
+    /// This directs the user to the right place
+    func configureUserToSignIn() {
+        let singInView: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let adminView: UIStoryboard = UIStoryboard(name: "Admin", bundle: nil)
+        let onboardingView = UIStoryboard(name: "Onboarding", bundle: nil)
+        
+        var viewController: UIViewController
+        
+        if let user = UserController.shared.loadUserProfile() {
+            UserController.shared.fetchUserInfoFromFirebaseWith(email: user.email)
+            if user.usertype == UserType.joinCause.rawValue {
+                // This is a normal user
+                viewController = mainView.instantiateInitialViewController()!
+            } else if user.usertype == UserType.leadCause.rawValue {
+                // This is an admin user
+                viewController = adminView.instantiateInitialViewController()!
+            } else {
+                print("Error: Something is wrong with the usertype of: \(user.usertype)")
+                viewController = mainView.instantiateInitialViewController()!
+            }
+        } else {
+            // This means there is no User at all
+            if let _ = UserLocationController.shared.fetchUserLocation()  {
+                // If they have a correct location let them sign in
+                viewController = singInView.instantiateInitialViewController()!
+            } else {
+                viewController = onboardingView.instantiateInitialViewController()!
+            }
+            
+        }
+        self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = viewController
+    }
+    
+    func setUpNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notificaiton:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
     }
 }

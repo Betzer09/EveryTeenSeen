@@ -442,6 +442,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LargeUserProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="AG7-C4-Q1A">
                                 <rect key="frame" x="87.5" y="72" width="145" height="145"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="145" id="GzI-Qj-Ra2"/>
+                                    <constraint firstAttribute="width" constant="145" id="QoE-zx-K7X"/>
                                     <constraint firstAttribute="width" secondItem="AG7-C4-Q1A" secondAttribute="height" multiplier="1:1" id="puR-Qn-a7w"/>
                                 </constraints>
                             </imageView>
@@ -482,8 +484,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33N-YW-pdW" userLabel="ActivateAdminGroupView">
-                                <rect key="frame" x="16" y="142" width="288" height="284"/>
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="33N-YW-pdW" userLabel="ActivateAdminGroupView">
+                                <rect key="frame" x="8" y="269" width="288" height="284"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you an admin?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfx-pw-Bga">
                                         <rect key="frame" x="62.5" y="90.5" width="163" height="28.5"/>
@@ -603,6 +605,16 @@
                                     <action selector="activateAdminAccountButtonPressed:" destination="phe-9J-GLz" eventType="touchUpInside" id="ADL-tF-oAB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaE-CP-B3n">
+                                <rect key="frame" x="199.5" y="184" width="33" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oaE-CP-B3n" secondAttribute="height" multiplier="1:1" id="KP3-6e-w4a"/>
+                                </constraints>
+                                <state key="normal" image="Edit Photo Icon"/>
+                                <connections>
+                                    <action selector="chooseProfileImageButtonPressed:" destination="phe-9J-GLz" eventType="touchUpInside" id="68u-oA-Tas"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -618,7 +630,7 @@
                             <constraint firstItem="Gh5-EX-KxK" firstAttribute="width" secondItem="IYJ-Ce-cyB" secondAttribute="width" multiplier="1/15" id="C22-E1-ZnS"/>
                             <constraint firstItem="THk-hB-F9M" firstAttribute="height" secondItem="gco-xz-4Vv" secondAttribute="height" id="FQr-Pg-p9m"/>
                             <constraint firstItem="fuw-GR-QLW" firstAttribute="height" secondItem="Y86-vL-kSK" secondAttribute="height" id="GDs-QA-QWk"/>
-                            <constraint firstItem="AG7-C4-Q1A" firstAttribute="width" secondItem="AG7-C4-Q1A" secondAttribute="height" multiplier="1:1" id="Gq3-wc-wgi"/>
+                            <constraint firstItem="oaE-CP-B3n" firstAttribute="trailing" secondItem="AG7-C4-Q1A" secondAttribute="trailing" id="Ggj-gU-rZY"/>
                             <constraint firstItem="68X-Hf-RyA" firstAttribute="height" secondItem="IYJ-Ce-cyB" secondAttribute="height" multiplier="0.4" id="J7f-Ne-zTF"/>
                             <constraint firstItem="Y86-vL-kSK" firstAttribute="top" secondItem="AG7-C4-Q1A" secondAttribute="bottom" constant="16" id="JXv-K3-42r"/>
                             <constraint firstItem="IYJ-Ce-cyB" firstAttribute="width" secondItem="VBi-bG-gYo" secondAttribute="width" multiplier="0.85" id="LTa-eK-H4d"/>
@@ -626,7 +638,6 @@
                             <constraint firstItem="THk-hB-F9M" firstAttribute="centerY" secondItem="gco-xz-4Vv" secondAttribute="centerY" id="MlD-a7-giO"/>
                             <constraint firstItem="THk-hB-F9M" firstAttribute="width" secondItem="gco-xz-4Vv" secondAttribute="width" multiplier="1.25" id="Nee-bH-UZf"/>
                             <constraint firstItem="IYJ-Ce-cyB" firstAttribute="height" secondItem="Y86-vL-kSK" secondAttribute="height" multiplier="1.5" id="S7K-qg-Ubw"/>
-                            <constraint firstItem="AG7-C4-Q1A" firstAttribute="width" secondItem="AG7-C4-Q1A" secondAttribute="height" multiplier="1:1" id="SAS-Qu-0xz"/>
                             <constraint firstItem="RjL-sT-Uro" firstAttribute="height" secondItem="fuw-GR-QLW" secondAttribute="height" id="SYF-RV-AdB"/>
                             <constraint firstItem="gco-xz-4Vv" firstAttribute="leading" secondItem="Jj8-Wb-l6c" secondAttribute="leading" constant="16" id="T9s-vw-ZsM"/>
                             <constraint firstItem="33N-YW-pdW" firstAttribute="width" secondItem="VBi-bG-gYo" secondAttribute="width" multiplier="0.9" id="Tqk-dS-m0s"/>
@@ -635,6 +646,7 @@
                             <constraint firstItem="RjL-sT-Uro" firstAttribute="width" secondItem="fuw-GR-QLW" secondAttribute="width" multiplier="1/2" id="Xtc-KK-OrA"/>
                             <constraint firstItem="KZC-W3-GDq" firstAttribute="height" secondItem="Y86-vL-kSK" secondAttribute="height" id="a7i-MD-KqH"/>
                             <constraint firstItem="Gh5-EX-KxK" firstAttribute="leading" secondItem="IYJ-Ce-cyB" secondAttribute="leading" id="b6R-Da-cLb"/>
+                            <constraint firstItem="oaE-CP-B3n" firstAttribute="bottom" secondItem="AG7-C4-Q1A" secondAttribute="bottom" id="b9g-ZQ-1Qg"/>
                             <constraint firstAttribute="trailing" secondItem="THk-hB-F9M" secondAttribute="trailing" constant="8" id="c6c-mh-xdn"/>
                             <constraint firstItem="Y86-vL-kSK" firstAttribute="width" secondItem="VBi-bG-gYo" secondAttribute="width" multiplier="2/3" id="dfL-zP-fUd"/>
                             <constraint firstItem="RjL-sT-Uro" firstAttribute="trailing" secondItem="IYJ-Ce-cyB" secondAttribute="trailing" id="gD7-4q-Qnv"/>
@@ -691,6 +703,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Edit Photo Icon" width="33" height="33"/>
         <image name="LargeUserProfileImage" width="145" height="144"/>
         <image name="back" width="17" height="16"/>
         <image name="check-circle" width="92" height="88"/>

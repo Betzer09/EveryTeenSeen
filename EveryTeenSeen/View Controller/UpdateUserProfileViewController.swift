@@ -29,6 +29,7 @@ class UpdateUserProfileViewController: UIViewController {
     
     
     // MARK: - Properties
+    var delegate: PhotoSelectedViewControllerDelegate?
     
     // MARK: - View Life Cycle
     
@@ -49,12 +50,19 @@ class UpdateUserProfileViewController: UIViewController {
         activateAdminAccountButton.isHidden = true
         areYouAnAdminLabel.isHidden = true
         incorrectPasswordMessage.isHidden = true
+        adminPasswordTextfield.text = ""
     }
+    
+    @IBAction func chooseProfileImageButtonPressed(_ sender: Any) {
+        self.presentCameraAndPhotoLibraryOption()
+    }
+    
     
     @IBAction func dismissActivateAdminGroupButtonPressed(_ sender: Any) {
         self.activateAdminGroupView.isHidden = true
         areYouAnAdminLabel.isHidden = false
         activateAdminAccountButton.isHidden = false
+        view.endEditing(true)
     }
     
     @IBAction func dismissSuccessAdminView(_ sender: Any) {
@@ -101,12 +109,90 @@ class UpdateUserProfileViewController: UIViewController {
         activateAdminGroupView.layer.cornerRadius = 15
         successGroupView.layer.cornerRadius = 15
         
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+        profileImageView.clipsToBounds = true
+        
     }
     
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
 }
+
+// MARK: - Photo Methods
+extension UpdateUserProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // Picking an iamge from libary
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        var image: UIImage!
+        
+        if let img = info[UIImagePickerControllerEditedImage] as? UIImage {
+            image = img
+        } else if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            image = img
+        }
+        
+        picker.dismiss(animated: true,completion: nil)
+        // Assign the iamge in the delegate
+        delegate?.photoSelectedWithVC(image)
+        profileImageView.image = image
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+        profileImageView.clipsToBounds = true
+    }
+    
+    private func presentCameraAndPhotoLibraryOption() {
+        
+        let actionSheet = UIAlertController(title: "Where do you want your photo from?", message: "", preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
+            // Get access to the camara
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .camera
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+                
+            }
+        }
+        
+        let libarayAction = UIAlertAction(title: "From library", style: .default) { (_) in
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .photoLibrary
+                imagePicker.allowsEditing = true
+                imagePicker.modalPresentationStyle = .popover
+                
+                if let popoverPresentation = imagePicker.popoverPresentationController {
+                    popoverPresentation.sourceView = self.view
+                    popoverPresentation.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY / 2, width: 0, height: 0)
+                    popoverPresentation.permittedArrowDirections = .any
+                }
+                
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }
+        
+        if let popoverContoller = actionSheet.popoverPresentationController {
+            popoverContoller.sourceView = self.view
+            popoverContoller.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY / 2, width: 0, height: 0)
+            popoverContoller.permittedArrowDirections = []
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        actionSheet.addAction(cameraAction)
+        actionSheet.addAction(libarayAction)
+        actionSheet.addAction(cancelAction)
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+}
+
 
 extension UpdateUserProfileViewController: UITextFieldDelegate {
     
@@ -125,9 +211,3 @@ extension UpdateUserProfileViewController: UITextFieldDelegate {
     }
     
 }
-
-
-
-
-
-

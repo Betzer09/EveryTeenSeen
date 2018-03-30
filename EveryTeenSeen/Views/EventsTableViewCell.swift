@@ -110,15 +110,3 @@ class EventsTableViewCell: UITableViewCell {
         goingLabel.text = "Not Going"
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

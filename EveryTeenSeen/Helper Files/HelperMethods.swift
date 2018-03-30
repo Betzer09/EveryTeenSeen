@@ -205,6 +205,45 @@ public func createGradientLayerWith(startpointX: Double, startpointY: Double, en
     viewController.view.layer.insertSublayer(gradientLayer, at: 0)
 }
 
+// MARK: - Design Functions
+
+extension CALayer {
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let maskPath = UIBezierPath(roundedRect: bounds,
+                                    byRoundingCorners: corners,
+                                    cornerRadii: CGSize(width: radius, height: radius))
+        
+        let shape = CAShapeLayer()
+        shape.path = maskPath.cgPath
+        mask = shape
+    }
+    
+    //https://stackoverflow.com/questions/29618760/create-a-rectangle-with-just-two-rounded-corners-in-swift
+    /// Used for table view cells
+    func roundCorners(corners: UIRectCorner, radius: CGFloat, viewBounds: CGRect) {
+        
+        let maskPath = UIBezierPath(roundedRect: viewBounds,
+                                    byRoundingCorners: corners,
+                                    cornerRadii: CGSize(width: radius, height: radius))
+        
+        let shape = CAShapeLayer()
+        shape.path = maskPath.cgPath
+        mask = shape
+    }
+}
+
+/// Create a blur effect on a uiview
+public func createBlurEffectOn(view: UIView) {
+    let blurEffect = UIBlurEffect(style: .regular)
+    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+    blurEffectView.frame = view.bounds
+    blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    view.addSubview(blurEffectView)
+    view.sendSubview(toBack: blurEffectView)
+    
+    
+}
+
 // MARK: - Uibutton Proportions
 /// This configures to the button to be proportinal on all screen sizes
 public func configureButtonWith(button: UIButton) {

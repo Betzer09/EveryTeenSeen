@@ -15,6 +15,8 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventAddressLabel: UILabel!
     @IBOutlet weak var eventMeetUpDateLabel: UILabel!
+    @IBOutlet weak var eventContentView: UIView!
+    @IBOutlet weak var eventSummary: UITextView!
     
     // MARK: - Properties
     var event: Event?
@@ -37,7 +39,9 @@ class EventDetailViewController: UIViewController {
         eventImageView.image = UIImage(data: imageData)
         eventMeetUpDateLabel.text = event.dateHeld + "\n" + event.eventTime
         eventAddressLabel.text = event.address
-        
+        eventSummary.text = event.eventInfo
+        eventImageView.layer.cornerRadius = 15
+        eventImageView.clipsToBounds = true
     }
 }
 
@@ -46,9 +50,9 @@ extension EventDetailViewController {
     
     /// Configures the navigation bar to have all of the normal stuff
     func configureNavigationBar() {
-        let hamburgerButton: UIButton = UIButton(type: .custom)
-        hamburgerButton.setImage(#imageLiteral(resourceName: "Hamburger"), for: .normal)
-        hamburgerButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
+        let backButton: UIButton = UIButton(type: .custom)
+        backButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
+        backButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
         
         let profileButton: UIButton = UIButton(type: .custom)
         profileButton.setImage(#imageLiteral(resourceName: "ProfilePicture"), for: .normal)
@@ -58,14 +62,14 @@ extension EventDetailViewController {
         let happyImage: UIImageView = UIImageView(image: image)
         happyImage.contentMode = .scaleAspectFit
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: hamburgerButton)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileButton)
         self.navigationItem.titleView = happyImage
     }
     
     // MARK: - Objective-C Functions
     @objc func configureLocation() {
-        presentSimpleAlert(viewController: self, title: "Coming Soon!", message: "This feature has not yet been configured yet!")
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func segueToProfileView() {

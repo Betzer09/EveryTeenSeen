@@ -22,20 +22,35 @@ class UserProfileViewController: UIViewController {
     
     // Table View Outlets
     @IBOutlet weak var tableView: UITableView!
-
+    
+    // Interest View outlets
+    @IBOutlet weak var interestsGroupView: UIView!
+    @IBOutlet weak var firstRowInterestStackView: UIStackView!
+    @IBOutlet weak var secondRowInterestStackView: UIStackView!
+    @IBOutlet weak var thirdRowInterestStackView: UIStackView!
+    
+    //Buttons
+    @IBOutlet weak var firstInterest: UIButton!
+    @IBOutlet weak var secondInterest: UIButton!
+    @IBOutlet weak var thirdInterest: UIButton!
+    @IBOutlet weak var fourthInterest: UIButton!
+    @IBOutlet weak var fifthInterest: UIButton!
+    @IBOutlet weak var sixthInterest: UIButton!
+    @IBOutlet weak var seventhInterest: UIButton!
+    @IBOutlet weak var eigthInterest: UIButton!
+    @IBOutlet weak var ninthInterest: UIButton!
+    
+    
     // MARK: - View Life Cycles
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setUpView()
+        self.configureAllButtons()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let interests = UserController.shared.loadUserProfile()?.interests else {return}
-        presentSimpleAlert(viewController: self, title: "Amount Of Interests", message: "\(interests.array.count)")
-
-        // Do any additional setup after loading the view.
     }
+
     
     // MARK: - Actions
     @IBAction func createEventButtonPressed(_ sender: Any) {
@@ -43,6 +58,13 @@ class UserProfileViewController: UIViewController {
     }
     
     @IBAction func addInterestButtonPressed(_ sender: Any) {
+        
+        guard let interests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else {return}
+        
+        if interests.count >= 9 {
+            presentSimpleAlert(viewController: self, title: "You're amazing!", message: "You can only have nine interests though!")
+            return
+        }
     
         var interestTextField: UITextField!
         
@@ -56,7 +78,17 @@ class UserProfileViewController: UIViewController {
         
         let okActions = UIAlertAction(title: "Create Interest", style: .default) { (_) in
             guard let name = interestTextField.text, let user = UserController.shared.loadUserProfile() else {return}
-            InterestController.shared.createInterestWith(user: user, and: name)
+            let interestsNames = interests.flatMap({ $0.name })
+            
+            if interestsNames.contains(name) {
+                presentSimpleAlert(viewController: self, title: "Oops", message: "You already have that interest!")
+                return
+            }
+            InterestController.shared.createInterestWith(user: user, and: name, completion: { (done) in
+                guard done else {return}
+                self.configureAllButtons()
+            })
+            
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -178,8 +210,59 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
         return events.count
     }
     
-    // MARK: - Table View Fnctions
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.view.bounds.height * 0.62
     }
 }
+
+// MARK: - Set Up Interest Buttons
+extension UserProfileViewController {
+    /// Gets all buttons in a view
+    private func getAllButtons(view: UIView) -> [UIButton] {
+        var results = [UIButton]()
+        for subview in view.subviews as [UIView] {
+            if let button = subview as? UIButton {
+                results += [button]
+            } else {
+                results += getAllButtons(view: subview)
+            }
+        }
+        return results
+    }
+    
+    private func configureAllButtons() {
+        let buttons = getAllButtons(view: interestsGroupView)
+        guard let interests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else {return}
+        
+        
+        // Make all buttons have no title
+        for i in 0...buttons.count - 1 {
+            DispatchQueue.main.async {
+                buttons[i].setTitle("", for: .normal)
+            }
+        }
+        
+        for i in 0...interests.count - 1 {
+            let interestName = interests[i].name
+            
+            DispatchQueue.main.async {
+                buttons[i].setTitle(interestName, for: .normal)
+                buttons[i].layer.borderColor = UIColor.blue.cgColor
+                buttons[i].layer.borderWidth = 1
+                buttons[i].layer.cornerRadius = 10
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

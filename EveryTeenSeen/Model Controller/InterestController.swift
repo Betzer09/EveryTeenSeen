@@ -13,10 +13,11 @@ import Firebase
 class InterestController {
     static let shared = InterestController()
     
-    func createInterestWith(user: User, and nameOfInterest: String) {
+    func createInterestWith(user: User, and nameOfInterest: String, completion: @escaping (_ doneUploading: Bool) -> Void) {
         Interest(name: nameOfInterest, user: user)
         UserController.shared.saveToPersistentStore()
         addInterestToFirebase()
+        completion(true)
     }
     
     func delete(interest: Interest) {

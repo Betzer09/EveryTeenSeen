@@ -162,10 +162,10 @@ extension EventsViewController: CLLocationManagerDelegate {
             
             // Write a function to grab and update the user's location
             self.fetchTheUsersLocation { (location) in
-                guard let location = location, let zip = location.zipcode, let user = UserController.shared.loadUserProfile() else {return}
+                guard let location = location, let zip = location.zipcode else {return}
                 
                 CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
-                    UserLocation(latitude: location.latitude, longitude: location.longitude, zip: zip, cityName: city.city, state: city.state, user: user)
+                    UserLocationController.shared.update(location: location, lat: location.latitude, long: location.longitude, zip: zip, cityName: city.city, state: city.state)
                 })
             }
         }
@@ -185,8 +185,7 @@ extension EventsViewController: CLLocationManagerDelegate {
                 NSLog("Error getting the zip code: \(error.localizedDescription) in function: \(#function) ")
             }
             
-            guard let placemark = placemarks?.first, let zip = placemark.postalCode, let user = UserController.shared.loadUserProfile()
-                else {
+            guard let placemark = placemarks?.first, let zip = placemark.postalCode else {
                     completion(nil)
                     NSLog("Error updating user locaiton in function: \(#function)")
                     return
@@ -195,7 +194,7 @@ extension EventsViewController: CLLocationManagerDelegate {
             let lat = userLocation.coordinate.latitude
             let long = userLocation.coordinate.longitude
             
-            let userLocation = UserLocation(latitude: lat, longitude: long, zip: zip, cityName: "", state: "", user: user)
+            let userLocation = UserLocation(latitude: lat, longitude: long, zip: zip, cityName: "", state: "")
             completion(userLocation)
             self.locationManager.stopUpdatingLocation()
         })

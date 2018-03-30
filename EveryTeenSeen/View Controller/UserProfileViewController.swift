@@ -107,6 +107,7 @@ class UserProfileViewController: UIViewController {
                     presentSimpleAlert(viewController: self, title: "Problem Logging out!", message: error.localizedDescription)
                 }
                 guard successfullySignedUserOut else {return}
+                UserController.shared.deleteAllUserData()
                 presentLogoutAndSignUpPage(viewController: self)
             }
         }
@@ -124,7 +125,7 @@ class UserProfileViewController: UIViewController {
         
         createEventButton.layer.cornerRadius = createEventButton.bounds.height / 2
         
-        guard let user = UserController.shared.loadUserProfile(), let userLocation = user.location else {return}
+        guard let user = UserController.shared.loadUserProfile(), let userLocation = UserLocationController.shared.fetchUserLocation() else {return}
         
         if user.usertype == UserType.leadCause.rawValue {
             usertypeLabel.text = "Admin"

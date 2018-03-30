@@ -40,6 +40,7 @@ extension User {
     var dictionaryRepresentation: [String: Any] {
         
         var interestNames: [String] = []
+        
         if let interests = UserController.shared.loadUserProfile()?.interests {
             guard let castedInterests = interests.array as? [Interest] else {return [:]}
             interestNames = castedInterests.flatMap( { $0.name } )

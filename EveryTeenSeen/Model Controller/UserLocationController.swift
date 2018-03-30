@@ -14,9 +14,9 @@ class UserLocationController {
     static let shared = UserLocationController() 
     
     /// Create a location for the user and saves it to CoreData
-    func createLocationWith(user: User, lat: Double, long: Double, zip: String, cityName: String, state: String) {
-        UserLocation(latitude: lat, longitude: long, zip: zip, cityName: cityName, state: state, user: user)
-        saveToPersistentStore()
+    func createLocationWith(lat: Double, long: Double, zip: String, cityName: String, state: String) {
+        let location = UserLocation(latitude: lat, longitude: long, zip: zip, cityName: cityName, state: state)
+        saveToPersistentStore(location: location)
     }
     
     func update(location: UserLocation, lat: Double, long: Double, zip: String, cityName: String, state: String) {
@@ -25,7 +25,7 @@ class UserLocationController {
         location.zipcode = zip
         location.cityName = cityName
         location.state = state
-        saveToPersistentStore()
+        saveToPersistentStore(location: location)
     }
     
     
@@ -34,11 +34,10 @@ class UserLocationController {
         guard let currentLocation = try? CoreDataStack.context.fetch(request).first else {return nil}
         return currentLocation
     }
-    
-    
+
     /// Saves the user location to CoreData
-    func saveToPersistentStore() {
-        let moc = CoreDataStack.context
+    func saveToPersistentStore(location: UserLocation) {
+        guard let moc = location.managedObjectContext else {return}
         do {
             try moc.save()
             NSLog("Saved User location Succesfully")

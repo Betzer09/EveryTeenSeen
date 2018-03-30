@@ -105,7 +105,7 @@ extension AppDelegate {
             }
         } else {
             // This means there is no User at all
-            if let _ = UserController.shared.loadUserProfile()?.location  {
+            if let _ = UserLocationController.shared.fetchUserLocation()  {
                 // If they have a correct location let them sign in
                 viewController = singInView.instantiateInitialViewController()!
             } else {

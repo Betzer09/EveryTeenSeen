@@ -13,19 +13,17 @@
         <attribute name="usertype" attributeType="String" syncable="YES"/>
         <attribute name="zipcode" attributeType="String" syncable="YES"/>
         <relationship name="interests" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Interest" inverseName="user" inverseEntity="Interest" syncable="YES"/>
-        <relationship name="location" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="UserLocation" inverseName="user" inverseEntity="UserLocation" syncable="YES"/>
     </entity>
     <entity name="UserLocation" representedClassName="UserLocation" syncable="YES" codeGenerationType="class">
         <attribute name="cityName" attributeType="String" syncable="YES"/>
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="state" attributeType="String" syncable="YES"/>
-        <attribute name="zipcode" attributeType="String" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="location" inverseEntity="User" syncable="YES"/>
+        <attribute name="zipcode" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Interest" positionX="198" positionY="93" width="128" height="73"/>
-        <element name="User" positionX="-272" positionY="18" width="128" height="180"/>
-        <element name="UserLocation" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="User" positionX="-272" positionY="18" width="128" height="163"/>
+        <element name="UserLocation" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

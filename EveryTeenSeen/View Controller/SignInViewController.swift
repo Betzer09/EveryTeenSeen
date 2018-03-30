@@ -301,7 +301,7 @@ extension SignInViewController {
                 return
         }
         
-        guard let zipcode = UserController.shared.loadUserProfile()?.location?.zipcode else {NSLog("Error: There is no zipcode");return}
+        guard let zipcode = UserLocationController.shared.fetchUserLocation()?.zipcode else {NSLog("Error Creating User: There is no zipcode");return}
         // Create User Profile
         UserController.shared.createUserProfile(fullname: fullname, email: email, zipcode: zipcode, usertype: UserType.joinCause) { (success, error) in
             if let error = error {

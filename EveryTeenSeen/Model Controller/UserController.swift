@@ -215,6 +215,31 @@ extension UserController {
         return user
     }
     
+    // Deletes all the data for Users
+    func deleteAllUserData() {
+        
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        let context = CoreDataStack.context
+        
+        guard let users = try? context.fetch(fetchRequest) else {
+            NSLog("Error clearing all user data from Coredata! \(#function)")
+            return
+        }
+        
+        for user in users {
+            context.delete(user)
+        }
+        
+        do {
+           try context.save()
+        } catch let e {
+            NSLog("Error saving deleted users context: \(e.localizedDescription) in function: \(#function)")
+        }
+        
+    }
+    
     func saveToPersistentStore() {
         let moc = CoreDataStack.context
         

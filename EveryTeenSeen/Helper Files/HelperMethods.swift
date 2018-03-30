@@ -222,8 +222,8 @@ func findTheDistanceWith(lat: Double, long: Double) -> Bool {
 
     var shouldWeUpdateDistance = false
     
-    guard let savedLocation = UserController.shared.loadUserProfile()?.location else {
-        // This means we need a locaiton for the user
+    guard let savedLocation = UserLocationController.shared.fetchUserLocation() else {
+        // This means we need a location for the user
         return true
     }
     

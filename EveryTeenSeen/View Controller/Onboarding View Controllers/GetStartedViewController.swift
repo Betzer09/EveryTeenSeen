@@ -44,7 +44,7 @@ class GetStartedViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
             locationManager.requestLocation()
             
-            guard let zip = UserController.shared.loadUserProfile()?.location?.zipcode else {
+            guard let zip = UserLocationController.shared.fetchUserLocation()?.zipcode else {
                 NSLog("Error fetching the users zipcode")
                 return
             }
@@ -162,14 +162,9 @@ extension GetStartedViewController: CLLocationManagerDelegate {
             locationManager.requestLocation()
             locationIsDenied = false
             
-            // Check to see if we already have a location
-            guard UserController.shared.loadUserProfile()?.location == nil else {
-                return
-            }
-            
             // If there isn't a location create and save it
             self.fetchTheUsersLocation(completion: { (lat, long, zipcode) in
-                guard let latitude = lat, let longitude = long, let zip = zipcode, let user = UserController.shared.loadUserProfile() else {return}
+                guard let zip = zipcode else {return}
                 // Make sure they are allowed to create an account
                 
                 CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
@@ -204,7 +199,7 @@ extension GetStartedViewController: CLLocationManagerDelegate {
                 
                 CityController.shared.fetchCityWith(zipcode: zipcode, completion: { (city) in
                     // Fetch the users location so we can update it
-                    guard let location = UserController.shared.loadUserProfile()?.location else {return}
+                    guard let location = UserLocationController.shared.fetchUserLocation() else {return}
                     
                     guard CityController.shared.verifyLocationFor(city: city) else {
                         presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")

@@ -11,7 +11,7 @@ import CoreData
 
 extension UserLocation {
     
-    @discardableResult convenience init(latitude: Double, longitude: Double, zip: String, cityName: String, state: String, user: User, context: NSManagedObjectContext = CoreDataStack.context) {
+    @discardableResult convenience init(latitude: Double, longitude: Double, zip: String, cityName: String, state: String, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         
         self.latitude = latitude
@@ -19,7 +19,6 @@ extension UserLocation {
         self.zipcode = zip
         self.cityName = cityName
         self.state = state
-        self.user = user
     }
     
 }

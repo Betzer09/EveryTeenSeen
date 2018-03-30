@@ -111,6 +111,9 @@ class GetStartedViewController: UIViewController {
                     self.hideActivityIndicator()
                     return
                 }
+                
+                UserLocationController.shared.createLocationWith(lat: city.latitude, long: city.longitude, zip: city.zipcode, cityName: city.cityName, state: city.state)
+
                 self.hideActivityIndicator()
                 
                 // Show the login page
@@ -209,7 +212,7 @@ extension GetStartedViewController: CLLocationManagerDelegate {
                     
                     // Update locaiotn in CoreData
                     UserLocationController.shared.update(location: location, lat: latitude,
-                                                         long: longitude, zip: zipcode, cityName: city.city, state: city.state)
+                                                         long: longitude, zip: zipcode, cityName: city.cityName, state: city.state)
                     
                     presentLogoutAndSignUpPage(viewController: self)
                 })

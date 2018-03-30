@@ -11,25 +11,31 @@ import Foundation
 class City: Codable {
     
     // MARK: - Properties
-    let city: String
+    let cityName: String
     let zipcode: String
     var count: Int? = 0
     let state: String
+    let latitude: Double
+    let longitude: Double
     
     // MARK: - Init
-    init(city: String, zipcode: String, state: String, count: Int) {
-        self.city = city
+    init(city: String, zipcode: String, state: String, count: Int, latitude: Double, longitude: Double) {
+        self.cityName = city
         self.zipcode = zipcode
         self.state = state
         self.count = count
+        self.latitude = latitude
+        self.longitude = longitude
     }
     
     // MARK: - Coding Keys
     enum CodingKeys: String, CodingKey {
         case zipcode = "zip_code"
-        case city
+        case cityName = "city"
         case state
         case count
+        case latitude = "lat"
+        case longitude = "lng"
     }
     
 }

@@ -53,8 +53,10 @@ class CityController {
                 self.increaseCityAmountUsing(zipcode: zipcode)
             } else {
                 // if the city isn't there create the city using the zip as the key because that is Unique
-                let city = City(city: city, zipcode: zipcode, state: state, count: 1)
-                self.createCityWith(city: city)
+                self.fetchCityWith(zipcode: zipcode, completion: { (returnedCity) in
+                    let city = City(city: city, zipcode: zipcode, state: state, count: 1, latitude: returnedCity.latitude , longitude: returnedCity.longitude)
+                    self.createCityWith(city: city)
+                })
             }
         }
     }

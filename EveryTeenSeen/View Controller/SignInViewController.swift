@@ -312,7 +312,7 @@ extension SignInViewController {
             UserController.shared.saveUserToCoreData(email: email, fullname: fullname, usertype: UserType.joinCause.rawValue, zipcode: zipcode, distance: 25)
             
             CityController.shared.fetchCityWith(zipcode: zipcode, completion: { (city) in
-                CityController.shared.postCityToFirebaseWith(city: city.city, zipcode: city.zipcode, state: city.state)
+                CityController.shared.postCityToFirebaseWith(city: city.cityName, zipcode: city.zipcode, state: city.state)
             })
         }
     }

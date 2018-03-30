@@ -165,7 +165,7 @@ extension EventsViewController: CLLocationManagerDelegate {
                 guard let location = location, let zip = location.zipcode else {return}
                 
                 CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
-                    UserLocationController.shared.update(location: location, lat: location.latitude, long: location.longitude, zip: zip, cityName: city.city, state: city.state)
+                    UserLocationController.shared.update(location: location, lat: location.latitude, long: location.longitude, zip: zip, cityName: city.cityName, state: city.state)
                 })
             }
         }

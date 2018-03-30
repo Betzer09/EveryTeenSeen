@@ -67,6 +67,8 @@ class SignInViewController: UIViewController {
             if let error = error {
                 self.loginIndicator.stopAnimating()
                 presentSimpleAlert(viewController: self, title: "There was a problem signing in.", message:" \(error.localizedDescription)")
+                self.hideIndicator()
+                return
             }
             
             // The success is true
@@ -299,7 +301,7 @@ extension SignInViewController {
                 return
         }
         
-        guard let zipcode = UserLocationController.shared.fetchUserLocation()?.zipcode else {NSLog("Error: There is no zipcode");return}
+        guard let zipcode = UserController.shared.loadUserProfile()?.location?.zipcode else {NSLog("Error: There is no zipcode");return}
         // Create User Profile
         UserController.shared.createUserProfile(fullname: fullname, email: email, zipcode: zipcode, usertype: UserType.joinCause) { (success, error) in
             if let error = error {

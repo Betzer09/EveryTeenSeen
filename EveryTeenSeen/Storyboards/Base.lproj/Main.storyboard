@@ -386,6 +386,7 @@ Press to Download in the App Store</string>
                                             <outlet property="eventPhotoImageView" destination="XSZ-Wr-q68" id="S61-Iz-bPI"/>
                                             <outlet property="eventTitleLabel" destination="2H7-LS-52m" id="poO-gJ-X1B"/>
                                             <outlet property="goingLabel" destination="4UC-Bu-6kJ" id="r5q-zP-toS"/>
+                                            <segue destination="vIJ-3o-7BM" kind="show" identifier="toEventDetailVC" id="VZp-xq-aWq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -421,6 +422,139 @@ Press to Download in the App Store</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Irx-rR-YYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="176" y="26"/>
+        </scene>
+        <!--Event Detail View Controller-->
+        <scene sceneID="Vdr-Le-KtX">
+            <objects>
+                <viewController id="vIJ-3o-7BM" customClass="EventDetailViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tg4-IK-pNH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3U-Dt-mmM">
+                                <rect key="frame" x="0.0" y="64" width="320" height="787"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcu-Ay-FEa">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F8h-75-zy8">
+                                                <rect key="frame" x="16" y="312" width="116.5" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfM-aO-bza">
+                                                <rect key="frame" x="16" y="361" width="288" height="180"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <mutableString key="text">Maui hotel or Maui condo? It’s the burning question on everyones mind! What should you do? Maui hotel? Maui condo? Which should you choose? The sweat is pouring down your face and you can feel the pressure building…Okay! Okay! Maybe it’s not that burning, after all! It is, however, a very important decision if you are planning a Maui vacation.
+
+The answer depends on what you are planning to do on Maui. If you are going to Maui for just a few days, you will probably want to get a hotel room. Most hotels have very minimum stay requirements, if any. You can just check-in for a night or two and be on your way. They also have daily maid service to keep your room clean and fresh.
+
+If you are looking for a longer stay, you will probably want to stay in a condo. Most condos have a minimum stay requirement, especially if you stay in a privately owned condo. Most private owners require you to stay a minimum of 7 nights. During holidays, the requirement may be as much as 14 nights. I know of a few owners that will allow a 5 night minimum stay but very few allow less than 5 nights.
+
+If you want to do your own cooking to save some money while you are on Maui, you will want to stay in a condo. Most hotels will have a bare minimum as far as kitchens go while condos will have a completely furnished kitchen. The majority of the people I book for Maui accommodations want to cook at least a few meals in the thier unit so they almost always book Maui condos.
+
+What do I recommend? I always recommend staying in a Maui condo! They are like a home away from home; although some of them may even be bigger than your home. They are fully furnished, they tend to have more room and you can wow everyone with your Maui vacation culinary skills!</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="cfM-aO-bza" firstAttribute="top" secondItem="F8h-75-zy8" secondAttribute="bottom" constant="13" id="78E-hh-8Pr"/>
+                                            <constraint firstItem="cfM-aO-bza" firstAttribute="width" secondItem="gcu-Ay-FEa" secondAttribute="width" multiplier="0.9" id="Bqa-KX-D5b"/>
+                                            <constraint firstItem="cfM-aO-bza" firstAttribute="leading" secondItem="F8h-75-zy8" secondAttribute="leading" id="VCY-mt-TbZ"/>
+                                            <constraint firstAttribute="height" constant="900" id="fCR-Hu-EQ8"/>
+                                            <constraint firstItem="cfM-aO-bza" firstAttribute="height" secondItem="gcu-Ay-FEa" secondAttribute="height" multiplier="1/5" id="hw4-zO-GRf"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBackground" translatesAutoresizingMaskIntoConstraints="NO" id="cT7-JF-94Q">
+                                        <rect key="frame" x="16" y="8" width="288" height="288"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="cT7-JF-94Q" secondAttribute="height" multiplier="1:1" id="H81-4D-587"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7x-pe-nTC" userLabel="Event Content View">
+                                        <rect key="frame" x="16" y="224" width="288" height="72"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Of The Meet Up " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e8E-eh-j29">
+                                                <rect key="frame" x="8" y="0.0" width="129.5" height="72"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address for the Meet Up" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wu0-9B-V3o">
+                                                <rect key="frame" x="163.5" y="0.0" width="116.5" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Of Meet Up" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bph-Kj-iC8">
+                                                <rect key="frame" x="163.5" y="36" width="116.5" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.1019607843" green="0.85882352939999995" blue="0.82745098039999998" alpha="0.74942231510000001" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Wu0-9B-V3o" secondAttribute="trailing" constant="8" id="0ug-iX-1NN"/>
+                                            <constraint firstItem="Wu0-9B-V3o" firstAttribute="height" secondItem="e8E-eh-j29" secondAttribute="height" multiplier="1/2" id="3lB-cK-JEh"/>
+                                            <constraint firstAttribute="trailing" secondItem="Bph-Kj-iC8" secondAttribute="trailing" constant="8" id="6me-aa-Oni"/>
+                                            <constraint firstItem="e8E-eh-j29" firstAttribute="leading" secondItem="k7x-pe-nTC" secondAttribute="leading" constant="8" id="CVa-1M-BuW"/>
+                                            <constraint firstItem="Wu0-9B-V3o" firstAttribute="width" secondItem="e8E-eh-j29" secondAttribute="width" multiplier="0.9" id="Cfb-qb-3xs"/>
+                                            <constraint firstItem="Bph-Kj-iC8" firstAttribute="top" secondItem="Wu0-9B-V3o" secondAttribute="bottom" id="EQv-em-VeO"/>
+                                            <constraint firstItem="e8E-eh-j29" firstAttribute="width" secondItem="k7x-pe-nTC" secondAttribute="width" multiplier="0.45" id="Rkb-j3-s6I"/>
+                                            <constraint firstItem="Bph-Kj-iC8" firstAttribute="width" secondItem="Wu0-9B-V3o" secondAttribute="width" id="TAl-en-Zxs"/>
+                                            <constraint firstAttribute="bottom" secondItem="e8E-eh-j29" secondAttribute="bottom" id="bSh-m2-eJ0"/>
+                                            <constraint firstAttribute="bottom" secondItem="Bph-Kj-iC8" secondAttribute="bottom" id="c4V-dY-Ssl"/>
+                                            <constraint firstItem="Wu0-9B-V3o" firstAttribute="top" secondItem="k7x-pe-nTC" secondAttribute="top" id="fl0-Br-5mP"/>
+                                            <constraint firstItem="Bph-Kj-iC8" firstAttribute="height" secondItem="Wu0-9B-V3o" secondAttribute="height" id="gT2-hw-3BP"/>
+                                            <constraint firstItem="e8E-eh-j29" firstAttribute="top" secondItem="k7x-pe-nTC" secondAttribute="top" id="qes-Pc-bre"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="k7x-pe-nTC" firstAttribute="height" secondItem="cT7-JF-94Q" secondAttribute="height" multiplier="1/4" id="4TV-4o-8am"/>
+                                    <constraint firstItem="gcu-Ay-FEa" firstAttribute="top" secondItem="B3U-Dt-mmM" secondAttribute="top" id="5Gb-8s-D6b"/>
+                                    <constraint firstItem="cT7-JF-94Q" firstAttribute="top" secondItem="B3U-Dt-mmM" secondAttribute="top" constant="8" id="C8a-kw-vTm"/>
+                                    <constraint firstAttribute="bottom" secondItem="gcu-Ay-FEa" secondAttribute="bottom" id="Cmv-K3-0ks"/>
+                                    <constraint firstItem="F8h-75-zy8" firstAttribute="width" secondItem="Bph-Kj-iC8" secondAttribute="width" id="NA9-C1-I7I"/>
+                                    <constraint firstItem="F8h-75-zy8" firstAttribute="height" secondItem="Bph-Kj-iC8" secondAttribute="height" id="Ryh-mC-ybl"/>
+                                    <constraint firstItem="F8h-75-zy8" firstAttribute="top" secondItem="cT7-JF-94Q" secondAttribute="bottom" constant="16" id="TGe-ve-HXE"/>
+                                    <constraint firstItem="cT7-JF-94Q" firstAttribute="width" secondItem="gcu-Ay-FEa" secondAttribute="width" multiplier="0.9" id="Vct-bp-jUi"/>
+                                    <constraint firstItem="k7x-pe-nTC" firstAttribute="trailing" secondItem="cT7-JF-94Q" secondAttribute="trailing" id="XOw-1K-day"/>
+                                    <constraint firstItem="k7x-pe-nTC" firstAttribute="bottom" secondItem="cT7-JF-94Q" secondAttribute="bottom" id="b0w-YI-hFQ"/>
+                                    <constraint firstItem="gcu-Ay-FEa" firstAttribute="leading" secondItem="B3U-Dt-mmM" secondAttribute="leading" id="ddO-WL-4v9"/>
+                                    <constraint firstItem="cT7-JF-94Q" firstAttribute="centerX" secondItem="B3U-Dt-mmM" secondAttribute="centerX" id="gg7-oc-0e9"/>
+                                    <constraint firstItem="k7x-pe-nTC" firstAttribute="leading" secondItem="cT7-JF-94Q" secondAttribute="leading" id="lJm-uy-QTu"/>
+                                    <constraint firstItem="F8h-75-zy8" firstAttribute="leading" secondItem="cT7-JF-94Q" secondAttribute="leading" id="mSC-w8-acf"/>
+                                    <constraint firstAttribute="trailing" secondItem="gcu-Ay-FEa" secondAttribute="trailing" id="zkQ-ZE-Z9c"/>
+                                    <constraint firstItem="cT7-JF-94Q" firstAttribute="width" secondItem="cT7-JF-94Q" secondAttribute="height" multiplier="1:1" id="znJ-0Y-BnG"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="B3U-Dt-mmM" firstAttribute="top" secondItem="8D4-bz-ZIL" secondAttribute="top" id="8tH-Fo-Sko"/>
+                            <constraint firstItem="8D4-bz-ZIL" firstAttribute="bottom" secondItem="B3U-Dt-mmM" secondAttribute="bottom" id="Aba-qw-UNd"/>
+                            <constraint firstItem="gcu-Ay-FEa" firstAttribute="width" secondItem="tg4-IK-pNH" secondAttribute="width" id="I4r-1n-DPr"/>
+                            <constraint firstItem="8D4-bz-ZIL" firstAttribute="trailing" secondItem="B3U-Dt-mmM" secondAttribute="trailing" id="Xp0-4P-ced"/>
+                            <constraint firstItem="B3U-Dt-mmM" firstAttribute="leading" secondItem="8D4-bz-ZIL" secondAttribute="leading" id="w5a-xU-tnL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8D4-bz-ZIL"/>
+                    </view>
+                    <size key="freeformSize" width="320" height="900"/>
+                    <connections>
+                        <outlet property="eventAddressLabel" destination="Wu0-9B-V3o" id="Kdw-r7-JeC"/>
+                        <outlet property="eventImageView" destination="cT7-JF-94Q" id="rkb-fS-05e"/>
+                        <outlet property="eventMeetUpDateLabel" destination="Bph-Kj-iC8" id="PmL-VH-X0c"/>
+                        <outlet property="eventNameLabel" destination="e8E-eh-j29" id="21W-la-Nto"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVJ-I4-ya1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1063" y="26"/>
         </scene>
     </scenes>
     <resources>

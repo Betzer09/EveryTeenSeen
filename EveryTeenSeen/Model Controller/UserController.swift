@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseFirestore
+import Firebase
 import UIKit
 import CoreData
 
@@ -49,30 +50,45 @@ class UserController {
         completion(true, nil)
     }
     
-    func updateUserProfileWith(user: User, fullname: String, profileImageURL: String, maxDistance: Int, usertype: UserType) {
+    func updateUserProfileWith(user: User, fullname: String, profileImageURL: String, maxDistance: Int64, usertype: UserType.RawValue) {
         let userDb = Firestore.firestore()
         
-        user.fullname = fullname
-        user.profileImageURLString = profileImageURL
-        user.eventDistance = maxDistance
-        user.usertype = usertype.rawValue
-        
         // Update the user in Coredata
-        guard let profileImageURL = user.profileImageURLString else {NSLog("Error updating user in function \(#function)");  return}
-        updateUserInCoredata(user: user, email: user.email, fullname: user.fullname, usertype: user.usertype, zipcode: user.zipcode, profileImageStringURL: profileImageURL, eventDistance: user.eventDistance)
+        guard let profileImageURL = user.profileImageURLString,
+            let email = user.email,
+            let fullname = user.fullname,
+            let usertype = user.usertype,
+            let zipcode = user.zipcode else {NSLog("Error updating user in function \(#function)"); return}
+        
+        guard let loadedUser = UserController.shared.loadUserProfile() else {return}
+        
+        updateUserInCoredata(user: loadedUser, email: email, fullname: fullname, usertype: usertype, zipcode: zipcode, profileImageStringURL: profileImageURL, eventDistance: user.eventDistance)
         
         // Update the user in firebase
-        userDb.collection("users").document(user.email).setData(user.dictionaryRepresentation)
+        userDb.collection("users").document(email).setData(user.dictionaryRepresentation)
     }
     
+    /// Checks to see if there is a current user
+    func checkIfThereIsACurrentUser() -> Bool {
+        if Auth.auth().currentUser == nil {
+            return false
+        } else {
+            return true
+        }
+    }
+        
     // MARK: - Fetch methods
     func fetchUserInfoFromFirebaseWith(email: String, completion: @escaping ((_ user: User?, _ error: Error?) -> Void) = {_,_  in} ) {
         firebaseManger.fetchUserFromFirebaseWith(email: email) { (user, error) in
             if let error = error {
                 completion(nil, error)
             }
-            guard let user = user else {NSLog("Error: There is no user!"); completion(nil, nil); return}
-            self.saveUserToCoreData(email: user.email, fullname: user.fullname, usertype: user.usertype, zipcode: user.zipcode, distance: user.eventDistance)
+            guard let user = user,
+                let fullname = user.fullname,
+                let usertype = user.usertype,
+                let profileImageURLString = user.profileImageURLString else {NSLog("Error: There is no user!"); completion(nil, nil); return}
+            
+            self.updateUserProfileWith(user: user, fullname: fullname, profileImageURL: profileImageURLString, maxDistance: user.eventDistance, usertype: usertype)
             completion(user, nil)
         }
     }
@@ -162,21 +178,27 @@ class UserController {
 extension UserController {
     
     // Saves the user to CoreData
-    func saveUserToCoreData(email: String, fullname: String, usertype: String, zipcode: String, distance: Int) {
+    func saveUserToCoreData(email: String, fullname: String, usertype: String, zipcode: String, distance: Int64) {
         User(email: email, fullname: fullname, usertype: usertype, zipcode: zipcode, eventDistance: distance)
         saveToPersistentStore()
     }
     
     // Updates the User In CoreData
-    func updateUserInCoredata(user: User, email: String, fullname: String, usertype: String, zipcode: String, profileImageStringURL: String, eventDistance: Int) {
+    func updateUserInCoredata(user: User, email: String, fullname: String, usertype: String, zipcode: String, profileImageStringURL: String, eventDistance: Int64) {
+        
         user.email = email
         user.fullname = fullname
-        user.usertype = usertype
         user.zipcode = zipcode
         user.profileImageURLString = profileImageStringURL
         user.eventDistance = eventDistance
+        user.usertype = usertype
         user.lastUpdate = Date()
-        saveToPersistentStore()
+        
+        do {
+            try user.managedObjectContext?.save()
+        } catch {
+            NSLog("User Failed to update in function: \(#function)")
+        }
     }
     
     /// Removes Users profile from CoreData

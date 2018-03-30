@@ -44,7 +44,7 @@ class GetStartedViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
             locationManager.requestLocation()
             
-            guard let zip = UserLocationController.shared.fetchUserLocation()?.zipcode else {
+            guard let zip = UserController.shared.loadUserProfile()?.location?.zipcode else {
                 NSLog("Error fetching the users zipcode")
                 return
             }
@@ -52,6 +52,7 @@ class GetStartedViewController: UIViewController {
             CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
                 guard CityController.shared.verifyLocationFor(city: city) else {
                     presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
+                    self.hideActivityIndicator()
                     return
                 }
                 presentLogoutAndSignUpPage(viewController: self)
@@ -101,9 +102,9 @@ class GetStartedViewController: UIViewController {
             guard let zipcodeString = zipcodeTextField.text,
                 let zipcode = Int(zipcodeString) else {return}
             
-            CityController.shared.fetchCityWith(zipcode: "\(zipcode)", completion: { (City) in
+            CityController.shared.fetchCityWith(zipcode: "\(zipcode)", completion: { (city) in
                 // Check to see if the state is correct
-                guard CityController.shared.verifyLocationFor(city: City) else {
+                guard CityController.shared.verifyLocationFor(city: city) else {
                     
                     // If the state isn't in utah alert the user
                     presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
@@ -111,6 +112,7 @@ class GetStartedViewController: UIViewController {
                     return
                 }
                 self.hideActivityIndicator()
+                
                 // Show the login page
                 presentLogoutAndSignUpPage(viewController: self)
             })
@@ -161,20 +163,22 @@ extension GetStartedViewController: CLLocationManagerDelegate {
             locationIsDenied = false
             
             // Check to see if we already have a location
-            guard UserLocationController.shared.fetchUserLocation() == nil else {
+            guard UserController.shared.loadUserProfile()?.location == nil else {
                 return
             }
             
             // If there isn't a location create and save it
             self.fetchTheUsersLocation(completion: { (lat, long, zipcode) in
-                guard let latitude = lat, let longitude = long, let zip = zipcode else {return}
+                guard let latitude = lat, let longitude = long, let zip = zipcode, let user = UserController.shared.loadUserProfile() else {return}
                 // Make sure they are allowed to create an account
                 
                 CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
                     guard CityController.shared.verifyLocationFor(city: city) else {
-                        presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!"); return }
+                        presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
+                        self.hideActivityIndicator()
+                        return
+                    }
                     
-                    UserLocationController.shared.createLocationWith(lat: latitude, long: longitude, zip: zip, cityName: city.city, state: city.state)
                     self.hideActivityIndicator()
                     presentLogoutAndSignUpPage(viewController: self)
                 })
@@ -200,10 +204,11 @@ extension GetStartedViewController: CLLocationManagerDelegate {
                 
                 CityController.shared.fetchCityWith(zipcode: zipcode, completion: { (city) in
                     // Fetch the users location so we can update it
-                    guard let location = UserLocationController.shared.fetchUserLocation() else {return}
+                    guard let location = UserController.shared.loadUserProfile()?.location else {return}
                     
                     guard CityController.shared.verifyLocationFor(city: city) else {
                         presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
+                        self.hideActivityIndicator()
                         return
                     }
                     
@@ -263,6 +268,7 @@ extension GetStartedViewController: CLLocationManagerDelegate {
             CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
                 guard CityController.shared.verifyLocationFor(city: city) else {
                     presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
+                    self.hideActivityIndicator()
                     return
                 }
                 completion(lat, long, zip)

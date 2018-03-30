@@ -35,11 +35,6 @@ class EventsViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func unwindToEventsVC(segue: UIStoryboardSegue){}
-    
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
 
     // MARK: - Set Up View
     private func setUpView() {
@@ -105,6 +100,16 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.view.bounds.height * 0.62
     }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEventDetailVC" {
+            guard let destination = segue.destination as? EventDetailViewController, let indexPath = tableView.indexPathForSelectedRow, let event = EventController.shared.events?[indexPath.row] else {return}
+            
+            destination.event = event
+        }
+    }
+
 }
 
 // MARK: - Navigation Bar
@@ -157,11 +162,10 @@ extension EventsViewController: CLLocationManagerDelegate {
             
             // Write a function to grab and update the user's location
             self.fetchTheUsersLocation { (location) in
-                guard let location = location, let zip = location.zipcode else {return}
+                guard let location = location, let zip = location.zipcode, let user = UserController.shared.loadUserProfile() else {return}
                 
                 CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
-                    guard let location = UserLocationController.shared.fetchUserLocation() else {return}
-                    UserLocationController.shared.update(location: location, lat: location.latitude, long: location.longitude, zip: zip, cityName: city.city, state: city.state)
+                    UserLocation(latitude: location.latitude, longitude: location.longitude, zip: zip, cityName: city.city, state: city.state, user: user)
                 })
             }
         }
@@ -181,12 +185,17 @@ extension EventsViewController: CLLocationManagerDelegate {
                 NSLog("Error getting the zip code: \(error.localizedDescription) in function: \(#function) ")
             }
             
-            guard let placemark = placemarks?.first, let zip = placemark.postalCode else {completion(nil); return}
+            guard let placemark = placemarks?.first, let zip = placemark.postalCode, let user = UserController.shared.loadUserProfile()
+                else {
+                    completion(nil)
+                    NSLog("Error updating user locaiton in function: \(#function)")
+                    return
+            }
             
             let lat = userLocation.coordinate.latitude
             let long = userLocation.coordinate.longitude
             
-            let userLocation = UserLocation(latitude: lat, longitude: long, zip: zip, cityName: "", state: "")
+            let userLocation = UserLocation(latitude: lat, longitude: long, zip: zip, cityName: "", state: "", user: user)
             completion(userLocation)
             self.locationManager.stopUpdatingLocation()
         })

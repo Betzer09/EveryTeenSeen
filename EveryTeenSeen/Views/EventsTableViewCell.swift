@@ -41,8 +41,8 @@ class EventsTableViewCell: UITableViewCell {
     }
     
     // MARK: - Actions
+    
     @IBAction func goingButton(_ sender: Any) {
-        
         guard let rootvc = UIApplication.shared.keyWindow?.rootViewController else {return}
         guard let user = UserController.shared.loadUserProfile(),
             let eventPassedInToCell = event,
@@ -87,8 +87,8 @@ class EventsTableViewCell: UITableViewCell {
             let image = UIImage(data: data),
             let attending = event.attending else {return}
         
-        if let user = UserController.shared.loadUserProfile() {
-            if attending.contains(user.email) {
+        if let user = UserController.shared.loadUserProfile(), let email = user.email {
+            if attending.contains(email) {
                 configureLableAsNotGoing()
             } else {
                 configureLabelAsGoing()

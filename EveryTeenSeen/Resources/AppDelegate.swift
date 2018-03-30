@@ -91,8 +91,8 @@ extension AppDelegate {
         
         var viewController: UIViewController
         
-        if let user = UserController.shared.loadUserProfile() {
-            UserController.shared.fetchUserInfoFromFirebaseWith(email: user.email)
+        if UserController.shared.checkIfThereIsACurrentUser(), let user = UserController.shared.loadUserProfile(), let email = user.email {
+            UserController.shared.fetchUserInfoFromFirebaseWith(email: email)
             if user.usertype == UserType.joinCause.rawValue {
                 // This is a normal user
                 viewController = mainView.instantiateInitialViewController()!
@@ -105,7 +105,7 @@ extension AppDelegate {
             }
         } else {
             // This means there is no User at all
-            if let _ = UserLocationController.shared.fetchUserLocation()  {
+            if let _ = UserController.shared.loadUserProfile()?.location  {
                 // If they have a correct location let them sign in
                 viewController = singInView.instantiateInitialViewController()!
             } else {

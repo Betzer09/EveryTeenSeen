@@ -179,10 +179,11 @@ class EventController {
     
     // MARK: - Functions
     private func updateAttendingArrayWithUser(event: Event, user: User, isGoing: Bool) -> Event? {
+        guard let email = user.email else {return nil}
         if isGoing {
-             event.attending?.append(user.email)
+             event.attending?.append(email)
         } else {
-            guard let index = event.attending?.index(of: user.email) else {return nil}
+            guard let index = event.attending?.index(of: email) else {return nil}
             event.attending?.remove(at: index)
         }
         

@@ -14,8 +14,7 @@ class InterestController {
     static let shared = InterestController()
     
     func createInterestWith(user: User, and nameOfInterest: String) {
-        let newInterest = Interest(name: nameOfInterest, user: user)
-        user.addToInterests(newInterest)
+        Interest(name: nameOfInterest, user: user)
         UserController.shared.saveToPersistentStore()
         addInterestToFirebase()
     }
@@ -27,9 +26,9 @@ class InterestController {
     }
     
     func addInterestToFirebase() {
-        guard let user = UserController.shared.loadUserProfile() else {NSLog("Error updating user's interest!"); return}
+        guard let user = UserController.shared.loadUserProfile(), let email = user.email else {NSLog("Error updating user's interest!"); return}
         let db = Firestore.firestore()
-        db.collection("users").document(user.email).setData(user.dictionaryRepresentation)
+        db.collection("users").document(email).setData(user.dictionaryRepresentation)
     }
 }
 

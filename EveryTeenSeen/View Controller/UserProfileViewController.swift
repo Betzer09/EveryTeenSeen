@@ -31,8 +31,8 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        guard let interests = UserController.shared.loadUserProfile()?.interests else {return}
-//        presentSimpleAlert(viewController: self, title: "Amount Of Interests", message: "\(interests.array.count)")
+        guard let interests = UserController.shared.loadUserProfile()?.interests else {return}
+        presentSimpleAlert(viewController: self, title: "Amount Of Interests", message: "\(interests.array.count)")
 
         // Do any additional setup after loading the view.
     }
@@ -56,7 +56,6 @@ class UserProfileViewController: UIViewController {
         
         let okActions = UIAlertAction(title: "Create Interest", style: .default) { (_) in
             guard let name = interestTextField.text, let user = UserController.shared.loadUserProfile() else {return}
-            
             InterestController.shared.createInterestWith(user: user, and: name)
         }
         
@@ -93,7 +92,7 @@ class UserProfileViewController: UIViewController {
         
         createEventButton.layer.cornerRadius = createEventButton.bounds.height / 2
         
-        guard let user = UserController.shared.loadUserProfile(), let userLocation = UserLocationController.shared.fetchUserLocation() else {return}
+        guard let user = UserController.shared.loadUserProfile(), let userLocation = user.location else {return}
         
         if user.usertype == UserType.leadCause.rawValue {
             usertypeLabel.text = "Admin"
@@ -127,7 +126,7 @@ class UserProfileViewController: UIViewController {
     
     /// This sets up the user's tableview depending on their usertype
     private func setUpTableViewWith(events: [Event]) -> [Event] {
-        guard let user = UserController.shared.loadUserProfile() else {return []}
+        guard let user = UserController.shared.loadUserProfile(), let email = user.email else {return []}
         
         var eventsToReturn: [Event] = []
         
@@ -144,7 +143,7 @@ class UserProfileViewController: UIViewController {
             
             for event in events {
                 guard let attending = event.attending else {return []}
-                if attending.contains(user.email) {
+                if attending.contains(email) {
                     eventsToReturn.append(event)
                 }
             }

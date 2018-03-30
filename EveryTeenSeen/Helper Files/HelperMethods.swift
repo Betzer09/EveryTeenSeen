@@ -219,9 +219,13 @@ public func configureButtonWith(button: UIButton) {
 
 /// This function is used to see if we need to update the location on the phone
 func findTheDistanceWith(lat: Double, long: Double) -> Bool {
-    guard let savedLocation = UserLocationController.shared.fetchUserLocation() else {return false}
-    
+
     var shouldWeUpdateDistance = false
+    
+    guard let savedLocation = UserController.shared.loadUserProfile()?.location else {
+        // This means we need a locaiton for the user
+        return true
+    }
     
     let firstCoordinate = CLLocation(latitude: savedLocation.latitude, longitude: savedLocation.longitude)
     let secondCoordinate = CLLocation(latitude: lat, longitude: long)

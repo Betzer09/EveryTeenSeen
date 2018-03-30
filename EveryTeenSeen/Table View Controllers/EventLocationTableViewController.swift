@@ -74,7 +74,7 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchBarText
         
-        guard let location = UserLocationController.shared.fetchUserLocation() else {return}
+        guard let location = UserController.shared.loadUserProfile()?.location else {return}
         let clLocationCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
         // With in a 5 mile span both ways
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(clLocationCoordinate, 1000, 1000)

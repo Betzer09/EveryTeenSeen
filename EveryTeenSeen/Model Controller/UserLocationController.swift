@@ -14,8 +14,8 @@ class UserLocationController {
     static let shared = UserLocationController() 
     
     /// Create a location for the user and saves it to CoreData
-    func createLocationWith(lat: Double, long: Double, zip: String, cityName: String, state: String) {
-        UserLocation(latitude: lat, longitude: long, zip: zip, cityName: cityName, state: state)
+    func createLocationWith(user: User, lat: Double, long: Double, zip: String, cityName: String, state: String) {
+        UserLocation(latitude: lat, longitude: long, zip: zip, cityName: cityName, state: state, user: user)
         saveToPersistentStore()
     }
     
@@ -36,12 +36,12 @@ class UserLocationController {
     }
     
     
+    /// Saves the user location to CoreData
     func saveToPersistentStore() {
         let moc = CoreDataStack.context
-        
         do {
             try moc.save()
-            NSLog("Saved Succesfully")
+            NSLog("Saved User location Succesfully")
         } catch let error {
             NSLog("There was a problem saving the users location to the persitent store: \(error) in function \(#function)")
         }

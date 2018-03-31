@@ -483,8 +483,8 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Meets" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6dx-kQ-HVN">
-                                            <rect key="frame" x="40" y="4" width="80" height="35"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                            <rect key="frame" x="16" y="4" width="80" height="35"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -503,7 +503,7 @@
                                     <constraints>
                                         <constraint firstItem="6dx-kQ-HVN" firstAttribute="height" secondItem="o7k-vc-gha" secondAttribute="height" multiplier="0.8" id="04K-Jm-kzV"/>
                                         <constraint firstItem="UwV-sP-UHV" firstAttribute="centerX" secondItem="o7k-vc-gha" secondAttribute="centerX" multiplier="1.7" id="DZk-U1-ueK"/>
-                                        <constraint firstItem="6dx-kQ-HVN" firstAttribute="centerX" secondItem="o7k-vc-gha" secondAttribute="centerX" multiplier="0.5" id="I45-NK-V8Q"/>
+                                        <constraint firstItem="6dx-kQ-HVN" firstAttribute="centerX" secondItem="o7k-vc-gha" secondAttribute="centerX" multiplier="0.35" id="I45-NK-V8Q"/>
                                         <constraint firstItem="UwV-sP-UHV" firstAttribute="centerY" secondItem="o7k-vc-gha" secondAttribute="centerY" id="NDB-xY-t0A"/>
                                         <constraint firstItem="UwV-sP-UHV" firstAttribute="width" secondItem="o7k-vc-gha" secondAttribute="width" multiplier="1/5" id="cjt-t7-IO3"/>
                                         <constraint firstItem="6dx-kQ-HVN" firstAttribute="width" secondItem="o7k-vc-gha" secondAttribute="width" multiplier="1/4" id="g64-kJ-0ua"/>

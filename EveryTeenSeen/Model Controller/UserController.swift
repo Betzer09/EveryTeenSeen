@@ -237,7 +237,6 @@ extension UserController {
         } catch let e {
             NSLog("Error saving deleted users context: \(e.localizedDescription) in function: \(#function)")
         }
-        
     }
     
     func saveToPersistentStore() {

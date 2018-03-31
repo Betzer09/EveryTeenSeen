@@ -152,6 +152,7 @@ extension EventsViewController {
 extension EventsViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
         if let location = locations.first {
             
             // Checks if the location should be updated
@@ -165,7 +166,7 @@ extension EventsViewController: CLLocationManagerDelegate {
                 guard let location = location, let zip = location.zipcode else {return}
                 
                 CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
-                    UserLocationController.shared.update(location: location, lat: location.latitude, long: location.longitude, zip: zip, cityName: city.cityName, state: city.state)
+                    UserLocationController.shared.createLocationWith(lat: location.latitude, long: location.longitude, zip: zip, cityName: city.cityName, state: city.state)
                 })
             }
         }

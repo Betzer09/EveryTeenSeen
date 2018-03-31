@@ -243,14 +243,17 @@ extension UserProfileViewController {
             }
         }
         
-        for i in 0...interests.count - 1 {
-            let interestName = interests[i].name
+        if interests.count != 0 {
             
-            DispatchQueue.main.async {
-                buttons[i].setTitle(interestName, for: .normal)
-                buttons[i].layer.borderColor = UIColor.blue.cgColor
-                buttons[i].layer.borderWidth = 1
-                buttons[i].layer.cornerRadius = 10
+            for i in 0...interests.count - 1 {
+                let interestName = interests[i].name
+                
+                DispatchQueue.main.async {
+                    buttons[i].setTitle(interestName, for: .normal)
+                    buttons[i].layer.borderColor = UIColor.blue.cgColor
+                    buttons[i].layer.borderWidth = 1
+                    buttons[i].layer.cornerRadius = 10
+                }
             }
         }
     }

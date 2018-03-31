@@ -189,6 +189,7 @@ extension GetStartedViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
         if let location = locations.first {
             
             guard findTheDistanceWith(lat: location.coordinate.latitude , long: location.coordinate.longitude) == true else {
@@ -211,7 +212,7 @@ extension GetStartedViewController: CLLocationManagerDelegate {
                     }
                     
                     // Update locaiotn in CoreData
-                    UserLocationController.shared.update(location: location, lat: latitude,
+                    UserLocationController.shared.createLocationWith(lat: latitude,
                                                          long: longitude, zip: zipcode, cityName: city.cityName, state: city.state)
                     
                     presentLogoutAndSignUpPage(viewController: self)

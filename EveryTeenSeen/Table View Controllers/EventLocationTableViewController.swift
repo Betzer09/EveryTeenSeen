@@ -53,7 +53,8 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let location = matchingItems[indexPath.row].placemark
-        address = parseAddress(selectedItem: location)
+        guard let name = location.name else {return}
+        address = "\(name), \(parseAddress(selectedItem: location))"
         
         self.performSegue(withIdentifier: "unwindToCreateEventVC", sender: nil)
     }

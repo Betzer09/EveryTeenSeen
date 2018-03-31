@@ -18,6 +18,17 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventContentView: UIView!
     @IBOutlet weak var eventSummary: UITextView!
     
+    // Weekday Outlets
+    @IBOutlet weak var weekdayLabel: UILabel!
+    @IBOutlet weak var eventDateLabel: UILabel!
+    @IBOutlet weak var eventTimeLabel: UILabel!
+    @IBOutlet weak var eventLocationNameLabel: UILabel!
+    @IBOutlet weak var eventLocationLabel: UILabel!
+    
+    // Bottom half outlets
+    @IBOutlet weak var attendEventButton: UIButton!
+    
+    
     // MARK: - Properties
     var event: Event?
 
@@ -25,23 +36,87 @@ class EventDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setUpView()
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureNavigationBar()
     }
     
+    
+    @IBAction func attendEventButtonPressed(_ sender: Any) {
+        guard let event = event, let attendings = event.attending, let user = UserController.shared.loadUserProfile(),
+            let userEmail = user.email else {
+                NSLog("Error attending event!")
+                return
+        }
+        
+        if attendings.contains(userEmail) {
+            // They are attending event and wan to mark as unattending
+            EventController.shared.isPlanningOnAttending(event: event, user: user , isGoing: false, completion: { (errorString) in
+                guard let errorString = errorString else {return}
+                NSLog("Error with user unattending event! :\(errorString)")
+                presentSimpleAlert(viewController: self, title: "Problem unattending event!", message: errorString)
+            }, completionHandler: { (updatedEvent) in
+                // TODO: - Update the attending label
+            })
+        } else {
+            // They aren't attending and want to
+            EventController.shared.isPlanningOnAttending(event: event, user: user, isGoing: true, completion: { (errorString) in
+                guard let errorString = errorString else {return}
+                NSLog("Error with user attending event! :\(errorString)")
+                presentSimpleAlert(viewController: self, title: "Problem uttending event!", message: errorString)
+            }, completionHandler: { (updatedEvent) in
+                // TODO: - Update the attending label
+            })
+        }
+
+    }
+    
     // MARK: - Functions
     private func setUpView() {
-        guard let event = event, let imageData = event.photo?.imageData else {return}
+        guard let event = event, let attendings = event.attending, let imageData = event.photo?.imageData, let userEmail = UserController.shared.loadUserProfile()?.email else {return}
         
         eventNameLabel.text = event.title
         eventImageView.image = UIImage(data: imageData)
-        eventMeetUpDateLabel.text = event.dateHeld + "\n" + event.eventTime
+        
         eventAddressLabel.text = event.address
         eventSummary.text = event.eventInfo
         eventImageView.layer.cornerRadius = 15
         eventImageView.clipsToBounds = true
+        eventTimeLabel.text = event.eventTime
+        attendEventButton.layer.cornerRadius = 15
+        
+        if attendings.contains(userEmail) {
+            attendEventButton.setTitle("Unattend event", for: .normal)
+            attendEventButton.backgroundColor = UIColor.lightGray
+        }
+        
+        self.setUpCalanderLabels()
+        self.setUpLocationLabels()
+    }
+    
+    func setUpCalanderLabels() {
+        guard let string = event?.dateHeld, let eventTime = event?.eventTime else {return}
+        
+        parseStringByCommasForDateAndLocation(string: string) { (weekday, finalDate) in
+            self.weekdayLabel.text = weekday
+            self.eventDateLabel.text = String(finalDate.dropFirst())
+            self.eventMeetUpDateLabel.text = String(finalDate.dropFirst()) + "\n" + eventTime
+            
+        }
+    }
+    
+    
+    func setUpLocationLabels() {
+        guard let address = event?.address else {return}
+
+        parseStringByCommasForDateAndLocation(string: address) { (locationTitle, stringPhrase) in
+            self.eventLocationNameLabel.text = locationTitle
+            self.eventLocationLabel.text = String(stringPhrase.dropFirst())
+        }
+        
+
     }
 }
 

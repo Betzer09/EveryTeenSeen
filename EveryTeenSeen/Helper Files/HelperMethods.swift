@@ -69,7 +69,7 @@ func convertJsonToDataWith(json: [String: Any]) -> Data? {
 func returnFormattedDateFor(date: Date) -> String {
     
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMM dd, yyyy"
+    dateFormatter.dateFormat = "EEEE, MMMM dd, yyyy"
     let strDate = dateFormatter.string(from: date)
     return strDate
     
@@ -96,6 +96,27 @@ func returnFormattedTimeAsStringWith(date: Date) -> String {
     
     let strDate = dateFormatter.string(from: date)
     return strDate
+}
+
+/// This parses the json responce for the event time and location
+func parseStringByCommasForDateAndLocation(string: String, completion: @escaping(_ firstWord: String, _ everythingAfterComma: String) -> Void) {
+    
+    let originalAddress = string
+    
+    let seperatedPhrases = originalAddress.components(separatedBy: ",")
+    
+    let firstWord = seperatedPhrases[0]
+    
+    let address = Array(seperatedPhrases.dropFirst())
+    
+    var stringPhraseArray: [String] = []
+    
+    for word in address {
+        stringPhraseArray.append(word + ",")
+    }
+    let stringPhrase = String(stringPhraseArray.joined().dropLast())
+    
+    completion(firstWord, stringPhrase)
 }
 
 // MARK: - Segue Functions
@@ -229,6 +250,16 @@ extension CALayer {
         let shape = CAShapeLayer()
         shape.path = maskPath.cgPath
         mask = shape
+    }
+}
+
+// MARK: - String Extension
+extension String {
+    var words: [String] {
+        return components(separatedBy: .punctuationCharacters)
+            .joined()
+            .components(separatedBy: .whitespaces)
+            .filter{!$0.isEmpty}
     }
 }
 

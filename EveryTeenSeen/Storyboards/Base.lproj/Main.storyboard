@@ -208,8 +208,8 @@ Press to Download in the App Store</string>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Meets" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zb8-Ji-Mhk">
-                                            <rect key="frame" x="40" y="4" width="80" height="35"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                            <rect key="frame" x="16" y="4" width="80" height="35"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -219,7 +219,7 @@ Press to Download in the App Store</string>
                                         <constraint firstItem="Zb8-Ji-Mhk" firstAttribute="height" secondItem="lTB-rB-9LW" secondAttribute="height" multiplier="0.8" id="Kff-EK-TfY"/>
                                         <constraint firstItem="Zb8-Ji-Mhk" firstAttribute="width" secondItem="lTB-rB-9LW" secondAttribute="width" multiplier="1/4" id="NkW-ur-T3b"/>
                                         <constraint firstItem="Zb8-Ji-Mhk" firstAttribute="centerY" secondItem="lTB-rB-9LW" secondAttribute="centerY" id="WtC-ka-WUa"/>
-                                        <constraint firstItem="Zb8-Ji-Mhk" firstAttribute="centerX" secondItem="lTB-rB-9LW" secondAttribute="centerX" multiplier="0.5" id="ZlB-8F-KGg"/>
+                                        <constraint firstItem="Zb8-Ji-Mhk" firstAttribute="centerX" secondItem="lTB-rB-9LW" secondAttribute="centerX" multiplier="0.35" id="ZlB-8F-KGg"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
@@ -428,14 +428,14 @@ Press to Download in the App Store</string>
             <objects>
                 <viewController id="vIJ-3o-7BM" customClass="EventDetailViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tg4-IK-pNH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3U-Dt-mmM">
-                                <rect key="frame" x="0.0" y="64" width="320" height="787"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="987"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcu-Ay-FEa">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F8h-75-zy8">
                                                 <rect key="frame" x="16" y="320" width="116.5" height="36"/>
@@ -444,7 +444,7 @@ Press to Download in the App Store</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfM-aO-bza">
-                                                <rect key="frame" x="16" y="369" width="288" height="180"/>
+                                                <rect key="frame" x="16" y="369" width="288" height="220"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <string key="text">Maui hotel or Maui condo? It’s the burning question on everyones mind! What should you do? Maui hotel? Maui condo? Which should you choose? The sweat is pouring down your face and you can feel the pressure building…Okay! Okay! Maybe it’s not that burning, after all! It is, however, a very important decision if you are planning a Maui vacation.
 
@@ -458,14 +458,101 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="ddU-Uj-ZdT">
+                                                <rect key="frame" x="32" y="605" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="ddU-Uj-ZdT" secondAttribute="height" multiplier="1:1" id="seQ-it-tjS"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="UXq-Ob-ahD">
+                                                <rect key="frame" x="72" y="605" width="80" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="60"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18 April 2020" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Qmv-LW-8rJ">
+                                                <rect key="frame" x="72" y="627" width="160" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map-pin" translatesAutoresizingMaskIntoConstraints="NO" id="HPm-Gm-lvW">
+                                                <rect key="frame" x="32" y="661" width="24" height="24"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salt Lake City " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="hyu-Sn-bZ5">
+                                                <rect key="frame" x="72" y="661" width="80" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="60"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="341 S Main St, Salt Lake City, UT, 84111" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="0Vx-WG-lSz">
+                                                <rect key="frame" x="72" y="683" width="160" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="vXy-KZ-ezZ">
+                                                <rect key="frame" x="32" y="709" width="24" height="24"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:00pm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="0zY-T7-tSy">
+                                                <rect key="frame" x="72" y="712.5" width="140" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="60"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ws-Hh-0JD">
+                                                <rect key="frame" x="177" y="770" width="119" height="36"/>
+                                                <color key="backgroundColor" red="1" green="0.76078431372549016" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Attend event">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="attendEventButtonPressed:" destination="vIJ-3o-7BM" eventType="touchUpInside" id="MnS-9N-a28"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="hyu-Sn-bZ5" firstAttribute="top" secondItem="HPm-Gm-lvW" secondAttribute="top" id="0oE-rH-7Jz"/>
+                                            <constraint firstItem="Qmv-LW-8rJ" firstAttribute="height" secondItem="UXq-Ob-ahD" secondAttribute="height" id="1Ma-L6-uUX"/>
+                                            <constraint firstItem="0Vx-WG-lSz" firstAttribute="width" secondItem="Qmv-LW-8rJ" secondAttribute="width" id="30W-vy-e4D"/>
+                                            <constraint firstItem="0Vx-WG-lSz" firstAttribute="leading" secondItem="hyu-Sn-bZ5" secondAttribute="leading" id="4c8-sV-Fq2"/>
+                                            <constraint firstItem="HPm-Gm-lvW" firstAttribute="leading" secondItem="ddU-Uj-ZdT" secondAttribute="leading" id="4xQ-ez-nhP"/>
+                                            <constraint firstItem="HPm-Gm-lvW" firstAttribute="width" secondItem="ddU-Uj-ZdT" secondAttribute="width" id="5wW-l2-wZz"/>
                                             <constraint firstItem="cfM-aO-bza" firstAttribute="top" secondItem="F8h-75-zy8" secondAttribute="bottom" constant="13" id="78E-hh-8Pr"/>
                                             <constraint firstItem="cfM-aO-bza" firstAttribute="width" secondItem="gcu-Ay-FEa" secondAttribute="width" multiplier="0.9" id="Bqa-KX-D5b"/>
+                                            <constraint firstItem="hyu-Sn-bZ5" firstAttribute="width" secondItem="UXq-Ob-ahD" secondAttribute="width" id="Dhs-Xw-u1P"/>
+                                            <constraint firstItem="hyu-Sn-bZ5" firstAttribute="leading" secondItem="HPm-Gm-lvW" secondAttribute="trailing" constant="16" id="EGO-X0-omr"/>
+                                            <constraint firstItem="HPm-Gm-lvW" firstAttribute="height" secondItem="ddU-Uj-ZdT" secondAttribute="height" id="FdJ-1c-hgs"/>
+                                            <constraint firstItem="hyu-Sn-bZ5" firstAttribute="height" secondItem="UXq-Ob-ahD" secondAttribute="height" id="I17-Rt-4RJ"/>
+                                            <constraint firstItem="Qmv-LW-8rJ" firstAttribute="width" secondItem="gcu-Ay-FEa" secondAttribute="width" multiplier="1/2" id="I7h-zR-0c9"/>
+                                            <constraint firstItem="0zY-T7-tSy" firstAttribute="width" secondItem="UXq-Ob-ahD" secondAttribute="width" multiplier="1.75" id="JAW-og-1Rq"/>
+                                            <constraint firstItem="0Vx-WG-lSz" firstAttribute="top" secondItem="hyu-Sn-bZ5" secondAttribute="bottom" constant="4" id="JZa-tv-64N"/>
+                                            <constraint firstAttribute="trailing" secondItem="9ws-Hh-0JD" secondAttribute="trailing" constant="24" id="LkO-d5-d23"/>
+                                            <constraint firstItem="HPm-Gm-lvW" firstAttribute="top" secondItem="Qmv-LW-8rJ" secondAttribute="bottom" constant="16" id="N8o-Z1-Kz8"/>
+                                            <constraint firstItem="ddU-Uj-ZdT" firstAttribute="leading" secondItem="cfM-aO-bza" secondAttribute="leading" constant="16" id="NKt-8x-v4a"/>
+                                            <constraint firstItem="9ws-Hh-0JD" firstAttribute="width" secondItem="0zY-T7-tSy" secondAttribute="width" multiplier="0.85" id="NnR-BA-yRS"/>
+                                            <constraint firstItem="UXq-Ob-ahD" firstAttribute="leading" secondItem="ddU-Uj-ZdT" secondAttribute="trailing" constant="16" id="OUa-rk-1Wd"/>
+                                            <constraint firstItem="vXy-KZ-ezZ" firstAttribute="leading" secondItem="HPm-Gm-lvW" secondAttribute="leading" id="S1j-CN-cQy"/>
+                                            <constraint firstItem="9ws-Hh-0JD" firstAttribute="height" secondItem="F8h-75-zy8" secondAttribute="height" id="TX0-hu-8QK"/>
+                                            <constraint firstItem="UXq-Ob-ahD" firstAttribute="top" secondItem="ddU-Uj-ZdT" secondAttribute="top" id="TZi-wg-HE7"/>
+                                            <constraint firstItem="Qmv-LW-8rJ" firstAttribute="top" secondItem="UXq-Ob-ahD" secondAttribute="bottom" constant="4" id="ThQ-Pn-rQU"/>
                                             <constraint firstItem="cfM-aO-bza" firstAttribute="leading" secondItem="F8h-75-zy8" secondAttribute="leading" id="VCY-mt-TbZ"/>
-                                            <constraint firstAttribute="height" constant="900" id="fCR-Hu-EQ8"/>
+                                            <constraint firstItem="ddU-Uj-ZdT" firstAttribute="top" secondItem="cfM-aO-bza" secondAttribute="bottom" constant="16" id="VKW-TY-xyd"/>
+                                            <constraint firstItem="vXy-KZ-ezZ" firstAttribute="height" secondItem="HPm-Gm-lvW" secondAttribute="height" id="bJ2-fi-pQN"/>
+                                            <constraint firstItem="0zY-T7-tSy" firstAttribute="height" secondItem="vXy-KZ-ezZ" secondAttribute="height" multiplier="0.7" id="ca8-gp-mNq"/>
+                                            <constraint firstAttribute="height" constant="1100" id="fCR-Hu-EQ8"/>
+                                            <constraint firstItem="UXq-Ob-ahD" firstAttribute="height" secondItem="F8h-75-zy8" secondAttribute="height" multiplier="1/2" id="g0H-EB-vUM"/>
+                                            <constraint firstItem="Qmv-LW-8rJ" firstAttribute="leading" secondItem="UXq-Ob-ahD" secondAttribute="leading" id="g8k-v4-Gtn"/>
+                                            <constraint firstItem="0Vx-WG-lSz" firstAttribute="height" secondItem="Qmv-LW-8rJ" secondAttribute="height" id="gLE-kR-hmR"/>
                                             <constraint firstItem="cfM-aO-bza" firstAttribute="height" secondItem="gcu-Ay-FEa" secondAttribute="height" multiplier="1/5" id="hw4-zO-GRf"/>
+                                            <constraint firstItem="ddU-Uj-ZdT" firstAttribute="height" secondItem="F8h-75-zy8" secondAttribute="height" multiplier="2/3" id="l4l-Xy-F48"/>
+                                            <constraint firstItem="UXq-Ob-ahD" firstAttribute="width" secondItem="gcu-Ay-FEa" secondAttribute="width" multiplier="1/4" id="nVe-Jm-ecS"/>
+                                            <constraint firstItem="vXy-KZ-ezZ" firstAttribute="top" secondItem="0Vx-WG-lSz" secondAttribute="bottom" constant="8" id="pd3-Ut-L1T"/>
+                                            <constraint firstItem="vXy-KZ-ezZ" firstAttribute="width" secondItem="HPm-Gm-lvW" secondAttribute="width" id="qkf-2J-2Pk"/>
+                                            <constraint firstItem="0zY-T7-tSy" firstAttribute="centerY" secondItem="vXy-KZ-ezZ" secondAttribute="centerY" id="rRs-nW-Is9"/>
+                                            <constraint firstItem="9ws-Hh-0JD" firstAttribute="top" secondItem="0zY-T7-tSy" secondAttribute="bottom" constant="40" id="uFc-Sb-H82"/>
+                                            <constraint firstItem="0zY-T7-tSy" firstAttribute="leading" secondItem="vXy-KZ-ezZ" secondAttribute="trailing" constant="16" id="wGj-Ed-cDQ"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBackground" translatesAutoresizingMaskIntoConstraints="NO" id="cT7-JF-94Q">
@@ -483,13 +570,13 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address for the Meet Up" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wu0-9B-V3o">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address for the Meet Up" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wu0-9B-V3o">
                                                 <rect key="frame" x="163.5" y="0.0" width="116.5" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Of Meet Up" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bph-Kj-iC8">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Of Meet Up" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bph-Kj-iC8">
                                                 <rect key="frame" x="163.5" y="36" width="116.5" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <nil key="textColor"/>
@@ -544,26 +631,34 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8D4-bz-ZIL"/>
                     </view>
-                    <size key="freeformSize" width="320" height="900"/>
+                    <size key="freeformSize" width="320" height="1100"/>
                     <connections>
-                        <outlet property="eventAddressLabel" destination="Wu0-9B-V3o" id="Kdw-r7-JeC"/>
+                        <outlet property="attendEventButton" destination="9ws-Hh-0JD" id="5lw-Dv-XZI"/>
+                        <outlet property="eventAddressLabel" destination="Wu0-9B-V3o" id="1Gy-uT-xgR"/>
                         <outlet property="eventContentView" destination="k7x-pe-nTC" id="rTo-9x-AeA"/>
+                        <outlet property="eventDateLabel" destination="Qmv-LW-8rJ" id="lie-n3-83u"/>
                         <outlet property="eventImageView" destination="cT7-JF-94Q" id="rkb-fS-05e"/>
+                        <outlet property="eventLocationLabel" destination="0Vx-WG-lSz" id="Tso-7l-C6h"/>
+                        <outlet property="eventLocationNameLabel" destination="hyu-Sn-bZ5" id="o1f-yv-AIS"/>
                         <outlet property="eventMeetUpDateLabel" destination="Bph-Kj-iC8" id="PmL-VH-X0c"/>
                         <outlet property="eventNameLabel" destination="e8E-eh-j29" id="21W-la-Nto"/>
                         <outlet property="eventSummary" destination="cfM-aO-bza" id="Y7Z-yb-K9Y"/>
+                        <outlet property="eventTimeLabel" destination="0zY-T7-tSy" id="hIq-8q-sze"/>
+                        <outlet property="weekdayLabel" destination="UXq-Ob-ahD" id="Pax-Ix-ffj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVJ-I4-ya1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1063" y="26"/>
+            <point key="canvasLocation" x="1061.25" y="25.35211267605634"/>
         </scene>
     </scenes>
     <resources>
         <image name="Resources Background" width="371" height="667"/>
         <image name="calendar" width="20" height="22"/>
+        <image name="clock" width="22" height="22"/>
         <image name="defaultBackground" width="343" height="280"/>
         <image name="heart" width="25" height="23"/>
+        <image name="map-pin" width="20" height="24"/>
         <image name="plus" width="54" height="54"/>
     </resources>
 </document>

@@ -29,11 +29,6 @@ class EventController {
         }
     }
     
-    var imageCount = 0 {
-        didSet {
-            print("Image count: \(imageCount)")
-        }
-    }
     
     // Save events to firestore
     func saveEventToFireStoreWith(title: String, dateHeld: String, eventTime: String, userWhoPosted: String , address: String, eventInfo: String, image: UIImage, completion: @escaping (_ success: Bool) -> Void) {
@@ -89,7 +84,6 @@ class EventController {
             
             for document in documents {
                 eventGroup.enter()
-                self.imageCount += 1
                 
                 let eventData = document.data()
                 
@@ -97,28 +91,26 @@ class EventController {
                     // Convert the dictionary to data
                     guard let data = convertJsonToDataWith(json: eventData) else {
                         eventGroup.leave()
-                        self.imageCount -= 1
                         return
                     }
                     
                     let event = try JSONDecoder().decode(Event.self, from: data)
                     
                     self.fetchImageForEventWith(event: event, completion: { (success) in
-                        guard success else {eventGroup.leave(); self.imageCount -= 1; return }
+                        guard success else {eventGroup.leave(); return }
                         events.append(event)
                         eventGroup.leave()
-                        self.imageCount -= 1
                     })
                 } catch let e {
                     NSLog("Error decoding data: \(e.localizedDescription)")
                     completion(false)
-                    self.imageCount -= 1
                     eventGroup.leave()
                 }
             }
             
             eventGroup.notify(queue: .main, execute: {
-                self.events = events
+                let sortedEvent = events.sorted(by: { $0.title < $1.title })
+                self.events = sortedEvent
                 completion(true)
             })
         }
@@ -142,7 +134,7 @@ class EventController {
         }.resume()
     }
     
-    func isPlanningOnAttending(event: Event, user: User, isGoing: Bool, completion: @escaping (_ stringError: String?) -> Void, completionHandler: @escaping (_ updatedEvent: Event?) -> Void) {
+    func isPlanningOnAttending(event: Event, user: User, isGoing: Bool, completion: @escaping (_ stringError: String?) -> Void, completionHandler: @escaping (_ updatedEvent: Event?) -> Void = {_ in}) {
         
         let db = Firestore.firestore()
         

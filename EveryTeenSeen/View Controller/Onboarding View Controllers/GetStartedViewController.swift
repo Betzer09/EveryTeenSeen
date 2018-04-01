@@ -201,10 +201,8 @@ extension GetStartedViewController: CLLocationManagerDelegate {
             fetchTheUsersLocation { (lat,long,zip)  in
                 guard let latitude = lat, let longitude = long, let zipcode = zip else {return}
                 
+                // Fetch the users location so we can update it
                 CityController.shared.fetchCityWith(zipcode: zipcode, completion: { (city) in
-                    // Fetch the users location so we can update it
-                    guard let location = UserLocationController.shared.fetchUserLocation() else {return}
-                    
                     guard CityController.shared.verifyLocationFor(city: city) else {
                         presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
                         self.hideActivityIndicator()

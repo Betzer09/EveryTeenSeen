@@ -29,7 +29,11 @@ class FirebaseManager {
 
             let data = document.data()
             
-            let user  = User(dictionary: data)
+            guard let user  =  User(dictionary: data) else {
+                NSLog("Error decoding user!")
+                completion(nil, nil)
+                return
+            }
             completion(user, nil)
         }
     }

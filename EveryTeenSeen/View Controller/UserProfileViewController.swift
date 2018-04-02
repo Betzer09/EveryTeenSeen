@@ -34,7 +34,7 @@ class UserProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setUpView()
-        self.configureAllButtons()
+        configureAllButtonsIn(view: self.interestsGroupView)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class UserProfileViewController: UIViewController {
             }
             InterestController.shared.createInterestWith(user: user, and: name, completion: { (done) in
                 guard done else {return}
-                self.configureAllButtons()
+                configureAllButtonsIn(view: self.interestsGroupView)
             })
             
         }
@@ -204,58 +204,3 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
         return self.view.bounds.height * 0.62
     }
 }
-
-// MARK: - Set Up Interest Buttons
-extension UserProfileViewController {
-    /// Gets all buttons in a view
-    private func getAllButtons(view: UIView) -> [UIButton] {
-        var results = [UIButton]()
-        for subview in view.subviews as [UIView] {
-            if let button = subview as? UIButton {
-                results += [button]
-            } else {
-                results += getAllButtons(view: subview)
-            }
-        }
-        return results
-    }
-    
-    private func configureAllButtons() {
-        let buttons = getAllButtons(view: interestsGroupView)
-        guard let interests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else {return}
-        
-        
-        // Make all buttons have no title
-        for i in 0...buttons.count - 1 {
-            DispatchQueue.main.async {
-                buttons[i].setTitle("", for: .normal)
-            }
-        }
-        
-        if interests.count != 0 {
-            
-            for i in 0...interests.count - 1 {
-                let interestName = interests[i].name
-                
-                DispatchQueue.main.async {
-                    buttons[i].setTitle(interestName, for: .normal)
-                    buttons[i].layer.borderColor = UIColor.blue.cgColor
-                    buttons[i].layer.borderWidth = 1
-                    buttons[i].layer.cornerRadius = 10
-                }
-            }
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-

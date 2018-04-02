@@ -54,15 +54,10 @@ class UserController {
         let userDb = Firestore.firestore()
         
         // Update the user in Coredata
-        guard let profileImageURL = user.profileImageURLString,
-            let email = user.email,
-            let fullname = user.fullname,
-            let usertype = user.usertype,
+        guard let email = user.email,
             let zipcode = user.zipcode else {NSLog("Error updating user in function \(#function)"); return}
         
-        guard let loadedUser = UserController.shared.loadUserProfile() else {return}
-        
-        updateUserInCoredata(user: loadedUser, email: email, fullname: fullname, usertype: usertype, zipcode: zipcode, profileImageStringURL: profileImageURL, eventDistance: user.eventDistance)
+        updateUserInCoredata(user: user, email: email, fullname: fullname, usertype: usertype, zipcode: zipcode, profileImageStringURL: profileImageURL, eventDistance: maxDistance)
         
         // Update the user in firebase
         userDb.collection("users").document(email).setData(user.dictionaryRepresentation)
@@ -222,6 +217,7 @@ extension UserController {
     func loadUserProfile() -> User? {
         let request: NSFetchRequest<User> = User.fetchRequest()
         guard let user = try? CoreDataStack.context.fetch(request).last else {return nil}
+        
         return user
     }
     

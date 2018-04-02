@@ -90,19 +90,14 @@ extension AppDelegate {
         let onboardingView = UIStoryboard(name: "Onboarding", bundle: nil)
         
         var viewController: UIViewController
-        var firebaseUser: User?
         
         if UserController.shared.checkIfThereIsACurrentUser(), let user = UserController.shared.loadUserProfile(), let email = user.email {
-            UserController.shared.fetchUserInfoFromFirebaseWith(email: email, completion: { (fetchedFirebaseUser, _) in
-                guard let fetchedFirebaseUser = fetchedFirebaseUser else {return}
-                firebaseUser = fetchedFirebaseUser
-            })
+            UserController.shared.fetchUserInfoFromFirebaseWith(email: email)
             
-            guard let firebaseUser = firebaseUser else {return}
-            if firebaseUser.usertype == UserType.joinCause.rawValue {
+            if user.usertype == UserType.joinCause.rawValue {
                 // This is a normal user
                 viewController = mainView.instantiateInitialViewController()!
-            } else if firebaseUser.usertype == UserType.leadCause.rawValue {
+            } else if user.usertype == UserType.leadCause.rawValue {
                 // This is an admin user
                 viewController = adminView.instantiateInitialViewController()!
             } else {

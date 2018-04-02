@@ -25,6 +25,9 @@ class UpdateUserProfileViewController: UIViewController {
     @IBOutlet weak var adminPasswordTextfield: UITextField!
     @IBOutlet weak var incorrectPasswordMessage: UILabel!
     
+    // User Interest Outlets
+    @IBOutlet weak var interestGroupView: UIStackView!
+    
     // Success Group view
     @IBOutlet weak var successGroupView: UIView!
     
@@ -37,6 +40,7 @@ class UpdateUserProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpView()
+        configureAllButtonsIn(view: interestGroupView)
     }
     
     override func viewDidLoad() {
@@ -67,7 +71,7 @@ class UpdateUserProfileViewController: UIViewController {
         areYouAnAdminLabel.isHidden = false
         activateAdminAccountButton.isHidden = false
         cameraButton.isHidden = false
-        profileImageView.isHidden = true
+        profileImageView.isHidden = false
         
         self.fadeActivateAdminGroupOut()
         view.endEditing(true)
@@ -83,6 +87,9 @@ class UpdateUserProfileViewController: UIViewController {
         
         UserController.shared.confirmAdminPasswordWith(password: password ) { (success) in
             if success {
+                guard let user = UserController.shared.loadUserProfile(),
+                let fullname = self.fullnameTextfield.text else {return}
+                UserController.shared.updateUserProfileWith(user: user, fullname: fullname, profileImageURL: "falalal", maxDistance: Int64(Int(self.distanceSlider.value)), usertype: UserType.leadCause.rawValue)
                 self.successGroupView.isHidden = false
             } else {
               self.incorrectPasswordMessage.isHidden = false
@@ -182,9 +189,8 @@ extension UpdateUserProfileViewController: UIImagePickerControllerDelegate, UINa
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.sourceType = .camera
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
                 self.present(imagePicker, animated: true, completion: nil)
-                
             }
         }
         
@@ -230,6 +236,9 @@ extension UpdateUserProfileViewController: UITextFieldDelegate {
         
         UserController.shared.confirmAdminPasswordWith(password: password ) { (success) in
             if success {
+                guard let user = UserController.shared.loadUserProfile(),
+                    let fullname = self.fullnameTextfield.text else {return}
+                UserController.shared.updateUserProfileWith(user: user, fullname: fullname, profileImageURL: "falalal", maxDistance: Int64(Int(self.distanceSlider.value)), usertype: UserType.leadCause.rawValue)
                 self.successGroupView.isHidden = false
             } else {
                 self.incorrectPasswordMessage.isHidden = false

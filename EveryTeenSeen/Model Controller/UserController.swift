@@ -209,7 +209,6 @@ extension UserController {
         } catch {
             NSLog("User Failed to update in function: \(#function)")
         }
-        print(user.interests?.count)
     }
     
     /// Removes Users profile from CoreData

@@ -617,7 +617,6 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                     <constraint firstItem="k7x-pe-nTC" firstAttribute="leading" secondItem="cT7-JF-94Q" secondAttribute="leading" id="lJm-uy-QTu"/>
                                     <constraint firstItem="F8h-75-zy8" firstAttribute="leading" secondItem="cT7-JF-94Q" secondAttribute="leading" id="mSC-w8-acf"/>
                                     <constraint firstAttribute="trailing" secondItem="gcu-Ay-FEa" secondAttribute="trailing" id="zkQ-ZE-Z9c"/>
-                                    <constraint firstItem="cT7-JF-94Q" firstAttribute="width" secondItem="cT7-JF-94Q" secondAttribute="height" multiplier="1:1" id="znJ-0Y-BnG"/>
                                 </constraints>
                             </scrollView>
                         </subviews>

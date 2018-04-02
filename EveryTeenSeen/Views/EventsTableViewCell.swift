@@ -62,6 +62,7 @@ class EventsTableViewCell: UITableViewCell {
                 presentSimpleAlert(viewController: rootvc, title: "Unable to attend event", message: error)
             }, completionHandler: { (updatedEvent) in
                 guard let updatedEvent = updatedEvent, let updatedCount = updatedEvent.attending?.count else {return}
+                event.attending = updatedEvent.attending
                 self.eventAttendingLabel.text = "Attending: \(updatedCount)"
             })
         } else {
@@ -75,6 +76,7 @@ class EventsTableViewCell: UITableViewCell {
                 presentSimpleAlert(viewController: rootvc, title: "Unable to attend event", message: error)
             }, completionHandler: {(updatedEvent) in
                 guard let updatedEvent = updatedEvent, let updatedCount = updatedEvent.attending?.count else {return}
+                event.attending = updatedEvent.attending
                 self.eventAttendingLabel.text = "Attending: \(updatedCount)"
             })
         }

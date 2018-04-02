@@ -157,6 +157,7 @@ class EventController {
                 guard let updatedEvent = self.updateAttendingArrayWithUser(event: event, user: user, isGoing: isGoing) else {NSLog("Error updating event in function: \(#function)"); return}
                 // Push event to firebase
                 self.pushUpdatedEventToFirestoreWith(event: updatedEvent)
+                
                 completionHandler(updatedEvent)
                 
             } catch let e {
@@ -178,9 +179,10 @@ class EventController {
             guard let index = event.attending?.index(of: email) else {return nil}
             event.attending?.remove(at: index)
         }
-        
+        print("Attending property has been updated on: \(event.title)")
         return event
     }
+
     
     private func pushUpdatedEventToFirestoreWith(event: Event) {
         let db = Firestore.firestore()
@@ -192,7 +194,7 @@ class EventController {
                 NSLog("Error updating event: \(event.title) becasue of error: \(error.localizedDescription)")
             }
             
-            NSLog("Event Updated")
+            NSLog("Event Updated In Firebase!")
         }
     }
 }

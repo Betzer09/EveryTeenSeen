@@ -22,6 +22,7 @@ class EventsViewController: UIViewController {
         super.viewWillAppear(animated)
         locationManager.requestLocation()
         self.configureNavigationBar()
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {

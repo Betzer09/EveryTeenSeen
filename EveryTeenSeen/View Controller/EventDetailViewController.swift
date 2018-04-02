@@ -17,6 +17,8 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventMeetUpDateLabel: UILabel!
     @IBOutlet weak var eventContentView: UIView!
     @IBOutlet weak var eventSummary: UITextView!
+
+    
     
     // Weekday Outlets
     @IBOutlet weak var weekdayLabel: UILabel!
@@ -45,32 +47,34 @@ class EventDetailViewController: UIViewController {
     
     
     @IBAction func attendEventButtonPressed(_ sender: Any) {
-        guard let event = event, let attendings = event.attending, let user = UserController.shared.loadUserProfile(),
-            let userEmail = user.email else {
+        guard let event = event, let user = UserController.shared.loadUserProfile() else {
                 NSLog("Error attending event!")
                 return
         }
         
-        if attendings.contains(userEmail) {
-            // They are attending event and wan to mark as unattending
+        if attendEventButton.titleLabel?.text == "Unattend event" {
+            // They are attending event and want to mark as unattending
             EventController.shared.isPlanningOnAttending(event: event, user: user , isGoing: false, completion: { (errorString) in
                 guard let errorString = errorString else {return}
                 NSLog("Error with user unattending event! :\(errorString)")
-                presentSimpleAlert(viewController: self, title: "Problem unattending event!", message: errorString)
+                presentSimpleAlert(viewController: self, title: "Problem Unattending event!", message: errorString)
             }, completionHandler: { (updatedEvent) in
                 // TODO: - Update the attending label
+                event.attending = updatedEvent?.attending
+                self.setAttendingButtonToYellow()
             })
         } else {
             // They aren't attending and want to
             EventController.shared.isPlanningOnAttending(event: event, user: user, isGoing: true, completion: { (errorString) in
                 guard let errorString = errorString else {return}
                 NSLog("Error with user attending event! :\(errorString)")
-                presentSimpleAlert(viewController: self, title: "Problem uttending event!", message: errorString)
+                presentSimpleAlert(viewController: self, title: "Problem Attending event!", message: errorString)
             }, completionHandler: { (updatedEvent) in
                 // TODO: - Update the attending label
+                event.attending = updatedEvent?.attending
+                self.setAttendingButtonAsGrey()
             })
         }
-
     }
     
     // MARK: - Functions
@@ -82,8 +86,6 @@ class EventDetailViewController: UIViewController {
         
         eventAddressLabel.text = event.address
         eventSummary.text = event.eventInfo
-        eventImageView.layer.cornerRadius = 15
-        eventImageView.clipsToBounds = true
         eventTimeLabel.text = event.eventTime
         attendEventButton.layer.cornerRadius = 15
         
@@ -94,6 +96,23 @@ class EventDetailViewController: UIViewController {
         
         self.setUpCalanderLabels()
         self.setUpLocationLabels()
+    }
+    
+    /// This should be set when they are going to the event
+    func setAttendingButtonToYellow() {
+        DispatchQueue.main.async {
+            self.attendEventButton.backgroundColor = UIColor(red: divideNumberForColorWith(number: 255), green: divideNumberForColorWith(number: 194), blue: 0, alpha: 1)
+            self.attendEventButton.setTitle("Attend event", for: .normal)
+        }
+        
+    }
+    
+    /// This should be set when they are not going to the event
+    func setAttendingButtonAsGrey() {
+        DispatchQueue.main.async {
+            self.attendEventButton.backgroundColor = UIColor.lightGray
+            self.attendEventButton.setTitle("Unattend event", for: .normal)
+        }
     }
     
     func setUpCalanderLabels() {

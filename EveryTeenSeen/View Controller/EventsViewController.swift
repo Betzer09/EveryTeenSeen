@@ -158,6 +158,7 @@ extension EventsViewController: CLLocationManagerDelegate {
             // Checks if the location should be updated
             guard findTheDistanceWith(lat: location.coordinate.latitude , long: location.coordinate.longitude) == true else {
                 print("Location does not need updated")
+                manager.stopUpdatingLocation()
                 return
             }
             

@@ -29,17 +29,6 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var secondRowInterestStackView: UIStackView!
     @IBOutlet weak var thirdRowInterestStackView: UIStackView!
     
-    //Buttons
-    @IBOutlet weak var firstInterest: UIButton!
-    @IBOutlet weak var secondInterest: UIButton!
-    @IBOutlet weak var thirdInterest: UIButton!
-    @IBOutlet weak var fourthInterest: UIButton!
-    @IBOutlet weak var fifthInterest: UIButton!
-    @IBOutlet weak var sixthInterest: UIButton!
-    @IBOutlet weak var seventhInterest: UIButton!
-    @IBOutlet weak var eigthInterest: UIButton!
-    @IBOutlet weak var ninthInterest: UIButton!
-    
     
     // MARK: - View Life Cycles
     override func viewWillAppear(_ animated: Bool) {

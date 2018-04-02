@@ -86,9 +86,18 @@ class UserController {
             guard let user = user,
                 let fullname = user.fullname,
                 let usertype = user.usertype,
+                let email = user.email,
+                let zipcode = user.zipcode,
                 let profileImageURLString = user.profileImageURLString else {NSLog("Error: There is no user!"); completion(nil, nil); return}
             
-            self.updateUserProfileWith(user: user, fullname: fullname, profileImageURL: profileImageURLString, maxDistance: user.eventDistance, usertype: usertype)
+            // Check if there is a user
+            guard self.loadUserProfile() != nil else {
+                self.saveUserToCoreData(email: email, fullname: fullname, usertype: usertype, zipcode: zipcode, distance: user.eventDistance)
+                completion(user, nil)
+                return
+            }
+            self.updateUserInCoredata(user: user, email: email, fullname: fullname, usertype: usertype, zipcode: zipcode, profileImageStringURL: profileImageURLString, eventDistance: user.eventDistance)
+            
             completion(user, nil)
         }
     }
@@ -185,20 +194,22 @@ extension UserController {
     
     // Updates the User In CoreData
     func updateUserInCoredata(user: User, email: String, fullname: String, usertype: String, zipcode: String, profileImageStringURL: String, eventDistance: Int64) {
-        
-        user.email = email
-        user.fullname = fullname
-        user.zipcode = zipcode
-        user.profileImageURLString = profileImageStringURL
-        user.eventDistance = eventDistance
-        user.usertype = usertype
-        user.lastUpdate = Date()
-        
+
         do {
+            user.setValue(email, forKey: "email")
+            user.setValue(fullname, forKey: "fullname")
+            user.setValue(usertype, forKey: "usertype")
+            user.setValue(profileImageStringURL, forKey: "profileImageURLString")
+            user.setValue(eventDistance, forKey: "eventDistance")
+            user.setValue(Date(), forKey: "lastUpdate")
+            user.setValue(user.interests, forKey: "interests")
+            
             try user.managedObjectContext?.save()
+            print("User Updated Succesfully!")
         } catch {
             NSLog("User Failed to update in function: \(#function)")
         }
+        print(user.interests?.count)
     }
     
     /// Removes Users profile from CoreData
@@ -211,7 +222,7 @@ extension UserController {
     /// Loads user profiel from CoreDate
     func loadUserProfile() -> User? {
         let request: NSFetchRequest<User> = User.fetchRequest()
-        guard let user = try? CoreDataStack.context.fetch(request).first else {return nil}
+        guard let user = try? CoreDataStack.context.fetch(request).last else {return nil}
         return user
     }
     

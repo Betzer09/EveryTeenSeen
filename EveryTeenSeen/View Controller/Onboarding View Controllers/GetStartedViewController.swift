@@ -45,7 +45,7 @@ class GetStartedViewController: UIViewController {
             locationManager.requestLocation()
             
             guard let zip = UserLocationController.shared.fetchUserLocation()?.zipcode else {
-                NSLog("Error fetching the users zipcode")
+                NSLog("Error fetching the users zipcode during onboarding process!")
                 return
             }
             
@@ -194,6 +194,7 @@ extension GetStartedViewController: CLLocationManagerDelegate {
             
             guard findTheDistanceWith(lat: location.coordinate.latitude , long: location.coordinate.longitude) == true else {
                 print("Location does not need updated")
+                manager.stopUpdatingLocation()
                 return
             }
             

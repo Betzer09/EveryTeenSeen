@@ -54,6 +54,7 @@ class UpdateUserProfileViewController: UIViewController {
         incorrectPasswordMessage.isHidden = true
         adminPasswordTextfield.text = ""
         cameraButton.isHidden = true
+        profileImageView.isHidden = true
     }
     
     @IBAction func chooseProfileImageButtonPressed(_ sender: Any) {
@@ -66,6 +67,7 @@ class UpdateUserProfileViewController: UIViewController {
         areYouAnAdminLabel.isHidden = false
         activateAdminAccountButton.isHidden = false
         cameraButton.isHidden = false
+        profileImageView.isHidden = true
         
         self.fadeActivateAdminGroupOut()
         view.endEditing(true)
@@ -125,7 +127,7 @@ class UpdateUserProfileViewController: UIViewController {
         activateAdminGroupView.alpha = 0
         self.activateAdminGroupView.isHidden = false
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.3) {
             self.activateAdminGroupView.alpha = 1
             self.view.backgroundColor = UIColor.darkGray
         }
@@ -134,9 +136,9 @@ class UpdateUserProfileViewController: UIViewController {
     func fadeActivateAdminGroupOut() {
         activateAdminGroupView.alpha = 1
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.3) {
             self.activateAdminGroupView.alpha = 0
-            self.activateAdminGroupView.isHidden = false
+            self.activateAdminGroupView.isHidden = true
             self.view.backgroundColor = UIColor.white
         }
     }

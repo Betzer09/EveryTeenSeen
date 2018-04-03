@@ -674,7 +674,7 @@
                                             <outlet property="eventPhotoImageView" destination="Zdh-qh-KKi" id="9Jg-iP-aTx"/>
                                             <outlet property="eventTitleLabel" destination="Ame-qY-bV5" id="zNB-AQ-ssb"/>
                                             <outlet property="goingLabel" destination="cup-kv-Fh6" id="GAb-HK-qiy"/>
-                                            <segue destination="2tD-BS-DeE" kind="show" id="1mV-fi-afj"/>
+                                            <segue destination="2tD-BS-DeE" kind="show" identifier="toEventDetailVC" id="1mV-fi-afj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

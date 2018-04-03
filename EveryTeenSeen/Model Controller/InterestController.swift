@@ -24,6 +24,7 @@ class InterestController {
         guard let moc = interest.managedObjectContext else {return}
         moc.delete(interest)
         UserController.shared.saveToPersistentStore()
+        addInterestToFirebase()
     }
     
     func addInterestToFirebase() {

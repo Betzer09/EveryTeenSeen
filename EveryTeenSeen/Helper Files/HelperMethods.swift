@@ -226,48 +226,6 @@ public func createGradientLayerWith(startpointX: Double, startpointY: Double, en
     viewController.view.layer.insertSublayer(gradientLayer, at: 0)
 }
 
-// MARK: - Get buttons in a view
-/// Gets all buttons in a view
-public func getAllButtons(view: UIView) -> [UIButton] {
-    var results = [UIButton]()
-    for subview in view.subviews as [UIView] {
-        if let button = subview as? UIButton {
-            results += [button]
-        } else {
-            results += getAllButtons(view: subview)
-        }
-    }
-    return results
-}
-
-/// Configure the buttons for user interests
-public func configureAllButtonsIn(view: UIView) {
-    let buttons = getAllButtons(view: view)
-    guard let interests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else {return}
-    
-    
-    // Make all buttons have no title
-    for i in 0...buttons.count - 1 {
-        DispatchQueue.main.async {
-            buttons[i].setTitle("", for: .normal)
-        }
-    }
-    
-    if interests.count != 0 {
-        
-        for i in 0...interests.count - 1 {
-            let interestName = interests[i].name
-            
-            DispatchQueue.main.async {
-                buttons[i].setTitle(interestName, for: .normal)
-                buttons[i].layer.borderColor = UIColor.blue.cgColor
-                buttons[i].layer.borderWidth = 1
-                buttons[i].layer.cornerRadius = 10
-            }
-        }
-    }
-}
-
 // MARK: - Design Functions
 
 extension CALayer {
@@ -370,6 +328,48 @@ public func configureButtonWith(button: UIButton) {
     button.titleLabel?.minimumScaleFactor = 0.1
     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 80)
     button.titleLabel?.lineBreakMode = .byClipping
+}
+
+/// Gets all buttons in a view
+public func getAllButtons(view: UIView) -> [UIButton] {
+    var results = [UIButton]()
+    for subview in view.subviews as [UIView] {
+        if let button = subview as? UIButton {
+            results += [button]
+        } else {
+            results += getAllButtons(view: subview)
+        }
+    }
+    return results
+}
+
+/// Configure the buttons for user interests
+public func configureAllButtonsIn(view: UIView) {
+    let buttons = getAllButtons(view: view)
+    guard let interests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else {return}
+    
+    
+    // Make all buttons have no title
+    for i in 0...buttons.count - 1 {
+        DispatchQueue.main.async {
+            buttons[i].setTitle("", for: .normal)
+            buttons[i].layer.borderColor = UIColor.clear.cgColor
+        }
+    }
+    
+    if interests.count != 0 {
+        
+        for i in 0...interests.count - 1 {
+            let interestName = interests[i].name
+            
+            DispatchQueue.main.async {
+                buttons[i].setTitle(interestName, for: .normal)
+                buttons[i].layer.borderColor = UIColor.blue.cgColor
+                buttons[i].layer.borderWidth = 1
+                buttons[i].layer.cornerRadius = 10
+            }
+        }
+    }
 }
 
 // MARK: - User Location Functions

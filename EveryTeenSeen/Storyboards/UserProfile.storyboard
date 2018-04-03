@@ -534,14 +534,23 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEp-L0-nTg">
                                                 <rect key="frame" x="0.0" y="0.0" width="93.5" height="31.5"/>
                                                 <state key="normal" title="Interest"/>
+                                                <connections>
+                                                    <action selector="deleteInterestButtonPressed:" destination="phe-9J-GLz" eventType="touchUpInside" id="t3L-is-29g"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7y-gp-OOe">
                                                 <rect key="frame" x="97.5" y="0.0" width="93" height="31.5"/>
                                                 <state key="normal" title="Interest"/>
+                                                <connections>
+                                                    <action selector="deleteInterestButtonPressed:" destination="phe-9J-GLz" eventType="touchUpInside" id="ToI-xH-5nm"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKw-lP-kLI">
                                                 <rect key="frame" x="194.5" y="0.0" width="93.5" height="31.5"/>
                                                 <state key="normal" title="Interest"/>
+                                                <connections>
+                                                    <action selector="deleteInterestButtonPressed:" destination="phe-9J-GLz" eventType="touchUpInside" id="7QW-cV-dlh"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -551,14 +560,23 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Quf-jM-CH0">
                                                 <rect key="frame" x="0.0" y="0.0" width="93.5" height="31"/>
                                                 <state key="normal" title="Interest"/>
+                                                <connections>
+                                                    <action selector="deleteInterestButtonPressed:" destination="phe-9J-GLz" eventType="touchUpInside" id="cvd-Zq-jSd"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7c-uT-MSb">
                                                 <rect key="frame" x="97.5" y="0.0" width="93" height="31"/>
                                                 <state key="normal" title="Interest"/>
+                                                <connections>
+                                                    <action selector="deleteInterestButtonPressed:" destination="phe-9J-GLz" eventType="touchUpInside" id="rPt-Rv-xWy"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCt-tL-uWn">
                                                 <rect key="frame" x="194.5" y="0.0" width="93.5" height="31"/>
                                                 <state key="normal" title="Interest"/>
+                                                <connections>
+                                                    <action selector="deleteInterestButtonPressed:" destination="phe-9J-GLz" eventType="touchUpInside" id="LNF-GZ-VXn"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -568,14 +586,23 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1r-jU-iT5">
                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="31.5"/>
                                                 <state key="normal" title="Interest"/>
+                                                <connections>
+                                                    <action selector="deleteInterestButtonPressed:" destination="phe-9J-GLz" eventType="touchUpInside" id="tkQ-x8-UgE"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjg-ut-UVB">
                                                 <rect key="frame" x="97" y="0.0" width="94" height="31.5"/>
                                                 <state key="normal" title="Interest"/>
+                                                <connections>
+                                                    <action selector="deleteInterestButtonPressed:" destination="phe-9J-GLz" eventType="touchUpInside" id="5Kb-qk-xlq"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDi-2k-QRb">
                                                 <rect key="frame" x="194" y="0.0" width="94" height="31.5"/>
                                                 <state key="normal" title="Interest"/>
+                                                <connections>
+                                                    <action selector="deleteInterestButtonPressed:" destination="phe-9J-GLz" eventType="touchUpInside" id="gXs-OT-MIB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

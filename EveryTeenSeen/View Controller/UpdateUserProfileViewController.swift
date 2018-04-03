@@ -53,6 +53,21 @@ class UpdateUserProfileViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func deleteInterestButtonPressed(_ sender: UIButton) {
+        self.presentDeleteInterestConformationAlert { (delete) in
+            guard delete,
+                let interests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest],
+                let interestName = sender.titleLabel?.text,
+                let indexOfInterest = interests.index(where: { $0.name == interestName } ) else {return}
+            
+            let interest = interests[indexOfInterest]
+            
+            InterestController.shared.delete(interest: interest)
+            
+            configureAllButtonsIn(view: self.interestGroupView)
+        }
+    }
+    
     @IBAction func activateAdminAccountButtonPressed(_ sender: Any) {
         self.fadeActivateAdminGroupIn()
         
@@ -196,6 +211,24 @@ class UpdateUserProfileViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    
+    // MARK: - Delete Interest
+    func presentDeleteInterestConformationAlert(completion: @escaping(_ success: Bool) -> Void) {
+        let alert = UIAlertController(title: "Confirm Delete", message: "Are you sure you want to delte this interest?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            completion(true)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
         
     }
     

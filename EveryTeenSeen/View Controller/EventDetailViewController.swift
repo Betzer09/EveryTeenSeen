@@ -81,7 +81,10 @@ class EventDetailViewController: UIViewController {
     // MARK: - Functions
     private func setUpView() {
         
-        guard let event = event, let attendings = event.attending, let imageData = event.photo?.imageData, let userEmail = UserController.shared.loadUserProfile()?.email else {return}
+        guard let event = event,
+            let attendings = event.attending,
+            let imageData = event.photo?.imageData,
+            let userEmail = UserController.shared.loadUserProfile()?.email else {return}
         
         eventNameLabel.text = event.title
         eventImageView.image = UIImage(data: imageData)

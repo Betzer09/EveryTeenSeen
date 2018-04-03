@@ -347,6 +347,13 @@ Press to Download in the App Store</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8e-Xs-r7T">
+                                                    <rect key="frame" x="258.5" y="8" width="53.5" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <state key="normal" title="Report">
+                                                        <color key="titleColor" red="1" green="0.0" blue="0.05677406258" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ljy-Ds-qEr" firstAttribute="height" secondItem="j1Y-Po-as8" secondAttribute="height" multiplier="1/2" id="0ED-sX-Tzf"/>
@@ -361,12 +368,16 @@ Press to Download in the App Store</string>
                                                 <constraint firstItem="fNB-H6-W9u" firstAttribute="leading" secondItem="h6M-xk-uMc" secondAttribute="trailing" constant="8" id="CTZ-zm-dnn"/>
                                                 <constraint firstItem="y1m-KU-ESr" firstAttribute="centerX" secondItem="Cmd-Cv-7bN" secondAttribute="centerX" id="DZS-Wj-vpA"/>
                                                 <constraint firstItem="ZiI-o0-dkw" firstAttribute="trailing" secondItem="4UC-Bu-6kJ" secondAttribute="trailing" id="Ed5-9V-fh4"/>
+                                                <constraint firstItem="M8e-Xs-r7T" firstAttribute="width" secondItem="XSZ-Wr-q68" secondAttribute="width" multiplier="1/6" id="Fcv-xw-HZG"/>
                                                 <constraint firstItem="4UC-Bu-6kJ" firstAttribute="height" secondItem="pwt-6f-3tD" secondAttribute="height" multiplier="2/3" id="HY3-jG-rHX"/>
                                                 <constraint firstItem="4UC-Bu-6kJ" firstAttribute="centerY" secondItem="Ljy-Ds-qEr" secondAttribute="centerY" id="Qz5-E8-lqG"/>
                                                 <constraint firstItem="Ljy-Ds-qEr" firstAttribute="top" secondItem="XSZ-Wr-q68" secondAttribute="bottom" id="V85-Jh-jfk"/>
                                                 <constraint firstItem="fNB-H6-W9u" firstAttribute="height" secondItem="Ljy-Ds-qEr" secondAttribute="height" id="XPf-mS-XMg"/>
+                                                <constraint firstItem="M8e-Xs-r7T" firstAttribute="top" secondItem="Cmd-Cv-7bN" secondAttribute="top" constant="8" id="Z6C-68-jIe"/>
+                                                <constraint firstItem="M8e-Xs-r7T" firstAttribute="height" secondItem="XSZ-Wr-q68" secondAttribute="height" multiplier="1/10" id="a96-7K-9QY"/>
                                                 <constraint firstItem="fNB-H6-W9u" firstAttribute="centerY" secondItem="Ljy-Ds-qEr" secondAttribute="centerY" id="aMD-mu-9gf"/>
                                                 <constraint firstItem="j1Y-Po-as8" firstAttribute="leading" secondItem="Cmd-Cv-7bN" secondAttribute="leading" id="cXU-bP-Ktr"/>
+                                                <constraint firstAttribute="trailing" secondItem="M8e-Xs-r7T" secondAttribute="trailing" constant="8" id="fHo-XP-wKe"/>
                                                 <constraint firstItem="XSZ-Wr-q68" firstAttribute="top" secondItem="Cmd-Cv-7bN" secondAttribute="top" id="fqh-Vr-TJc"/>
                                                 <constraint firstItem="XSZ-Wr-q68" firstAttribute="leading" secondItem="Cmd-Cv-7bN" secondAttribute="leading" id="keS-BN-Tvo"/>
                                                 <constraint firstItem="j1Y-Po-as8" firstAttribute="bottom" secondItem="XSZ-Wr-q68" secondAttribute="bottom" id="oJR-dU-kgf"/>

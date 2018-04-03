@@ -160,7 +160,7 @@ class UserProfileViewController: UIViewController {
             // Show the user the events that they have created
             
             for event in events {
-                if event.userWhoPosted == user.fullname {
+                if event.userWhoPosted == user.email {
                     eventsToReturn.append(event)
                 }
             }

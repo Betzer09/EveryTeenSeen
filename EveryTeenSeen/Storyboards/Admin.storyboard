@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -635,19 +636,33 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEM-Px-3WL">
+                                                    <rect key="frame" x="233" y="8" width="64" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <state key="normal" title="Report">
+                                                        <color key="titleColor" red="1" green="0.0" blue="0.05677406258" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="reportButtonPressed:" destination="iHw-st-Ewr" eventType="touchUpInside" id="xha-3Y-2aw"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="fEM-Px-3WL" firstAttribute="top" secondItem="cb4-7j-13h" secondAttribute="top" constant="8" id="1N3-bS-tYu"/>
                                                 <constraint firstItem="DQl-wx-5rl" firstAttribute="width" secondItem="bio-46-2q1" secondAttribute="width" multiplier="1/3" id="3BH-h3-Haz"/>
                                                 <constraint firstItem="bio-46-2q1" firstAttribute="height" secondItem="SKB-vm-FCf" secondAttribute="height" multiplier="1/2" id="4ZB-g0-wfO"/>
+                                                <constraint firstItem="fEM-Px-3WL" firstAttribute="height" secondItem="Zdh-qh-KKi" secondAttribute="height" multiplier="1/10" id="8fA-ex-yEd"/>
                                                 <constraint firstItem="bio-46-2q1" firstAttribute="centerX" secondItem="cb4-7j-13h" secondAttribute="centerX" id="C2p-0E-I6B"/>
                                                 <constraint firstAttribute="trailing" secondItem="Zdh-qh-KKi" secondAttribute="trailing" id="CGJ-Xp-2gz"/>
                                                 <constraint firstItem="DQl-wx-5rl" firstAttribute="height" secondItem="cup-kv-Fh6" secondAttribute="height" id="CHm-Ao-ME9"/>
                                                 <constraint firstAttribute="trailing" secondItem="SKB-vm-FCf" secondAttribute="trailing" id="CQa-Pv-OzA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fEM-Px-3WL" secondAttribute="trailing" constant="8" id="Ife-DV-p61"/>
                                                 <constraint firstAttribute="trailing" secondItem="lsk-o0-SfC" secondAttribute="trailing" id="Mrx-Ik-s1s"/>
                                                 <constraint firstItem="lsk-o0-SfC" firstAttribute="centerY" secondItem="bio-46-2q1" secondAttribute="centerY" id="NIO-3i-vz3"/>
                                                 <constraint firstItem="bio-46-2q1" firstAttribute="top" secondItem="Zdh-qh-KKi" secondAttribute="bottom" id="R9M-eZ-6Oi"/>
                                                 <constraint firstItem="YKg-ac-cgw" firstAttribute="trailing" secondItem="cup-kv-Fh6" secondAttribute="trailing" id="RSA-gO-Yc1"/>
                                                 <constraint firstItem="40c-J8-imp" firstAttribute="centerX" secondItem="cb4-7j-13h" secondAttribute="centerX" id="ZKy-s8-Oq9"/>
+                                                <constraint firstItem="fEM-Px-3WL" firstAttribute="width" secondItem="Zdh-qh-KKi" secondAttribute="width" multiplier="1/5" id="boZ-qM-EaE"/>
                                                 <constraint firstItem="40c-J8-imp" firstAttribute="width" secondItem="Zdh-qh-KKi" secondAttribute="width" id="cDO-f6-oCG"/>
                                                 <constraint firstItem="Zdh-qh-KKi" firstAttribute="top" secondItem="cb4-7j-13h" secondAttribute="top" id="ch2-eJ-6zJ"/>
                                                 <constraint firstItem="SKB-vm-FCf" firstAttribute="leading" secondItem="cb4-7j-13h" secondAttribute="leading" id="f0d-5A-oaT"/>

@@ -42,6 +42,13 @@ class EventsTableViewCell: UITableViewCell {
     
     // MARK: - Actions
     
+    @IBAction func reportButtonPressed(_ sender: Any) {
+        presentReportEventAlert { (wantsToReport) in
+            guard wantsToReport, let event = self.event else {return}
+            self.presentAddMessageAlertWith(title: "Reporting \(event.title)", message: "Add a brief message explaining the problem.")
+        }
+    }
+    
     @IBAction func goingButton(_ sender: Any) {
         guard let rootvc = UIApplication.shared.keyWindow?.rootViewController else {return}
         guard let user = UserController.shared.loadUserProfile(),
@@ -111,4 +118,81 @@ class EventsTableViewCell: UITableViewCell {
     func configureLableAsNotGoing() {
         goingLabel.text = "Not Going"
     }
+    
+    func presentAddMessageAlertWith(title: String, message: String) {
+        guard let rootvc = UIApplication.shared.keyWindow?.rootViewController, let email = UserController.shared.loadUserProfile()?.email, let event = event else {return}
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let textView = UITextView()
+        textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        let controller = UIViewController()
+        
+        textView.frame = controller.view.frame
+        controller.view.addSubview(textView)
+        
+        alert.setValue(controller, forKey: "contentViewController")
+        
+        let height: NSLayoutConstraint = NSLayoutConstraint(item: alert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: rootvc.view.frame.height * 0.5)
+        alert.view.addConstraint(height)
+        
+        let subview = (alert.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
+        subview.backgroundColor = UIColor.darkBlueAlertColor
+        alert.view.bringSubview(toFront: subview)
+        
+        alert.view.tintColor = UIColor.black
+        
+        
+        alert.setValue(NSAttributedString(string: title, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.black]), forKey: "attributedTitle")
+        
+        alert.setValue(NSAttributedString(string: message, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.black]), forKey: "attributedMessage")
+        
+        let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+            EventController.shared.reportEventWith(userEmail: email, message: textView.text, event: event, completion: { (success) in
+                presentSimpleAlert(viewController: rootvc, title: "You have successfully reported this event.", message: "")
+            })
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(okayAction)
+        alert.addAction(cancelAction)
+        
+        rootvc.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - report alert
+    private func presentReportEventAlert(completion: @escaping (_ success: Bool) -> Void) {
+        guard let rootvc = UIApplication.shared.keyWindow?.rootViewController else {return}
+        let alert = UIAlertController(title: "Do you wish to report this event?", message: "", preferredStyle: .actionSheet)
+        
+        let reportAction = UIAlertAction(title: "Report Event", style: .destructive) { (_) in
+            completion(true)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            completion(false)
+        }
+        
+        alert.addAction(reportAction)
+        alert.addAction(cancelAction)
+        
+        rootvc.present(alert, animated: true, completion: nil)
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

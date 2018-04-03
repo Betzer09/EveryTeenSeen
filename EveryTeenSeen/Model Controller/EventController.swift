@@ -19,10 +19,10 @@ class EventController {
     static let eventWasUpdatedNotifcation =  Notification.Name("eventWasUpdatedNotifcation")
     static let newEventsKey = "newEvents"
     
-    // MARK: - Other
-    static let shared = EventController()
     
     // MARK: - Properties
+    static let shared = EventController()
+    
     var events: [Event]? = [] {
         didSet {
             NotificationCenter.default.post(name: EventController.eventWasUpdatedNotifcation, object: nil)
@@ -30,15 +30,14 @@ class EventController {
     }
     
     
-    // Save events to firestore
-    func saveEventToFireStoreWith(title: String, dateHeld: String, eventTime: String, userWhoPosted: String , address: String, eventInfo: String, image: UIImage, completion: @escaping (_ success: Bool) -> Void) {
+    // MARK: - Firebase Functions
+    /// Saves and Updates events to firestore
+    func saveEventToFireStoreWith(title: String, dateHeld: String, eventTime: String, userWhoPosted: String , address: String, eventInfo: String, image: UIImage, reports: [[String: String]] = [], completion: @escaping (_ success: Bool) -> Void) {
         
         let eventDb = Firestore.firestore()
         
         let event = Event(title: title, dateHeld: dateHeld, userWhoPosted: userWhoPosted, address: address, eventInfo: eventInfo, eventTime: eventTime)
-        
-        
-        
+    
         // Start uploading the image
         PhotoController.shared.uploadImageToStorageWith(image: image, photoTitle: title, completion: { (imageURL) in
             guard imageURL != "" else {completion(false); return}
@@ -64,12 +63,11 @@ class EventController {
         }
     }
     
-    // Fetch all events from firestore
+    /// Fetch all events from firestore
     func fetchAllEvents(completion: @escaping(_ success: Bool) -> Void = {_ in}) {
         
         let eventGroup = DispatchGroup()
-        
-        // TODO: - Make it so it only updates with new events and not all of them at the same time 
+
         let eventdb = Firestore.firestore()
         
         var events: [Event] = []
@@ -156,7 +154,7 @@ class EventController {
                 // Update the firebase event
                 guard let updatedEvent = self.updateAttendingArrayWithUser(event: event, user: user, isGoing: isGoing) else {NSLog("Error updating event in function: \(#function)"); return}
                 // Push event to firebase
-                self.pushUpdatedEventToFirestoreWith(event: updatedEvent)
+                self.pushUpdatedAttendingFieldToFirestoreWith(event: updatedEvent)
                 
                 completionHandler(updatedEvent)
                 
@@ -167,6 +165,50 @@ class EventController {
             }
         }
         
+    }
+    
+    func reportEventWith(userEmail: String, message: String, event: Event, completion: @escaping (_ success: Bool) -> Void) {
+        // pull the current event
+        let db = Firestore.firestore()
+        
+        db.collection(EventController.eventKey).document(event.title).getDocument { (snapshot, error) in
+            if let error = error {
+                NSLog("Error fetching event while reporting it: \(error.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            guard let data = snapshot?.data() else {completion(false); return}
+            
+            do {
+                guard let data = convertJsonToDataWith(json: data) else {completion(false); return}
+                let event = try JSONDecoder().decode(Event.self, from: data)
+                
+                // Update the reports field
+                let updatedEvent = self.updateReportArray(userEmail: userEmail, message: message, event: event)
+                
+                // Push the event back up to firebase
+                self.pushUpdatedEventReportFieldToFirestore(event: updatedEvent, completion: { (success) in
+                    completion(true)
+                })
+            } catch let e {
+                NSLog("Error decoding event! : \(e.localizedDescription)")
+                completion(false)
+            }
+            
+            
+        }
+    }
+    /// Used to update the report property on the event
+    private func updateReportArray(userEmail: String, message: String, event: Event) -> Event {
+
+        // Create a report
+        let report = [userEmail: message]
+        
+        // add the report the event
+        event.reports?.append(report)
+        
+        return event
     }
     
     
@@ -183,8 +225,25 @@ class EventController {
         return event
     }
 
+    /// Pushes the updated report property to firebase
+    private func pushUpdatedEventReportFieldToFirestore(event: Event, completion: @escaping (_ success: Bool) -> Void) {
+        let db = Firestore.firestore()
+        
+        let reportsKey = "reports"
+        
+        db.collection(EventController.eventKey).document(event.title).updateData([reportsKey: event.reports]) { (error) in
+            
+            if let error = error {
+                NSLog("Error reporting event with title: \(event.title) becasue of error: \(error.localizedDescription)")
+                completion(false)
+            } else {
+                NSLog("Event reported In Firebase!")
+                completion(true)
+            }
+        }
+    }
     
-    private func pushUpdatedEventToFirestoreWith(event: Event) {
+    private func pushUpdatedAttendingFieldToFirestoreWith(event: Event) {
         let db = Firestore.firestore()
         
         let attendingKey = "attending"
@@ -192,9 +251,10 @@ class EventController {
         db.collection(EventController.eventKey).document(event.title).updateData([attendingKey: event.attending]) { (error) in
             if let error = error {
                 NSLog("Error updating event: \(event.title) becasue of error: \(error.localizedDescription)")
+            } else {
+                
+                NSLog("Event Updated In Firebase!")
             }
-            
-            NSLog("Event Updated In Firebase!")
         }
     }
 }

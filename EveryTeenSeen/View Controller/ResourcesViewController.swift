@@ -21,6 +21,7 @@ class ResourcesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpNotificationObservers()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -47,6 +48,10 @@ class ResourcesViewController: UIViewController {
         createGradientLayerWith(startpointX: -1, startpointY: -1, endpointX: 2, endPointY: 2, firstRed: 255, firstGreen: 194, firstBlue: 0, firstAlpha: 1, secondRed: 143, secondGreen: 26, secondBlue: 219, secondAlpha: 1, viewController: self)
     }
     
+    func setUpNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadNavBar), name: UserController.shared.profilePictureWasUpdated, object: nil)
+    }
+    
     func alertTheUserToBeRedirected(completion: @escaping(_ wantToRedirect: Bool) -> Void) {
         let alert = UIAlertController(title: "View In Appstore?", message: "You are about to be redirect to the appstore to see the Safe UT app.", preferredStyle: .alert)
         
@@ -63,6 +68,13 @@ class ResourcesViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    // MARK: - Objective - C Functions
+    @objc func reloadNavBar() {
+        DispatchQueue.main.async {
+            self.configureNavigationBar()
+        }
+    }
 }
 
 extension ResourcesViewController {
@@ -73,10 +85,13 @@ extension ResourcesViewController {
         hamburgerButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
         
         let profileButton: UIButton = UIButton(type: .custom)
-        profileButton.setImage(#imageLiteral(resourceName: "ProfilePicture"), for: .normal)
+        
+        guard let unwrappedImage = UserController.shared.profilePicture?.circleMasked else {return}
+        let profileImage = resizeImage(image: unwrappedImage , targetSize: CGSize(width: 40.0, height: 40.0))
+        profileButton.setImage(profileImage, for: .normal)
         profileButton.addTarget(self, action: #selector(segueToProfileView), for: .touchUpInside)
         
-        let image = #imageLiteral(resourceName: "HappyLogo")
+        let image = resizeImage(image: #imageLiteral(resourceName: "HappyLogo"), targetSize: CGSize(width: 40.0, height: 40.0))
         let happyImage: UIImageView = UIImageView(image: image)
         happyImage.contentMode = .scaleAspectFit
         

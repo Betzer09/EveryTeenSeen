@@ -23,7 +23,7 @@
     </entity>
     <elements>
         <element name="Interest" positionX="198" positionY="93" width="128" height="73"/>
-        <element name="User" positionX="-272" positionY="18" width="128" height="163"/>
+        <element name="User" positionX="-272" positionY="18" width="128" height="165"/>
         <element name="UserLocation" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

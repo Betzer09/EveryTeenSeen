@@ -40,7 +40,7 @@ class EventController {
         
         
         // Start uploading the image
-        PhotoController.shared.uploadEventImageToStorageWith(image: image, eventTitle: title, completion: { (imageURL) in
+        PhotoController.shared.uploadImageToStorageWith(image: image, photoTitle: title, completion: { (imageURL) in
             guard imageURL != "" else {completion(false); return}
             event.photoURL = imageURL
             

@@ -411,7 +411,7 @@ extension CreateEventViewController {
     /// Configures the navigation bar to have all of the normal stuff
     func configureNavigationBar() {
         
-        let image = #imageLiteral(resourceName: "HappyLogo")
+        let image = resizeImage(image: #imageLiteral(resourceName: "HappyLogo") , targetSize: CGSize(width: 40.0, height: 40.0))
         let happyImage: UIImageView = UIImageView(image: image)
         happyImage.contentMode = .scaleAspectFit
         

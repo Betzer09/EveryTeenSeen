@@ -112,6 +112,10 @@ class UserProfileViewController: UIViewController {
             }
         }
         
+        profileImageView.image = UserController.shared.profilePicture
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+        profileImageView.clipsToBounds = true
+        
         createEventButton.layer.cornerRadius = createEventButton.bounds.height / 2
         
         guard let user = UserController.shared.loadUserProfile(), let userLocation = UserLocationController.shared.fetchUserLocation() else {return}

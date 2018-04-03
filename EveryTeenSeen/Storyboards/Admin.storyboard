@@ -488,7 +488,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwV-sP-UHV">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwV-sP-UHV">
                                             <rect key="frame" x="240" y="-9.5" width="64" height="64"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="UwV-sP-UHV" secondAttribute="height" multiplier="1:1" id="GC1-SA-mBe"/>

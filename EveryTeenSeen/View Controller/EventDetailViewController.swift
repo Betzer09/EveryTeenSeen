@@ -42,6 +42,7 @@ class EventDetailViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUpNotificaitonObservers()
         self.configureNavigationBar()
     }
     
@@ -79,6 +80,7 @@ class EventDetailViewController: UIViewController {
     
     // MARK: - Functions
     private func setUpView() {
+        
         guard let event = event, let attendings = event.attending, let imageData = event.photo?.imageData, let userEmail = UserController.shared.loadUserProfile()?.email else {return}
         
         eventNameLabel.text = event.title
@@ -96,6 +98,10 @@ class EventDetailViewController: UIViewController {
         
         self.setUpCalanderLabels()
         self.setUpLocationLabels()
+    }
+    
+    func setUpNotificaitonObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadNavBar), name: UserController.shared.profilePictureWasUpdated, object: nil)
     }
     
     /// This should be set when they are going to the event
@@ -134,8 +140,13 @@ class EventDetailViewController: UIViewController {
             self.eventLocationNameLabel.text = locationTitle
             self.eventLocationLabel.text = String(stringPhrase.dropFirst())
         }
-        
-
+    }
+    
+    // MARK: - Objective - C Functions
+    @objc func reloadNavBar() {
+        DispatchQueue.main.async {
+            self.configureNavigationBar()
+        }
     }
 }
 
@@ -149,10 +160,12 @@ extension EventDetailViewController {
         backButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
         
         let profileButton: UIButton = UIButton(type: .custom)
-        profileButton.setImage(#imageLiteral(resourceName: "ProfilePicture"), for: .normal)
+        guard let unwrappedImage = UserController.shared.profilePicture?.circleMasked else {return}
+        let profileImage = resizeImage(image: unwrappedImage , targetSize: CGSize(width: 40.0, height: 40.0))
+        profileButton.setImage(profileImage, for: .normal)
         profileButton.addTarget(self, action: #selector(segueToProfileView), for: .touchUpInside)
         
-        let image = #imageLiteral(resourceName: "HappyLogo")
+        let image = resizeImage(image: #imageLiteral(resourceName: "HappyLogo"), targetSize: CGSize(width: 40.0, height: 40.0))
         let happyImage: UIImageView = UIImageView(image: image)
         happyImage.contentMode = .scaleAspectFit
         

@@ -18,6 +18,7 @@ class UpdateUserProfileViewController: UIViewController {
     @IBOutlet weak var areYouAnAdminLabel: UILabel!
     @IBOutlet weak var activateAdminAccountButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var youAreAnAdminLabel: UILabel!
     
     
     // Admin Group View Outlets
@@ -25,15 +26,22 @@ class UpdateUserProfileViewController: UIViewController {
     @IBOutlet weak var adminPasswordTextfield: UITextField!
     @IBOutlet weak var incorrectPasswordMessage: UILabel!
     
+    // Updated Profile View
+    @IBOutlet weak var finishedUpdatedProfileView: UIView!
+    @IBOutlet weak var uploadingUpdatedProfileLabel: UILabel!
+    @IBOutlet weak var successImageView: UIImageView!
+    @IBOutlet weak var exitProfileUpdateView: UIButton!
+    @IBOutlet weak var uploadingProfileActivityMonitor: UIActivityIndicatorView!
+    
     // User Interest Outlets
     @IBOutlet weak var interestGroupView: UIStackView!
     
     // Success Group view
     @IBOutlet weak var successGroupView: UIView!
     
-    
     // MARK: - Properties
     var delegate: PhotoSelectedViewControllerDelegate?
+    private var changedProfilePicture = false
     
     // MARK: - View Life Cycle
     
@@ -41,11 +49,6 @@ class UpdateUserProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         setUpView()
         configureAllButtonsIn(view: interestGroupView)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - Actions
@@ -78,9 +81,28 @@ class UpdateUserProfileViewController: UIViewController {
     }
     
     @IBAction func dismissSuccessAdminView(_ sender: Any) {
-        presentAdminTabBarVC(viewController: self)
+        guard let user = UserController.shared.loadUserProfile() else {return}
+        
+        if user.usertype == UserType.leadCause.rawValue {
+            presentAdminTabBarVC(viewController: self)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
+    
+    @IBAction func doneEditingProfileButtonPressed(_ sender: Any) {
+        guard let image = profileImageView.image,
+            let fullname = fullnameTextfield.text,
+            let user = UserController.shared.loadUserProfile(),
+            let email = user.email else {
+                NSLog("Error updating user profile!")
+                presentSimpleAlert(viewController: self, title: "Oops", message: "There was a problem updating your profile!")
+                return
+        }
+
+        updateProfileWith(user: user, image: image, email: email, fullname: fullname)
+    }
     
     @IBAction func sumbitAdminPasswordButtonPressed(_ sender: Any) {
         guard let password = adminPasswordTextfield.text else {return}
@@ -88,11 +110,14 @@ class UpdateUserProfileViewController: UIViewController {
         UserController.shared.confirmAdminPasswordWith(password: password ) { (success) in
             if success {
                 guard let user = UserController.shared.loadUserProfile(),
-                let fullname = self.fullnameTextfield.text else {return}
-                UserController.shared.updateUserProfileWith(user: user, fullname: fullname, profileImageURL: "falalal", maxDistance: Int64(Int(self.distanceSlider.value)), usertype: UserType.leadCause.rawValue)
+                    let email = user.email,
+                    let fullname = self.fullnameTextfield.text,
+                    let image = self.profileImageView.image else {return}
+                self.updateProfileWith(user: user, image: image, email: email, fullname: fullname)
                 self.successGroupView.isHidden = false
             } else {
-              self.incorrectPasswordMessage.isHidden = false
+                self.incorrectPasswordMessage.isHidden = false
+                self.adminPasswordTextfield.text = ""
             }
         }
     }
@@ -101,6 +126,77 @@ class UpdateUserProfileViewController: UIViewController {
         DispatchQueue.main.async {
             self.maxLabelTextField.text = "\(Int(sender.value)) mi"
         }
+    }
+    
+    // MARK: - Update User Profile Functions
+    func updateProfileWith(user: User, image: UIImage, email: String, fullname: String) {
+        
+        DispatchQueue.main.async {
+            self.finishedUpdatedProfileView.isHidden = false
+            self.uploadingProfileActivityMonitor.isHidden = false
+            self.uploadingProfileActivityMonitor.startAnimating()
+        }
+        
+        if changedProfilePicture == true {
+            updateUserProfileImageWith(user: user, image: image, email: email, completion: { (hasFinishedPostingImage) in
+                DispatchQueue.main.async {
+                    self.successImageView.isHidden = false
+                    self.uploadingUpdatedProfileLabel.text = "You've succesfully updated your profile!"
+                    self.uploadingProfileActivityMonitor.isHidden = true
+                    self.uploadingProfileActivityMonitor.stopAnimating()
+                    self.exitProfileUpdateView.isHidden = false
+                }
+                
+                PhotoController.shared.fetchUserProfileImage(completion: { (image, success) in
+                    guard success else {return}
+                    UserController.shared.profilePicture = image
+                })
+            })
+        } else {
+            updateUserProfileWithoutImage(user: user, email: email, fullname: fullname)
+            
+            DispatchQueue.main.async {
+                self.successImageView.isHidden = false
+                self.uploadingUpdatedProfileLabel.text = "You've succesfully updated your profile!"
+                self.uploadingProfileActivityMonitor.stopAnimating()
+                self.exitProfileUpdateView.isHidden = false
+            }
+        }
+    }
+    
+    func updateUserProfileWithoutImage(user: User, email: String, fullname: String) {
+        guard let usertype = user.usertype,
+            let profileURL = user.profileImageURLString else {
+                presentSimpleAlert(viewController: self, title: "Oops", message: "There was a problem updating your profile!")
+                return
+        }
+        
+        UserController.shared.updateUserProfileWith(user: user, fullname: fullname, profileImageURL: profileURL, maxDistance: Int64(distanceSlider.value), usertype: usertype)
+    }
+    
+    func updateUserProfileImageWith(user: User, image: UIImage, email: String, completion: @escaping(_ doneUploadingProfilePicture: Bool) -> Void) {
+        
+        // Make sure it isn't the default image first
+        if profileImageView.image != #imageLiteral(resourceName: "largeAvatar") {
+            PhotoController.shared.deletingImageFromStorageWith(eventTitle: email, completion: { (success) in
+                guard let fullname = self.fullnameTextfield.text, let usertype = user.usertype else {return}
+                
+                PhotoController.shared.uploadImageToStorageWith(image: image, photoTitle: "\(email)profile_picture", completion: { (userProfilePictureURL) in
+                    guard userProfilePictureURL != "" else {
+                        NSLog("Error updating profile image!")
+                        completion(false)
+                        return
+                    }
+                    
+                    UserController.shared.updateUserProfileWith(user: user, fullname: fullname, profileImageURL: userProfilePictureURL, maxDistance: Int64(self.distanceSlider.value), usertype: usertype)
+                    
+                }) { (hasFinishedURL) in
+                    guard hasFinishedURL else {return}
+                    completion(true)
+                }
+            })
+        }
+        
     }
     
     // MARK: - Functions
@@ -116,17 +212,29 @@ class UpdateUserProfileViewController: UIViewController {
         maxLabelTextField.text = "\(user.eventDistance) mi"
         
         if user.usertype == UserType.leadCause.rawValue {
-            areYouAnAdminLabel.text = "You're An Admin"
+            areYouAnAdminLabel.isHidden = true
             activateAdminAccountButton.isHidden = true
+            youAreAnAdminLabel.isHidden = false
         }
+        
+        profileImageView.image = UserController.shared.profilePicture
         
         // Set up the pop views
         activateAdminGroupView.layer.cornerRadius = 15
         successGroupView.layer.cornerRadius = 15
+        finishedUpdatedProfileView.layer.cornerRadius = 15
+        
         
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         profileImageView.clipsToBounds = true
         cameraButton.isHidden = false
+        
+        // Update user success view
+        self.finishedUpdatedProfileView.isHidden = true
+        self.successImageView.isHidden = true
+        self.uploadingProfileActivityMonitor.isHidden = true
+        self.exitProfileUpdateView.isHidden = true
+        self.uploadingProfileActivityMonitor.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         
     }
     
@@ -159,10 +267,10 @@ class UpdateUserProfileViewController: UIViewController {
 extension UpdateUserProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // Picking an iamge from libary
-    
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var image: UIImage!
+        
+        self.profileImageView.image = nil
         
         if let img = info[UIImagePickerControllerEditedImage] as? UIImage {
             image = img
@@ -170,12 +278,16 @@ extension UpdateUserProfileViewController: UIImagePickerControllerDelegate, UINa
             image = img
         }
         
-        picker.dismiss(animated: true,completion: nil)
-        // Assign the iamge in the delegate
+        // Assign the image in the delegate
         delegate?.photoSelectedWithVC(image)
-        profileImageView.image = image
-        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
-        profileImageView.clipsToBounds = true
+        
+        DispatchQueue.main.async {
+            self.profileImageView.image = image
+            self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
+            self.profileImageView.clipsToBounds = true
+        }
+        self.changedProfilePicture = true
+        picker.dismiss(animated: true,completion: nil)
     }
     
     private func presentCameraAndPhotoLibraryOption() {
@@ -237,11 +349,14 @@ extension UpdateUserProfileViewController: UITextFieldDelegate {
         UserController.shared.confirmAdminPasswordWith(password: password ) { (success) in
             if success {
                 guard let user = UserController.shared.loadUserProfile(),
-                    let fullname = self.fullnameTextfield.text else {return}
-                UserController.shared.updateUserProfileWith(user: user, fullname: fullname, profileImageURL: "falalal", maxDistance: Int64(Int(self.distanceSlider.value)), usertype: UserType.leadCause.rawValue)
+                    let email = user.email,
+                    let fullname = self.fullnameTextfield.text,
+                    let image = self.profileImageView.image else {return}
+                self.updateProfileWith(user: user, image: image, email: email, fullname: fullname)
                 self.successGroupView.isHidden = false
             } else {
                 self.incorrectPasswordMessage.isHidden = false
+                self.adminPasswordTextfield.text = ""
             }
         }
         

@@ -17,8 +17,7 @@ class PhotoController {
     // MARK: - Properties
     
     // Create
-    func uploadEventImageToStorageWith(image: UIImage, eventTitle: String, completion: @escaping (_ imageURL: String) -> Void,
-                                       completionHandler: @escaping (_ success: Bool) -> Void) {
+    func uploadImageToStorageWith(image: UIImage, photoTitle: String, completion: @escaping (_ imageURL: String) -> Void, completionHandler: @escaping (_ success: Bool) -> Void = {_ in}) {
         
         let photoStorage = Storage.storage()
         var storageRef = photoStorage.reference()
@@ -29,7 +28,7 @@ class PhotoController {
         let metadata = StorageMetadata()
         metadata.contentType = "image/png"
         
-        storageRef = storageRef.child("\(eventTitle).png")
+        storageRef = storageRef.child("\(photoTitle).png")
         
         
         let uploadTask = storageRef.putData(data, metadata: metadata) { (metadata, error) in
@@ -62,7 +61,7 @@ class PhotoController {
         }
         
         uploadTask.observe(.success) { (snapshot) in
-            NSLog("\'\(eventTitle)\' Uploaded Successfully")
+            NSLog("\'\(photoTitle)\' Uploaded Successfully")
         }
         
         uploadTask.observe(.progress) { (snapshot) in
@@ -75,6 +74,7 @@ class PhotoController {
     
     // MARK: - Delete Images From Firebase Storage
     
+    /// Deletes the image from firebase storate
     func deletingImageFromStorageWith(eventTitle: String, completion: @escaping (_ success: Bool ) -> Void) {
         let storage = Storage.storage()
         var storageRef = storage.reference()
@@ -92,8 +92,21 @@ class PhotoController {
         }
     }
     
-    func sendPushNotificaton() {
+    func fetchUserProfileImage(completion: @escaping(_ success: UIImage?, _ success: Bool) -> Void = {_,_  in}) {
+        guard let user = UserController.shared.loadUserProfile(), let photoURL = user.profileImageURLString else {return}
+        
+        guard let url = URL(string: photoURL) else {NSLog("Error fetching User's profile picture becasue of user!: userProfileURL =  \(photoURL)"); completion(nil, false); return}
+        
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                NSLog("Error downloading profile picture due to: \(error.localizedDescription)")
+                completion(nil, false)
+                return
+            }
+            
+            guard let data = data, let image = UIImage(data: data) else {NSLog("Error with profile picture data for user: \(user.email)"); return}
+            completion(image, true)
+        }.resume()
         
     }
 }
-

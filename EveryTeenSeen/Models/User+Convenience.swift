@@ -16,6 +16,15 @@ public enum UserType: String {
 
 extension User {
     
+    private var emailKey: String { return "email" }
+    private var fullnameKey: String {return "fullname" }
+    private var userTypeKey: String { return "user_type" }
+    private var zipcodeKey: String { return "zipcode" }
+    private var profileURLStringKey: String { return "profile_url_string" }
+    private var eventDistanceKey: String { return "event_distance" }
+    private var userInteretsKey: String { return "user_intrests" }
+    private var lastUpdateKey: String { return "last_update" }
+    
     @discardableResult convenience init(email: String, fullname: String, usertype: String, zipcode: String, profileImageURLString: String = "", eventDistance: Int64, lastUpdate: Date = Date(), context: NSManagedObjectContext = CoreDataStack.context){
         
         self.init(context: context)
@@ -28,14 +37,6 @@ extension User {
         self.lastUpdate = lastUpdate
     }
     
-    private var emailKey: String { return "email" }
-    private var fullnameKey: String {return "fullname" }
-    private var userTypeKey: String { return "user_type" }
-    private var zipcodeKey: String { return "zipcode" }
-    private var profileURLStringKey: String { return "profile_url_string" }
-    private var eventDistanceKey: String { return "event_distance" }
-    private var userInteretsKey: String { return "user_intrests" }
-    private var lastUpdateKey: String { return "last_update" }
     
     var dictionaryRepresentation: [String: Any] {
         

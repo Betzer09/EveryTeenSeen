@@ -20,16 +20,17 @@ class EventsViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.setUpView()
         locationManager.requestLocation()
-        self.configureNavigationBar()
         tableView.reloadData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpView()
         self.loadAllEvents { (success) in
             guard success else {return}
+            self.setUpNotificationObservers()
+            self.configureNavigationBar()
             self.checkIfUserHasAccount()
         }
     }
@@ -39,11 +40,15 @@ class EventsViewController: UIViewController {
 
     // MARK: - Set Up View
     private func setUpView() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.eventWasUpdatedNotifcation, object: nil)
-        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         activityIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+    }
+    
+    private func setUpNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.eventWasUpdatedNotifcation, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadNavBar), name: UserController.shared.profilePictureWasUpdated, object: nil)
     }
     
     private func setTableViewHeight() {
@@ -73,6 +78,12 @@ class EventsViewController: UIViewController {
     @objc func reloadTableView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+        }
+    }
+    
+    @objc func reloadNavBar() {
+        DispatchQueue.main.async {
+            self.configureNavigationBar()
         }
     }
 }
@@ -123,10 +134,13 @@ extension EventsViewController {
         hamburgerButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
         
         let profileButton: UIButton = UIButton(type: .custom)
-        profileButton.setImage(#imageLiteral(resourceName: "ProfilePicture"), for: .normal)
+        guard let unwrappedImage = UserController.shared.profilePicture?.circleMasked else {return}
+        let profileImage = resizeImage(image: unwrappedImage , targetSize: CGSize(width: 40.0, height: 40.0))
+        
+        profileButton.setImage(profileImage, for: .normal)
         profileButton.addTarget(self, action: #selector(segueToProfileView), for: .touchUpInside)
         
-        let image = #imageLiteral(resourceName: "HappyLogo")
+        let image = resizeImage(image: #imageLiteral(resourceName: "HappyLogo"), targetSize: CGSize(width: 40.0, height: 40.0))
         let happyImage: UIImageView = UIImageView(image: image)
         happyImage.contentMode = .scaleAspectFit
         

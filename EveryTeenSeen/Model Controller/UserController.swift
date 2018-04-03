@@ -31,6 +31,31 @@ class UserController {
     private let deviceIDKey = "device_id"
     private let deviceTokensKey = "device_tokens"
     
+    let profilePictureWasUpdated = Notification.Name("profilePictureWasUpdated")
+    
+    // MARK: - Properties
+    var profilePicture: UIImage? {
+        didSet {
+            NotificationCenter.default.post(name: profilePictureWasUpdated, object: nil)
+        }
+    }
+    
+    // MARK: - Profile Picture
+    /// This will return a profile picure or it will return the default image
+    func fetchProfilePicture() {
+        if let profilePicture = profilePicture  {
+            self.profilePicture = profilePicture
+        } else {
+            PhotoController.shared.fetchUserProfileImage { (image, success) in
+                guard success, let image = image else {
+                    self.profilePicture = #imageLiteral(resourceName: "smallAvatar")
+                    return
+                }
+                self.profilePicture = image
+            }
+        }
+    }
+    
     // MARK: - Create Auth User
     func createAuthUser(email: String, pass: String, completion: @escaping (_ success: Bool) -> Void) {
         firebaseManger.createFirebaseUserWith(email: email, password: pass) { (success) in
@@ -256,9 +281,3 @@ extension UserController {
         }
     }
 }
-
-
-
-
-
-

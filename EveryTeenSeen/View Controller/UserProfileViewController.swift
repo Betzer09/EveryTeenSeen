@@ -19,6 +19,7 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var createEventButton: UIButton!
     @IBOutlet weak var tableviewHeaderLabel: UILabel!
+    @IBOutlet weak var logoutButton: UIButton!
     
     // Table View Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -116,7 +117,8 @@ class UserProfileViewController: UIViewController {
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         profileImageView.clipsToBounds = true
         
-        createEventButton.layer.cornerRadius = createEventButton.bounds.height / 2
+        createEventButton.layer.cornerRadius = 15
+        logoutButton.layer.cornerRadius = 15
         
         guard let user = UserController.shared.loadUserProfile(), let userLocation = UserLocationController.shared.fetchUserLocation() else {return}
         
@@ -193,7 +195,6 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
         
         guard let allEvents = EventController.shared.events else {return UITableViewCell()}
         let events = setUpTableViewWith(events: allEvents)
-        print("Cell For Row At indexpath \(indexPath.row)")
         cell.event = events[indexPath.row]
         
         return cell
@@ -202,7 +203,6 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let allEvents = EventController.shared.events else {return 0}
         let events = setUpTableViewWith(events: allEvents)
-        print("Number Of Row In Section: \(events.count)")
         return events.count
     }
     

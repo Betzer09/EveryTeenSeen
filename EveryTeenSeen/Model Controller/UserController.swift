@@ -256,9 +256,7 @@ extension UserController {
             return
         }
         
-        print("There are \(users.count) Users in the context ")
         for i in 0...users.count - 2 {
-            print("There are \(users.count) Users in the context and we are trying to delete the \(i) user")
             context.delete(users[i])
         }
         

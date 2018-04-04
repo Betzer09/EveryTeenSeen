@@ -18,8 +18,6 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventContentView: UIView!
     @IBOutlet weak var eventSummary: UITextView!
 
-    
-    
     // Weekday Outlets
     @IBOutlet weak var weekdayLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!

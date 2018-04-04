@@ -285,18 +285,18 @@ Press to Download in the App Store</string>
                                                                 <constraint firstAttribute="width" constant="1" id="hjM-E4-XJ1"/>
                                                             </constraints>
                                                         </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-o0-dkw" userLabel="Going To Event Button">
+                                                            <rect key="frame" x="4" y="6.5" width="95" height="27"/>
+                                                            <connections>
+                                                                <action selector="attendEventButtonPressed:" destination="CVZ-SA-dXt" eventType="touchUpInside" id="BUv-O1-Hsa"/>
+                                                            </connections>
+                                                        </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="pwt-6f-3tD">
-                                                            <rect key="frame" x="4" y="6.5" width="26.5" height="27"/>
+                                                            <rect key="frame" x="4" y="6" width="26.5" height="27"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="pwt-6f-3tD" secondAttribute="height" multiplier="1:1" id="EAu-Zd-Zuz"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-o0-dkw" userLabel="Going To Event Button">
-                                                            <rect key="frame" x="4" y="6.5" width="95" height="27"/>
-                                                            <connections>
-                                                                <action selector="goingButton:" destination="CVZ-SA-dXt" eventType="touchUpInside" id="BUv-O1-Hsa"/>
-                                                            </connections>
-                                                        </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJK-nh-hMt" userLabel="Bottom Grey Line">
                                                             <rect key="frame" x="0.0" y="39" width="320" height="1"/>
                                                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -335,8 +335,8 @@ Press to Download in the App Store</string>
                                                         <constraint firstAttribute="height" id="DSH-vL-KXN"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Going?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="4UC-Bu-6kJ">
-                                                    <rect key="frame" x="35" y="331.5" width="64" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attend" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="4UC-Bu-6kJ">
+                                                    <rect key="frame" x="35" y="330" width="64" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -370,7 +370,7 @@ Press to Download in the App Store</string>
                                                 <constraint firstItem="ZiI-o0-dkw" firstAttribute="trailing" secondItem="4UC-Bu-6kJ" secondAttribute="trailing" id="Ed5-9V-fh4"/>
                                                 <constraint firstItem="M8e-Xs-r7T" firstAttribute="width" secondItem="XSZ-Wr-q68" secondAttribute="width" multiplier="1/6" id="Fcv-xw-HZG"/>
                                                 <constraint firstItem="4UC-Bu-6kJ" firstAttribute="height" secondItem="pwt-6f-3tD" secondAttribute="height" multiplier="2/3" id="HY3-jG-rHX"/>
-                                                <constraint firstItem="4UC-Bu-6kJ" firstAttribute="centerY" secondItem="Ljy-Ds-qEr" secondAttribute="centerY" id="Qz5-E8-lqG"/>
+                                                <constraint firstItem="4UC-Bu-6kJ" firstAttribute="centerY" secondItem="Ljy-Ds-qEr" secondAttribute="centerY" constant="-1" id="Qz5-E8-lqG"/>
                                                 <constraint firstItem="Ljy-Ds-qEr" firstAttribute="top" secondItem="XSZ-Wr-q68" secondAttribute="bottom" id="V85-Jh-jfk"/>
                                                 <constraint firstItem="fNB-H6-W9u" firstAttribute="height" secondItem="Ljy-Ds-qEr" secondAttribute="height" id="XPf-mS-XMg"/>
                                                 <constraint firstItem="M8e-Xs-r7T" firstAttribute="top" secondItem="Cmd-Cv-7bN" secondAttribute="top" constant="8" id="Z6C-68-jIe"/>
@@ -391,12 +391,13 @@ Press to Download in the App Store</string>
                                             <constraint firstItem="Ljy-Ds-qEr" firstAttribute="width" secondItem="CVZ-SA-dXt" secondAttribute="width" id="G5v-Qd-BbE"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="attendingLabel" destination="4UC-Bu-6kJ" id="r5q-zP-toS"/>
                                             <outlet property="eventAddressLabel" destination="F8S-pC-Bby" id="gvn-CN-U4Z"/>
                                             <outlet property="eventAttendingLabel" destination="h6M-xk-uMc" id="pAz-v7-1SZ"/>
                                             <outlet property="eventDateLabel" destination="J5B-EZ-IwK" id="0jx-p5-Mg6"/>
                                             <outlet property="eventPhotoImageView" destination="XSZ-Wr-q68" id="S61-Iz-bPI"/>
                                             <outlet property="eventTitleLabel" destination="2H7-LS-52m" id="poO-gJ-X1B"/>
-                                            <outlet property="goingLabel" destination="4UC-Bu-6kJ" id="r5q-zP-toS"/>
+                                            <outlet property="plusButtonImage" destination="pwt-6f-3tD" id="Brm-la-bLX"/>
                                             <segue destination="rke-Ie-XdE" kind="show" identifier="toEventDetailVC" id="VGq-Vx-2Dj"/>
                                         </connections>
                                     </tableViewCell>
@@ -803,6 +804,6 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
         <image name="defaultBackground" width="343" height="280"/>
         <image name="heart" width="25" height="23"/>
         <image name="map-pin" width="20" height="24"/>
-        <image name="plus" width="54" height="54"/>
+        <image name="plus" width="16" height="16"/>
     </resources>
 </document>

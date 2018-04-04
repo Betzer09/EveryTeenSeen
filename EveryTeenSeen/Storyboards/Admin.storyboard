@@ -574,18 +574,18 @@
                                                                 <constraint firstAttribute="width" constant="1" id="1Td-wC-G8u"/>
                                                             </constraints>
                                                         </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKg-ac-cgw" userLabel="Going To Event Button">
+                                                            <rect key="frame" x="4" y="10" width="91.5" height="20"/>
+                                                            <connections>
+                                                                <action selector="attendEventButtonPressed:" destination="iHw-st-Ewr" eventType="touchUpInside" id="0WL-kb-kAB"/>
+                                                            </connections>
+                                                        </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="Tox-Tz-vS1">
-                                                            <rect key="frame" x="4" y="6.5" width="26.5" height="27"/>
+                                                            <rect key="frame" x="4" y="9.5" width="19.5" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="Tox-Tz-vS1" secondAttribute="height" multiplier="1:1" id="wxp-s9-EET"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKg-ac-cgw" userLabel="Going To Event Button">
-                                                            <rect key="frame" x="4" y="6.5" width="95" height="27"/>
-                                                            <connections>
-                                                                <action selector="goingButton:" destination="iHw-st-Ewr" eventType="touchUpInside" id="0WL-kb-kAB"/>
-                                                            </connections>
-                                                        </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIH-qa-P4o" userLabel="Bottom Grey Line">
                                                             <rect key="frame" x="0.0" y="39" width="320" height="1"/>
                                                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -597,7 +597,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="AIH-qa-P4o" secondAttribute="bottom" id="0cc-Lr-rhE"/>
-                                                        <constraint firstItem="Tox-Tz-vS1" firstAttribute="height" secondItem="bio-46-2q1" secondAttribute="height" multiplier="2/3" id="0l4-Bl-0ob"/>
+                                                        <constraint firstItem="Tox-Tz-vS1" firstAttribute="height" secondItem="bio-46-2q1" secondAttribute="height" multiplier="1/2" id="0l4-Bl-0ob"/>
                                                         <constraint firstItem="YKg-ac-cgw" firstAttribute="height" secondItem="Tox-Tz-vS1" secondAttribute="height" id="3gH-Ck-OaJ"/>
                                                         <constraint firstItem="YKg-ac-cgw" firstAttribute="centerY" secondItem="bio-46-2q1" secondAttribute="centerY" id="6wp-mY-ngO"/>
                                                         <constraint firstItem="8HI-0u-y4m" firstAttribute="centerY" secondItem="bio-46-2q1" secondAttribute="centerY" id="BHI-52-ZKD"/>
@@ -624,14 +624,14 @@
                                                         <constraint firstAttribute="height" id="Oc3-mq-aSu"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Going?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cup-kv-Fh6">
-                                                    <rect key="frame" x="35" y="331.5" width="64" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attend" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cup-kv-Fh6">
+                                                    <rect key="frame" x="31.5" y="324" width="64" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attending: 0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="DQl-wx-5rl">
-                                                    <rect key="frame" x="204.5" y="331" width="106.5" height="18"/>
+                                                    <rect key="frame" x="204.5" y="325.5" width="106.5" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -668,12 +668,12 @@
                                                 <constraint firstItem="SKB-vm-FCf" firstAttribute="leading" secondItem="cb4-7j-13h" secondAttribute="leading" id="f0d-5A-oaT"/>
                                                 <constraint firstItem="DQl-wx-5rl" firstAttribute="centerY" secondItem="bio-46-2q1" secondAttribute="centerY" id="fIY-gx-q9U"/>
                                                 <constraint firstItem="Zdh-qh-KKi" firstAttribute="leading" secondItem="cb4-7j-13h" secondAttribute="leading" id="fLJ-ZR-uZh"/>
-                                                <constraint firstItem="cup-kv-Fh6" firstAttribute="centerY" secondItem="bio-46-2q1" secondAttribute="centerY" id="fXR-t3-YM7"/>
+                                                <constraint firstItem="cup-kv-Fh6" firstAttribute="centerY" secondItem="bio-46-2q1" secondAttribute="centerY" constant="-1" id="fXR-t3-YM7"/>
                                                 <constraint firstItem="lsk-o0-SfC" firstAttribute="height" secondItem="bio-46-2q1" secondAttribute="height" id="hcd-GP-lrm"/>
-                                                <constraint firstItem="cup-kv-Fh6" firstAttribute="leading" secondItem="Tox-Tz-vS1" secondAttribute="trailing" constant="4" id="ia2-VX-Y5e"/>
+                                                <constraint firstItem="cup-kv-Fh6" firstAttribute="leading" secondItem="Tox-Tz-vS1" secondAttribute="trailing" constant="8" id="ia2-VX-Y5e"/>
                                                 <constraint firstItem="SKB-vm-FCf" firstAttribute="height" secondItem="Zdh-qh-KKi" secondAttribute="height" multiplier="1/4" id="jar-Yq-FMT"/>
                                                 <constraint firstItem="40c-J8-imp" firstAttribute="top" secondItem="Zdh-qh-KKi" secondAttribute="bottom" id="kKi-cQ-3DA"/>
-                                                <constraint firstItem="cup-kv-Fh6" firstAttribute="height" secondItem="Tox-Tz-vS1" secondAttribute="height" multiplier="2/3" id="m7o-V6-XWd"/>
+                                                <constraint firstItem="cup-kv-Fh6" firstAttribute="height" secondItem="Tox-Tz-vS1" secondAttribute="height" multiplier="1.5" id="m7o-V6-XWd"/>
                                                 <constraint firstItem="lsk-o0-SfC" firstAttribute="leading" secondItem="DQl-wx-5rl" secondAttribute="trailing" constant="8" id="pyo-XT-m7G"/>
                                                 <constraint firstItem="cup-kv-Fh6" firstAttribute="width" secondItem="bio-46-2q1" secondAttribute="width" multiplier="1/5" id="q5c-nr-76B"/>
                                                 <constraint firstItem="SKB-vm-FCf" firstAttribute="bottom" secondItem="Zdh-qh-KKi" secondAttribute="bottom" id="wcW-uI-WoU"/>
@@ -683,12 +683,14 @@
                                             <constraint firstItem="bio-46-2q1" firstAttribute="width" secondItem="iHw-st-Ewr" secondAttribute="width" id="tWb-An-K8b"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="attendEventButton" destination="YKg-ac-cgw" id="osH-ky-5T9"/>
+                                            <outlet property="attendingLabel" destination="cup-kv-Fh6" id="GAb-HK-qiy"/>
                                             <outlet property="eventAddressLabel" destination="gPy-kz-Bki" id="3qf-fF-GFN"/>
                                             <outlet property="eventAttendingLabel" destination="DQl-wx-5rl" id="4wm-w7-1bW"/>
                                             <outlet property="eventDateLabel" destination="2k2-et-8sR" id="rfm-ak-cSZ"/>
                                             <outlet property="eventPhotoImageView" destination="Zdh-qh-KKi" id="9Jg-iP-aTx"/>
                                             <outlet property="eventTitleLabel" destination="Ame-qY-bV5" id="zNB-AQ-ssb"/>
-                                            <outlet property="goingLabel" destination="cup-kv-Fh6" id="GAb-HK-qiy"/>
+                                            <outlet property="plusButtonImage" destination="Tox-Tz-vS1" id="ZBt-Re-ufE"/>
                                             <segue destination="2tD-BS-DeE" kind="show" identifier="toEventDetailVC" id="1mV-fi-afj"/>
                                         </connections>
                                     </tableViewCell>
@@ -1236,7 +1238,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
         <image name="exitButton" width="14" height="14"/>
         <image name="heart" width="25" height="23"/>
         <image name="map-pin" width="20" height="24"/>
-        <image name="plus" width="54" height="54"/>
+        <image name="plus" width="16" height="16"/>
         <image name="plus-circle" width="33" height="33"/>
     </resources>
 </document>

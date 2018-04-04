@@ -157,7 +157,7 @@
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uT-bb-RMW" userLabel="Going To Event Button">
                                                                             <rect key="frame" x="4" y="7.5" width="110.5" height="31.5"/>
                                                                             <connections>
-                                                                                <action selector="goingButton:" destination="9EW-bf-NOx" eventType="touchUpInside" id="vYc-aF-B2W"/>
+                                                                                <action selector="attendEventButtonPressed:" destination="9EW-bf-NOx" eventType="touchUpInside" id="vYc-aF-B2W"/>
                                                                             </connections>
                                                                         </button>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="55E-Gl-rxb" userLabel="Bottom Grey Line">
@@ -198,7 +198,7 @@
                                                                         <constraint firstAttribute="height" id="MtL-3c-4cY"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Going?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EW6-WP-iXZ">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Going?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="EW6-WP-iXZ">
                                                                     <rect key="frame" x="39.5" y="388.5" width="75" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                                     <nil key="textColor"/>
@@ -243,12 +243,12 @@
                                                             <constraint firstItem="Twf-J6-Lnz" firstAttribute="width" secondItem="9EW-bf-NOx" secondAttribute="width" id="Ait-ia-JwP"/>
                                                         </constraints>
                                                         <connections>
+                                                            <outlet property="attendingLabel" destination="EW6-WP-iXZ" id="9dJ-Z9-BgM"/>
                                                             <outlet property="eventAddressLabel" destination="ZkD-Mm-Tj9" id="AkJ-yr-Us7"/>
                                                             <outlet property="eventAttendingLabel" destination="DUF-W7-ct4" id="cAn-IG-00g"/>
                                                             <outlet property="eventDateLabel" destination="lbD-9b-ekC" id="RYy-k7-Mde"/>
                                                             <outlet property="eventPhotoImageView" destination="nBE-yr-dbp" id="3yx-7X-mFt"/>
                                                             <outlet property="eventTitleLabel" destination="UdL-lH-zbX" id="wFR-Iw-VWu"/>
-                                                            <outlet property="goingLabel" destination="EW6-WP-iXZ" id="9dJ-Z9-BgM"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -275,7 +275,10 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRY-kV-mXQ">
                                                 <rect key="frame" x="94" y="482" width="187.5" height="30"/>
-                                                <state key="normal" title="Log Out"/>
+                                                <color key="backgroundColor" red="1" green="0.27157238005896311" blue="0.28542830255129648" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Log Out">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="logUserOutButtonPressed:" destination="vXv-m3-yDA" eventType="touchUpInside" id="Age-F6-gk8"/>
                                                 </connections>
@@ -434,6 +437,7 @@
                         <outlet property="firstRowInterestStackView" destination="DSv-hA-JXu" id="t2R-jd-Khm"/>
                         <outlet property="fullnameLabel" destination="ubc-5h-osd" id="HIX-YV-dun"/>
                         <outlet property="interestsGroupView" destination="WVd-XP-06i" id="Ren-YL-3gP"/>
+                        <outlet property="logoutButton" destination="yRY-kV-mXQ" id="k2L-GR-P1q"/>
                         <outlet property="profileImageView" destination="eKW-co-BSt" id="23v-qS-moh"/>
                         <outlet property="secondRowInterestStackView" destination="l4e-mA-Y54" id="vA9-bc-aLf"/>
                         <outlet property="tableView" destination="PAp-gs-G0m" id="Cst-cU-44k"/>

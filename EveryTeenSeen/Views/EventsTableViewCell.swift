@@ -15,8 +15,9 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventAddressLabel: UILabel!
     @IBOutlet weak var eventAttendingLabel: UILabel!
-    @IBOutlet weak var goingLabel: UILabel!
-    
+    @IBOutlet weak var attendingLabel: UILabel!
+    @IBOutlet weak var attendEventButton: UIButton!
+    @IBOutlet weak var plusButtonImage: UIImageView!
     @IBOutlet weak var eventPhotoImageView: UIImageView!
     
     // MARK: - Properties
@@ -49,7 +50,7 @@ class EventsTableViewCell: UITableViewCell {
         }
     }
     
-    @IBAction func goingButton(_ sender: Any) {
+    @IBAction func attendEventButtonPressed(_ sender: Any) {
         guard let rootvc = UIApplication.shared.keyWindow?.rootViewController else {return}
         guard let user = UserController.shared.loadUserProfile(),
             let eventPassedInToCell = event,
@@ -58,7 +59,7 @@ class EventsTableViewCell: UITableViewCell {
             let count = event.attending?.count else {return}
         
 
-        if goingLabel.text == "Going?" {
+        if attendingLabel.text == "Attend" {
             configureLableAsNotGoing()
         
             EventController.shared.isPlanningOnAttending(event: event, user: user, isGoing: true, completion: { (stringError) in
@@ -112,11 +113,18 @@ class EventsTableViewCell: UITableViewCell {
     }
     
     func configureLabelAsGoing() {
-        goingLabel.text = "Going?"
+        attendingLabel.text = "Attend"
+        DispatchQueue.main.async {
+            self.plusButtonImage.image = #imageLiteral(resourceName: "plus")
+        }
+
     }
     
     func configureLableAsNotGoing() {
-        goingLabel.text = "Not Going"
+        attendingLabel.text = "Unattend"
+        DispatchQueue.main.async {
+            self.plusButtonImage.image = #imageLiteral(resourceName: "minus")
+        }
     }
     
     func presentAddMessageAlertWith(title: String, message: String) {
@@ -182,17 +190,3 @@ class EventsTableViewCell: UITableViewCell {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

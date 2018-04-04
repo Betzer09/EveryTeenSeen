@@ -211,7 +211,8 @@ extension UserController {
     
     // Updates the User In CoreData
     func updateUserInCoredata(user: User, email: String, fullname: String, usertype: String, zipcode: String, profileImageStringURL: String, eventDistance: Int64) {
-
+        
+        deleteAllUserData()
         do {
             user.setValue(email, forKey: "email")
             user.setValue(fullname, forKey: "fullname")
@@ -239,7 +240,6 @@ extension UserController {
     func loadUserProfile() -> User? {
         let request: NSFetchRequest<User> = User.fetchRequest()
         guard let user = try? CoreDataStack.context.fetch(request).last else {return nil}
-        
         return user
     }
     
@@ -256,8 +256,10 @@ extension UserController {
             return
         }
         
-        for user in users {
-            context.delete(user)
+        print("There are \(users.count) Users in the context ")
+        for i in 0...users.count - 2 {
+            print("There are \(users.count) Users in the context and we are trying to delete the \(i) user")
+            context.delete(users[i])
         }
         
         do {

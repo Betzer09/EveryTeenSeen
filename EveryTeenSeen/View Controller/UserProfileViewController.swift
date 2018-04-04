@@ -193,6 +193,7 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
         
         guard let allEvents = EventController.shared.events else {return UITableViewCell()}
         let events = setUpTableViewWith(events: allEvents)
+        print("Cell For Row At indexpath \(indexPath.row)")
         cell.event = events[indexPath.row]
         
         return cell
@@ -201,6 +202,7 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let allEvents = EventController.shared.events else {return 0}
         let events = setUpTableViewWith(events: allEvents)
+        print("Number Of Row In Section: \(events.count)")
         return events.count
     }
     

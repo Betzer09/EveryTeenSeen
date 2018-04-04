@@ -154,16 +154,18 @@ class UpdateUserProfileViewController: UIViewController {
         
         if changedProfilePicture == true {
             updateUserProfileImageWith(user: user, image: image, email: email, completion: { (hasFinishedPostingImage) in
-                DispatchQueue.main.async {
-                    self.successImageView.isHidden = false
-                    self.uploadingUpdatedProfileLabel.text = "You've succesfully updated your profile!"
-                    self.uploadingProfileActivityMonitor.isHidden = true
-                    self.uploadingProfileActivityMonitor.stopAnimating()
-                    self.exitProfileUpdateView.isHidden = false
-                }
                 
                 PhotoController.shared.fetchUserProfileImage(completion: { (image, success) in
-                    guard success else {return}
+                    guard success, let image = image else {return}
+                    
+                    DispatchQueue.main.async {
+                        self.successImageView.isHidden = false
+                        self.uploadingUpdatedProfileLabel.text = "You've succesfully updated your profile!"
+                        self.uploadingProfileActivityMonitor.isHidden = true
+                        self.uploadingProfileActivityMonitor.stopAnimating()
+                        self.exitProfileUpdateView.isHidden = false
+                    }
+                    
                     UserController.shared.profilePicture = image
                 })
             })
@@ -192,7 +194,6 @@ class UpdateUserProfileViewController: UIViewController {
     func updateUserProfileImageWith(user: User, image: UIImage, email: String, completion: @escaping(_ doneUploadingProfilePicture: Bool) -> Void) {
         
         // Make sure it isn't the default image first
-        if profileImageView.image != #imageLiteral(resourceName: "largeAvatar") {
             PhotoController.shared.deletingImageFromStorageWith(eventTitle: email, completion: { (success) in
                 guard let fullname = self.fullnameTextfield.text, let usertype = user.usertype else {return}
                 
@@ -210,9 +211,7 @@ class UpdateUserProfileViewController: UIViewController {
                     completion(true)
                 }
             })
-        }
     }
-    
     
     // MARK: - Delete Interest
     func presentDeleteInterestConformationAlert(completion: @escaping(_ success: Bool) -> Void) {

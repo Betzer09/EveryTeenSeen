@@ -397,7 +397,7 @@ Press to Download in the App Store</string>
                                             <outlet property="eventPhotoImageView" destination="XSZ-Wr-q68" id="S61-Iz-bPI"/>
                                             <outlet property="eventTitleLabel" destination="2H7-LS-52m" id="poO-gJ-X1B"/>
                                             <outlet property="goingLabel" destination="4UC-Bu-6kJ" id="r5q-zP-toS"/>
-                                            <segue destination="rke-Ie-XdE" kind="show" id="VGq-Vx-2Dj"/>
+                                            <segue destination="rke-Ie-XdE" kind="show" identifier="toEventDetailVC" id="VGq-Vx-2Dj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

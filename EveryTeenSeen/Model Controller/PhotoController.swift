@@ -104,7 +104,7 @@ class PhotoController {
                 return
             }
             
-            guard let data = data, let image = UIImage(data: data) else {NSLog("Error with profile picture data for user: \(user.email)"); return}
+            guard let data = data, let image = UIImage(data: data) else {NSLog("Error with profile picture data for user: \(user.email ?? "")"); return}
             completion(image, true)
         }.resume()
         

@@ -27,10 +27,10 @@ class EventsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUpNotificationObservers()
+        self.configureNavigationBar()
         self.loadAllEvents { (success) in
             guard success else {return}
-            self.setUpNotificationObservers()
-            self.configureNavigationBar()
             self.checkIfUserHasAccount()
         }
     }
@@ -48,7 +48,7 @@ class EventsViewController: UIViewController {
     private func setUpNotificationObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.eventWasUpdatedNotifcation, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadNavBar), name: UserController.shared.profilePictureWasUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadProfilePicture), name: UserController.shared.profilePictureWasUpdated, object: nil)
     }
     
     private func setTableViewHeight() {
@@ -81,9 +81,18 @@ class EventsViewController: UIViewController {
         }
     }
     
-    @objc func reloadNavBar() {
+    @objc func reloadProfilePicture() {
+        NSLog("Profile picture has been updated")
+        
+        guard let unwrappedImage = UserController.shared.profilePicture.circleMasked else {return}
+        let profileImage = resizeImage(image: unwrappedImage, targetSize: CGSize(width: 40.0, height: 40.0))
+        let profileButton: UIButton = UIButton(type: .custom)
+        let profilePicutre = resizeImage(image: profileImage, targetSize: CGSize(width: 40.0, height: 40.0))
+        profileButton.setImage(profilePicutre, for: .normal)
+        profileButton.addTarget(self, action: #selector(segueToProfileView), for: .touchUpInside)
+        
         DispatchQueue.main.async {
-            self.configureNavigationBar()
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileButton)
         }
     }
 }
@@ -134,8 +143,8 @@ extension EventsViewController {
         hamburgerButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
         
         let profileButton: UIButton = UIButton(type: .custom)
-        guard let unwrappedImage = UserController.shared.profilePicture?.circleMasked else {return}
-        let profileImage = resizeImage(image: unwrappedImage , targetSize: CGSize(width: 40.0, height: 40.0))
+        guard let unwrappedImage = UserController.shared.profilePicture.circleMasked else {return}
+        let profileImage = resizeImage(image: unwrappedImage, targetSize: CGSize(width: 40, height: 40.0))
         
         profileButton.setImage(profileImage, for: .normal)
         profileButton.addTarget(self, action: #selector(segueToProfileView), for: .touchUpInside)
@@ -144,8 +153,8 @@ extension EventsViewController {
         let happyImage: UIImageView = UIImageView(image: image)
         happyImage.contentMode = .scaleAspectFit
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: hamburgerButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileButton)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: hamburgerButton)
         self.navigationItem.titleView = happyImage
     }
     

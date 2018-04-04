@@ -159,7 +159,7 @@ class EventDetailViewController: UIViewController {
     }
     
     func setUpNotificaitonObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadNavBar), name: UserController.shared.profilePictureWasUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadProfilePicture), name: UserController.shared.profilePictureWasUpdated, object: nil)
     }
     
     /// This should be set when they are going to the event
@@ -201,9 +201,18 @@ class EventDetailViewController: UIViewController {
     }
     
     // MARK: - Objective - C Functions
-    @objc func reloadNavBar() {
+    @objc func reloadProfilePicture() {
+        NSLog("Profile picture has been updated")
+        
+        guard let unwrappedImage = UserController.shared.profilePicture.circleMasked else {return}
+        let profileImage = resizeImage(image: unwrappedImage , targetSize: CGSize(width: 40.0, height: 40.0))
+        let profileButton: UIButton = UIButton(type: .custom)
+        let profilePicutre = resizeImage(image: profileImage, targetSize: CGSize(width: 40.0, height: 40.0))
+        profileButton.setImage(profilePicutre, for: .normal)
+        profileButton.addTarget(self, action: #selector(segueToProfileView), for: .touchUpInside)
+        
         DispatchQueue.main.async {
-            self.configureNavigationBar()
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileButton)
         }
     }
 }
@@ -218,8 +227,9 @@ extension EventDetailViewController {
         backButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
         
         let profileButton: UIButton = UIButton(type: .custom)
-        guard let unwrappedImage = UserController.shared.profilePicture?.circleMasked else {return}
-        let profileImage = resizeImage(image: unwrappedImage , targetSize: CGSize(width: 40.0, height: 40.0))
+        guard let unwrappedImage = UserController.shared.profilePicture.circleMasked else {return}
+        let profileImage = resizeImage(image: unwrappedImage, targetSize: CGSize(width: 40.0, height: 40.0))
+        
         profileButton.setImage(profileImage, for: .normal)
         profileButton.addTarget(self, action: #selector(segueToProfileView), for: .touchUpInside)
         

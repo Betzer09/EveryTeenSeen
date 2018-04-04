@@ -34,7 +34,7 @@ class UserController {
     let profilePictureWasUpdated = Notification.Name("profilePictureWasUpdated")
     
     // MARK: - Properties
-    var profilePicture: UIImage? {
+    var profilePicture: UIImage = #imageLiteral(resourceName: "smallAvatar") {
         didSet {
             NotificationCenter.default.post(name: profilePictureWasUpdated, object: nil)
         }
@@ -43,16 +43,13 @@ class UserController {
     // MARK: - Profile Picture
     /// This will return a profile picure or it will return the default image
     func fetchProfilePicture() {
-        if let profilePicture = profilePicture  {
-            self.profilePicture = profilePicture
-        } else {
-            PhotoController.shared.fetchUserProfileImage { (image, success) in
-                guard success, let image = image else {
-                    self.profilePicture = #imageLiteral(resourceName: "smallAvatar")
-                    return
-                }
-                self.profilePicture = image
+        
+        PhotoController.shared.fetchUserProfileImage { (image, success) in
+            guard success, let image = image else {
+                self.profilePicture = #imageLiteral(resourceName: "smallAvatar")
+                return
             }
+            self.profilePicture = image
         }
     }
     

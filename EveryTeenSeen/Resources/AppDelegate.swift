@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.setUpNavigationBar()
         self.configureUserToSignIn()
         self.setUpNotificationObserver()
+        application.applicationIconBadgeNumber = 0
         
         return true
     }
@@ -104,7 +105,7 @@ extension AppDelegate {
                 // This is an admin user
                 viewController = adminView.instantiateInitialViewController()!
             } else {
-                print("Error: Something is wrong with the usertype of: \(user.usertype)")
+                print("Error: Something is wrong with the usertype of: \(user.usertype ?? "")")
                 viewController = mainView.instantiateInitialViewController()!
             }
         } else {

@@ -763,7 +763,7 @@
                                     <constraint firstItem="ePP-BB-Ukk" firstAttribute="top" secondItem="Xnv-jg-rI2" secondAttribute="bottom" constant="8" id="rOU-mH-cke"/>
                                 </constraints>
                             </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Wzx-UO-CNP">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Wzx-UO-CNP">
                                 <rect key="frame" x="150" y="238.5" width="20" height="20"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
@@ -835,7 +835,7 @@
                         <viewLayoutGuide key="safeArea" id="Jj8-Wb-l6c"/>
                     </view>
                     <navigationItem key="navigationItem" id="FZi-oD-DvR">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="in6-Dg-ItF">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Update" id="in6-Dg-ItF">
                             <connections>
                                 <action selector="doneEditingProfileButtonPressed:" destination="phe-9J-GLz" id="S88-PO-rvY"/>
                             </connections>

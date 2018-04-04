@@ -42,9 +42,13 @@ class UpdateUserProfileViewController: UIViewController {
     // MARK: - Properties
     var delegate: PhotoSelectedViewControllerDelegate?
     private var changedProfilePicture = false
+    private var needsUpdated = false {
+        didSet {
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+        }
+    }
     
     // MARK: - View Life Cycle
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpView()
@@ -52,7 +56,6 @@ class UpdateUserProfileViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
     @IBAction func deleteInterestButtonPressed(_ sender: UIButton) {
         self.presentDeleteInterestConformationAlert { (delete) in
             guard delete,
@@ -141,6 +144,7 @@ class UpdateUserProfileViewController: UIViewController {
         DispatchQueue.main.async {
             self.maxLabelTextField.text = "\(Int(sender.value)) mi"
         }
+        self.needsUpdated = true
     }
     
     // MARK: - Update User Profile Functions
@@ -161,7 +165,6 @@ class UpdateUserProfileViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.successImageView.isHidden = false
                         self.uploadingUpdatedProfileLabel.text = "You've succesfully updated your profile!"
-                        self.uploadingProfileActivityMonitor.isHidden = true
                         self.uploadingProfileActivityMonitor.stopAnimating()
                         self.exitProfileUpdateView.isHidden = false
                     }
@@ -234,6 +237,7 @@ class UpdateUserProfileViewController: UIViewController {
     // MARK: - Functions
     func setUpView() {
         adminPasswordTextfield.delegate = self
+        fullnameTextfield.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
@@ -319,6 +323,7 @@ extension UpdateUserProfileViewController: UIImagePickerControllerDelegate, UINa
             self.profileImageView.clipsToBounds = true
         }
         self.changedProfilePicture = true
+        self.needsUpdated = true
         picker.dismiss(animated: true,completion: nil)
     }
     
@@ -391,8 +396,12 @@ extension UpdateUserProfileViewController: UITextFieldDelegate {
                 self.adminPasswordTextfield.text = ""
             }
         }
-        
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == fullnameTextfield {
+            self.needsUpdated = true
+        }
+    }
 }

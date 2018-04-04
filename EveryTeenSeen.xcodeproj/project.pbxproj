@@ -123,13 +123,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		232344E82060225400BC1DA0 /* NSManagedObjects */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NSManagedObjects;
-			sourceTree = "<group>";
-		};
 		23250CE420242CB30033B85D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				2347DAAE204DDF7600124188 /* EveryTeenSeen.xcdatamodeld */,
-				232344E82060225400BC1DA0 /* NSManagedObjects */,
 				23250CF2202431130033B85D /* City.swift */,
 				2393D3A32033BFE40073F6A5 /* Event.swift */,
 				2336698A2034E3040070F17F /* Photo.swift */,

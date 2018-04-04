@@ -249,6 +249,7 @@
                                                             <outlet property="eventDateLabel" destination="lbD-9b-ekC" id="RYy-k7-Mde"/>
                                                             <outlet property="eventPhotoImageView" destination="nBE-yr-dbp" id="3yx-7X-mFt"/>
                                                             <outlet property="eventTitleLabel" destination="UdL-lH-zbX" id="wFR-Iw-VWu"/>
+                                                            <outlet property="plusButtonImage" destination="eYv-zH-kbG" id="L3Y-4H-1h2"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -896,6 +897,6 @@
         <image name="defaultBackground" width="343" height="280"/>
         <image name="exitButton" width="14" height="14"/>
         <image name="largeAvatar" width="146" height="146"/>
-        <image name="plus" width="54" height="54"/>
+        <image name="plus" width="24" height="24"/>
     </resources>
 </document>

@@ -108,7 +108,7 @@ class EventController {
             }
             
             eventGroup.notify(queue: .main, execute: {
-                let sortedEvent = events.sorted(by: { $0.title < $1.title })
+                let sortedEvent = events.sorted(by: { convertStringToDateWith(stringDate: $0.dateHeld)! > convertStringToDateWith(stringDate: $1.dateHeld)!})
                 self.events = sortedEvent
                 completion(true)
             })

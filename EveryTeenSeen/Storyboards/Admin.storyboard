@@ -943,7 +943,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9l-hH-n8V">
-                                                <rect key="frame" x="177" y="770" width="119" height="36"/>
+                                                <rect key="frame" x="177" y="770" width="119" height="32.5"/>
                                                 <color key="backgroundColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Attend event">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -953,7 +953,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8GS-LS-VNx">
-                                                <rect key="frame" x="16" y="822" width="288" height="122"/>
+                                                <rect key="frame" x="16" y="818.5" width="288" height="122"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qtg-LI-D9Q">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="57"/>
@@ -1040,13 +1040,13 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attending: 0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Vc9-OL-4kg">
-                                                <rect key="frame" x="16" y="777" width="119" height="29"/>
+                                                <rect key="frame" x="16" y="770" width="119" height="32.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxl-ec-5bP" userLabel="Loading View">
-                                                <rect key="frame" x="16" y="822" width="288" height="122"/>
+                                                <rect key="frame" x="16" y="818.5" width="288" height="122"/>
                                                 <subviews>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="iCX-Q8-RKN">
                                                         <rect key="frame" x="134" y="18" width="20" height="20"/>
@@ -1078,7 +1078,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                             <constraint firstItem="RcR-nd-jm6" firstAttribute="width" secondItem="0AL-gp-hWS" secondAttribute="width" id="2aZ-FS-XT0"/>
                                             <constraint firstItem="0AL-gp-hWS" firstAttribute="leading" secondItem="onE-AH-zYO" secondAttribute="leading" constant="16" id="3AE-7Z-Har"/>
                                             <constraint firstItem="onE-AH-zYO" firstAttribute="height" secondItem="cV0-35-nWW" secondAttribute="height" multiplier="1/5" id="3gk-53-xIF"/>
-                                            <constraint firstItem="n9l-hH-n8V" firstAttribute="height" secondItem="l0u-F5-ZUv" secondAttribute="height" id="4AC-dg-qqk"/>
+                                            <constraint firstItem="n9l-hH-n8V" firstAttribute="height" secondItem="l0u-F5-ZUv" secondAttribute="height" multiplier="0.9" id="4AC-dg-qqk"/>
                                             <constraint firstItem="RcR-nd-jm6" firstAttribute="top" secondItem="meU-bx-ptk" secondAttribute="bottom" constant="16" id="5oN-LN-s6n"/>
                                             <constraint firstItem="AMV-QG-p9H" firstAttribute="top" secondItem="MOI-gg-mHy" secondAttribute="bottom" constant="4" id="616-fY-sKS"/>
                                             <constraint firstItem="RcR-nd-jm6" firstAttribute="leading" secondItem="0AL-gp-hWS" secondAttribute="leading" id="6fQ-bL-9jD"/>
@@ -1095,7 +1095,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                             <constraint firstItem="0AL-gp-hWS" firstAttribute="top" secondItem="onE-AH-zYO" secondAttribute="bottom" constant="16" id="RD5-OS-loJ"/>
                                             <constraint firstItem="MOI-gg-mHy" firstAttribute="height" secondItem="D0o-fT-m6G" secondAttribute="height" id="RW4-Cq-9HD"/>
                                             <constraint firstItem="gxl-ec-5bP" firstAttribute="bottom" secondItem="8GS-LS-VNx" secondAttribute="bottom" id="Rf8-P7-WN5"/>
-                                            <constraint firstItem="Vc9-OL-4kg" firstAttribute="height" secondItem="n9l-hH-n8V" secondAttribute="height" multiplier="0.8" id="TgV-cq-xjt"/>
+                                            <constraint firstItem="Vc9-OL-4kg" firstAttribute="height" secondItem="n9l-hH-n8V" secondAttribute="height" id="TgV-cq-xjt"/>
                                             <constraint firstItem="meU-bx-ptk" firstAttribute="height" secondItem="D0o-fT-m6G" secondAttribute="height" id="Txv-TM-4M8"/>
                                             <constraint firstItem="qa6-m4-kB3" firstAttribute="centerY" secondItem="yIm-o3-k2H" secondAttribute="centerY" id="Udf-Vj-Ak5"/>
                                             <constraint firstItem="0AL-gp-hWS" firstAttribute="height" secondItem="l0u-F5-ZUv" secondAttribute="height" multiplier="2/3" id="Vdq-Tg-cuj"/>
@@ -1238,7 +1238,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
         <image name="exitButton" width="14" height="14"/>
         <image name="heart" width="25" height="23"/>
         <image name="map-pin" width="20" height="24"/>
-        <image name="plus" width="16" height="16"/>
+        <image name="plus" width="24" height="24"/>
         <image name="plus-circle" width="33" height="33"/>
     </resources>
 </document>

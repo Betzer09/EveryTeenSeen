@@ -61,31 +61,26 @@ func convertJsonToDataWith(json: [String: Any]) -> Data? {
     return nil
 }
 
+
 // MARK: - Date Formatter Functions
 
-//DATE FORMATTING - Get rid of only if able to change date formatting?
 
-/// This function takes in a date and returns a string 
+/// This function takes in a date and returns a string
 func returnFormattedDateFor(date: Date) -> String {
     
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "EEEE, MMMM dd, yyyy"
     let strDate = dateFormatter.string(from: date)
     return strDate
-    
 }
 
-// Takes in a string and returns a date 
-func returnFormattedDateFor(string: String) -> String? {
+/// Converts the string to a date for ordering events
+func convertStringToDateWith(stringDate: String) -> Date? {
     
-    let dateFormatterGet = DateFormatter()
-    dateFormatterGet.dateFormat = "yyyy-MM-dd hh:mm:ssZ"
-    
-    let dateFormatterPrint = DateFormatter()
-    dateFormatterPrint.dateFormat = "MMM d, yyyy"
-    
-    guard let date: Date = dateFormatterGet.date(from: string) else {return nil}
-    return dateFormatterPrint.string(from: date)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE, MMMM dd, yyyy"
+    guard let date = dateFormatter.date(from: stringDate) else {NSLog("Error formating date to sort evetns"); return nil}
+    return date
 }
 
 /// This takes in a time and returns a string
@@ -97,6 +92,8 @@ func returnFormattedTimeAsStringWith(date: Date) -> String {
     let strDate = dateFormatter.string(from: date)
     return strDate
 }
+
+
 
 /// This parses the json responce for the event time and location
 func parseStringByCommasForDateAndLocation(string: String, completion: @escaping(_ firstWord: String, _ everythingAfterComma: String) -> Void) {

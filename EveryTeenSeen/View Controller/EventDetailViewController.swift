@@ -30,6 +30,15 @@ class EventDetailViewController: UIViewController {
     // Bottom half outlets
     @IBOutlet weak var attendEventButton: UIButton!
     
+    // Profile Picture Outlets
+    @IBOutlet weak var profilePictureGroupStackView: UIStackView!
+    @IBOutlet weak var loadingProfilePictureView: UIView!
+    @IBOutlet weak var loadingProfilePicturesAnimatorView: UIActivityIndicatorView!
+    @IBOutlet weak var attendingCountLabel: UILabel!
+    @IBOutlet weak var loadingEventsLabel: UILabel!
+    
+    
+    
     
     // MARK: - Properties
     var event: Event?
@@ -38,7 +47,6 @@ class EventDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setUpView()
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +69,10 @@ class EventDetailViewController: UIViewController {
                 presentSimpleAlert(viewController: self, title: "Problem Unattending event!", message: errorString)
             }, completionHandler: { (updatedEvent) in
                 // TODO: - Update the attending label
+                guard let count = updatedEvent?.attending?.count else {return}
+                DispatchQueue.main.async {
+                    self.attendingCountLabel.text = "Attending: \(count)"
+                }
                 event.attending = updatedEvent?.attending
                 self.setAttendingButtonToYellow()
             })
@@ -71,7 +83,10 @@ class EventDetailViewController: UIViewController {
                 NSLog("Error with user attending event! :\(errorString)")
                 presentSimpleAlert(viewController: self, title: "Problem Attending event!", message: errorString)
             }, completionHandler: { (updatedEvent) in
-                // TODO: - Update the attending label
+                guard let count = updatedEvent?.attending?.count else {return}
+                DispatchQueue.main.async {
+                    self.attendingCountLabel.text = "Attending: \(count)"
+                }
                 event.attending = updatedEvent?.attending
                 self.setAttendingButtonAsGrey()
             })
@@ -94,6 +109,8 @@ class EventDetailViewController: UIViewController {
         eventTimeLabel.text = event.eventTime
         attendEventButton.layer.cornerRadius = 15
         
+        attendingCountLabel.text = "Attending: \(attendings.count)"
+        
         if attendings.contains(userEmail) {
             attendEventButton.setTitle("Unattend event", for: .normal)
             attendEventButton.backgroundColor = UIColor.lightGray
@@ -101,6 +118,44 @@ class EventDetailViewController: UIViewController {
         
         self.setUpCalanderLabels()
         self.setUpLocationLabels()
+        self.setUpProfilePictureForAttending()
+    }
+    
+    /// Configures all of the attending buttons
+    private func setUpProfilePictureForAttending() {
+        guard let user = UserController.shared.loadUserProfile(), let usertype = user.usertype, let event = event else {return}
+        
+        EventController.shared.fetchAllProfilePicturesFor(event: event) { (profilePicuresImages) in
+            guard let profilePicuresImages = profilePicuresImages else {
+                self.loadingProfilePicturesAnimatorView.stopAnimating()
+                self.loadingEventsLabel.text = "Be the first to Join!"
+                return
+            }
+            
+            let buttons = getAllButtons(view: self.profilePictureGroupStackView)
+            
+            for button in buttons {
+                // Congirue the buttons
+                button.setTitle("", for: .normal)
+                if usertype == UserType.leadCause.rawValue {
+                    button.isEnabled = true
+                } else {
+                    button.isEnabled = false
+                }
+            }
+            
+            for i in 0...profilePicuresImages.count - 1 {
+                let resizedImage = resizeImage(image: profilePicuresImages[i], targetSize: CGSize(width: 50, height: 50))
+                DispatchQueue.main.async {
+                    buttons[i].imageView?.contentMode = .scaleAspectFit
+                    buttons[i].setImage(resizedImage, for: .normal)
+                }
+            }
+            
+            
+            self.loadingProfilePictureView.isHidden = true
+            self.loadingProfilePicturesAnimatorView.stopAnimating()
+        }
     }
     
     func setUpNotificaitonObservers() {

@@ -22,6 +22,7 @@ class EventController {
     
     // MARK: - Properties
     static let shared = EventController()
+    let firebaseManager = FirebaseManager()
     
     var events: [Event]? = [] {
         didSet {
@@ -211,6 +212,99 @@ class EventController {
         return event
     }
     
+    // MARK: - Profile Picture Functions
+    
+    /// Fetches the first 12 profile pictures
+    func fetchAllProfilePicturesFor(event: Event, completion: @escaping (_ images: [UIImage]?) -> Void ) {
+        
+        let imageDispatchGroup = DispatchGroup()
+        guard let userEmails = event.attending else {completion(nil); return}
+        var profileImages: [UIImage] = []
+        
+        self.fetchAllUsersProfileURLSWith(emails: userEmails) { (constructedURLS) in
+            if constructedURLS.isEmpty {
+                completion(nil);
+                return
+            }
+            
+            // Only get the first 12
+                for URL in constructedURLS {
+                    print(URL)
+                    imageDispatchGroup.enter()
+                    self.fetchProfilePicure(with: URL, completion: { (profileImage) in
+                        guard let profileImage = profileImage else{
+                            imageDispatchGroup.leave()
+                            completion(nil)
+                            return
+                        }
+                        profileImages.append(profileImage)
+                        imageDispatchGroup.leave()
+                    })
+                }
+            
+            imageDispatchGroup.notify(queue: .main, execute: {
+                completion(profileImages)
+            })
+        }
+        
+    }
+    
+    /// Fetches the profile picture URLS for the users attending the event
+    private func fetchAllUsersProfileURLSWith(emails: [String], completion: @escaping (_ stringURLS: [URL]) -> Void) {
+        
+        var profilePicureURLS: [URL] = []
+        
+        let userGroup = DispatchGroup()
+        
+        if emails.isEmpty {
+            completion([])
+            return
+        }
+        
+        for email in emails {
+            // Makes sure we don't get more than 12 picures
+            if profilePicureURLS.count >= 12 {
+                break
+            }
+            
+            userGroup.enter()
+            firebaseManager.fetchUserFromFirebaseWith(email: email, completion: { (user, error) in
+                if let error = error {
+                    NSLog("Error retriving \(email)\'s profile due to error: \(error.localizedDescription)")
+                    userGroup.leave()
+                }
+                
+                guard let user = user,
+                    let profileURL = user.profileImageURLString,
+                    profileURL != "",
+                    let url = URL(string: profileURL) else {
+                        userGroup.leave()
+                        NSLog("Error fetching All user profile pictures in function: \(#function), returning out of loop function!")
+                        return
+                }
+                    profilePicureURLS.append(url)
+                    userGroup.leave()
+            })
+            
+            userGroup.notify(queue: .main, execute: {
+                completion(profilePicureURLS)
+            })
+        }
+    }
+    /// Fetches a users profile with the URL
+    private func fetchProfilePicure(with URL: URL, completion: @escaping (_ profileImage: UIImage?) -> Void) {
+        
+        URLSession.shared.dataTask(with: URL) { (data, _, error) in
+            if let error = error {
+                NSLog("Error fetching profilepicure with URL \(URL) with error: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            guard let data = data, let image = UIImage(data: data) else {completion(nil); return}
+            completion(image)
+            }.resume()
+    }
     
     // MARK: - Functions
     private func updateAttendingArrayWithUser(event: Event, user: User, isGoing: Bool) -> Event? {

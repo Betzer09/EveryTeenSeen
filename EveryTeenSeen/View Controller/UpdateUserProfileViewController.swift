@@ -107,7 +107,7 @@ class UpdateUserProfileViewController: UIViewController {
     
     
     @IBAction func doneEditingProfileButtonPressed(_ sender: Any) {
-        guard let image = profileImageView.image,
+        guard let image = profileImageView.image?.circleMasked,
             let fullname = fullnameTextfield.text,
             let user = UserController.shared.loadUserProfile(),
             let email = user.email else {

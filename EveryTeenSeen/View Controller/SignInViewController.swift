@@ -81,6 +81,8 @@ class SignInViewController: UIViewController {
                     return
                 }
                 
+                UserController.shared.fetchProfilePicture()
+                
                 self.hideIndicator()
                 // Check for the kind of user
                 if user.usertype == UserType.leadCause.rawValue {

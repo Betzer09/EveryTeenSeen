@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230BEA8A2075CA3200BCFC2B /* Resources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230BEA892075CA3200BCFC2B /* Resources.storyboard */; };
+		230BEA8C2075CE1E00BCFC2B /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230BEA8B2075CE1E00BCFC2B /* EventDetail.storyboard */; };
 		231F829520573E4C006D5319 /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F829420573E4C006D5319 /* ResourcesViewController.swift */; };
 		232344DF205D7A7000BC1DA0 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232344DE205D7A7000BC1DA0 /* UserProfile.storyboard */; };
 		232344E1205D7AAD00BC1DA0 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232344E0205D7AAD00BC1DA0 /* UserProfileViewController.swift */; };
@@ -54,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		03564C288DF100113DAE3FBD /* Pods-EveryTeenSeen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.release.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.release.xcconfig"; sourceTree = "<group>"; };
+		230BEA892075CA3200BCFC2B /* Resources.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resources.storyboard; sourceTree = "<group>"; };
+		230BEA8B2075CE1E00BCFC2B /* EventDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventDetail.storyboard; sourceTree = "<group>"; };
 		231F829420573E4C006D5319 /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
 		232344DE205D7A7000BC1DA0 /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		232344E0205D7AAD00BC1DA0 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 				2383661E20486596002E7391 /* Admin.storyboard */,
 				232EC7F12054D55E00DD21D9 /* Onboarding.storyboard */,
 				232344DE205D7A7000BC1DA0 /* UserProfile.storyboard */,
+				230BEA892075CA3200BCFC2B /* Resources.storyboard */,
+				230BEA8B2075CE1E00BCFC2B /* EventDetail.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -346,8 +352,10 @@
 				236155FB2023F1850004DC9F /* Assets.xcassets in Resources */,
 				236155F92023F1850004DC9F /* Main.storyboard in Resources */,
 				232EC7F22054D55E00DD21D9 /* Onboarding.storyboard in Resources */,
+				230BEA8A2075CA3200BCFC2B /* Resources.storyboard in Resources */,
 				232344DF205D7A7000BC1DA0 /* UserProfile.storyboard in Resources */,
 				2383661F20486596002E7391 /* Admin.storyboard in Resources */,
+				230BEA8C2075CE1E00BCFC2B /* EventDetail.storyboard in Resources */,
 				236673A320360CDC00F2F485 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -120,9 +120,10 @@ func parseStringByCommasForDateAndLocation(string: String, completion: @escaping
 func presentEventsTabBarVC(viewController: UIViewController) {
     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")
-    
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {print("Error present Event VC!"); return}
     DispatchQueue.main.async {
         viewController.present(vc, animated: true, completion: nil)
+        appDelegate.window?.rootViewController = vc
     }
 }
 
@@ -173,7 +174,9 @@ func presentLoginAlert(viewController: UIViewController) {
         UserController.shared.signUserOut(completion: { (answer, error) in
             if let error = error {
                 NSLog("Error signing view only user out! \(error)")
+                return
             }
+            guard answer else {return}
             presentLogoutAndSignUpPage(viewController: viewController)
         })
     }
@@ -207,6 +210,7 @@ extension UIColor {
     return CGFloat(number / 255.0)
 }
 
+/// Creates a gradient layer on a UIViewController
 public func createGradientLayerWith(startpointX: Double, startpointY: Double, endpointX: Double, endPointY: Double, firstRed: Double, firstGreen: Double, firstBlue: Double, firstAlpha: CGFloat, secondRed: Double, secondGreen: Double, secondBlue: Double, secondAlpha: CGFloat, viewController: UIViewController) {
     let gradientLayer = CAGradientLayer()
     
@@ -221,6 +225,23 @@ public func createGradientLayerWith(startpointX: Double, startpointY: Double, en
     gradientLayer.colors = [orange.cgColor, purple.cgColor]
     
     viewController.view.layer.insertSublayer(gradientLayer, at: 0)
+}
+
+/// Creates a gradient layer on a UIView
+public func createGradientLayerWith(startpointX: Double, startpointY: Double, endpointX: Double, endPointY: Double, firstRed: Double, firstGreen: Double, firstBlue: Double, firstAlpha: CGFloat, secondRed: Double, secondGreen: Double, secondBlue: Double, secondAlpha: CGFloat, view: UIView) {
+    let gradientLayer = CAGradientLayer()
+    
+    gradientLayer.frame = view.bounds 
+    gradientLayer.startPoint = CGPoint(x: startpointX, y: startpointY)
+    gradientLayer.endPoint = CGPoint(x: endpointX, y: endPointY)
+    
+    let orange = UIColor(red: divideNumberForColorWith(number: firstRed), green: divideNumberForColorWith(number: firstGreen), blue: divideNumberForColorWith(number: firstBlue), alpha: firstAlpha)
+    
+    let purple = UIColor(red: divideNumberForColorWith(number: secondRed), green: divideNumberForColorWith(number: secondGreen), blue: divideNumberForColorWith(number: secondBlue), alpha: secondAlpha)
+    
+    gradientLayer.colors = [orange.cgColor, purple.cgColor]
+    
+    view.layer.insertSublayer(gradientLayer, at: 0)
 }
 
 // MARK: - Design Functions

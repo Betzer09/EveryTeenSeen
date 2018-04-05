@@ -201,6 +201,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HappyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="I47-7O-E2v" userLabel="Smily Image Logo">
                                 <rect key="frame" x="32" y="142" width="256" height="142"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#EveryTeenSeen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="mdC-G6-deX">
+                                <rect key="frame" x="32" y="292" width="256" height="47.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAS-j5-2TI">
                                 <rect key="frame" x="24" y="50" width="272" height="483"/>
                                 <subviews>
@@ -299,12 +305,15 @@
                             <constraint firstItem="yAS-j5-2TI" firstAttribute="width" secondItem="HRH-s7-cDw" secondAttribute="width" multiplier="0.85" id="9AF-Qr-gQX"/>
                             <constraint firstItem="0nh-4a-RxD" firstAttribute="top" secondItem="hIf-wR-lPS" secondAttribute="bottom" id="Aav-hR-DIy"/>
                             <constraint firstItem="sxl-BJ-4Nh" firstAttribute="bottom" secondItem="0nh-4a-RxD" secondAttribute="bottom" id="Aeh-dd-bdN"/>
+                            <constraint firstItem="mdC-G6-deX" firstAttribute="width" secondItem="I47-7O-E2v" secondAttribute="width" id="Gcs-zb-6Aq"/>
                             <constraint firstItem="G6g-eu-7QU" firstAttribute="top" secondItem="HRH-s7-cDw" secondAttribute="top" id="L16-ri-UL8"/>
                             <constraint firstItem="sxl-BJ-4Nh" firstAttribute="trailing" secondItem="0nh-4a-RxD" secondAttribute="trailing" id="Qjq-Zh-7q0"/>
                             <constraint firstItem="yAS-j5-2TI" firstAttribute="centerX" secondItem="HRH-s7-cDw" secondAttribute="centerX" constant="8" id="SpA-Fw-eTm"/>
                             <constraint firstItem="npR-p4-MsY" firstAttribute="leading" secondItem="sxl-BJ-4Nh" secondAttribute="leading" id="Udm-lP-G0j"/>
+                            <constraint firstItem="mdC-G6-deX" firstAttribute="top" secondItem="I47-7O-E2v" secondAttribute="bottom" constant="8" id="VQd-FC-r3W"/>
                             <constraint firstItem="I47-7O-E2v" firstAttribute="centerX" secondItem="HRH-s7-cDw" secondAttribute="centerX" id="Xgz-Sq-X5B"/>
                             <constraint firstItem="dcu-PH-EV9" firstAttribute="height" secondItem="np1-dj-ZUB" secondAttribute="height" id="ZHs-CE-JSh"/>
+                            <constraint firstItem="mdC-G6-deX" firstAttribute="centerX" secondItem="HRH-s7-cDw" secondAttribute="centerX" id="aBy-M7-KCS"/>
                             <constraint firstItem="yAS-j5-2TI" firstAttribute="height" secondItem="HRH-s7-cDw" secondAttribute="height" multiplier="0.85" id="cka-ue-kyU"/>
                             <constraint firstItem="G6g-eu-7QU" firstAttribute="leading" secondItem="sxl-BJ-4Nh" secondAttribute="leading" id="dNH-J2-Oje"/>
                             <constraint firstItem="hIf-wR-lPS" firstAttribute="width" secondItem="HRH-s7-cDw" secondAttribute="width" id="f2V-rz-OmJ"/>
@@ -317,6 +326,7 @@
                             <constraint firstItem="G6g-eu-7QU" firstAttribute="trailing" secondItem="sxl-BJ-4Nh" secondAttribute="trailing" id="vkE-jz-DKl"/>
                             <constraint firstItem="hIf-wR-lPS" firstAttribute="centerY" secondItem="HRH-s7-cDw" secondAttribute="centerY" id="xGv-ne-j4S"/>
                             <constraint firstItem="yAS-j5-2TI" firstAttribute="centerY" secondItem="HRH-s7-cDw" secondAttribute="centerY" constant="7.5" id="yTv-JY-EsL"/>
+                            <constraint firstItem="mdC-G6-deX" firstAttribute="height" secondItem="I47-7O-E2v" secondAttribute="height" multiplier="1/3" id="zWK-r4-4Og"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sxl-BJ-4Nh"/>
                     </view>

@@ -44,6 +44,11 @@ class EventsTableViewCell: UITableViewCell {
     // MARK: - Actions
     
     @IBAction func reportButtonPressed(_ sender: Any) {
+        guard let rootvc = UIApplication.shared.keyWindow?.rootViewController else {return}
+        guard let _ = UserController.shared.loadUserProfile() else {
+            presentLoginAlert(viewController: rootvc)
+            return
+        }
         presentReportEventAlert { (wantsToReport) in
             guard wantsToReport, let event = self.event else {return}
             self.presentAddMessageAlertWith(title: "Reporting \(event.title)", message: "Add a brief message explaining the problem.")

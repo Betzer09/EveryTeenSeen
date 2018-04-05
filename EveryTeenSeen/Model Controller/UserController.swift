@@ -34,7 +34,7 @@ class UserController {
     let profilePictureWasUpdated = Notification.Name("profilePictureWasUpdated")
     
     // MARK: - Properties
-    var profilePicture: UIImage = #imageLiteral(resourceName: "smallAvatar") {
+    var profilePicture: UIImage = resizeImage(image: #imageLiteral(resourceName: "smallAvatar"), targetSize: CGSize(width: 40.0, height: 40.0)) {
         didSet {
             NotificationCenter.default.post(name: profilePictureWasUpdated, object: nil)
         }
@@ -136,8 +136,8 @@ class UserController {
             // Checks to make sure that success is true
             guard success else {completion(false, error); return}
             
-            // Sign the user out of user defaults
-            guard let user = self.loadUserProfile() else {return}
+            // Sign the user out of Core Date
+            guard let user = self.loadUserProfile() else {completion(true, nil); return}
             self.remove(user: user)
             
             completion(true,nil)

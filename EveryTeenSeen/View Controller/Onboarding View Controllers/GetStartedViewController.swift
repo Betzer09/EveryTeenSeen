@@ -253,29 +253,32 @@ extension GetStartedViewController: CLLocationManagerDelegate {
     /// Fetches the users location and gets the lat long and zip and returns a UserLocation
     func fetchTheUsersLocation(completion: @escaping(_ lat: CLLocationDegrees?, _ long: CLLocationDegrees?, _ zipcode: String?) -> Void) {
         guard let userLocation = locationManager.location else {completion(nil, nil, nil); return}
-        CLGeocoder().reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) in
-            
-            if let error = error {
-                NSLog("Error getting the zip code: \(error.localizedDescription) in function: \(#function) ")
-            }
-            
-            guard let placemark = placemarks?.first, let zip = placemark.postalCode else {completion(nil,nil, nil); return}
-            
-            let lat = userLocation.coordinate.latitude
-            let long = userLocation.coordinate.longitude
-            
-            self.locationManager.stopUpdatingLocation()
-            
-            CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
-                guard CityController.shared.verifyLocationFor(city: city) else {
-                    presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
-                    self.hideActivityIndicator()
+        
+            CLGeocoder().reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) in
+                
+                if let error = error {
+                    NSLog("Error getting the zip code: \(error.localizedDescription) in function: \(#function) ")
+                    completion(nil, nil, nil)
                     return
                 }
-                completion(lat, long, zip)
-                presentLogoutAndSignUpPage(viewController: self)
+                
+                guard let placemark = placemarks?.first, let zip = placemark.postalCode else {completion(nil,nil, nil); return}
+                
+                let lat = userLocation.coordinate.latitude
+                let long = userLocation.coordinate.longitude
+                
+                self.locationManager.stopUpdatingLocation()
+                
+                CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
+                    guard CityController.shared.verifyLocationFor(city: city) else {
+                        presentSimpleAlert(viewController: self, title: "Sorry!", message: "Every Teen Seen is a group that is growing rapidly, but we are not yet in your area! Be sure to check back regularly!")
+                        self.hideActivityIndicator()
+                        return
+                    }
+                    completion(lat, long, zip)
+                    presentLogoutAndSignUpPage(viewController: self)
+                })
+                
             })
-            
-        })
     }
 }

@@ -124,11 +124,20 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let _ = UserController.shared.loadUserProfile() else {
+            presentLoginAlert(viewController: self)
+            return
+        }
+        
         if segue.identifier == "toEventDetailVC" {
-            guard let destination = segue.destination as? EventDetailViewController, let indexPath = tableView.indexPathForSelectedRow, let event = EventController.shared.events?[indexPath.row] else {return}
-            
+            guard let destination = segue.destination as? EventDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow,
+                let event = EventController.shared.events?[indexPath.row]
+                else {print(segue.destination);return}
             destination.event = event
         }
+        
     }
 
 }

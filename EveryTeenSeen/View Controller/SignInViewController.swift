@@ -126,12 +126,14 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func skipToEventsButtonPressed(_ sender: Any) {
+        self.showIndicator()
         UserController.shared.signUserInWith(email: "vieweventspage@gmail.com", password: "Krook123!") { (success, error) in
             if let error = error {
                 NSLog("Error login user in: \(error)")
                 presentSimpleAlert(viewController: self, title: "Something is going wrong and we will to fix this soon!", message: "")
             }
             guard success else {return}
+            self.hideIndicator()
             presentEventsTabBarVC(viewController: self)
         }
     }

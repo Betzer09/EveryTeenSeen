@@ -35,11 +35,11 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var attendingCountLabel: UILabel!
     @IBOutlet weak var loadingEventsLabel: UILabel!
     
-    
-    
-    
     // MARK: - Properties
     var event: Event?
+    
+    // This is used to store the email being passes
+    var emailToPassToAboutUserVC: String?
 
     // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +52,15 @@ class EventDetailViewController: UIViewController {
         self.configureNavigationBar()
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toUserProfileVC" {
+            guard let destination = segue.destination as? AboutUserViewController, let email = emailToPassToAboutUserVC else {return}
+            destination.email = email
+        }
+    }
     
+    // MARK: - Actions
     @IBAction func attendEventButtonPressed(_ sender: Any) {
         guard let event = event, let user = UserController.shared.loadUserProfile() else {
                 NSLog("Error attending event!")
@@ -66,7 +74,6 @@ class EventDetailViewController: UIViewController {
                 NSLog("Error with user unattending event! :\(errorString)")
                 presentSimpleAlert(viewController: self, title: "Problem Unattending event!", message: errorString)
             }, completionHandler: { (updatedEvent) in
-                // TODO: - Update the attending label
                 guard let count = updatedEvent?.attending?.count else {return}
                 DispatchQueue.main.async {
                     self.attendingCountLabel.text = "Attending: \(count)"
@@ -90,6 +97,16 @@ class EventDetailViewController: UIViewController {
             })
         }
     }
+    
+    @IBAction func presentUserProfileButtonPressed(_ sender: UIButton) {
+        guard let email = sender.titleLabel?.text else {return}
+        self.emailToPassToAboutUserVC = email
+        
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "toUserProfileVC", sender: nil)
+        }
+    }
+    
     
     // MARK: - Functions
     private func setUpView() {
@@ -135,22 +152,23 @@ class EventDetailViewController: UIViewController {
             for button in buttons {
                 // Congirue the buttons
                 button.setTitle("", for: .normal)
-                if usertype == UserType.leadCause.rawValue {
-                    button.isEnabled = true
-                } else {
-                    button.isEnabled = false
-                }
+                button.isUserInteractionEnabled = false
             }
             
             for i in 0...profilePicuresImages.count - 1 {
-                let resizedImage = resizeImage(image: profilePicuresImages[i], targetSize: CGSize(width: 50, height: 50))
+                let resizedImage = resizeImage(image: profilePicuresImages[i].1, targetSize: CGSize(width: 50, height: 50))
                 DispatchQueue.main.async {
                     buttons[i].imageView?.contentMode = .scaleAspectFit
                     buttons[i].setImage(resizedImage, for: .normal)
+                    buttons[i].setTitle(profilePicuresImages[i].0, for: .normal)
+                    buttons[i].setTitleColor(.clear, for: .normal)
+                }
+                if usertype == UserType.leadCause.rawValue {
+                    buttons[i].isUserInteractionEnabled = true
+                } else {
+                    buttons[i].isUserInteractionEnabled = false
                 }
             }
-            
-            
             self.loadingProfilePictureView.isHidden = true
             self.loadingProfilePicturesAnimatorView.stopAnimating()
         }

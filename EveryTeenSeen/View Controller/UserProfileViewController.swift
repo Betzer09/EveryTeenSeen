@@ -35,7 +35,9 @@ class UserProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setUpView()
-        configureAllButtonsIn(view: self.interestsGroupView)
+        
+        guard let interest = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else{return}
+        configureAllButtonsIn(view: interestsGroupView, interests: interest)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +78,7 @@ class UserProfileViewController: UIViewController {
             }
             InterestController.shared.createInterestWith(user: user, and: name, completion: { (done) in
                 guard done else {return}
-                configureAllButtonsIn(view: self.interestsGroupView)
+                configureAllButtonsIn(view: self.interestsGroupView, interests: interests)
             })
             
         }

@@ -215,11 +215,11 @@ class EventController {
     // MARK: - Profile Picture Functions
     
     /// Fetches the first 12 profile pictures
-    func fetchAllProfilePicturesFor(event: Event, completion: @escaping (_ images: [UIImage]?) -> Void ) {
+    func fetchAllProfilePicturesFor(event: Event, completion: @escaping (_ images: [(String, UIImage)]?) -> Void ) {
         
         let imageDispatchGroup = DispatchGroup()
         guard let userEmails = event.attending else {completion(nil); return}
-        var profileImages: [UIImage] = []
+        var profileImages: [(String, UIImage)] = []
         
         self.fetchAllUsersProfileURLSWith(emails: userEmails) { (constructedURLS) in
             if constructedURLS.isEmpty {
@@ -231,13 +231,13 @@ class EventController {
                 for URL in constructedURLS {
                     print(URL)
                     imageDispatchGroup.enter()
-                    self.fetchProfilePicure(with: URL, completion: { (profileImage) in
+                    self.fetchProfilePicure(with: URL.1, completion: { (profileImage) in
                         guard let profileImage = profileImage else{
                             imageDispatchGroup.leave()
                             completion(nil)
                             return
                         }
-                        profileImages.append(profileImage)
+                        profileImages.append((URL.0, profileImage))
                         imageDispatchGroup.leave()
                     })
                 }
@@ -250,9 +250,9 @@ class EventController {
     }
     
     /// Fetches the profile picture URLS for the users attending the event
-    private func fetchAllUsersProfileURLSWith(emails: [String], completion: @escaping (_ stringURLS: [URL]) -> Void) {
+    private func fetchAllUsersProfileURLSWith(emails: [String], completion: @escaping (_ stringURLS: [(String,URL)]) -> Void) {
         
-        var profilePicureURLS: [URL] = []
+        var profilePicureURLS: [(String, URL)] = []
         
         let userGroup = DispatchGroup()
         
@@ -282,7 +282,7 @@ class EventController {
                         NSLog("Error fetching All user profile pictures in function: \(#function), returning out of loop function!")
                         return
                 }
-                    profilePicureURLS.append(url)
+                    profilePicureURLS.append((email,url))
                     userGroup.leave()
             })
             

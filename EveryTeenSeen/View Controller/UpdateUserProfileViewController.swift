@@ -41,8 +41,9 @@ class UpdateUserProfileViewController: UIViewController {
     
     // MARK: - Properties
     var delegate: PhotoSelectedViewControllerDelegate?
-    private var changedProfilePicture = false
-    private var needsUpdated = false {
+    fileprivate var changedProfilePicture = false
+    fileprivate var hasBecomeAdmin = false
+    fileprivate var needsUpdated = false {
         didSet {
             self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
@@ -52,7 +53,9 @@ class UpdateUserProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpView()
-        configureAllButtonsIn(view: interestGroupView)
+        
+        guard let interest = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else{return}
+        configureAllButtonsIn(view: interestGroupView, interests: interest)
     }
     
     // MARK: - Actions
@@ -67,7 +70,7 @@ class UpdateUserProfileViewController: UIViewController {
             
             InterestController.shared.delete(interest: interest)
             
-            configureAllButtonsIn(view: self.interestGroupView)
+            configureAllButtonsIn(view: self.interestGroupView, interests: interests)
         }
     }
     
@@ -99,9 +102,7 @@ class UpdateUserProfileViewController: UIViewController {
     }
     
     @IBAction func dismissSuccessAdminView(_ sender: Any) {
-        guard let user = UserController.shared.loadUserProfile() else {return}
-        
-        if user.usertype == UserType.leadCause.rawValue {
+        if self.hasBecomeAdmin == true {
             presentAdminTabBarVC(viewController: self)
         } else {
             self.navigationController?.popViewController(animated: true)
@@ -127,6 +128,7 @@ class UpdateUserProfileViewController: UIViewController {
         
         UserController.shared.confirmAdminPasswordWith(password: password ) { (success) in
             if success {
+                self.hasBecomeAdmin = true
                 guard let user = UserController.shared.loadUserProfile(),
                     let email = user.email,
                     let fullname = self.fullnameTextfield.text,
@@ -385,6 +387,7 @@ extension UpdateUserProfileViewController: UITextFieldDelegate {
         
         UserController.shared.confirmAdminPasswordWith(password: password ) { (success) in
             if success {
+                self.hasBecomeAdmin = true
                 guard let user = UserController.shared.loadUserProfile(),
                     let email = user.email,
                     let fullname = self.fullnameTextfield.text,

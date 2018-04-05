@@ -256,8 +256,10 @@ extension UserController {
             return
         }
         
-        for i in 0...users.count - 2 {
-            context.delete(users[i])
+        if users.count > 2 {
+            for i in 0...users.count - 2 {
+                context.delete(users[i])
+            }
         }
         
         do {

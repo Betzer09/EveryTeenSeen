@@ -48,6 +48,7 @@
 		2393D3AC2033E6800073F6A5 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */; };
 		23A7F516206036AF0045AE4A /* Interest+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A7F515206036AF0045AE4A /* Interest+Convenience.swift */; };
 		23A7F518206037340045AE4A /* InterestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A7F517206037340045AE4A /* InterestController.swift */; };
+		23F40B9A207565E1003DAF07 /* AboutUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F40B99207565E1003DAF07 /* AboutUserViewController.swift */; };
 		93C3980FB99E5FF62218949C /* Pods_EveryTeenSeen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		23A7F515206036AF0045AE4A /* Interest+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Interest+Convenience.swift"; sourceTree = "<group>"; };
 		23A7F517206037340045AE4A /* InterestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestController.swift; sourceTree = "<group>"; };
+		23F40B99207565E1003DAF07 /* AboutUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUserViewController.swift; sourceTree = "<group>"; };
 		93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EveryTeenSeen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B8742448B544813C4C79FE /* Pods-EveryTeenSeen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,6 +188,7 @@
 				232344E0205D7AAD00BC1DA0 /* UserProfileViewController.swift */,
 				233C090120698E2600396E95 /* UpdateUserProfileViewController.swift */,
 				233C09032069FCD400396E95 /* EventDetailViewController.swift */,
+				23F40B99207565E1003DAF07 /* AboutUserViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				232EC7F82054DBEC00DD21D9 /* YoureSeenViewController.swift in Sources */,
 				235F66CE202A47E000383355 /* CityController.swift in Sources */,
 				238B5550202E1A18002E128C /* FirebaseManager.swift in Sources */,
+				23F40B9A207565E1003DAF07 /* AboutUserViewController.swift in Sources */,
 				236155F42023F1850004DC9F /* AppDelegate.swift in Sources */,
 				2347DAB0204DDF7600124188 /* EveryTeenSeen.xcdatamodeld in Sources */,
 				238B5548202E0E21002E128C /* HelperMethods.swift in Sources */,

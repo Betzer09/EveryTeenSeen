@@ -341,10 +341,8 @@ public func getAllButtons(view: UIView) -> [UIButton] {
 }
 
 /// Configure the buttons for user interests
-public func configureAllButtonsIn(view: UIView) {
+public func configureAllButtonsIn(view: UIView, interests: [Interest]) {
     let buttons = getAllButtons(view: view)
-    guard let interests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else {return}
-    
     
     // Make all buttons have no title
     for i in 0...buttons.count - 1 {

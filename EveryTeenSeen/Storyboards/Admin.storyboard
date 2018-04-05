@@ -958,41 +958,59 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qtg-LI-D9Q">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="57"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7F-JE-C0Q">
+                                                            <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7F-JE-C0Q">
                                                                 <rect key="frame" x="0.0" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="presentUserProfileButtonPressed:" destination="2tD-BS-DeE" eventType="touchUpInside" id="1lS-aS-lfr"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWD-YN-GqR">
                                                                 <rect key="frame" x="49" y="0.0" width="43.5" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="presentUserProfileButtonPressed:" destination="2tD-BS-DeE" eventType="touchUpInside" id="1dq-qv-58W"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpm-Yq-DSI">
                                                                 <rect key="frame" x="97.5" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="presentUserProfileButtonPressed:" destination="2tD-BS-DeE" eventType="touchUpInside" id="uKh-XA-5u8"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjn-Au-JEL">
                                                                 <rect key="frame" x="146.5" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="presentUserProfileButtonPressed:" destination="2tD-BS-DeE" eventType="touchUpInside" id="f19-Na-eTG"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUJ-Lj-cih">
                                                                 <rect key="frame" x="195.5" y="0.0" width="43.5" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="presentUserProfileButtonPressed:" destination="2tD-BS-DeE" eventType="touchUpInside" id="UGo-hV-aYC"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3i2-1n-tv3">
                                                                 <rect key="frame" x="244" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="presentUserProfileButtonPressed:" destination="2tD-BS-DeE" eventType="touchUpInside" id="JUi-dW-2rD"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -1004,36 +1022,54 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="presentUserProfileButtonPressed:" destination="2tD-BS-DeE" eventType="touchUpInside" id="TMU-Ok-cCj"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhj-Gb-7qi">
                                                                 <rect key="frame" x="49" y="0.0" width="43.5" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="presentUserProfileButtonPressed:" destination="2tD-BS-DeE" eventType="touchUpInside" id="fBM-Jz-ugs"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Xx-d1-IEL">
                                                                 <rect key="frame" x="97.5" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="presentUserProfileButtonPressed:" destination="2tD-BS-DeE" eventType="touchUpInside" id="LCJ-53-5Al"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fY-Og-d7b">
                                                                 <rect key="frame" x="146.5" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="presentUserProfileButtonPressed:" destination="2tD-BS-DeE" eventType="touchUpInside" id="fdz-jX-U2A"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrk-pq-uJ7">
                                                                 <rect key="frame" x="195.5" y="0.0" width="43.5" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="presentUserProfileButtonPressed:" destination="2tD-BS-DeE" eventType="touchUpInside" id="1tl-va-I1w"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyf-SZ-fhg">
                                                                 <rect key="frame" x="244" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="presentUserProfileButtonPressed:" destination="2tD-BS-DeE" eventType="touchUpInside" id="ZPv-WV-D2m"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -1223,8 +1259,179 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfr-63-CNn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ez6-eL-4hU">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <segue destination="xKE-Xq-aWL" kind="show" identifier="toUserProfileVC" id="pOB-d0-csv"/>
+                    </connections>
+                </button>
             </objects>
             <point key="canvasLocation" x="765" y="1029"/>
+        </scene>
+        <!--About User View Controller-->
+        <scene sceneID="Oua-Ml-ro2">
+            <objects>
+                <viewController storyboardIdentifier="userProfileVC" id="xKE-Xq-aWL" customClass="AboutUserViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jQd-A7-qnF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bml-So-Eut">
+                                <rect key="frame" x="16" y="279" width="288" height="95"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="jcQ-d7-PEs">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="95"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="8Vi-4k-Kke">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="29"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZE-zK-uXI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="93.5" height="29"/>
+                                                        <state key="normal" title="Interest"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LeG-z8-Jfa">
+                                                        <rect key="frame" x="97.5" y="0.0" width="93" height="29"/>
+                                                        <state key="normal" title="Interest"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYC-pe-qex">
+                                                        <rect key="frame" x="194.5" y="0.0" width="93.5" height="29"/>
+                                                        <state key="normal" title="Interest"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Nfw-S2-J2k">
+                                                <rect key="frame" x="0.0" y="33" width="288" height="29"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHW-Lr-qs2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="93.5" height="29"/>
+                                                        <state key="normal" title="Interest"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H37-zT-pvx">
+                                                        <rect key="frame" x="97.5" y="0.0" width="93" height="29"/>
+                                                        <state key="normal" title="Interest"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9M-Ro-dqa">
+                                                        <rect key="frame" x="194.5" y="0.0" width="93.5" height="29"/>
+                                                        <state key="normal" title="Interest"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="vma-pd-hnW">
+                                                <rect key="frame" x="0.0" y="66" width="288" height="29"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23G-aP-0SB">
+                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="29"/>
+                                                        <state key="normal" title="Interest"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZE-wO-Ge5">
+                                                        <rect key="frame" x="97" y="0.0" width="94" height="29"/>
+                                                        <state key="normal" title="Interest"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHr-dy-6CN">
+                                                        <rect key="frame" x="194" y="0.0" width="94" height="29"/>
+                                                        <state key="normal" title="Interest"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="jcQ-d7-PEs" firstAttribute="leading" secondItem="Bml-So-Eut" secondAttribute="leading" id="6qM-Xb-wCr"/>
+                                    <constraint firstAttribute="bottom" secondItem="jcQ-d7-PEs" secondAttribute="bottom" id="CYS-Ys-HCf"/>
+                                    <constraint firstAttribute="trailing" secondItem="jcQ-d7-PEs" secondAttribute="trailing" id="Jyi-Os-9dv"/>
+                                    <constraint firstItem="jcQ-d7-PEs" firstAttribute="top" secondItem="Bml-So-Eut" secondAttribute="top" id="ly1-pO-HCe"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="largeAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="0s3-lu-i0V">
+                                <rect key="frame" x="103" y="80" width="114" height="113.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0s3-lu-i0V" secondAttribute="height" multiplier="1:1" id="pXL-gW-UYX"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person's Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KjT-8J-k4E">
+                                <rect key="frame" x="80" y="201.5" width="160" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salt Lake City, UT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="GeJ-Pg-WET">
+                                <rect key="frame" x="80" y="223" width="160" height="11.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interests" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="duG-Jn-0d1">
+                                <rect key="frame" x="16" y="251.5" width="106.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQn-h1-XKp">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Pus-Oe-yJ8">
+                                        <rect key="frame" x="150" y="217" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Pus-Oe-yJ8" firstAttribute="centerY" secondItem="hQn-h1-XKp" secondAttribute="centerY" id="7Xq-FF-b3b"/>
+                                    <constraint firstItem="Pus-Oe-yJ8" firstAttribute="centerX" secondItem="hQn-h1-XKp" secondAttribute="centerX" id="qoA-TT-Yaz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hQn-h1-XKp" firstAttribute="bottom" secondItem="UcO-po-aOy" secondAttribute="bottom" id="0t1-Wk-AAV"/>
+                            <constraint firstItem="Bml-So-Eut" firstAttribute="centerX" secondItem="jQd-A7-qnF" secondAttribute="centerX" id="1fc-8S-olb"/>
+                            <constraint firstItem="duG-Jn-0d1" firstAttribute="leading" secondItem="Bml-So-Eut" secondAttribute="leading" id="1qy-AT-fFQ"/>
+                            <constraint firstItem="Bml-So-Eut" firstAttribute="centerY" secondItem="jQd-A7-qnF" secondAttribute="centerY" multiplier="1.15" id="2eg-0g-SMY"/>
+                            <constraint firstItem="KjT-8J-k4E" firstAttribute="height" secondItem="0s3-lu-i0V" secondAttribute="height" multiplier="1/6" id="4J5-V8-oJJ"/>
+                            <constraint firstItem="hQn-h1-XKp" firstAttribute="trailing" secondItem="UcO-po-aOy" secondAttribute="trailing" id="7Jb-pl-iPP"/>
+                            <constraint firstItem="0s3-lu-i0V" firstAttribute="height" secondItem="jQd-A7-qnF" secondAttribute="height" multiplier="1/5" id="80L-gD-Twy"/>
+                            <constraint firstItem="Bml-So-Eut" firstAttribute="height" secondItem="jQd-A7-qnF" secondAttribute="height" multiplier="1/6" id="D8z-LT-i5p"/>
+                            <constraint firstItem="duG-Jn-0d1" firstAttribute="height" secondItem="KjT-8J-k4E" secondAttribute="height" id="Efv-rf-Ub3"/>
+                            <constraint firstItem="GeJ-Pg-WET" firstAttribute="height" secondItem="KjT-8J-k4E" secondAttribute="height" multiplier="0.6" id="GEb-xG-1zN"/>
+                            <constraint firstItem="hQn-h1-XKp" firstAttribute="top" secondItem="UcO-po-aOy" secondAttribute="top" id="HYb-iP-cyc"/>
+                            <constraint firstItem="GeJ-Pg-WET" firstAttribute="top" secondItem="KjT-8J-k4E" secondAttribute="bottom" constant="2" id="Heg-Jt-QEy"/>
+                            <constraint firstItem="Bml-So-Eut" firstAttribute="width" secondItem="jQd-A7-qnF" secondAttribute="width" multiplier="0.9" id="I2R-0o-1DE"/>
+                            <constraint firstItem="hQn-h1-XKp" firstAttribute="leading" secondItem="UcO-po-aOy" secondAttribute="leading" id="MIV-Og-atS"/>
+                            <constraint firstItem="0s3-lu-i0V" firstAttribute="centerX" secondItem="jQd-A7-qnF" secondAttribute="centerX" id="S25-Jb-YUv"/>
+                            <constraint firstItem="KjT-8J-k4E" firstAttribute="top" secondItem="0s3-lu-i0V" secondAttribute="bottom" constant="8" id="Uak-aW-Giw"/>
+                            <constraint firstItem="Bml-So-Eut" firstAttribute="top" secondItem="duG-Jn-0d1" secondAttribute="bottom" constant="8" id="Vz3-x1-fbz"/>
+                            <constraint firstItem="KjT-8J-k4E" firstAttribute="width" secondItem="jQd-A7-qnF" secondAttribute="width" multiplier="1/2" id="hlz-VQ-pAr"/>
+                            <constraint firstItem="GeJ-Pg-WET" firstAttribute="centerX" secondItem="KjT-8J-k4E" secondAttribute="centerX" id="lHq-hq-ctj"/>
+                            <constraint firstItem="KjT-8J-k4E" firstAttribute="centerX" secondItem="jQd-A7-qnF" secondAttribute="centerX" id="liJ-pC-nbe"/>
+                            <constraint firstItem="0s3-lu-i0V" firstAttribute="top" secondItem="UcO-po-aOy" secondAttribute="top" constant="16" id="qD7-84-83d"/>
+                            <constraint firstItem="GeJ-Pg-WET" firstAttribute="width" secondItem="KjT-8J-k4E" secondAttribute="width" id="v5I-7w-bVJ"/>
+                            <constraint firstItem="duG-Jn-0d1" firstAttribute="width" secondItem="KjT-8J-k4E" secondAttribute="width" multiplier="2/3" id="x1x-lr-q2M"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UcO-po-aOy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PGg-Fb-W1S">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="5a0-GP-7Qm">
+                            <connections>
+                                <segue destination="pXd-e5-FSh" kind="unwind" unwindAction="unwindToEventsVCWithSegue:" id="KXp-Ie-Iz0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addressLabel" destination="GeJ-Pg-WET" id="G2G-L5-Tl5"/>
+                        <outlet property="interestsStackView" destination="jcQ-d7-PEs" id="OUi-k8-i9A"/>
+                        <outlet property="loadingContentsIndicator" destination="Pus-Oe-yJ8" id="Xuv-yB-xsk"/>
+                        <outlet property="loadingContentsView" destination="hQn-h1-XKp" id="ykv-P3-jOs"/>
+                        <outlet property="userProfilePictureView" destination="0s3-lu-i0V" id="Kwj-fq-6ot"/>
+                        <outlet property="usernameLabel" destination="KjT-8J-k4E" id="PwE-ci-XzQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kbF-s9-IiE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pXd-e5-FSh" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1743.75" y="1210.5633802816901"/>
         </scene>
     </scenes>
     <resources>
@@ -1237,6 +1444,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
         <image name="defaultBackground" width="343" height="280"/>
         <image name="exitButton" width="14" height="14"/>
         <image name="heart" width="25" height="23"/>
+        <image name="largeAvatar" width="146" height="146"/>
         <image name="map-pin" width="20" height="24"/>
         <image name="plus" width="24" height="24"/>
         <image name="plus-circle" width="33" height="33"/>

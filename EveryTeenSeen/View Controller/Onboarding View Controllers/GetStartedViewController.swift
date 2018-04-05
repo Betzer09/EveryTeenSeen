@@ -167,7 +167,7 @@ extension GetStartedViewController: CLLocationManagerDelegate {
             
             // If there isn't a location create and save it
             self.fetchTheUsersLocation(completion: { (lat, long, zipcode) in
-                guard let zip = zipcode else {return}
+                guard let zip = zipcode, let latitude = lat, let longitude = long else {return}
                 // Make sure they are allowed to create an account
                 
                 CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
@@ -176,6 +176,9 @@ extension GetStartedViewController: CLLocationManagerDelegate {
                         self.hideActivityIndicator()
                         return
                     }
+                    // Update locaiotn in CoreData
+                    UserLocationController.shared.createLocationWith(lat: latitude,
+                                                                     long: longitude, zip: zip, cityName: city.cityName, state: city.state)
                     
                     self.hideActivityIndicator()
                     presentLogoutAndSignUpPage(viewController: self)

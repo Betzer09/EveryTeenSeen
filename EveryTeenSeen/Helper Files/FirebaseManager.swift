@@ -14,6 +14,25 @@ class FirebaseManager {
     
     // MARK: - Fetch user from firebase
     
+    func fetchProfilePicureWith(string: String, completion: @escaping(_ profilePicutre: UIImage?) -> Void) {
+        
+        guard let url = URL(string: string) else {NSLog("Error fetching the image for \(string)!")
+            completion(nil)
+            return
+        }
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                NSLog("There was an error fetching the user's profile picture! : \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            guard let data = data, let image = UIImage(data: data) else {return}
+            completion(image)
+            
+        }.resume()
+    }
+    
     /// Fetches the user from FireStore and saves them to the phone
     func fetchUserFromFirebaseWith(email: String, completion: @escaping ((_ user: User?, _ error: Error?) -> Void)) {
         

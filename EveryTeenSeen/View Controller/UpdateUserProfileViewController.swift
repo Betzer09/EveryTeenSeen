@@ -120,7 +120,14 @@ class UpdateUserProfileViewController: UIViewController {
                 return
         }
 
-        updateProfileWith(user: user, image: image, email: email, fullname: fullname)
+        if hasBecomeAdmin == true {
+            self.updateProfileWith(user: user, image: image, email: email, fullname: fullname, usertype: UserType.leadCause.rawValue)
+            return
+        }
+        
+        guard let usertype = user.usertype else {return}
+        self.updateProfileWith(user: user, image: image, email: email, fullname: fullname, usertype: usertype)
+        
     }
     
     @IBAction func sumbitAdminPasswordButtonPressed(_ sender: Any) {
@@ -133,7 +140,7 @@ class UpdateUserProfileViewController: UIViewController {
                     let email = user.email,
                     let fullname = self.fullnameTextfield.text,
                     let image = self.profileImageView.image else {return}
-                self.updateProfileWith(user: user, image: image, email: email, fullname: fullname)
+                self.updateProfileWith(user: user, image: image, email: email, fullname: fullname, usertype: UserType.leadCause.rawValue)
                 self.successGroupView.isHidden = false
             } else {
                 self.incorrectPasswordMessage.isHidden = false
@@ -150,7 +157,7 @@ class UpdateUserProfileViewController: UIViewController {
     }
     
     // MARK: - Update User Profile Functions
-    func updateProfileWith(user: User, image: UIImage, email: String, fullname: String) {
+    func updateProfileWith(user: User, image: UIImage, email: String, fullname: String, usertype: String) {
         
         DispatchQueue.main.async {
             self.finishedUpdatedProfileView.isHidden = false
@@ -159,7 +166,7 @@ class UpdateUserProfileViewController: UIViewController {
         }
         
         if changedProfilePicture == true {
-            updateUserProfileImageWith(user: user, image: image, email: email, completion: { (hasFinishedPostingImage) in
+            updateUserProfileImageWith(user: user, image: image, email: email, usertype: usertype, completion: { (hasFinishedPostingImage) in
                 
                 PhotoController.shared.fetchUserProfileImage(completion: { (image, success) in
                     guard success, let image = image else {return}
@@ -175,7 +182,7 @@ class UpdateUserProfileViewController: UIViewController {
                 })
             })
         } else {
-            updateUserProfileWithoutImage(user: user, email: email, fullname: fullname)
+            updateUserProfileWithoutImage(user: user, email: email, fullname: fullname, usertype: usertype)
             
             DispatchQueue.main.async {
                 self.successImageView.isHidden = false
@@ -186,9 +193,8 @@ class UpdateUserProfileViewController: UIViewController {
         }
     }
     
-    func updateUserProfileWithoutImage(user: User, email: String, fullname: String) {
-        guard let usertype = user.usertype,
-            let profileURL = user.profileImageURLString else {
+    func updateUserProfileWithoutImage(user: User, email: String, fullname: String, usertype: String) {
+        guard let profileURL = user.profileImageURLString else {
                 presentSimpleAlert(viewController: self, title: "Oops", message: "There was a problem updating your profile!")
                 return
         }
@@ -196,11 +202,11 @@ class UpdateUserProfileViewController: UIViewController {
         UserController.shared.updateUserProfileWith(user: user, fullname: fullname, profileImageURL: profileURL, maxDistance: Int64(distanceSlider.value), usertype: usertype)
     }
     
-    func updateUserProfileImageWith(user: User, image: UIImage, email: String, completion: @escaping(_ doneUploadingProfilePicture: Bool) -> Void) {
+    func updateUserProfileImageWith(user: User, image: UIImage, email: String, usertype: String, completion: @escaping(_ doneUploadingProfilePicture: Bool) -> Void) {
         
         // Make sure it isn't the default image first
             PhotoController.shared.deletingImageFromStorageWith(eventTitle: email, completion: { (success) in
-                guard let fullname = self.fullnameTextfield.text, let usertype = user.usertype else {return}
+                guard let fullname = self.fullnameTextfield.text else {return}
                 
                 PhotoController.shared.uploadImageToStorageWith(image: image, photoTitle: "\(email)profile_picture", completion: { (userProfilePictureURL) in
                     guard userProfilePictureURL != "" else {
@@ -392,7 +398,7 @@ extension UpdateUserProfileViewController: UITextFieldDelegate {
                     let email = user.email,
                     let fullname = self.fullnameTextfield.text,
                     let image = self.profileImageView.image else {return}
-                self.updateProfileWith(user: user, image: image, email: email, fullname: fullname)
+                self.updateProfileWith(user: user, image: image, email: email, fullname: fullname, usertype: UserType.leadCause.rawValue)
                 self.successGroupView.isHidden = false
             } else {
                 self.incorrectPasswordMessage.isHidden = false

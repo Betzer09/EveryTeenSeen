@@ -153,8 +153,8 @@ extension EventsViewController {
         
         let profileButton: UIButton = UIButton(type: .custom)
         guard let unwrappedImage = UserController.shared.profilePicture.circleMasked else {return}
-        let profileImage = resizeImage(image: unwrappedImage, targetSize: CGSize(width: 40, height: 40.0))
-        
+        let profileImage = unwrappedImage
+
         profileButton.setImage(profileImage, for: .normal)
         profileButton.addTarget(self, action: #selector(segueToProfileView), for: .touchUpInside)
         

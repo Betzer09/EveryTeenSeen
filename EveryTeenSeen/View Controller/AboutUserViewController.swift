@@ -44,7 +44,7 @@ class AboutUserViewController: UIViewController {
     func configureView() {
         guard let email = email else {return}
         
-        firebaseManger.fetchUserFromFirebaseWith(email: email) { (user, error) in
+        firebaseManger.fetchOtherUserFromFirebase(email: email) { (user, error) in
             if let error = error {
                 NSLog("Error present user information for email: \(email) with error: \(error.localizedDescription)")
                 
@@ -55,23 +55,20 @@ class AboutUserViewController: UIViewController {
                 }
             }
             
-            guard let user = user,
-                let stringURL = user.profileImageURLString else {return}
-            self.firebaseManger.fetchProfilePicureWith(string: stringURL, completion: { (image) in
-                guard let image = image,
-                    let fullname = user.fullname,
-                    let zipcode = user.zipcode,
-                    let interets = user.interests?.array as? [Interest] else {return}
+            guard let user = user else {return}
+            
+            self.firebaseManger.fetchProfilePicureWith(string: user.profileImageURLString, completion: { (image) in
+                guard let image = image else {return}
                 DispatchQueue.main.async {
                     self.userProfilePictureView.image = image
-                    self.usernameLabel.text = fullname
-                    self.addressLabel.text = zipcode
+                    self.usernameLabel.text = user.fullname
+                    self.addressLabel.text = user.zipcode
                     
                     self.loadingContentsView.isHidden = true
                     self.loadingContentsIndicator.isHidden = true
                     self.loadingContentsIndicator.stopAnimating()
                     
-                    configureAllButtonsIn(view: self.interestsStackView, interests: interets)
+                    configureAllButtonsIn(view: self.interestsStackView, interests: user.interests)
                 }
             })
         }

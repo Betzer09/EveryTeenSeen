@@ -34,7 +34,7 @@ class UserController {
     let profilePictureWasUpdated = Notification.Name("profilePictureWasUpdated")
     
     // MARK: - Properties
-    var profilePicture: UIImage = resizeImage(image: #imageLiteral(resourceName: "smallAvatar"), targetSize: CGSize(width: 40.0, height: 40.0)) {
+    var profilePicture: UIImage = #imageLiteral(resourceName: "smallAvatar") {
         didSet {
             NotificationCenter.default.post(name: profilePictureWasUpdated, object: nil)
         }
@@ -49,6 +49,7 @@ class UserController {
                 self.profilePicture = #imageLiteral(resourceName: "smallAvatar")
                 return
             }
+            
             self.profilePicture = image
         }
     }
@@ -205,6 +206,7 @@ extension UserController {
     
     // Saves the user to CoreData
     func saveUserToCoreData(email: String, fullname: String, usertype: String, zipcode: String, distance: Int64) {
+        deleteAllUserData()
         User(email: email, fullname: fullname, usertype: usertype, zipcode: zipcode, eventDistance: distance)
         saveToPersistentStore()
     }
@@ -257,13 +259,14 @@ extension UserController {
         }
         
         if users.count > 2 {
-            for i in 0...users.count - 2 {
+            for i in 0...users.count - 1 {
                 context.delete(users[i])
             }
         }
         
         do {
            try context.save()
+            print("Cleared all Extra Users Succesfully.")
         } catch let e {
             NSLog("Error saving deleted users context: \(e.localizedDescription) in function: \(#function)")
         }

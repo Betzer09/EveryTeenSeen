@@ -140,8 +140,10 @@ class EventDetailViewController: UIViewController {
     private func setUpProfilePictureForAttending() {
         guard let user = UserController.shared.loadUserProfile(), let usertype = user.usertype, let event = event else {return}
         
-        EventController.shared.fetchAllProfilePicturesFor(event: event) { (profilePicuresImages) in
-            guard let profilePicuresImages = profilePicuresImages else {
+        EventController.shared.fetchAllProfilePicturesFor(event: event) { (photos) in
+            
+            print("We are running!!")
+            guard let photos = photos else {
                 self.loadingProfilePicturesAnimatorView.stopAnimating()
                 self.loadingEventsLabel.text = "Be the first to Join!"
                 return
@@ -155,12 +157,16 @@ class EventDetailViewController: UIViewController {
                 button.isUserInteractionEnabled = false
             }
             
-            for i in 0...profilePicuresImages.count - 1 {
-                let resizedImage = resizeImage(image: profilePicuresImages[i].1, targetSize: CGSize(width: 50, height: 50))
+            for i in 0...photos.count - 1 {
+                print("There are \(photos.count) photos and we are at index: \(i)")
+                let photo = photos[i]
+                guard let photoImage = UIImage(data: photo.imageData) else {return}
+                let resizedImage = resizeImage(image: photoImage, targetSize: CGSize(width: 50, height: 50))
+                
                 DispatchQueue.main.async {
                     buttons[i].imageView?.contentMode = .scaleAspectFit
                     buttons[i].setImage(resizedImage, for: .normal)
-                    buttons[i].setTitle(profilePicuresImages[i].0, for: .normal)
+                    buttons[i].setTitle(photo.photoPath, for: .normal)
                     buttons[i].setTitleColor(.clear, for: .normal)
                 }
                 if usertype == UserType.leadCause.rawValue {

@@ -426,7 +426,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="vLE-uo-Uxb">
                             <connections>
-                                <segue destination="phe-9J-GLz" kind="show" id="vpk-EO-V59"/>
+                                <segue destination="phe-9J-GLz" kind="show" id="e99-uZ-XBs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

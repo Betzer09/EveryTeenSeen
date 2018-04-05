@@ -114,7 +114,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                     <action selector="presentUserProfileButtonPressed:" destination="S5A-sk-U2g" eventType="touchUpInside" id="Ydc-c3-Enb"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CF-i8-lLt">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CF-i8-lLt">
                                                                 <rect key="frame" x="49" y="0.0" width="43.5" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -123,7 +123,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                     <action selector="presentUserProfileButtonPressed:" destination="S5A-sk-U2g" eventType="touchUpInside" id="B1b-p9-cfZ"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZM-NB-pRh">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZM-NB-pRh">
                                                                 <rect key="frame" x="97.5" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -132,7 +132,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                     <action selector="presentUserProfileButtonPressed:" destination="S5A-sk-U2g" eventType="touchUpInside" id="Qu6-gA-zXg"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-tG-ER8">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-tG-ER8">
                                                                 <rect key="frame" x="146.5" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,7 +141,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                     <action selector="presentUserProfileButtonPressed:" destination="S5A-sk-U2g" eventType="touchUpInside" id="RxM-a4-ubS"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eE-By-rZp">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eE-By-rZp">
                                                                 <rect key="frame" x="195.5" y="0.0" width="43.5" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -150,7 +150,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                     <action selector="presentUserProfileButtonPressed:" destination="S5A-sk-U2g" eventType="touchUpInside" id="cSY-CQ-fqH"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arL-vV-8eg">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arL-vV-8eg">
                                                                 <rect key="frame" x="244" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -164,7 +164,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2HF-G3-h3g">
                                                         <rect key="frame" x="0.0" y="65" width="288" height="57"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lT3-fA-kWk">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lT3-fA-kWk">
                                                                 <rect key="frame" x="0.0" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -173,7 +173,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                     <action selector="presentUserProfileButtonPressed:" destination="S5A-sk-U2g" eventType="touchUpInside" id="pXp-CG-7z3"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWb-W9-MRV">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWb-W9-MRV">
                                                                 <rect key="frame" x="49" y="0.0" width="43.5" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -182,7 +182,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                     <action selector="presentUserProfileButtonPressed:" destination="S5A-sk-U2g" eventType="touchUpInside" id="cHh-2n-0wm"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdy-Op-4cC">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdy-Op-4cC">
                                                                 <rect key="frame" x="97.5" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -191,7 +191,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                     <action selector="presentUserProfileButtonPressed:" destination="S5A-sk-U2g" eventType="touchUpInside" id="y5a-Zh-fdG"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLo-w0-0Hn">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLo-w0-0Hn">
                                                                 <rect key="frame" x="146.5" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -200,7 +200,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                     <action selector="presentUserProfileButtonPressed:" destination="S5A-sk-U2g" eventType="touchUpInside" id="XeE-AI-NWb"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKL-gb-IQw">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKL-gb-IQw">
                                                                 <rect key="frame" x="195.5" y="0.0" width="43.5" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -209,7 +209,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                     <action selector="presentUserProfileButtonPressed:" destination="S5A-sk-U2g" eventType="touchUpInside" id="euQ-wr-gc2"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SF-eZ-vi0">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SF-eZ-vi0">
                                                                 <rect key="frame" x="244" y="0.0" width="44" height="57"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

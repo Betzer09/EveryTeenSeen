@@ -49,7 +49,7 @@ extension User {
         return [emailKey: email, fullnameKey: fullname, userTypeKey: usertype, zipcodeKey: zipcode, profileURLStringKey: profileImageURLString, eventDistanceKey: eventDistance, userInteretsKey: interestNames, lastUpdateKey: lastUpdate]
     }
     
-    convenience init?(dictionary: [String: Any], context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init?(dictionary: [String: Any], context: NSManagedObjectContext) {
         
         self.init(context: context)
         

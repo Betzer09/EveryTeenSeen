@@ -48,7 +48,32 @@ class FirebaseManager {
 
             let data = document.data()
             
-            guard let user  =  User(dictionary: data) else {
+            guard let user = User(dictionary: data, context: CoreDataStack.context) else {
+                NSLog("Error decoding user!")
+                completion(nil, nil)
+                return
+            }
+            completion(user, nil)
+        }
+    }
+    
+    // When you use the other init? it save it to the coredata context.
+    /// This is used to fetch a different user other than the one that is already in the context
+    func fetchOtherUserFromFirebase(email: String, completion: @escaping ((_ user: OtherUser?, _ error: Error?) -> Void)) {
+        
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users").whereField("email", isEqualTo: email).getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(nil, error)
+            }
+            
+            guard let document = snapshot?.documents.first else {completion(nil, error) ;return}
+            
+            let data = document.data()
+            
+            guard let user = OtherUser(dictionary: data) else {
                 NSLog("Error decoding user!")
                 completion(nil, nil)
                 return

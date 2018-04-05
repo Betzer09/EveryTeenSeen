@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		230BEA8A2075CA3200BCFC2B /* Resources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230BEA892075CA3200BCFC2B /* Resources.storyboard */; };
 		230BEA8C2075CE1E00BCFC2B /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230BEA8B2075CE1E00BCFC2B /* EventDetail.storyboard */; };
+		231F25002076D5D800C94D0D /* AboutOtherUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F24FF2076D5D800C94D0D /* AboutOtherUser.swift */; };
 		231F829520573E4C006D5319 /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F829420573E4C006D5319 /* ResourcesViewController.swift */; };
 		232344DF205D7A7000BC1DA0 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232344DE205D7A7000BC1DA0 /* UserProfile.storyboard */; };
 		232344E1205D7AAD00BC1DA0 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232344E0205D7AAD00BC1DA0 /* UserProfileViewController.swift */; };
@@ -58,6 +59,7 @@
 		03564C288DF100113DAE3FBD /* Pods-EveryTeenSeen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.release.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.release.xcconfig"; sourceTree = "<group>"; };
 		230BEA892075CA3200BCFC2B /* Resources.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resources.storyboard; sourceTree = "<group>"; };
 		230BEA8B2075CE1E00BCFC2B /* EventDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventDetail.storyboard; sourceTree = "<group>"; };
+		231F24FF2076D5D800C94D0D /* AboutOtherUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutOtherUser.swift; sourceTree = "<group>"; };
 		231F829420573E4C006D5319 /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
 		232344DE205D7A7000BC1DA0 /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		232344E0205D7AAD00BC1DA0 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				2347DAB1204DE04900124188 /* UserLocation+Convenience.swift */,
 				23A7F515206036AF0045AE4A /* Interest+Convenience.swift */,
 				233C08FF20697C2000396E95 /* AdminPassword.swift */,
+				231F24FF2076D5D800C94D0D /* AboutOtherUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				2393D3A42033BFE40073F6A5 /* Event.swift in Sources */,
 				233C09042069FCD400396E95 /* EventDetailViewController.swift in Sources */,
 				23A7F518206037340045AE4A /* InterestController.swift in Sources */,
+				231F25002076D5D800C94D0D /* AboutOtherUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -215,47 +215,23 @@ class EventController {
     // MARK: - Profile Picture Functions
     
     /// Fetches the first 12 profile pictures
-    func fetchAllProfilePicturesFor(event: Event, completion: @escaping (_ images: [(String, UIImage)]?) -> Void ) {
-        
-        let imageDispatchGroup = DispatchGroup()
+    func fetchAllProfilePicturesFor(event: Event, completion: @escaping (_ images: [Photo]?) -> Void ) {
         guard let userEmails = event.attending else {completion(nil); return}
-        var profileImages: [(String, UIImage)] = []
         
-        self.fetchAllUsersProfileURLSWith(emails: userEmails) { (constructedURLS) in
-            if constructedURLS.isEmpty {
-                completion(nil);
-                return
-            }
-            
-            // Only get the first 12
-                for URL in constructedURLS {
-                    print(URL)
-                    imageDispatchGroup.enter()
-                    self.fetchProfilePicure(with: URL.1, completion: { (profileImage) in
-                        guard let profileImage = profileImage else{
-                            imageDispatchGroup.leave()
-                            completion(nil)
-                            return
-                        }
-                        profileImages.append((URL.0, profileImage))
-                        imageDispatchGroup.leave()
-                    })
-                }
-            
-            imageDispatchGroup.notify(queue: .main, execute: {
-                completion(profileImages)
-            })
+        fetchAllUsersProfileURLSWith(emails: userEmails) { (photos) in
+            guard let photos = photos else {return}
+            let sortedPhoto = photos.sorted(by: { $0.photoPath < $1.photoPath })
+            completion(sortedPhoto)
         }
+
         
     }
     
     /// Fetches the profile picture URLS for the users attending the event
-    private func fetchAllUsersProfileURLSWith(emails: [String], completion: @escaping (_ stringURLS: [(String,URL)]) -> Void) {
+    private func fetchAllUsersProfileURLSWith(emails: [String], completion: @escaping (_ stringURLS: [Photo]?) -> Void) {
         
-        var profilePicureURLS: [(String, URL)] = []
-        
+        var profilePicures: [Photo] = []
         let userGroup = DispatchGroup()
-        
         if emails.isEmpty {
             completion([])
             return
@@ -263,31 +239,33 @@ class EventController {
         
         for email in emails {
             // Makes sure we don't get more than 12 picures
-            if profilePicureURLS.count >= 12 {
+            if profilePicures.count >= 12 {
                 break
             }
             
             userGroup.enter()
-            firebaseManager.fetchUserFromFirebaseWith(email: email, completion: { (user, error) in
+            firebaseManager.fetchOtherUserFromFirebase(email: email, completion: { (user, error) in
                 if let error = error {
                     NSLog("Error retriving \(email)\'s profile due to error: \(error.localizedDescription)")
                     userGroup.leave()
                 }
                 
-                guard let user = user,
-                    let profileURL = user.profileImageURLString,
-                    profileURL != "",
-                    let url = URL(string: profileURL) else {
+                guard let user = user else {
                         userGroup.leave()
                         NSLog("Error fetching All user profile pictures in function: \(#function), returning out of loop function!")
                         return
                 }
-                    profilePicureURLS.append((email,url))
+                
+               self.firebaseManager.fetchProfilePicureWith(string: user.profileImageURLString, completion: { (image) in
+                guard let image = image, let data = UIImageJPEGRepresentation(image, 1.0) else {return}
+                    let photo = Photo(imageData: data, photoPath: email)
+                    profilePicures.append(photo)
                     userGroup.leave()
+                })
             })
             
             userGroup.notify(queue: .main, execute: {
-                completion(profilePicureURLS)
+                completion(profilePicures)
             })
         }
     }

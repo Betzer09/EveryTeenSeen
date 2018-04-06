@@ -177,8 +177,8 @@ class EventsTableViewCell: UITableViewCell {
     
     // MARK: - report alert
     private func presentReportEventAlert(completion: @escaping (_ success: Bool) -> Void) {
-        guard let rootvc = UIApplication.shared.keyWindow?.rootViewController else {return}
-        let alert = UIAlertController(title: "Do you wish to report this event?", message: "", preferredStyle: .actionSheet)
+        guard let rootvc = UIApplication.shared.keyWindow?.rootViewController, let event = event else {return}
+        let alert = UIAlertController(title: "Do you wish to report: \(event.title)?", message: "", preferredStyle: .actionSheet)
         
         let reportAction = UIAlertAction(title: "Report Event", style: .destructive) { (_) in
             completion(true)

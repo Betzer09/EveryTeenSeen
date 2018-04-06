@@ -119,7 +119,7 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Table View Fnctions
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.view.bounds.height * 0.62
+        return self.view.bounds.height * 0.65
     }
     
     // MARK: - Navigation

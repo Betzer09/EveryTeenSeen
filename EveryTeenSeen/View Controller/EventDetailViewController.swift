@@ -157,22 +157,24 @@ class EventDetailViewController: UIViewController {
                 button.isUserInteractionEnabled = false
             }
             
-            for i in 0...photos.count - 1 {
-                print("There are \(photos.count) photos and we are at index: \(i)")
-                let photo = photos[i]
-                guard let photoImage = UIImage(data: photo.imageData) else {return}
-                let resizedImage = resizeImage(image: photoImage, targetSize: CGSize(width: 50, height: 50))
-                
-                DispatchQueue.main.async {
-                    buttons[i].imageView?.contentMode = .scaleAspectFit
-                    buttons[i].setImage(resizedImage, for: .normal)
-                    buttons[i].setTitle(photo.photoPath, for: .normal)
-                    buttons[i].setTitleColor(.clear, for: .normal)
-                }
-                if usertype == UserType.leadCause.rawValue {
-                    buttons[i].isUserInteractionEnabled = true
-                } else {
-                    buttons[i].isUserInteractionEnabled = false
+            if photos.count >= 1 {
+                for i in 0...photos.count - 1 {
+                    print("There are \(photos.count) photos and we are at index: \(i)")
+                    let photo = photos[i]
+                    guard let photoImage = UIImage(data: photo.imageData) else {return}
+                    let resizedImage = resizeImage(image: photoImage, targetSize: CGSize(width: 50, height: 50))
+                    
+                    DispatchQueue.main.async {
+                        buttons[i].imageView?.contentMode = .scaleAspectFit
+                        buttons[i].setImage(resizedImage, for: .normal)
+                        buttons[i].setTitle(photo.photoPath, for: .normal)
+                        buttons[i].setTitleColor(.clear, for: .normal)
+                    }
+                    if usertype == UserType.leadCause.rawValue {
+                        buttons[i].isUserInteractionEnabled = true
+                    } else {
+                        buttons[i].isUserInteractionEnabled = false
+                    }
                 }
             }
             self.loadingProfilePictureView.isHidden = true

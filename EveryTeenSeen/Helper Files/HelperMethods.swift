@@ -120,10 +120,8 @@ func parseStringByCommasForDateAndLocation(string: String, completion: @escaping
 func presentEventsTabBarVC(viewController: UIViewController) {
     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {print("Error present Event VC!"); return}
     DispatchQueue.main.async {
         viewController.present(vc, animated: true, completion: nil)
-        appDelegate.window?.rootViewController = vc
     }
 }
 
@@ -134,13 +132,11 @@ func presentLogoutAndSignUpPage(viewController: UIViewController) {
     DispatchQueue.main.async {
         viewController.present(vc, animated: true, completion: nil)        
     }
-    
 }
 
 func presentAdminTabBarVC(viewController: UIViewController) {
     let storyboard: UIStoryboard = UIStoryboard(name: "Admin", bundle: nil)
     let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")
-    
     DispatchQueue.main.async {
         viewController.present(vc, animated: true, completion: nil)
     }

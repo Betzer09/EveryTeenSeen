@@ -56,7 +56,7 @@ class SignInViewController: UIViewController {
     // MARK: - Log User In
     @IBAction func loginButtonPressed(_ sender: Any) {
         
-        guard let email = emailTextField.text, let password = passwordTextField.text,
+        guard let email = emailTextField.text?.lowercased(), let password = passwordTextField.text,
             !email.isEmpty, !password.isEmpty else {
                 presentSimpleAlert(viewController: self, title: "Fileds are blank!", message: "All fileds must filled in!")
                 return

@@ -123,6 +123,7 @@ Press to Download in the App Store</string>
                         <viewLayoutGuide key="safeArea" id="heQ-FH-Osd"/>
                     </scrollView>
                     <navigationItem key="navigationItem" id="irD-iH-E4o"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <size key="freeformSize" width="320" height="800"/>
                     <connections>
                         <outlet property="downloadUTAAppButton" destination="7UY-Vv-JFd" id="ODD-Nz-rw1"/>

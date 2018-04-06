@@ -67,8 +67,9 @@ class CreateEventViewController: UIViewController {
     // MARK: - Actions
     @IBAction func saveBtnPressed(_ sender: Any) {
         
+        
         // Show the view
-        self.showUPloadEventGroup()
+        self.showUploadEventGroup()
         
         guard let title = titleLabel.text,
             let eventDateString = eventDateLabel.text,
@@ -84,6 +85,14 @@ class CreateEventViewController: UIViewController {
             !eventInfo.isEmpty else {
                 presentSimpleAlert(viewController: self, title: "Error Uploaded Event", message: "Make sure all field are filled.")
                 return
+        }
+        
+        EventController.shared.fetchAllEvents { (_, events) in
+            let titles = events.compactMap{$0.title}
+            if titles.contains(title) {
+                presentSimpleAlert(viewController: self, title: "Duplicate Event", message: "You can't have duplicate event names. Delete an old event or change the name.")
+            }
+            return
         }
         
         self.checkLablesWith(eventTime: eventTime, title: title, eventDateString: eventDateString, address: address, eventInfo: eventInfo)
@@ -240,7 +249,7 @@ class CreateEventViewController: UIViewController {
     }
     
     /// Shows the group and Stops the Activity Indicator
-    private func showUPloadEventGroup() {
+    private func showUploadEventGroup() {
         eventUploadedSuccesfuallyGroupingView.isHidden = false
         postEventActivityIndicator.startAnimating()
     }

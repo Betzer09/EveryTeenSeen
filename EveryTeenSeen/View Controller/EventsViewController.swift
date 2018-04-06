@@ -57,7 +57,7 @@ class EventsViewController: UIViewController {
     }
     
     private func loadAllEvents(completion: @escaping (_ success: Bool) -> Void = {_ in}) {
-        EventController.shared.fetchAllEvents { (success) in
+        EventController.shared.fetchAllEvents { (success,_) in
             guard success else {return}
             DispatchQueue.main.async {
                 self.tableView.reloadData()

@@ -108,7 +108,7 @@ class UserProfileViewController: UIViewController {
     // MARK: - Functions 
     private func setUpView() {
         
-        EventController.shared.fetchAllEvents { (doneFetching) in
+        EventController.shared.fetchAllEvents { (doneFetching,_) in
             guard doneFetching else {return}
             DispatchQueue.main.async {
                 self.tableView.reloadData()

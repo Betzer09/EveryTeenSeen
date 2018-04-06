@@ -65,7 +65,7 @@ class EventController {
     }
     
     /// Fetch all events from firestore
-    func fetchAllEvents(completion: @escaping(_ success: Bool) -> Void = {_ in}) {
+    func fetchAllEvents(completion: @escaping(_ success: Bool, _ event: [Event]) -> Void = {_,_ in}) {
         
         let eventGroup = DispatchGroup()
 
@@ -76,10 +76,10 @@ class EventController {
         eventdb.collection(EventController.eventKey).getDocuments { (snapshot, error) in
             if let error = error {
                 NSLog("Error fetching Events: \(error)")
-                completion(false)
+                completion(false, [])
             }
             
-            guard let documents = snapshot?.documents else {completion(false); return}
+            guard let documents = snapshot?.documents else {completion(false, []); return}
             
             for document in documents {
                 eventGroup.enter()
@@ -102,7 +102,7 @@ class EventController {
                     })
                 } catch let e {
                     NSLog("Error decoding data: \(e.localizedDescription)")
-                    completion(false)
+                    completion(false, [])
                     eventGroup.leave()
                 }
             }
@@ -110,7 +110,7 @@ class EventController {
             eventGroup.notify(queue: .main, execute: {
                 let sortedEvent = events.sorted(by: { convertStringToDateWith(stringDate: $0.dateHeld)! > convertStringToDateWith(stringDate: $1.dateHeld)!})
                 self.events = sortedEvent
-                completion(true)
+                completion(true, sortedEvent)
             })
         }
     }

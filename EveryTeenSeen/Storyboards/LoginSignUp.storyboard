@@ -272,6 +272,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Login Background" width="431" height="585"/>
+        <image name="Login Background" width="100" height="137"/>
     </resources>
 </document>

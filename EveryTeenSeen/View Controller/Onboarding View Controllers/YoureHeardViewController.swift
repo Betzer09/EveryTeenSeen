@@ -12,14 +12,14 @@ class YoureHeardViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var textView: UIImageView!
+    @IBOutlet weak var youreHeardLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         createGradientLayer()
         self.view.bringSubview(toFront: imageView)
-        self.view.bringSubview(toFront: textView)
+        self.view.bringSubview(toFront: youreHeardLabel)
     }
     
     // MARK: - Properties

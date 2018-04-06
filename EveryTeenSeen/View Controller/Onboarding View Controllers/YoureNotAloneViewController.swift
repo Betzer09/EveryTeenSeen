@@ -12,14 +12,14 @@ class YoureNotAloneViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var textView: UIImageView!
+    @IBOutlet weak var notAloneLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.createGradientLayer()
         self.view.bringSubview(toFront: imageView)
-        self.view.bringSubview(toFront: textView)
+        self.view.bringSubview(toFront: notAloneLabel)
     }
     
     override func viewDidLoad() {

@@ -19,29 +19,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YoureSeenImage" translatesAutoresizingMaskIntoConstraints="NO" id="l51-1d-YNH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="You're Seen" translatesAutoresizingMaskIntoConstraints="NO" id="l51-1d-YNH">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="You're SEEN" translatesAutoresizingMaskIntoConstraints="NO" id="6aV-V5-u6z">
-                                <rect key="frame" x="53.5" y="213" width="213" height="142"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="DKw-Dm-fHw">
+                                <rect key="frame" x="53.5" y="190" width="213" height="189"/>
+                                <string key="text">You’re 
+SEEN</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="150"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="DKw-Dm-fHw" firstAttribute="width" secondItem="l51-1d-YNH" secondAttribute="width" multiplier="2/3" id="FyX-GI-YPO"/>
                             <constraint firstItem="l51-1d-YNH" firstAttribute="leading" secondItem="ueW-19-w6h" secondAttribute="leading" id="Pnf-2u-NnC"/>
-                            <constraint firstItem="6aV-V5-u6z" firstAttribute="centerX" secondItem="ueW-19-w6h" secondAttribute="centerX" id="QcF-26-9YX"/>
-                            <constraint firstItem="6aV-V5-u6z" firstAttribute="width" secondItem="l51-1d-YNH" secondAttribute="width" multiplier="2/3" id="S7l-IH-10q"/>
+                            <constraint firstItem="DKw-Dm-fHw" firstAttribute="height" secondItem="l51-1d-YNH" secondAttribute="height" multiplier="1/3" id="aEE-DB-AmX"/>
                             <constraint firstItem="l51-1d-YNH" firstAttribute="top" secondItem="ueW-19-w6h" secondAttribute="top" id="iBb-uY-zna"/>
                             <constraint firstItem="l51-1d-YNH" firstAttribute="bottom" secondItem="6EO-RV-xBo" secondAttribute="bottom" id="je2-EQ-vO1"/>
                             <constraint firstItem="l51-1d-YNH" firstAttribute="trailing" secondItem="6EO-RV-xBo" secondAttribute="trailing" id="mhp-nV-9MZ"/>
-                            <constraint firstItem="6aV-V5-u6z" firstAttribute="centerY" secondItem="ueW-19-w6h" secondAttribute="centerY" id="tSq-kt-U55"/>
-                            <constraint firstItem="6aV-V5-u6z" firstAttribute="height" secondItem="l51-1d-YNH" secondAttribute="height" multiplier="1/4" id="xwa-kw-z3T"/>
+                            <constraint firstItem="DKw-Dm-fHw" firstAttribute="centerY" secondItem="ueW-19-w6h" secondAttribute="centerY" id="q9C-eB-7Cl"/>
+                            <constraint firstItem="DKw-Dm-fHw" firstAttribute="centerX" secondItem="ueW-19-w6h" secondAttribute="centerX" id="xKB-WZ-cHy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6EO-RV-xBo"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="l51-1d-YNH" id="H1c-hQ-ut4"/>
-                        <outlet property="textview" destination="6aV-V5-u6z" id="WB9-Gu-1hh"/>
+                        <outlet property="youreSeenLabel" destination="DKw-Dm-fHw" id="ibe-S3-cwf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAA-OU-lsm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -64,29 +69,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YoureHeard" translatesAutoresizingMaskIntoConstraints="NO" id="uhk-lG-SNr">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="You're Heard" translatesAutoresizingMaskIntoConstraints="NO" id="uhk-lG-SNr">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="You're HEARD" translatesAutoresizingMaskIntoConstraints="NO" id="Acb-KU-Zdd">
-                                <rect key="frame" x="53.5" y="213" width="213" height="142"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="lfa-ME-8Vb">
+                                <rect key="frame" x="48" y="190" width="224" height="189"/>
+                                <string key="text">You’re 
+HEARD</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="150"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kud-p4-etw" firstAttribute="bottom" secondItem="uhk-lG-SNr" secondAttribute="bottom" id="1Y6-3R-5yG"/>
-                            <constraint firstItem="Acb-KU-Zdd" firstAttribute="height" secondItem="uhk-lG-SNr" secondAttribute="height" multiplier="1/4" id="6L0-ko-vKo"/>
                             <constraint firstItem="uhk-lG-SNr" firstAttribute="top" secondItem="0U8-lM-dTj" secondAttribute="top" id="7yx-02-JxB"/>
-                            <constraint firstItem="Acb-KU-Zdd" firstAttribute="width" secondItem="uhk-lG-SNr" secondAttribute="width" multiplier="2/3" id="AaF-PY-QPy"/>
+                            <constraint firstItem="lfa-ME-8Vb" firstAttribute="height" secondItem="uhk-lG-SNr" secondAttribute="height" multiplier="1/3" id="F2u-6y-1C3"/>
                             <constraint firstItem="uhk-lG-SNr" firstAttribute="leading" secondItem="kud-p4-etw" secondAttribute="leading" id="HGA-Lm-kAE"/>
-                            <constraint firstItem="Acb-KU-Zdd" firstAttribute="centerX" secondItem="0U8-lM-dTj" secondAttribute="centerX" id="Qlx-kN-gMQ"/>
-                            <constraint firstItem="Acb-KU-Zdd" firstAttribute="centerY" secondItem="0U8-lM-dTj" secondAttribute="centerY" id="ThN-hg-Ums"/>
+                            <constraint firstItem="lfa-ME-8Vb" firstAttribute="centerX" secondItem="0U8-lM-dTj" secondAttribute="centerX" id="HPj-ex-nqm"/>
+                            <constraint firstItem="lfa-ME-8Vb" firstAttribute="width" secondItem="uhk-lG-SNr" secondAttribute="width" multiplier="0.7" id="bfT-vI-0DL"/>
+                            <constraint firstItem="lfa-ME-8Vb" firstAttribute="centerY" secondItem="0U8-lM-dTj" secondAttribute="centerY" id="sAD-qB-cNQ"/>
                             <constraint firstItem="kud-p4-etw" firstAttribute="trailing" secondItem="uhk-lG-SNr" secondAttribute="trailing" id="tfH-HQ-gBl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kud-p4-etw"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="uhk-lG-SNr" id="oSv-DX-YsZ"/>
-                        <outlet property="textView" destination="Acb-KU-Zdd" id="52J-wJ-Mnj"/>
+                        <outlet property="youreHeardLabel" destination="lfa-ME-8Vb" id="Wsz-xx-glo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKl-JU-xGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -101,29 +111,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YoureNotAlone" translatesAutoresizingMaskIntoConstraints="NO" id="tNa-il-Blz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="You're Not Alone" translatesAutoresizingMaskIntoConstraints="NO" id="tNa-il-Blz">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="You're NOT ALONE" translatesAutoresizingMaskIntoConstraints="NO" id="mD4-YD-wBU">
-                                <rect key="frame" x="16.5" y="213" width="288" height="142"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Nzc-rK-hNt">
+                                <rect key="frame" x="16" y="190" width="288" height="189"/>
+                                <string key="text">You’re 
+NOT ALONE</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="150"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tNa-il-Blz" firstAttribute="leading" secondItem="mKS-SV-nga" secondAttribute="leading" id="9OA-bP-Skh"/>
-                            <constraint firstItem="mD4-YD-wBU" firstAttribute="height" secondItem="tNa-il-Blz" secondAttribute="height" multiplier="1/4" id="InQ-b1-Bfw"/>
-                            <constraint firstItem="mD4-YD-wBU" firstAttribute="centerY" secondItem="fvW-vX-eFB" secondAttribute="centerY" id="Nor-p7-sUd"/>
                             <constraint firstItem="mKS-SV-nga" firstAttribute="bottom" secondItem="tNa-il-Blz" secondAttribute="bottom" id="PfC-Eq-BUz"/>
+                            <constraint firstItem="Nzc-rK-hNt" firstAttribute="width" secondItem="tNa-il-Blz" secondAttribute="width" multiplier="0.9" id="Ubt-ZK-Ayk"/>
                             <constraint firstItem="tNa-il-Blz" firstAttribute="top" secondItem="fvW-vX-eFB" secondAttribute="top" id="bpr-Dx-uG8"/>
-                            <constraint firstItem="mD4-YD-wBU" firstAttribute="centerX" secondItem="fvW-vX-eFB" secondAttribute="centerX" id="eHP-g0-lpp"/>
+                            <constraint firstItem="Nzc-rK-hNt" firstAttribute="height" secondItem="tNa-il-Blz" secondAttribute="height" multiplier="1/3" id="dW4-St-Sqn"/>
+                            <constraint firstItem="Nzc-rK-hNt" firstAttribute="centerX" secondItem="fvW-vX-eFB" secondAttribute="centerX" id="fGV-xp-X9L"/>
+                            <constraint firstItem="Nzc-rK-hNt" firstAttribute="centerY" secondItem="fvW-vX-eFB" secondAttribute="centerY" id="i2S-gs-WXH"/>
                             <constraint firstItem="mKS-SV-nga" firstAttribute="trailing" secondItem="tNa-il-Blz" secondAttribute="trailing" id="mxb-R4-UUo"/>
-                            <constraint firstItem="mD4-YD-wBU" firstAttribute="width" secondItem="tNa-il-Blz" secondAttribute="width" multiplier="9/10" id="pdL-Ev-OZC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mKS-SV-nga"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="tNa-il-Blz" id="sMR-Jf-115"/>
-                        <outlet property="textView" destination="mD4-YD-wBU" id="qEd-G6-abT"/>
+                        <outlet property="notAloneLabel" destination="Nzc-rK-hNt" id="dCs-cq-IYx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvj-Ic-RAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -142,7 +157,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GetStarted" translatesAutoresizingMaskIntoConstraints="NO" id="npR-p4-MsY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Get Started Background" translatesAutoresizingMaskIntoConstraints="NO" id="npR-p4-MsY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIf-wR-lPS">
@@ -216,7 +231,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Services are required to find events nearby you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="RKd-cI-lNn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Services are required to find events near you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="RKd-cI-lNn">
                                         <rect key="frame" x="13.5" y="249.5" width="245" height="60.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                         <nil key="textColor"/>
@@ -259,18 +274,13 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocationPin" translatesAutoresizingMaskIntoConstraints="NO" id="rVf-Rn-NMt" userLabel="location Image View">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location services icon" translatesAutoresizingMaskIntoConstraints="NO" id="rVf-Rn-NMt" userLabel="location Image View">
                                         <rect key="frame" x="13.5" y="72.5" width="245" height="165"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="CQJ-2Q-y3s">
-                                        <rect key="frame" x="0.0" y="0.0" width="272" height="483"/>
-                                        <color key="color" red="0.1019607843" green="0.85882352939999995" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="CQJ-2Q-y3s" firstAttribute="height" secondItem="yAS-j5-2TI" secondAttribute="height" id="1iq-dH-iLQ"/>
                                     <constraint firstItem="YKU-zf-F3M" firstAttribute="centerX" secondItem="yAS-j5-2TI" secondAttribute="centerX" id="4SP-mW-AGN"/>
                                     <constraint firstItem="rVf-Rn-NMt" firstAttribute="width" secondItem="yAS-j5-2TI" secondAttribute="width" multiplier="0.9" id="6CY-Wr-bwl"/>
                                     <constraint firstItem="gpy-wn-O4b" firstAttribute="centerX" secondItem="yAS-j5-2TI" secondAttribute="centerX" id="6fz-j3-JWE"/>
@@ -284,17 +294,18 @@
                                     <constraint firstItem="rVf-Rn-NMt" firstAttribute="centerX" secondItem="yAS-j5-2TI" secondAttribute="centerX" id="M2J-CL-DdI"/>
                                     <constraint firstItem="YKU-zf-F3M" firstAttribute="height" secondItem="yAS-j5-2TI" secondAttribute="height" multiplier="1/6" id="RGY-Y6-U3l"/>
                                     <constraint firstItem="RKd-cI-lNn" firstAttribute="top" secondItem="u7W-ql-xxc" secondAttribute="bottom" constant="8" id="Sao-WD-sxk"/>
-                                    <constraint firstItem="CQJ-2Q-y3s" firstAttribute="centerX" secondItem="yAS-j5-2TI" secondAttribute="centerX" id="Sst-MM-XxB"/>
-                                    <constraint firstItem="CQJ-2Q-y3s" firstAttribute="width" secondItem="yAS-j5-2TI" secondAttribute="width" id="VAR-wo-IOH"/>
                                     <constraint firstItem="RKd-cI-lNn" firstAttribute="width" secondItem="yAS-j5-2TI" secondAttribute="width" multiplier="0.9" id="ZIM-01-oFa"/>
                                     <constraint firstItem="gpy-wn-O4b" firstAttribute="top" secondItem="yAS-j5-2TI" secondAttribute="top" constant="20" id="e6O-aJ-0Yx"/>
-                                    <constraint firstItem="CQJ-2Q-y3s" firstAttribute="centerY" secondItem="yAS-j5-2TI" secondAttribute="centerY" id="epQ-cp-GIh"/>
                                     <constraint firstItem="u7W-ql-xxc" firstAttribute="centerX" secondItem="yAS-j5-2TI" secondAttribute="centerX" id="fG1-I5-06c"/>
                                     <constraint firstItem="RKd-cI-lNn" firstAttribute="height" secondItem="yAS-j5-2TI" secondAttribute="height" multiplier="1/8" id="fcB-VS-Xys"/>
                                     <constraint firstItem="u7W-ql-xxc" firstAttribute="width" secondItem="yAS-j5-2TI" secondAttribute="width" id="gJs-DQ-F2t"/>
                                     <constraint firstItem="YKU-zf-F3M" firstAttribute="width" secondItem="yAS-j5-2TI" secondAttribute="width" multiplier="0.9" id="gKG-wh-kXL"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="CQJ-2Q-y3s">
+                                <rect key="frame" x="16" y="-199" width="320" height="483"/>
+                                <color key="color" red="0.1019607843" green="0.85882352939999995" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -311,6 +322,7 @@
                             <constraint firstItem="yAS-j5-2TI" firstAttribute="centerX" secondItem="HRH-s7-cDw" secondAttribute="centerX" constant="8" id="SpA-Fw-eTm"/>
                             <constraint firstItem="npR-p4-MsY" firstAttribute="leading" secondItem="sxl-BJ-4Nh" secondAttribute="leading" id="Udm-lP-G0j"/>
                             <constraint firstItem="mdC-G6-deX" firstAttribute="top" secondItem="I47-7O-E2v" secondAttribute="bottom" constant="8" id="VQd-FC-r3W"/>
+                            <constraint firstItem="CQJ-2Q-y3s" firstAttribute="height" secondItem="HRH-s7-cDw" secondAttribute="height" constant="-85" id="VpJ-Qp-c5c"/>
                             <constraint firstItem="I47-7O-E2v" firstAttribute="centerX" secondItem="HRH-s7-cDw" secondAttribute="centerX" id="Xgz-Sq-X5B"/>
                             <constraint firstItem="dcu-PH-EV9" firstAttribute="height" secondItem="np1-dj-ZUB" secondAttribute="height" id="ZHs-CE-JSh"/>
                             <constraint firstItem="mdC-G6-deX" firstAttribute="centerX" secondItem="HRH-s7-cDw" secondAttribute="centerX" id="aBy-M7-KCS"/>
@@ -319,7 +331,10 @@
                             <constraint firstItem="hIf-wR-lPS" firstAttribute="width" secondItem="HRH-s7-cDw" secondAttribute="width" id="f2V-rz-OmJ"/>
                             <constraint firstItem="sxl-BJ-4Nh" firstAttribute="trailing" secondItem="npR-p4-MsY" secondAttribute="trailing" id="g5K-rL-5rK"/>
                             <constraint firstItem="0nh-4a-RxD" firstAttribute="leading" secondItem="sxl-BJ-4Nh" secondAttribute="leading" id="gMk-0U-SeR"/>
+                            <constraint firstItem="CQJ-2Q-y3s" firstAttribute="width" secondItem="HRH-s7-cDw" secondAttribute="width" constant="-48" id="gR1-BR-lqd"/>
+                            <constraint firstItem="CQJ-2Q-y3s" firstAttribute="centerY" secondItem="HRH-s7-cDw" secondAttribute="centerY" constant="-241.5" id="gm8-iU-6ON"/>
                             <constraint firstItem="sxl-BJ-4Nh" firstAttribute="bottom" secondItem="npR-p4-MsY" secondAttribute="bottom" id="k63-dK-zT0"/>
+                            <constraint firstItem="CQJ-2Q-y3s" firstAttribute="centerX" secondItem="HRH-s7-cDw" secondAttribute="centerX" constant="-8" id="mV9-B0-2iA"/>
                             <constraint firstItem="I47-7O-E2v" firstAttribute="centerY" secondItem="HRH-s7-cDw" secondAttribute="centerY" multiplier="0.75" id="qDh-FM-hMh"/>
                             <constraint firstItem="npR-p4-MsY" firstAttribute="top" secondItem="HRH-s7-cDw" secondAttribute="top" id="tcf-Sf-iB6"/>
                             <constraint firstItem="I47-7O-E2v" firstAttribute="height" secondItem="0nh-4a-RxD" secondAttribute="height" multiplier="1/2" id="tgx-cE-DNB"/>
@@ -347,14 +362,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="GetStarted" width="375" height="667"/>
+        <image name="Get Started Background" width="100" height="178"/>
         <image name="HappyLogo" width="188" height="133"/>
-        <image name="LocationPin" width="218" height="209"/>
-        <image name="You're HEARD" width="160" height="87"/>
-        <image name="You're NOT ALONE" width="268" height="85"/>
-        <image name="You're SEEN" width="122" height="88"/>
-        <image name="YoureHeard" width="375" height="667"/>
-        <image name="YoureNotAlone" width="375" height="667"/>
-        <image name="YoureSeenImage" width="375" height="667"/>
+        <image name="Location services icon" width="139" height="214"/>
+        <image name="You're Heard" width="100" height="178"/>
+        <image name="You're Not Alone" width="100" height="178"/>
+        <image name="You're Seen" width="100" height="178"/>
     </resources>
 </document>

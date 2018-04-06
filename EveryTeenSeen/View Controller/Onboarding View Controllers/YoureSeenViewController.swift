@@ -12,7 +12,7 @@ class YoureSeenViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var textview: UIImageView!
+    @IBOutlet weak var youreSeenLabel: UILabel!
     
     // MARK: - Properties
     var gradientLayer: CAGradientLayer!
@@ -24,7 +24,7 @@ class YoureSeenViewController: UIViewController {
         
         createGradientLayer()
         self.view.bringSubview(toFront: imageView)
-        self.view.bringSubview(toFront: textview)
+        self.view.bringSubview(toFront: youreSeenLabel)
     }
     
     private func createGradientLayer() {

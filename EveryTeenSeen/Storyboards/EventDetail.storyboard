@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAO-hz-WG2">
-                                <rect key="frame" x="0.0" y="20" width="320" height="1080"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="1036"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zp7-TO-HeV">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
@@ -385,6 +385,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                         <viewLayoutGuide key="safeArea" id="soU-H6-c3V"/>
                     </view>
                     <navigationItem key="navigationItem" id="jlZ-ZN-kkz"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <size key="freeformSize" width="320" height="1100"/>
                     <connections>
                         <outlet property="attendEventButton" destination="txi-vr-Ebs" id="Fky-9p-woB"/>
@@ -418,7 +419,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                     </connections>
                 </button>
             </objects>
-            <point key="canvasLocation" x="1104" y="1028.1859070464768"/>
+            <point key="canvasLocation" x="1443.2" y="1028.1859070464768"/>
         </scene>
         <!--About User View Controller-->
         <scene sceneID="M5E-ex-hCO">
@@ -497,19 +498,19 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="largeAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="aBg-tX-V6t">
-                                <rect key="frame" x="120.5" y="36" width="134" height="133.5"/>
+                                <rect key="frame" x="120.5" y="80" width="134" height="133.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aBg-tX-V6t" secondAttribute="height" multiplier="1:1" id="frt-VE-Yjp"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person's Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="wwh-DZ-bkC">
-                                <rect key="frame" x="94" y="177.5" width="187.5" height="22.5"/>
+                                <rect key="frame" x="94" y="221.5" width="187.5" height="22.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salt Lake City, UT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Qd-d5-PnA">
-                                <rect key="frame" x="94" y="202" width="187.5" height="13.5"/>
+                                <rect key="frame" x="94" y="246" width="187.5" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -521,13 +522,13 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXC-ut-RkG">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Czd-SP-tp0">
-                                        <rect key="frame" x="177.5" y="313" width="20" height="20"/>
+                                        <rect key="frame" x="177.5" y="291" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoadIng User's Profile..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="FAL-jM-8zM">
-                                        <rect key="frame" x="18.5" y="364" width="337.5" height="23"/>
+                                        <rect key="frame" x="18.5" y="342" width="337.5" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -591,7 +592,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                 <placeholder placeholderIdentifier="IBFirstResponder" id="02E-Dz-QiU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="trq-ei-mvy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2082.4000000000001" y="1210.344827586207"/>
+            <point key="canvasLocation" x="2421.5999999999999" y="1210.344827586207"/>
         </scene>
     </scenes>
     <resources>

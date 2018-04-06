@@ -12,7 +12,7 @@
         <attribute name="profileImageURLString" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
         <attribute name="usertype" attributeType="String" syncable="YES"/>
         <attribute name="zipcode" attributeType="String" syncable="YES"/>
-        <relationship name="interests" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Interest" inverseName="user" inverseEntity="Interest" syncable="YES"/>
+        <relationship name="interests" optional="YES" toMany="YES" maxCount="9" deletionRule="Cascade" ordered="YES" destinationEntity="Interest" inverseName="user" inverseEntity="Interest" syncable="YES"/>
     </entity>
     <entity name="UserLocation" representedClassName="UserLocation" syncable="YES" codeGenerationType="class">
         <attribute name="cityName" attributeType="String" syncable="YES"/>

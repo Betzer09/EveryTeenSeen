@@ -259,7 +259,8 @@ extension UserController {
         }
         
         if users.count > 2 {
-            for i in 0...users.count - 1 {
+            // This way we leave at least one in the context.
+            for i in 0...users.count - 2 {
                 context.delete(users[i])
             }
         }

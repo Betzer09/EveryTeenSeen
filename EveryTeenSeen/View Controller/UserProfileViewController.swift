@@ -77,8 +77,8 @@ class UserProfileViewController: UIViewController {
                 return
             }
             InterestController.shared.createInterestWith(user: user, and: name, completion: { (done) in
-                guard done else {return}
-                configureAllButtonsIn(view: self.interestsGroupView, interests: interests)
+                guard done == true, let updatedUserInterests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else {return}
+                configureAllButtonsIn(view: self.interestsGroupView, interests: updatedUserInterests)
             })
             
         }

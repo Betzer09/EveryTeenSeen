@@ -249,8 +249,15 @@ extension EventDetailViewController {
         backButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
         
         let profileButton: UIButton = UIButton(type: .custom)
-        guard let unwrappedImage = UserController.shared.profilePicture.circleMasked else {return}
-        let profileImage = resizeImage(image: unwrappedImage, targetSize: CGSize(width: 40.0, height: 40.0))
+        let profilePicture = UserController.shared.profilePicture
+        var smallAvatar = #imageLiteral(resourceName: "smallAvatar")
+        if profilePicture != #imageLiteral(resourceName: "smallAvatar") {
+            if let profilePic = profilePicture.circleMasked {
+                
+                smallAvatar = resizeImage(image: profilePic, targetSize: CGSize(width: 40, height: 40))
+            }
+        }
+        let profileImage = smallAvatar
         
         profileButton.setImage(profileImage, for: .normal)
         profileButton.addTarget(self, action: #selector(segueToProfileView), for: .touchUpInside)

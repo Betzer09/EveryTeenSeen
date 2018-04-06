@@ -61,7 +61,6 @@ class FirebaseManager {
     /// This is used to fetch a different user other than the one that is already in the context
     func fetchOtherUserFromFirebase(email: String, completion: @escaping ((_ user: OtherUser?, _ error: Error?) -> Void)) {
         
-        
         let db = Firestore.firestore()
         
         db.collection("users").whereField("email", isEqualTo: email).getDocuments { (snapshot, error) in

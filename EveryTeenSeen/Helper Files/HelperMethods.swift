@@ -388,6 +388,33 @@ public func configureAllButtonsIn(view: UIView, interests: [Interest]) {
     }
 }
 
+/// This is used to Init an interest without saving it into the context
+ func configureAllButtonsIn(view: UIView, interests: [OtherInterest]) {
+    let buttons = getAllButtons(view: view)
+    
+    // Make all buttons have no title
+    for i in 0...buttons.count - 1 {
+        DispatchQueue.main.async {
+            buttons[i].setTitle("", for: .normal)
+            buttons[i].layer.borderColor = UIColor.clear.cgColor
+        }
+    }
+    
+    if interests.count != 0 {
+        
+        for i in 0...interests.count - 1 {
+            let interestName = interests[i].name
+            
+            DispatchQueue.main.async {
+                buttons[i].setTitle(interestName, for: .normal)
+                buttons[i].layer.borderColor = UIColor.blue.cgColor
+                buttons[i].layer.borderWidth = 1
+                buttons[i].layer.cornerRadius = 10
+            }
+        }
+    }
+}
+
 // MARK: - User Location Functions
 
 /// This function is used to see if we need to update the location on the phone

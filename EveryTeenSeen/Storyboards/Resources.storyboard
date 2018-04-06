@@ -131,13 +131,14 @@ Press to Download in the App Store</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qql-sk-gsp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="1086"/>
+            <point key="canvasLocation" x="290" y="1086"/>
         </scene>
-        <!--Item-->
+        <!--Resources-->
         <scene sceneID="Iwv-M2-gO3">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xEA-FK-UTE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tAj-R1-mex" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="heart" id="Yyr-PZ-nj6"/>
+                    <tabBarItem key="tabBarItem" title="Resources" image="heart" id="Yyr-PZ-nj6"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tU8-oo-XQJ">
@@ -149,7 +150,6 @@ Press to Download in the App Store</string>
                         <segue destination="HXc-yt-hct" kind="relationship" relationship="rootViewController" id="j6X-9g-dc4"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xEA-FK-UTE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-679" y="1087"/>
         </scene>

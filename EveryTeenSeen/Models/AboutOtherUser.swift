@@ -26,10 +26,10 @@ struct OtherUser {
     let usertype: String
     let zipcode: String
     let eventDistance: Int
-    let interests: [Interest]
+    let interests: [OtherInterest]
     let profileImageURLString: String
     
-    @discardableResult init(email: String, fullname: String, usertype: String, zipcode: String, eventDistance: Int, interests: [Interest], profileImageURLString: String) {
+    @discardableResult init(email: String, fullname: String, usertype: String, zipcode: String, eventDistance: Int, interests: [OtherInterest], profileImageURLString: String) {
         
         self.email = email
         self.fullname = fullname
@@ -52,11 +52,10 @@ struct OtherUser {
                 return nil
         }
         
-        var interestsToReturn: [Interest] = []
+        var interestsToReturn: [OtherInterest] = []
         
-        guard let user = UserController.shared.loadUserProfile() else {NSLog("There is no user to load: \(#function)"); return nil}
         for stringInterest in interests {
-            let interest = Interest(name: stringInterest, user: user)
+            let interest = OtherInterest(name: stringInterest)
             interestsToReturn.append(interest)
         }
         
@@ -68,6 +67,11 @@ struct OtherUser {
         self.eventDistance = eventDistance
         self.interests = interestsToReturn
     }
-    
-    
+}
+
+struct OtherInterest {
+    let name: String
+    init(name: String) {
+        self.name = name
+    }
 }

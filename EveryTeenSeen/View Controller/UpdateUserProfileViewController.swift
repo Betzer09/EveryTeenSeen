@@ -70,7 +70,8 @@ class UpdateUserProfileViewController: UIViewController {
             
             InterestController.shared.delete(interest: interest)
             
-            configureAllButtonsIn(view: self.interestGroupView, interests: interests)
+            guard let updatedInterests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else {return}
+            configureAllButtonsIn(view: self.interestGroupView, interests: updatedInterests)
         }
     }
     

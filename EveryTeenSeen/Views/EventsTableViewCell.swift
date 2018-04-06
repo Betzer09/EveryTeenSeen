@@ -20,8 +20,11 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var plusButtonImage: UIImageView!
     @IBOutlet weak var eventPhotoImageView: UIImageView!
     
+    @IBOutlet weak var eventContentDescriptionView: UIView!
+    
     // MARK: - Properties
     
+    // MARK: - Properties
     var event: Event? {
         didSet {
             self.updateUI()

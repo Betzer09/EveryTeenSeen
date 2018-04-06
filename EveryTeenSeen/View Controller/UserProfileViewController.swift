@@ -70,7 +70,7 @@ class UserProfileViewController: UIViewController {
         
         let okActions = UIAlertAction(title: "Create Interest", style: .default) { (_) in
             guard let name = interestTextField.text, let user = UserController.shared.loadUserProfile() else {return}
-            let interestsNames = interests.flatMap({ $0.name })
+            let interestsNames = interests.compactMap({ $0.name })
             
             if interestsNames.contains(name) {
                 presentSimpleAlert(viewController: self, title: "Oops", message: "You already have that interest!")

@@ -44,7 +44,7 @@ extension User {
         
         if let interests = UserController.shared.loadUserProfile()?.interests {
             guard let castedInterests = interests.array as? [Interest] else {return [:]}
-            interestNames = castedInterests.flatMap( { $0.name } )
+            interestNames = castedInterests.compactMap( { $0.name } )
         }
         return [emailKey: email, fullnameKey: fullname, userTypeKey: usertype, zipcodeKey: zipcode, profileURLStringKey: profileImageURLString, eventDistanceKey: eventDistance, userInteretsKey: interestNames, lastUpdateKey: lastUpdate]
     }

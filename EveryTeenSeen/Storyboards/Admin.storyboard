@@ -556,7 +556,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.1019607843" green="0.85882352939999995" blue="0.82745098039999998" alpha="0.74942231510000001" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.1019607843" green="0.85882352939999995" blue="0.82745098039999998" alpha="0.90459947179014066" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="Ame-qY-bV5" firstAttribute="width" secondItem="SKB-vm-FCf" secondAttribute="width" multiplier="0.45" id="3EK-tV-frI"/>
                                                         <constraint firstItem="2k2-et-8sR" firstAttribute="height" secondItem="gPy-kz-Bki" secondAttribute="height" id="76t-m3-Azc"/>
@@ -696,6 +696,7 @@
                                             <outlet property="attendingLabel" destination="cup-kv-Fh6" id="GAb-HK-qiy"/>
                                             <outlet property="eventAddressLabel" destination="gPy-kz-Bki" id="3qf-fF-GFN"/>
                                             <outlet property="eventAttendingLabel" destination="DQl-wx-5rl" id="4wm-w7-1bW"/>
+                                            <outlet property="eventContentDescriptionView" destination="SKB-vm-FCf" id="bnP-rL-8mX"/>
                                             <outlet property="eventDateLabel" destination="2k2-et-8sR" id="rfm-ak-cSZ"/>
                                             <outlet property="eventPhotoImageView" destination="Zdh-qh-KKi" id="9Jg-iP-aTx"/>
                                             <outlet property="eventTitleLabel" destination="Ame-qY-bV5" id="zNB-AQ-ssb"/>

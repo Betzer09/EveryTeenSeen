@@ -214,10 +214,9 @@ class EventDetailViewController: UIViewController {
         }
     }
     
-    
     func setUpLocationLabels() {
         guard let address = event?.address else {return}
-
+        
         parseStringByCommasForDateAndLocation(string: address) { (locationTitle, stringPhrase) in
             self.eventLocationNameLabel.text = locationTitle
             self.eventLocationLabel.text = String(stringPhrase.dropFirst())

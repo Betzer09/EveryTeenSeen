@@ -93,8 +93,7 @@ func returnFormattedTimeAsStringWith(date: Date) -> String {
     return strDate
 }
 
-
-
+// MARK: - String Parsing functions
 /// This parses the json responce for the event time and location
 func parseStringByCommasForDateAndLocation(string: String, completion: @escaping(_ firstWord: String, _ everythingAfterComma: String) -> Void) {
     

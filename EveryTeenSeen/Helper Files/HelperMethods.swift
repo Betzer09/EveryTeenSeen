@@ -93,6 +93,23 @@ func returnFormattedTimeAsStringWith(date: Date) -> String {
     return strDate
 }
 
+
+/// This converts the givin date to return like "Mon, Apr. 5, 2018
+func formatStringDateForEventTimeAsString(string: String) -> String {
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE, MMMM dd, yyyy"
+    guard let stringDate = dateFormatter.date(from: string) else {NSLog("Error formating date to sort evetns"); return ""}
+    
+    let newFormat = DateFormatter()
+    newFormat.dateFormat = "E, MMM. d, yyyy"
+    let strDate = newFormat.string(from: stringDate)
+    
+    return strDate
+    
+    
+}
+
 // MARK: - String Parsing functions
 /// This parses the json responce for the event time and location
 func parseStringByCommasForDateAndLocation(string: String, completion: @escaping(_ firstWord: String, _ everythingAfterComma: String) -> Void) {

@@ -117,7 +117,7 @@ class EventsTableViewCell: UITableViewCell {
         eventAddressLabel.text = event.address
         eventAttendingLabel.text = "Attending: \(attending.count)"
         eventTitleLabel.text = event.title
-        eventDateLabel.text = event.dateHeld + "\n" + event.eventTime
+        eventDateLabel.text = formatStringDateForEventTimeAsString(string: event.dateHeld) + "\n" + event.eventTime
     }
     
     func configureLabelAsGoing() {

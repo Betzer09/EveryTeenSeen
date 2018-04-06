@@ -209,7 +209,7 @@ class EventDetailViewController: UIViewController {
         parseStringByCommasForDateAndLocation(string: string) { (weekday, finalDate) in
             self.weekdayLabel.text = weekday
             self.eventDateLabel.text = String(finalDate.dropFirst())
-            self.eventMeetUpDateLabel.text = String(finalDate.dropFirst()) + "\n" + eventTime
+            self.eventMeetUpDateLabel.text = formatStringDateForEventTimeAsString(string: string) + "\n" + eventTime
             
         }
     }

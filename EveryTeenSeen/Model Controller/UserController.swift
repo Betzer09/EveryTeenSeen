@@ -206,7 +206,7 @@ extension UserController {
     
     // Saves the user to CoreData
     func saveUserToCoreData(email: String, fullname: String, usertype: String, zipcode: String, distance: Int64) {
-        deleteAllUserData()
+        deleteAllUserData(signout: false)
         User(email: email, fullname: fullname, usertype: usertype, zipcode: zipcode, eventDistance: distance)
         saveToPersistentStore()
     }
@@ -214,7 +214,7 @@ extension UserController {
     // Updates the User In CoreData
     func updateUserInCoredata(user: User, email: String, fullname: String, usertype: String, zipcode: String, profileImageStringURL: String, eventDistance: Int64) {
         
-        deleteAllUserData()
+        deleteAllUserData(signout: false)
         do {
             user.setValue(email, forKey: "email")
             user.setValue(fullname, forKey: "fullname")
@@ -246,7 +246,7 @@ extension UserController {
     }
     
     // Deletes all the data for Users
-    func deleteAllUserData() {
+    func deleteAllUserData(signout: Bool) {
         
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         fetchRequest.returnsObjectsAsFaults = false
@@ -261,6 +261,13 @@ extension UserController {
         if users.count > 2 {
             for i in 0...users.count - 1 {
                 context.delete(users[i])
+            }
+        }
+        
+        if signout == true {
+            print("User's logging out.")
+            for user in users {
+                context.delete(user)
             }
         }
         

@@ -99,7 +99,7 @@ class UserProfileViewController: UIViewController {
                     presentSimpleAlert(viewController: self, title: "Problem Logging out!", message: error.localizedDescription)
                 }
                 guard successfullySignedUserOut else {return}
-                UserController.shared.deleteAllUserData()
+                UserController.shared.deleteAllUserData(signout: true)
                 presentLogoutAndSignUpPage(viewController: self)
             }
         }

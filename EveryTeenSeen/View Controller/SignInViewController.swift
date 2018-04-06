@@ -133,6 +133,7 @@ class SignInViewController: UIViewController {
                 presentSimpleAlert(viewController: self, title: "Something is going wrong and we will to fix this soon!", message: "")
             }
             guard success else {return}
+            UserController.shared.profilePicture = #imageLiteral(resourceName: "smallAvatar")
             self.hideIndicator()
             presentEventsTabBarVC(viewController: self)
         }

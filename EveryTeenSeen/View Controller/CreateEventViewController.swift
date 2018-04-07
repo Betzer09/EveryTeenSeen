@@ -39,6 +39,9 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var checkMarkImageView: UIImageView!
     @IBOutlet weak var exitToEventsButton: UIButton!
     
+    // Behind the Image View
+    @IBOutlet weak var behindTheImageView: UIView!
+    
     
     // MARK: - Properties
     var delegate: PhotoSelectedViewControllerDelegate?
@@ -87,7 +90,14 @@ class CreateEventViewController: UIViewController {
             !address.isEmpty,
             !eventInfo.isEmpty else {
                 presentSimpleAlert(viewController: self, title: "Error Uploaded Event", message: "Make sure all field are filled.")
+                self.hideUploadEventGroup()
                 return
+        }
+
+        
+        guard self.checkLablesWith(eventTime: eventTime, title: title, eventDateString: eventDateString, address: address, eventInfo: eventInfo) else {
+            self.hideUploadEventGroup()
+            return
         }
         
         EventController.shared.fetchAllEvents { (_, events) in
@@ -95,16 +105,18 @@ class CreateEventViewController: UIViewController {
             if titles.contains(title) {
                 presentSimpleAlert(viewController: self, title: "Duplicate Event", message: "You can't have duplicate event names. Delete an old event or change the name.")
             }
+            self.hideUploadEventGroup()
             return
         }
-        
-        self.checkLablesWith(eventTime: eventTime, title: title, eventDateString: eventDateString, address: address, eventInfo: eventInfo)
         
         guard let image = selectedImageView.image else {return}
         
         EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDateString, eventTime: eventTime, userWhoPosted: email, address: address,eventInfo:eventInfo, image: image, lat: self.lat, long: self.long) { (success) in
                                                             
-            guard success else {presentSimpleAlert(viewController: self, title: "Error", message: "There was an error uploading the image, check everything and try again.");return}
+            guard success else {presentSimpleAlert(viewController: self, title: "Error", message: "There was an error uploading the image, check everything and try again.")
+                self.hideUploadEventGroup()
+                return
+            }
             
             self.postEventActivityIndicator.stopAnimating()
             self.postEventActivityIndicator.isHidden = true
@@ -202,47 +214,52 @@ class CreateEventViewController: UIViewController {
     private func setUpView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
+        behindTheImageView.layer.cornerRadius = 15
         eventUploadedSuccesfuallyGroupingView.layer.cornerRadius = 10
     }
     
-    private func checkLablesWith(eventTime: String, title: String, eventDateString: String, address: String, eventInfo: String) {
+    private func checkLablesWith(eventTime: String, title: String, eventDateString: String, address: String, eventInfo: String) -> Bool {
         
+        var responce = false
         guard selectedImageView != nil else {
             hideUploadEventGroup()
             presentSimpleAlert(viewController: self, title: "Warning", message: "Be sure to give the event a Image!")
-            return
+            return responce
         }
         
         guard eventTime != "Time" else {
             hideUploadEventGroup()
             presentSimpleAlert(viewController: self, title: "Warning", message: "Be sure to give the event a Time!")
-            return
+            return responce
         }
         
         guard title != "Title" else {
             presentSimpleAlert(viewController: self, title: "Warning", message: "Be sure to give the event a Title!")
             hideUploadEventGroup()
-            return
+            return responce
         }
         
         guard eventDateString != "Date" else {
             hideUploadEventGroup()
             presentSimpleAlert(viewController: self, title: "Warning", message: "Be sure to give the event a Date!")
-            return
+            return responce
         }
         
         guard address != "Location" else {
             hideUploadEventGroup()
             presentSimpleAlert(viewController: self, title: "Warning", message: "Be sure to give the event a Address!")
-            return
+            return responce
         }
         
         guard eventInfo != "Description" else {
             hideUploadEventGroup()
             presentSimpleAlert(viewController: self, title: "Warning", message: "Be sure to give the event a Description!")
-            return
+            return responce
         }
+        
+        responce = true
+        return responce
+        
     }
     
     /// Shows the group and Starts the Activity Indicator
@@ -365,6 +382,7 @@ extension CreateEventViewController: UIImagePickerControllerDelegate, UINavigati
         delegate?.photoSelectedWithVC(image)
         selectedImageView.image = image
         camaraPhotoButton.setImage(nil, for: .normal)
+        self.behindTheImageView.isHidden = true
     }
     
     private func presentCameraAndPhotoLibraryOption() {

@@ -48,6 +48,8 @@ class CreateEventViewController: UIViewController {
         }
     }
     
+    var timepicker = UIDatePicker()
+    
     var lat: Double = 0.0
     var long: Double = 0.0
     
@@ -131,7 +133,7 @@ class CreateEventViewController: UIViewController {
         eventDatePicker.datePickerMode = .time
         timePickerStackView.insertArrangedSubview(self.timeDatePicker, at: 1)
         timeDatePicker.isHidden = false
-        
+
         if datePickerBackgroundView.isHidden {
             eventDatePicker.isHidden = false
             editTimeButton.setTitle("Done", for: .normal)
@@ -147,7 +149,7 @@ class CreateEventViewController: UIViewController {
                 editTimeButton.backgroundColor = UIColor.clear
                 datePickerBackgroundView.isHidden = true
                 eventTimeLabel.text = "\(returnFormattedTimeAsStringWith(date: self.eventDatePicker.date)) - \(returnFormattedTimeAsStringWith(date: self.timeDatePicker.date))"
-                
+
                 // Store the properties
                 eventStartDateString = returnFormattedTimeAsStringWith(date: self.eventDatePicker.date)
                 eventEndDateString = returnFormattedTimeAsStringWith(date: self.timeDatePicker.date)

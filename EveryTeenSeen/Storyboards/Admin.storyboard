@@ -44,7 +44,7 @@
                                     <action selector="pickImageBtnPressed:" destination="IsB-aI-zU1" eventType="touchUpInside" id="9zR-bB-ObC"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zf7-eB-Jzt">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zf7-eB-Jzt" userLabel="Title and Description Stack View">
                                 <rect key="frame" x="0.0" y="270.5" width="320" height="71"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7P-aP-H7X">
@@ -57,7 +57,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4M-CQ-T0u">
-                                                <rect key="frame" x="248" y="3.5" width="64" height="30"/>
+                                                <rect key="frame" x="248" y="3" width="64" height="30"/>
                                                 <state key="normal" title="Edit">
                                                     <color key="titleColor" red="0.52549019607843139" green="0.52549019607843139" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -88,7 +88,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uma-tY-grq">
-                                                <rect key="frame" x="248" y="3.5" width="64" height="30"/>
+                                                <rect key="frame" x="248" y="3" width="64" height="30"/>
                                                 <state key="normal" title="Edit">
                                                     <color key="titleColor" red="0.52549019607843139" green="0.52549019607843139" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -205,35 +205,6 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t5K-lF-u87">
-                                <rect key="frame" x="0.0" y="451" width="320" height="68"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="X3l-83-UAf">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
-                                        <subviews>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qm3-Tm-Ynm">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="68"/>
-                                                <date key="date" timeIntervalSinceReferenceDate="542738438.77472699">
-                                                    <!--2018-03-14 16:40:38 +0000-->
-                                                </date>
-                                            </datePicker>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kDc-0e-a2y">
-                                                <rect key="frame" x="160" y="0.0" width="160" height="68"/>
-                                                <date key="date" timeIntervalSinceReferenceDate="542738443.20318699">
-                                                    <!--2018-03-14 16:40:43 +0000-->
-                                                </date>
-                                            </datePicker>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="X3l-83-UAf" firstAttribute="centerX" secondItem="t5K-lF-u87" secondAttribute="centerX" id="2PE-pD-SN9"/>
-                                    <constraint firstItem="X3l-83-UAf" firstAttribute="centerY" secondItem="t5K-lF-u87" secondAttribute="centerY" id="9jK-ug-RvV"/>
-                                    <constraint firstItem="X3l-83-UAf" firstAttribute="height" secondItem="t5K-lF-u87" secondAttribute="height" id="qVI-RD-fEY"/>
-                                    <constraint firstItem="X3l-83-UAf" firstAttribute="width" secondItem="t5K-lF-u87" secondAttribute="width" id="wbJ-q7-Jyw"/>
-                                </constraints>
-                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6S-Lo-6rT" userLabel="Post Uploaded Succesfully Group">
                                 <rect key="frame" x="24" y="113.5" width="272" height="341"/>
                                 <subviews>
@@ -301,6 +272,35 @@
                                     <constraint firstItem="QxX-bP-P0d" firstAttribute="height" secondItem="wAU-in-Hgp" secondAttribute="height" id="qAQ-7d-JFF"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t5K-lF-u87">
+                                <rect key="frame" x="0.0" y="228" width="320" height="113.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="X3l-83-UAf">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="113.5"/>
+                                        <subviews>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qm3-Tm-Ynm">
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="113.5"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="542738438.77472699">
+                                                    <!--2018-03-14 16:40:38 +0000-->
+                                                </date>
+                                            </datePicker>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kDc-0e-a2y">
+                                                <rect key="frame" x="160" y="0.0" width="160" height="113.5"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="542738443.20318699">
+                                                    <!--2018-03-14 16:40:43 +0000-->
+                                                </date>
+                                            </datePicker>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="X3l-83-UAf" firstAttribute="centerX" secondItem="t5K-lF-u87" secondAttribute="centerX" id="2PE-pD-SN9"/>
+                                    <constraint firstItem="X3l-83-UAf" firstAttribute="centerY" secondItem="t5K-lF-u87" secondAttribute="centerY" id="9jK-ug-RvV"/>
+                                    <constraint firstItem="X3l-83-UAf" firstAttribute="height" secondItem="t5K-lF-u87" secondAttribute="height" id="qVI-RD-fEY"/>
+                                    <constraint firstItem="X3l-83-UAf" firstAttribute="width" secondItem="t5K-lF-u87" secondAttribute="width" id="wbJ-q7-Jyw"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -316,7 +316,6 @@
                             <constraint firstItem="aNk-Oq-1Xg" firstAttribute="centerY" secondItem="KKH-35-hAb" secondAttribute="centerY" id="JqQ-Tg-6tz"/>
                             <constraint firstItem="zf7-eB-Jzt" firstAttribute="centerX" secondItem="KKH-35-hAb" secondAttribute="centerX" id="Mdc-cD-I16"/>
                             <constraint firstItem="0c5-J0-nq7" firstAttribute="height" secondItem="KKH-35-hAb" secondAttribute="height" multiplier="1/4" id="O2Y-b6-rXh"/>
-                            <constraint firstItem="t5K-lF-u87" firstAttribute="bottom" secondItem="p9f-6x-ufi" secondAttribute="bottom" id="OGG-Wu-fSD"/>
                             <constraint firstItem="0c5-J0-nq7" firstAttribute="centerY" secondItem="KKH-35-hAb" secondAttribute="centerY" multiplier="1.5" id="PtB-8x-eng"/>
                             <constraint firstItem="0c5-J0-nq7" firstAttribute="centerX" secondItem="KKH-35-hAb" secondAttribute="centerX" id="Qe3-rv-R5H"/>
                             <constraint firstItem="t5K-lF-u87" firstAttribute="centerX" secondItem="KKH-35-hAb" secondAttribute="centerX" id="SfV-vi-DMb"/>
@@ -326,8 +325,9 @@
                             <constraint firstItem="Q0D-Tw-b4D" firstAttribute="centerX" secondItem="KKH-35-hAb" secondAttribute="centerX" id="dHa-6t-CR8"/>
                             <constraint firstItem="E6S-Lo-6rT" firstAttribute="centerX" secondItem="KKH-35-hAb" secondAttribute="centerX" id="e0f-el-zbF"/>
                             <constraint firstItem="t5K-lF-u87" firstAttribute="width" secondItem="KKH-35-hAb" secondAttribute="width" id="nrh-cW-Tlh"/>
-                            <constraint firstItem="t5K-lF-u87" firstAttribute="height" secondItem="KKH-35-hAb" secondAttribute="height" multiplier="0.12" id="sg5-gg-a7n"/>
+                            <constraint firstItem="t5K-lF-u87" firstAttribute="height" secondItem="KKH-35-hAb" secondAttribute="height" multiplier="0.2" id="sg5-gg-a7n"/>
                             <constraint firstItem="aNk-Oq-1Xg" firstAttribute="width" secondItem="KKH-35-hAb" secondAttribute="width" id="uYj-mp-4u8"/>
+                            <constraint firstItem="t5K-lF-u87" firstAttribute="bottom" secondItem="zf7-eB-Jzt" secondAttribute="bottom" id="vYN-vl-CKL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p9f-6x-ufi"/>
                     </view>

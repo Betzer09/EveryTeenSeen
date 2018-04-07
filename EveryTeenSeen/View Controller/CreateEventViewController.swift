@@ -48,6 +48,9 @@ class CreateEventViewController: UIViewController {
         }
     }
     
+    var lat: Double = 0.0
+    var long: Double = 0.0
+    
     // Event Properties
     var eventStartDateString: String?
     var eventEndDateString: String?
@@ -66,8 +69,6 @@ class CreateEventViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func saveBtnPressed(_ sender: Any) {
-        
-        
         // Show the view
         self.showUploadEventGroup()
         
@@ -99,7 +100,7 @@ class CreateEventViewController: UIViewController {
         
         guard let image = selectedImageView.image else {return}
         
-        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDateString, eventTime: eventTime, userWhoPosted: email, address: address,eventInfo:eventInfo, image: image) { (success) in
+        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDateString, eventTime: eventTime, userWhoPosted: email, address: address,eventInfo:eventInfo, image: image, lat: self.lat, long: self.long) { (success) in
                                                             
             guard success else {presentSimpleAlert(viewController: self, title: "Error", message: "There was an error uploading the image, check everything and try again.");return}
             
@@ -375,7 +376,7 @@ extension CreateEventViewController: UIImagePickerControllerDelegate, UINavigati
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.sourceType = .camera
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
                 self.present(imagePicker, animated: true, completion: nil)
                 
             }

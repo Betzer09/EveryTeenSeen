@@ -33,11 +33,13 @@ class EventController {
     
     // MARK: - Firebase Functions
     /// Saves and Updates events to firestore
-    func saveEventToFireStoreWith(title: String, dateHeld: String, eventTime: String, userWhoPosted: String , address: String, eventInfo: String, image: UIImage, reports: [[String: String]] = [], completion: @escaping (_ success: Bool) -> Void) {
+    func saveEventToFireStoreWith(title: String, dateHeld: String, eventTime: String, userWhoPosted: String , address: String, eventInfo: String, image: UIImage, reports: [[String: String]] = [], lat: Double, long: Double, completion: @escaping (_ success: Bool) -> Void) {
         
         let eventDb = Firestore.firestore()
         
         let event = Event(title: title, dateHeld: dateHeld, userWhoPosted: userWhoPosted, address: address, eventInfo: eventInfo, eventTime: eventTime)
+        event.long = long
+        event.lat = lat
     
         // Start uploading the image
         PhotoController.shared.uploadImageToStorageWith(image: image, photoTitle: title, completion: { (imageURL) in

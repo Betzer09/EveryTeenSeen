@@ -16,6 +16,8 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
     // MARK: - Properties
     var matchingItems: [MKMapItem] = []
     var address: String?
+    var lat: Double = 0.0
+    var long: Double = 0.0
 
     // MARK: - View Life Cycles
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +57,8 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
         let location = matchingItems[indexPath.row].placemark
         guard let name = location.name else {return}
         address = "\(name), \(parseAddress(selectedItem: location))"
+        self.lat = location.coordinate.latitude
+        self.long = location.coordinate.longitude
         
         self.performSegue(withIdentifier: "unwindToCreateEventVC", sender: nil)
     }
@@ -65,6 +69,8 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
         if segue.identifier == "unwindToCreateEventVC" {
             guard let vc = segue.destination as? CreateEventViewController else {return}
             vc.address = address
+            vc.lat = self.lat
+            vc.long = self.long
         }
     }
     

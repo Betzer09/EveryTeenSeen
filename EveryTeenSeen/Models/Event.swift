@@ -26,10 +26,12 @@ class Event: Codable, Equatable {
     var photoURL: String? = ""
     var photo: Photo? = nil
     var reports: [[String: String]]? = [[:]]
+    var lat: Double? = 0
+    var long: Double? = 0
     
     // MARK: - Init
     init(title: String, timestamp: String = "\(Date())", dateHeld: String, userWhoPosted: String,
-         attending: [String] = [] , address: String, eventInfo: String, eventTime: String, reports: [[String: String]] = [] ) {
+         attending: [String] = [] , address: String, eventInfo: String, eventTime: String, reports: [[String: String]] = []) {
         self.title = title
         self.timestamp = timestamp
         self.dateHeld = dateHeld
@@ -52,5 +54,7 @@ class Event: Codable, Equatable {
         case userWhoPosted = "user_who_posted"
         case eventInfo = "event_info"
         case photoURL = "photo_url"
-    }    
+        case lat
+        case long
+    }
 }

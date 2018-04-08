@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gk6-8d-7hS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gk6-8d-7hS">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -437,15 +437,12 @@
                         <outlet property="addressLabel" destination="Y9b-u5-278" id="mPG-te-nBs"/>
                         <outlet property="createEventButton" destination="I2x-5c-7Pv" id="eOf-Vz-UnX"/>
                         <outlet property="distanceLabel" destination="gHX-FH-qDe" id="yUa-RJ-nA6"/>
-                        <outlet property="firstRowInterestStackView" destination="DSv-hA-JXu" id="t2R-jd-Khm"/>
                         <outlet property="fullnameLabel" destination="ubc-5h-osd" id="HIX-YV-dun"/>
                         <outlet property="interestsGroupView" destination="WVd-XP-06i" id="Ren-YL-3gP"/>
                         <outlet property="logoutButton" destination="yRY-kV-mXQ" id="k2L-GR-P1q"/>
                         <outlet property="profileImageView" destination="eKW-co-BSt" id="23v-qS-moh"/>
-                        <outlet property="secondRowInterestStackView" destination="l4e-mA-Y54" id="vA9-bc-aLf"/>
                         <outlet property="tableView" destination="PAp-gs-G0m" id="Cst-cU-44k"/>
                         <outlet property="tableviewHeaderLabel" destination="OZD-A1-En6" id="fSA-IG-lRP"/>
-                        <outlet property="thirdRowInterestStackView" destination="yWn-iv-uiZ" id="eqR-52-1LF"/>
                         <outlet property="usertypeLabel" destination="2zG-UC-eRT" id="CQp-YP-zza"/>
                     </connections>
                 </viewController>

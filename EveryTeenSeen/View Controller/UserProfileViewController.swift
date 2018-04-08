@@ -26,9 +26,6 @@ class UserProfileViewController: UIViewController {
     
     // Interest View outlets
     @IBOutlet weak var interestsGroupView: UIView!
-    @IBOutlet weak var firstRowInterestStackView: UIStackView!
-    @IBOutlet weak var secondRowInterestStackView: UIStackView!
-    @IBOutlet weak var thirdRowInterestStackView: UIStackView!
     
     
     // MARK: - View Life Cycles

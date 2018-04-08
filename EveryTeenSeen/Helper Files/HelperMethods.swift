@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 import MapKit
 
-public func presentSimpleAlert(viewController: UIViewController, title: String, message: String) {
+public func presentSimpleAlert(viewController: UIViewController, title: String, message: String, completion: @escaping(_ done: Bool) -> Void = {_ in}) {
     
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     
-    let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+    let dismissAction = UIAlertAction(title: "OK", style: .default) { (_) in
+        completion(true)
+    }
     
     alert.addAction(dismissAction)
     
@@ -398,6 +400,24 @@ public func configureAllButtonsIn(view: UIView, interests: [Interest]) {
             }
         }
     }
+}
+
+/// This is a simple alert that is used to confirm the users decision
+func confirmationAlert(viewController: UIViewController, title: String, message: String, confirmButtonTitle: String, cancelButtonTitle: String, completion: @escaping (_ success: Bool) -> Void) {
+    
+    let action = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    
+    let okayAction = UIAlertAction(title: confirmButtonTitle, style: .destructive) { (_) in
+        completion(true)
+    }
+    
+    let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .cancel) { (_) in
+        completion(false)
+    }
+    
+    action.addAction(okayAction)
+    action.addAction(cancelAction)
+    viewController.present(action, animated: true, completion: nil)
 }
 
 /// This is used to Init an interest without saving it into the context

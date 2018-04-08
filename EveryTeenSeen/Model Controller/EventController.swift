@@ -66,6 +66,22 @@ class EventController {
         }
     }
     
+    func deleteEventFromFireBase(event: Event, completion: @escaping (_ done: Bool) -> Void) {
+        let db = Firestore.firestore()
+        
+        PhotoController.shared.deletingImageFromStorageWith(eventTitle: event.title) { (success) in
+            guard success else {completion(false);return}
+            db.collection("event").document(event.title).delete(completion: { (error) in
+                if let error = error {
+                    NSLog("error deleting events! : \(error.localizedDescription)")
+                    completion(false)
+                    return
+                }
+                completion(true)
+            })
+        }
+    }
+    
     /// Fetch all events from firestore
     func fetchAllEvents(completion: @escaping(_ success: Bool, _ event: [Event]) -> Void = {_,_ in}) {
         

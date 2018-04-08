@@ -17,7 +17,8 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventMeetUpDateLabel: UILabel!
     @IBOutlet weak var eventContentView: UIView!
     @IBOutlet weak var eventSummary: UITextView!
-
+    @IBOutlet weak var deleteEventButton: UIButton!
+    
     // Weekday Outlets
     @IBOutlet weak var weekdayLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
@@ -40,7 +41,7 @@ class EventDetailViewController: UIViewController {
     
     // This is used to store the email being passes
     var emailToPassToAboutUserVC: String?
-
+    
     // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,8 +64,8 @@ class EventDetailViewController: UIViewController {
     // MARK: - Actions
     @IBAction func attendEventButtonPressed(_ sender: Any) {
         guard let event = event, let user = UserController.shared.loadUserProfile() else {
-                NSLog("Error attending event!")
-                return
+            NSLog("Error attending event!")
+            return
         }
         
         if attendEventButton.titleLabel?.text == "Unattend event" {
@@ -98,6 +99,30 @@ class EventDetailViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func deleteEventButtonPressed(_ sender: Any) {
+        guard let event = event else {return}
+        confirmationAlert(viewController: self, title: "Are you sure you want to delete \(event.title)?", message: "This action can't be reversed!", confirmButtonTitle: "Delete Event", cancelButtonTitle: "Cancel") { (done) in
+            guard done else {return}
+            EventController.shared.deleteEventFromFireBase(event: event) { (done) in
+                if done {
+                    presentSimpleAlert(viewController: self, title: "Success!", message: "\(event.title) has been deleted succesfully!", completion: { (done) in
+                        guard done else {return}
+                        EventController.shared.fetchAllEvents()
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                } else {
+                    presentSimpleAlert(viewController: self, title: "Oops!", message: "There was a problem deleting this event!", completion: {(done ) in
+                        guard done else {return}
+                        EventController.shared.fetchAllEvents()
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                }
+            }
+        }
+    }
+    
+    
     @IBAction func presentUserProfileButtonPressed(_ sender: UIButton) {
         guard let email = sender.titleLabel?.text else {return}
         self.emailToPassToAboutUserVC = email
@@ -114,7 +139,9 @@ class EventDetailViewController: UIViewController {
         guard let event = event,
             let attendings = event.attending,
             let imageData = event.photo?.imageData,
-            let userEmail = UserController.shared.loadUserProfile()?.email else {return}
+            let user = UserController.shared.loadUserProfile(),
+            let userEmail = user.email,
+            let usertype = user.usertype else {return}
         
         eventNameLabel.text = event.title
         eventImageView.image = UIImage(data: imageData)
@@ -123,12 +150,17 @@ class EventDetailViewController: UIViewController {
         eventSummary.text = event.eventInfo
         eventTimeLabel.text = event.eventTime
         attendEventButton.layer.cornerRadius = 15
+        deleteEventButton.layer.cornerRadius = 15
         
         attendingCountLabel.text = "Attending: \(attendings.count)"
         
         if attendings.contains(userEmail) {
             attendEventButton.setTitle("Unattend event", for: .normal)
             attendEventButton.backgroundColor = UIColor.lightGray
+        }
+        
+        if usertype == UserType.leadCause.rawValue {
+            self.deleteEventButton.isHidden = false
         }
         
         self.setUpCalanderLabels()

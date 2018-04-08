@@ -104,9 +104,9 @@ class CreateEventViewController: UIViewController {
             let titles = events.compactMap{$0.title}
             if titles.contains(title) {
                 presentSimpleAlert(viewController: self, title: "Duplicate Event", message: "You can't have duplicate event names. Delete an old event or change the name.")
+                self.hideUploadEventGroup()
+                return
             }
-            self.hideUploadEventGroup()
-            return
         }
         
         guard let image = selectedImageView.image else {return}

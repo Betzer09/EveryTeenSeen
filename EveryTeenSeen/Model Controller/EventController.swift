@@ -127,8 +127,15 @@ class EventController {
             
             eventGroup.notify(queue: .main, execute: {
                 let sortedEvent = events.sorted(by: { convertStringToDateWith(stringDate: $0.dateHeld)! > convertStringToDateWith(stringDate: $1.dateHeld)!})
-                self.events = sortedEvent
-                completion(true, sortedEvent)
+                if let userDistance = UserController.shared.loadUserProfile()?.eventDistance {
+                    let eventsFilteredByDistance =  sortedEvent.filter( { findTheDistanceBetweenUserLocationWithEvent(lat: $0.lat, long: $0.long) <= Double(userDistance) } )
+                    
+                    self.events = eventsFilteredByDistance
+                    completion(true, eventsFilteredByDistance)
+                } else {
+                    self.events = sortedEvent
+                    completion(true, sortedEvent)
+                }
             })
         }
     }

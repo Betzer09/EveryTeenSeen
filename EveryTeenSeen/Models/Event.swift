@@ -26,8 +26,8 @@ class Event: Codable, Equatable {
     var photoURL: String? = ""
     var photo: Photo? = nil
     var reports: [[String: String]]? = [[:]]
-    var lat: Double? = 0
-    var long: Double? = 0
+    var lat: Double = 0
+    var long: Double = 0
     
     // MARK: - Init
     init(title: String, timestamp: String = "\(Date())", dateHeld: String, userWhoPosted: String,

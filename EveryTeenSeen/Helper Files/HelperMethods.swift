@@ -453,22 +453,40 @@ func confirmationAlert(viewController: UIViewController, title: String, message:
 func findTheDistanceWith(lat: Double, long: Double) -> Bool {
 
     var shouldWeUpdateDistance = false
-    
     guard let savedLocation = UserLocationController.shared.fetchUserLocation() else {
         // This means we need a location for the user
         return true
     }
-    
     let firstCoordinate = CLLocation(latitude: savedLocation.latitude, longitude: savedLocation.longitude)
     let secondCoordinate = CLLocation(latitude: lat, longitude: long)
-    
     let distanceInMeters = firstCoordinate.distance(from: secondCoordinate)
     
     // 1609 meters is one mile 40,000 meters = 24.86 miles
     if distanceInMeters >= 40000 {
         shouldWeUpdateDistance = true
     }
-    
     return shouldWeUpdateDistance
-    
 }
+
+/// Finds the distance between two points using the user's location in miles
+func findTheDistanceBetweenUserLocationWithEvent(lat: Double, long: Double) -> Double {
+    guard let location = UserLocationController.shared.fetchUserLocation() else {NSLog("Error filtering distacne by location"); return 0.0}
+    
+    let userCoordinate = CLLocation(latitude: location.latitude, longitude: location.longitude)
+    let eventCoordinate = CLLocation(latitude: lat, longitude: long)
+ 
+    let distanceInMeters = userCoordinate.distance(from: eventCoordinate)
+    return distanceInMeters / 1609
+}
+
+
+
+
+
+
+
+
+
+
+
+

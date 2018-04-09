@@ -30,7 +30,6 @@ class EventController {
         }
     }
     
-    
     // MARK: - Firebase Functions
     /// Saves and Updates events to firestore
     func saveEventToFireStoreWith(title: String, dateHeld: String, eventTime: String, userWhoPosted: String , address: String, eventInfo: String, image: UIImage, reports: [[String: String]] = [], lat: Double, long: Double, completion: @escaping (_ success: Bool) -> Void) {
@@ -127,17 +126,16 @@ class EventController {
             
             eventGroup.notify(queue: .main, execute: {
                 let sortedEvent = events.sorted(by: { convertStringToDateWith(stringDate: $0.dateHeld)! > convertStringToDateWith(stringDate: $1.dateHeld)!})
-                if let userDistance = UserController.shared.loadUserProfile()?.eventDistance {
-                    let eventsFilteredByDistance =  sortedEvent.filter( { findTheDistanceBetweenUserLocationWithEvent(lat: $0.lat, long: $0.long) <= Double(userDistance) } )
-                    
-                    self.events = eventsFilteredByDistance
-                    completion(true, eventsFilteredByDistance)
-                } else {
-                    self.events = sortedEvent
-                    completion(true, sortedEvent)
-                }
+                
+                self.events = sortedEvent
+                completion(true, sortedEvent)
             })
         }
+    }
+    
+    func filterEventsBy(distance: Int, events: [Event]) -> [Event] {
+        let eventsFilteredByDistance =  events.filter( { findTheDistanceBetweenUserLocationWithEvent(lat: $0.lat, long: $0.long) <= Double(distance) } )
+        return eventsFilteredByDistance
     }
     
     func fetchImageForEventWith(event: Event, completion: @escaping(_ success: Bool) -> Void) {

@@ -22,20 +22,20 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
     // MARK: - View Life Cycles
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.tintColor = UIColor.white
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addressSearchBar.sizeToFit()
         addressSearchBar.placeholder = "Search For Places"
-        navigationItem.title = "Search Locations"
-
+        configureNavigationBar()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        updateSearchResults(for: addressSearchBar)
+        updateSearchResults(for: addressSearchBar) { (results) in
+            self.matchingItems = results
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - Table view data source
@@ -65,7 +65,6 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
     
     // MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "unwindToCreateEventVC" {
             guard let vc = segue.destination as? CreateEventViewController else {return}
             vc.address = address
@@ -73,58 +72,25 @@ class EventLocationTableViewController: UITableViewController, UISearchBarDelega
             vc.long = self.long
         }
     }
-    
-    // MARK: - Functions
-    func updateSearchResults(for searchBar: UISearchBar) {
-        guard let searchBarText = searchBar.text else {return}
+}
+
+extension EventLocationTableViewController {
+    /// Configures the navigation bar to have all of the normal stuff
+    func configureNavigationBar() {
+        let hamburgerButton: UIButton = UIButton(type: .custom)
+        hamburgerButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
+        hamburgerButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         
-        let request = MKLocalSearchRequest()
-        request.naturalLanguageQuery = searchBarText
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         
-        guard let location = UserLocationController.shared.fetchUserLocation() else {return}
-        
-        let clLocationCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-        
-        // With in a 5 mile span both ways
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(clLocationCoordinate, 1000, 1000)
-        request.region = MKCoordinateRegionMake(clLocationCoordinate, coordinateRegion.span)
-        
-        let search = MKLocalSearch(request: request)
-        search.start { (results, error) in
-            if let error = error {
-                NSLog("Error searching for locations: \(error.localizedDescription)")
-            }
-            
-            guard let results = results else {return}
-            
-            self.matchingItems = results.mapItems
-            self.tableView.reloadData()
-            
-        }
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: hamburgerButton)
+        self.navigationItem.title = "Search Locations"
     }
     
-    /// Parses the address so it looks good
-    private func parseAddress(selectedItem:MKPlacemark) -> String {
-        // put a space between "4" and "Melrose Place"
-        let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : ""
-        // put a comma between street and city/state
-        let comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) && (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? ", " : ""
-        // put a space between "Washington" and "DC"
-        let secondSpace = (selectedItem.subAdministrativeArea != nil && selectedItem.administrativeArea != nil) ? " " : ""
-        let addressLine = String(
-            format:"%@%@%@%@%@%@%@",
-            // street number
-            selectedItem.subThoroughfare ?? "",
-            firstSpace,
-            // street name
-            selectedItem.thoroughfare ?? "",
-            comma,
-            // city
-            selectedItem.locality ?? "",
-            secondSpace,
-            // state
-            selectedItem.administrativeArea ?? ""
-        )
-        return addressLine
+    
+    @objc func backButtonPressed() {
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }

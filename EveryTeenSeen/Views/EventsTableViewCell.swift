@@ -113,6 +113,8 @@ class EventsTableViewCell: UITableViewCell {
             }
         }
         
+        eventPhotoImageView.layer.cornerRadius = 20
+        eventPhotoImageView.clipsToBounds = true
         eventPhotoImageView.image = image
         eventAddressLabel.text = event.address
         eventAttendingLabel.text = "Attending: \(attending.count)"

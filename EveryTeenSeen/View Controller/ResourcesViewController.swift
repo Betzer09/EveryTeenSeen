@@ -89,10 +89,6 @@ class ResourcesViewController: UIViewController {
 extension ResourcesViewController {
     /// Configures the navigation bar to have all of the normal stuff
     func configureNavigationBar() {
-        let hamburgerButton: UIButton = UIButton(type: .custom)
-        hamburgerButton.setImage(#imageLiteral(resourceName: "Hamburger"), for: .normal)
-        hamburgerButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
-        
         let profileButton: UIButton = UIButton(type: .custom)
         let profilePicture = UserController.shared.profilePicture
         var smallAvatar = #imageLiteral(resourceName: "smallAvatar")
@@ -110,14 +106,8 @@ extension ResourcesViewController {
         let happyImage: UIImageView = UIImageView(image: image)
         happyImage.contentMode = .scaleAspectFit
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: hamburgerButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileButton)
         self.navigationItem.titleView = happyImage
-    }
-    
-    // MARK: - Objective-C Functions
-    @objc func configureLocation() {
-        presentSimpleAlert(viewController: self, title: "Coming Soon!", message: "This feature has not yet been configured yet!")
     }
     
     @objc func segueToProfileView() {

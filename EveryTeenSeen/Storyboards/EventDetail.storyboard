@@ -23,17 +23,17 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAO-hz-WG2">
                                 <rect key="frame" x="0.0" y="64" width="320" height="1037"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zp7-TO-HeV">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zp7-TO-HeV" userLabel="Main Background View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSH-Pj-eMX">
-                                                <rect key="frame" x="16" y="320" width="116.5" height="36"/>
+                                                <rect key="frame" x="16" y="320" width="243.5" height="34.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fO2-q7-dnr">
-                                                <rect key="frame" x="16" y="369" width="288" height="230"/>
+                                                <rect key="frame" x="16" y="367.5" width="288" height="230"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <string key="text">Maui hotel or Maui condo? It’s the burning question on everyones mind! What should you do? Maui hotel? Maui condo? Which should you choose? The sweat is pouring down your face and you can feel the pressure building…Okay! Okay! Maybe it’s not that burning, after all! It is, however, a very important decision if you are planning a Maui vacation.
 
@@ -48,49 +48,49 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="X0h-cw-HaH">
-                                                <rect key="frame" x="32" y="615" width="24" height="24"/>
+                                                <rect key="frame" x="32" y="613.5" width="23.5" height="23.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="X0h-cw-HaH" secondAttribute="height" multiplier="1:1" id="W8G-2C-9Ld"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="MGg-NO-9OA">
-                                                <rect key="frame" x="72" y="615" width="80" height="18"/>
+                                                <rect key="frame" x="71.5" y="613.5" width="80" height="17.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="60"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18 April 2020" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="MKw-1o-Hni">
-                                                <rect key="frame" x="72" y="637" width="160" height="18"/>
+                                                <rect key="frame" x="71.5" y="635" width="160" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map-pin" translatesAutoresizingMaskIntoConstraints="NO" id="fGI-xE-w9K">
-                                                <rect key="frame" x="32" y="671" width="24" height="24"/>
+                                                <rect key="frame" x="32" y="668" width="23.5" height="23.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salt Lake City " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="J8m-YE-9jA">
-                                                <rect key="frame" x="72" y="671" width="80" height="18"/>
+                                                <rect key="frame" x="71.5" y="668" width="80" height="17.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="60"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="341 S Main St, Salt Lake City, UT, 84111" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Pa4-iu-Aj6">
-                                                <rect key="frame" x="72" y="693" width="160" height="18"/>
+                                                <rect key="frame" x="71.5" y="689.5" width="160" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="FgD-QV-9bt">
-                                                <rect key="frame" x="32" y="719" width="24" height="24"/>
+                                                <rect key="frame" x="32" y="714.5" width="23.5" height="23.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:00pm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="inV-Fc-Qq7">
-                                                <rect key="frame" x="72" y="722.5" width="140" height="17"/>
+                                                <rect key="frame" x="71.5" y="718" width="140" height="16.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="60"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txi-vr-Ebs">
-                                                <rect key="frame" x="177" y="780" width="119" height="32.5"/>
+                                                <rect key="frame" x="177" y="775" width="119" height="30.5"/>
                                                 <color key="backgroundColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Attend event">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -100,7 +100,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f8U-VR-nJ5">
-                                                <rect key="frame" x="16" y="828.5" width="288" height="127.5"/>
+                                                <rect key="frame" x="16" y="821.5" width="288" height="127.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BXF-Ye-5lj">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="60"/>
@@ -223,20 +223,20 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attending: 0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="SAW-QD-nyn">
-                                                <rect key="frame" x="16" y="780" width="119" height="32.5"/>
+                                                <rect key="frame" x="16" y="775" width="119" height="30.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Itk-Sc-lSW" userLabel="Loading View">
-                                                <rect key="frame" x="16" y="828.5" width="288" height="127.5"/>
+                                                <rect key="frame" x="16" y="821.5" width="288" height="127.5"/>
                                                 <subviews>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Rab-ik-4i6">
                                                         <rect key="frame" x="134" y="20" width="20" height="20"/>
                                                         <color key="color" red="0.3803921569" green="0.47450980390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </activityIndicatorView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Attendees" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="46U-rA-Shy">
-                                                        <rect key="frame" x="72" y="48" width="144" height="32"/>
+                                                        <rect key="frame" x="72.5" y="48" width="143.5" height="32"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -253,7 +253,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 </constraints>
                                             </view>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHZ-rN-Blh">
-                                                <rect key="frame" x="101" y="963.5" width="119" height="32.5"/>
+                                                <rect key="frame" x="101" y="956.5" width="119" height="30.5"/>
                                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Delete Event">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -311,6 +311,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                             <constraint firstItem="MGg-NO-9OA" firstAttribute="height" secondItem="gSH-Pj-eMX" secondAttribute="height" multiplier="1/2" id="n9e-ct-yYd"/>
                                             <constraint firstItem="fO2-q7-dnr" firstAttribute="width" secondItem="Zp7-TO-HeV" secondAttribute="width" multiplier="0.9" id="pGr-bT-mig"/>
                                             <constraint firstItem="MGg-NO-9OA" firstAttribute="top" secondItem="X0h-cw-HaH" secondAttribute="top" id="q4m-Yd-wrf"/>
+                                            <constraint firstItem="gSH-Pj-eMX" firstAttribute="height" secondItem="Zp7-TO-HeV" secondAttribute="height" multiplier="0.03" id="qga-zZ-qNm"/>
                                             <constraint firstItem="J8m-YE-9jA" firstAttribute="width" secondItem="MGg-NO-9OA" secondAttribute="width" id="rbn-n1-Tbi"/>
                                             <constraint firstItem="FgD-QV-9bt" firstAttribute="height" secondItem="fGI-xE-w9K" secondAttribute="height" id="sIk-aH-EXL"/>
                                             <constraint firstItem="Pa4-iu-Aj6" firstAttribute="height" secondItem="MKw-1o-Hni" secondAttribute="height" id="v5Z-rg-2he"/>
@@ -324,13 +325,13 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBackground" translatesAutoresizingMaskIntoConstraints="NO" id="a12-7F-2ye">
-                                        <rect key="frame" x="16" y="16" width="288" height="288"/>
+                                        <rect key="frame" x="16" y="16" width="288" height="287.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="a12-7F-2ye" secondAttribute="height" multiplier="1:1" id="bnO-jn-hE1"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQS-i7-pSh" userLabel="Event Content View">
-                                        <rect key="frame" x="16" y="232" width="288" height="72"/>
+                                        <rect key="frame" x="16" y="231.5" width="288" height="72"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Of The Meet Up " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t6Y-ez-l4x">
                                                 <rect key="frame" x="8" y="0.0" width="129.5" height="72"/>
@@ -339,13 +340,13 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address for the Meet Up" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="e4p-33-Mqg">
-                                                <rect key="frame" x="163.5" y="0.0" width="116.5" height="36"/>
+                                                <rect key="frame" x="163.5" y="0.0" width="116.5" height="36.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Of Meet Up" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lg8-PX-Tlf">
-                                                <rect key="frame" x="163.5" y="36" width="116.5" height="36"/>
+                                                <rect key="frame" x="163.5" y="36.5" width="116.5" height="35.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -370,21 +371,20 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="gSH-Pj-eMX" firstAttribute="top" secondItem="a12-7F-2ye" secondAttribute="bottom" constant="16" id="0ga-BQ-3z6"/>
-                                    <constraint firstItem="OQS-i7-pSh" firstAttribute="leading" secondItem="a12-7F-2ye" secondAttribute="leading" id="4IL-mK-4R6"/>
-                                    <constraint firstItem="OQS-i7-pSh" firstAttribute="height" secondItem="a12-7F-2ye" secondAttribute="height" multiplier="1/4" id="AQv-s5-vyT"/>
+                                    <constraint firstItem="a12-7F-2ye" firstAttribute="centerX" secondItem="bAO-hz-WG2" secondAttribute="centerX" id="8In-Ue-7ox"/>
+                                    <constraint firstItem="a12-7F-2ye" firstAttribute="height" secondItem="Zp7-TO-HeV" secondAttribute="height" multiplier="1/4" id="Ase-Q4-GAH"/>
                                     <constraint firstAttribute="trailing" secondItem="Zp7-TO-HeV" secondAttribute="trailing" id="Dwm-jV-BgG"/>
-                                    <constraint firstItem="a12-7F-2ye" firstAttribute="width" secondItem="Zp7-TO-HeV" secondAttribute="width" multiplier="0.9" id="HZ9-AF-aJC"/>
                                     <constraint firstItem="Zp7-TO-HeV" firstAttribute="leading" secondItem="bAO-hz-WG2" secondAttribute="leading" id="Nuh-Pd-Djv"/>
                                     <constraint firstItem="Zp7-TO-HeV" firstAttribute="top" secondItem="bAO-hz-WG2" secondAttribute="top" id="RSm-hq-LLv"/>
-                                    <constraint firstItem="a12-7F-2ye" firstAttribute="centerX" secondItem="bAO-hz-WG2" secondAttribute="centerX" id="VY8-3s-Bn2"/>
-                                    <constraint firstItem="OQS-i7-pSh" firstAttribute="trailing" secondItem="a12-7F-2ye" secondAttribute="trailing" id="ZGe-J3-xYG"/>
-                                    <constraint firstItem="a12-7F-2ye" firstAttribute="top" secondItem="bAO-hz-WG2" secondAttribute="top" constant="16" id="bzx-Dz-Pn6"/>
-                                    <constraint firstItem="OQS-i7-pSh" firstAttribute="bottom" secondItem="a12-7F-2ye" secondAttribute="bottom" id="cmF-Yv-Srj"/>
-                                    <constraint firstItem="gSH-Pj-eMX" firstAttribute="height" secondItem="Lg8-PX-Tlf" secondAttribute="height" id="nWZ-I7-gGz"/>
-                                    <constraint firstItem="gSH-Pj-eMX" firstAttribute="width" secondItem="Lg8-PX-Tlf" secondAttribute="width" id="omu-aR-HGT"/>
-                                    <constraint firstItem="gSH-Pj-eMX" firstAttribute="leading" secondItem="a12-7F-2ye" secondAttribute="leading" id="pda-IC-JWe"/>
+                                    <constraint firstItem="OQS-i7-pSh" firstAttribute="bottom" secondItem="a12-7F-2ye" secondAttribute="bottom" id="VCi-AZ-dpB"/>
+                                    <constraint firstItem="OQS-i7-pSh" firstAttribute="width" secondItem="a12-7F-2ye" secondAttribute="width" id="Vov-Wd-MRQ"/>
+                                    <constraint firstItem="gSH-Pj-eMX" firstAttribute="leading" secondItem="a12-7F-2ye" secondAttribute="leading" id="XEm-28-U02"/>
+                                    <constraint firstItem="gSH-Pj-eMX" firstAttribute="top" secondItem="a12-7F-2ye" secondAttribute="bottom" constant="16.5" id="YhR-bD-zob"/>
+                                    <constraint firstItem="a12-7F-2ye" firstAttribute="top" secondItem="bAO-hz-WG2" secondAttribute="top" constant="16" id="fIp-02-9m4"/>
+                                    <constraint firstItem="a12-7F-2ye" firstAttribute="width" secondItem="Zp7-TO-HeV" secondAttribute="width" multiplier="0.9" id="fqy-8x-a4G"/>
+                                    <constraint firstItem="OQS-i7-pSh" firstAttribute="centerX" secondItem="a12-7F-2ye" secondAttribute="centerX" id="hEh-rG-HeK"/>
                                     <constraint firstAttribute="bottom" secondItem="Zp7-TO-HeV" secondAttribute="bottom" id="s4d-P4-ek0"/>
+                                    <constraint firstItem="OQS-i7-pSh" firstAttribute="height" secondItem="a12-7F-2ye" secondAttribute="height" multiplier="1/4" id="tJ0-sH-5Jd"/>
                                 </constraints>
                             </scrollView>
                         </subviews>

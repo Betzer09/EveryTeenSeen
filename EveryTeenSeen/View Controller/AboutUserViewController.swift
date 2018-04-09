@@ -81,7 +81,7 @@ extension AboutUserViewController {
     func configureNavigationBar() {
         let backButton: UIButton = UIButton(type: .custom)
         backButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
-        backButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
         let image = resizeImage(image: #imageLiteral(resourceName: "HappyLogo"), targetSize: CGSize(width: 40.0, height: 40.0))
@@ -91,7 +91,7 @@ extension AboutUserViewController {
     }
     
     // MARK: - Objective-C Functions
-    @objc func configureLocation() {
+    @objc func backButtonPressed() {
         self.navigationController?.popViewController(animated: true)
     }
     

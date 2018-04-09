@@ -479,14 +479,63 @@ func findTheDistanceBetweenUserLocationWithEvent(lat: Double, long: Double) -> D
     return distanceInMeters / 1609
 }
 
+/// This finds the distance between two points
+func findTheDistanceBetweenTwoPoints(firstLat: Double, firstLong: Double, secondLat: Double, secondLong: Double) -> Double {
+    
+    let firstCordinate = CLLocation(latitude: firstLat, longitude: firstLong)
+    let secondCordinate = CLLocation(latitude: secondLat, longitude: secondLong)
+    
+    let distanceInMiles = firstCordinate.distance(from: secondCordinate) / 1609
+    return distanceInMiles
+}
 
+// MARK: - MapKit Functions
+func updateSearchResults(for searchBar: UISearchBar, completion: @escaping(_ matchingItems: [MKMapItem]) -> Void) {
+    guard let searchBarText = searchBar.text else {return}
+    
+    let request = MKLocalSearchRequest()
+    request.naturalLanguageQuery = searchBarText
+    
+    guard let location = UserLocationController.shared.fetchUserLocation() else {return}
+    
+    let clLocationCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+    
+    // With in a 5 mile span both ways
+    let coordinateRegion = MKCoordinateRegionMakeWithDistance(clLocationCoordinate, 1000, 1000)
+    request.region = MKCoordinateRegionMake(clLocationCoordinate, coordinateRegion.span)
+    
+    let search = MKLocalSearch(request: request)
+    search.start { (results, error) in
+        if let error = error {
+            NSLog("Error searching for locations: \(error.localizedDescription)")
+        }
+        
+        guard let results = results else {return}
+        completion(results.mapItems)
+    }
+}
 
-
-
-
-
-
-
-
-
-
+/// Parses the address so it looks good
+func parseAddress(selectedItem:MKPlacemark) -> String {
+    // put a space between "4" and "Melrose Place"
+    let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : ""
+    // put a comma between street and city/state
+    let comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) && (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? ", " : ""
+    // put a space between "Washington" and "DC"
+    let secondSpace = (selectedItem.subAdministrativeArea != nil && selectedItem.administrativeArea != nil) ? " " : ""
+    let addressLine = String(
+        format:"%@%@%@%@%@%@%@",
+        // street number
+        selectedItem.subThoroughfare ?? "",
+        firstSpace,
+        // street name
+        selectedItem.thoroughfare ?? "",
+        comma,
+        // city
+        selectedItem.locality ?? "",
+        secondSpace,
+        // state
+        selectedItem.administrativeArea ?? ""
+    )
+    return addressLine
+}

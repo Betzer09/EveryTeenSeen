@@ -279,7 +279,7 @@ extension EventDetailViewController {
     func configureNavigationBar() {
         let backButton: UIButton = UIButton(type: .custom)
         backButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
-        backButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         
         let profileButton: UIButton = UIButton(type: .custom)
         let profilePicture = UserController.shared.profilePicture
@@ -305,7 +305,7 @@ extension EventDetailViewController {
     }
     
     // MARK: - Objective-C Functions
-    @objc func configureLocation() {
+    @objc func backButtonPressed() {
         DispatchQueue.main.async {
             self.navigationController?.popViewController(animated: true)            
         }

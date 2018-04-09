@@ -11,18 +11,31 @@ import MapKit
 
 class EventsViewController: UIViewController {
     // MARK: - Outlets
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var eventsTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    // Search City View
+    @IBOutlet weak var locationSearchBar: UISearchBar!
+    @IBOutlet weak var searchEventByDistanceGroupView: UIView!
+    @IBOutlet weak var searchEventsByDistanceButton: UIButton!
+    @IBOutlet weak var locationTableView: UITableView!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var userPickedDistanceSlider: UISlider!
+    @IBOutlet weak var clearFilterButton: UIButton!
+    
     
     // MARK: - Properties
     let locationManager = CLLocationManager()
+    var matchingItems: [MKMapItem] = []
+    var placemark: MKPlacemark?
+    var eventsSearchedByDistance: [Event] = []
     
     // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setUpView()
         locationManager.requestLocation()
-        tableView.reloadData()
+        eventsTableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -36,6 +49,42 @@ class EventsViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    @IBAction func searchEventByDistanceButtonPressed(_ sender: Any) {
+        EventController.shared.fetchAllEvents()
+        self.searchEventByDistanceGroupView.isHidden = true
+        guard let locationThatUserPicked = placemark else {NSLog("We don't have a location from the user!")
+            presentSimpleAlert(viewController: self, title: "You need to pick a city!", message: "")
+            return
+        }
+        guard let events = EventController.shared.events else {return}
+        var filteredEvents: [Event] = []
+        for event in events {
+            let distance = findTheDistanceBetweenTwoPoints(firstLat: locationThatUserPicked.coordinate.latitude, firstLong: locationThatUserPicked.coordinate.longitude, secondLat: event.lat, secondLong:  event.long)
+        
+            if Int(distance) <= Int(userPickedDistanceSlider.value) {
+                filteredEvents.append(event)
+            }
+        }
+        
+        self.eventsSearchedByDistance = filteredEvents
+        DispatchQueue.main.async {
+            self.eventsTableView.reloadData()
+        }
+    }
+    
+    @IBAction func clearFilterButtonPressed(_ sender: Any) {
+        self.eventsSearchedByDistance.removeAll()
+        DispatchQueue.main.async {
+            self.eventsTableView.reloadData()
+            self.searchEventByDistanceGroupView.isHidden = true
+        }
+    }
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        distanceLabel.text = "\(Int(sender.value)) Miles"
+    }
+    
     @IBAction func unwindToEventsVC(segue: UIStoryboardSegue){}
 
     // MARK: - Set Up View
@@ -43,7 +92,12 @@ class EventsViewController: UIViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         activityIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        searchEventsByDistanceButton.layer.cornerRadius = 15
+        clearFilterButton.layer.cornerRadius = 15
+        locationSearchBar.sizeToFit()
+        locationSearchBar.placeholder = "Search For City"
     }
+    
     
     private func setUpNotificationObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: EventController.eventWasUpdatedNotifcation, object: nil)
@@ -52,15 +106,15 @@ class EventsViewController: UIViewController {
     }
     
     private func setTableViewHeight() {
-        self.tableView.estimatedRowHeight = self.view.bounds.height * 0.7
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.eventsTableView.estimatedRowHeight = self.view.bounds.height * 0.7
+        self.eventsTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     private func loadAllEvents(completion: @escaping (_ success: Bool) -> Void = {_ in}) {
         EventController.shared.fetchAllEvents { (success,_) in
             guard success else {return}
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.eventsTableView.reloadData()
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
                 completion(true)
@@ -77,8 +131,13 @@ class EventsViewController: UIViewController {
     // MARK: - Objective-C Functions
     @objc func reloadTableView() {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.eventsTableView.reloadData()
         }
+    }
+    
+    @objc func hideLocationView() {
+        self.view.endEditing(true)
+        searchEventByDistanceGroupView.isHidden = true
     }
     
     @objc func reloadProfilePicture() {
@@ -100,31 +159,76 @@ class EventsViewController: UIViewController {
 // MARK: - Table View Delegate
 extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     
-    // MARK: - Table view data source
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventsTableViewCell else {return UITableViewCell()}
-        
-        guard let events = EventController.shared.events else {return UITableViewCell()}
-        cell.event = events[indexPath.row]
-        
-        cell.layer.cornerRadius = 15
-        cell.selectionStyle = .none
-        
-        return cell
+        if tableView == eventsTableView {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventsTableViewCell else {return UITableViewCell()}
+            
+            guard let unfilteredEvents = EventController.shared.events else {return UITableViewCell()}
+            let distance = UserController.shared.loadUserProfile()?.eventDistance ?? 50
+            var events: [Event] = []
+            
+            if eventsSearchedByDistance.count == 0 {
+                events = EventController.shared.filterEventsBy(distance: Int(distance) , events: unfilteredEvents)
+                
+            } else {
+                events = self.eventsSearchedByDistance
+            }
+            cell.event = events[indexPath.row]
+            
+            cell.layer.cornerRadius = 15
+            cell.selectionStyle = .none
+            
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "locationCell", for: indexPath)
+            
+            let location = matchingItems[indexPath.row].placemark
+            cell.textLabel?.text = location.name
+            cell.detailTextLabel?.text = parseAddress(selectedItem: location)
+            
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return EventController.shared.events?.count ?? 0
+        if tableView == eventsTableView {
+            guard let unfilteredEvents = EventController.shared.events else {return 0}
+            let distance = UserController.shared.loadUserProfile()?.eventDistance ?? 50
+            var events: [Event] = []
+            
+            if eventsSearchedByDistance.count == 0 {
+                events = EventController.shared.filterEventsBy(distance: Int(distance) , events: unfilteredEvents)
+                
+            } else {
+                events = self.eventsSearchedByDistance
+            }
+            return events.count
+        } else {
+            return matchingItems.count
+        }
     }
     
-    // MARK: - Table View Fnctions
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.view.bounds.height * 0.65
+        if tableView == eventsTableView {
+            return self.view.bounds.height * 0.65
+        } else {
+            return self.searchEventByDistanceGroupView.bounds.height * 0.2
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == locationTableView {
+            self.locationTableView.isHidden = true
+            let location = matchingItems[indexPath.row].placemark
+            locationSearchBar.text = location.name
+            self.view.endEditing(true)
+            self.placemark = location
+        }
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         guard let _ = UserController.shared.loadUserProfile() else {
             presentLoginAlert(viewController: self)
             return
@@ -132,14 +236,32 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
         
         if segue.identifier == "toEventDetailVC" {
             guard let destination = segue.destination as? EventDetailViewController,
-                let indexPath = tableView.indexPathForSelectedRow,
+                let indexPath = eventsTableView.indexPathForSelectedRow,
                 let event = EventController.shared.events?[indexPath.row]
                 else {print(segue.destination);return}
             destination.event = event
         }
-        
     }
-
+}
+// MARK: - Search Bar Functions
+extension EventsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.locationTableView.isHidden = false
+        updateSearchResults(for: searchBar) { (results) in
+            self.matchingItems = results
+            self.locationTableView.reloadData()
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.locationTableView.isHidden = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchEventByDistanceGroupView.isHidden = true
+        self.locationTableView.isHidden = true
+        self.view.endEditing(true)
+    }
 }
 
 // MARK: - Navigation Bar
@@ -149,7 +271,7 @@ extension EventsViewController {
     func configureNavigationBar() {
         let hamburgerButton: UIButton = UIButton(type: .custom)
         hamburgerButton.setImage(#imageLiteral(resourceName: "Hamburger"), for: .normal)
-        hamburgerButton.addTarget(self, action: #selector(configureLocation), for: .touchUpInside)
+        hamburgerButton.addTarget(self, action: #selector(hamburgerButtonPressed), for: .touchUpInside)
         
         let profileButton: UIButton = UIButton(type: .custom)
         let profilePicture = UserController.shared.profilePicture
@@ -174,8 +296,8 @@ extension EventsViewController {
     }
     
     // MARK: - Objective-C Functions
-    @objc func configureLocation() {
-        presentSimpleAlert(viewController: self, title: "Coming Soon!", message: "This feature has not yet been configured yet!")
+    @objc func hamburgerButtonPressed() {
+        self.searchEventByDistanceGroupView.isHidden = false
     }
     
     @objc func segueToProfileView() {
@@ -241,6 +363,3 @@ extension EventsViewController: CLLocationManagerDelegate {
         })
     }
 }
-
-
-

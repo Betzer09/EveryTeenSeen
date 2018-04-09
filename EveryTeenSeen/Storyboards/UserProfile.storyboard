@@ -469,6 +469,7 @@
                             </imageView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="IYJ-Ce-cyB">
                                 <rect key="frame" x="22" y="326" width="276" height="44"/>
+                                <color key="tintColor" red="0.38823529411764707" green="0.30980392156862746" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="thumbTintColor" white="0.93000000000000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="sliderValuedChanged:" destination="phe-9J-GLz" eventType="valueChanged" id="PWl-ao-bM4"/>

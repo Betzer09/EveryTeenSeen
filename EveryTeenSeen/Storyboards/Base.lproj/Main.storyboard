@@ -216,9 +216,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8e-Xs-r7T">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8e-Xs-r7T">
                                                     <rect key="frame" x="284.5" y="8" width="35.5" height="26.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <state key="normal" title="...">
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
@@ -300,7 +300,7 @@
                     <navigationItem key="navigationItem" id="rnc-ap-W9J"/>
                     <connections>
                         <outlet property="activityIndicator" destination="cqy-9y-SYE" id="F1f-Ia-ioD"/>
-                        <outlet property="tableView" destination="s0b-1s-PcT" id="GWG-o7-1Q4"/>
+                        <outlet property="eventsTableView" destination="s0b-1s-PcT" id="GWG-o7-1Q4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Irx-rR-YYt" userLabel="First Responder" sceneMemberID="firstResponder"/>

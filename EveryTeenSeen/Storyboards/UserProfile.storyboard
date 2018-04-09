@@ -26,7 +26,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8d-BC-7Ox">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1100"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="largeAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="eKW-co-BSt">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="largeAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="eKW-co-BSt">
                                                 <rect key="frame" x="127" y="8" width="122" height="122"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="eKW-co-BSt" secondAttribute="height" multiplier="1:1" id="pa5-LG-09t"/>
@@ -64,7 +64,7 @@
                                                 </connections>
                                             </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PAp-gs-G0m">
-                                                <rect key="frame" x="0.0" y="524.5" width="375" height="575.5"/>
+                                                <rect key="frame" x="0.0" y="535.5" width="375" height="564.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <view key="tableHeaderView" contentMode="scaleToFill" id="UBg-8n-6od">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -275,7 +275,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRY-kV-mXQ">
-                                                <rect key="frame" x="94" y="482" width="187.5" height="30"/>
+                                                <rect key="frame" x="94" y="482" width="187.5" height="37.5"/>
                                                 <color key="backgroundColor" red="1" green="0.27157238005896311" blue="0.28542830255129648" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Log Out">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -383,8 +383,9 @@
                                             <constraint firstItem="85N-vp-ciz" firstAttribute="top" secondItem="I2x-5c-7Pv" secondAttribute="bottom" constant="12" id="cvq-CT-Cfs"/>
                                             <constraint firstItem="Y9b-u5-278" firstAttribute="centerX" secondItem="F8d-BC-7Ox" secondAttribute="centerX" id="deO-TW-mPG"/>
                                             <constraint firstItem="eKW-co-BSt" firstAttribute="centerX" secondItem="F8d-BC-7Ox" secondAttribute="centerX" id="goC-Eh-0uV"/>
-                                            <constraint firstItem="PAp-gs-G0m" firstAttribute="top" secondItem="yRY-kV-mXQ" secondAttribute="bottom" constant="12.5" id="gra-pF-evt"/>
+                                            <constraint firstItem="PAp-gs-G0m" firstAttribute="top" secondItem="yRY-kV-mXQ" secondAttribute="bottom" constant="16" id="gra-pF-evt"/>
                                             <constraint firstItem="Y9b-u5-278" firstAttribute="width" secondItem="ubc-5h-osd" secondAttribute="width" id="hDy-4z-KGU"/>
+                                            <constraint firstItem="yRY-kV-mXQ" firstAttribute="height" secondItem="85N-vp-ciz" secondAttribute="height" multiplier="1.25" id="iiD-wj-5xt"/>
                                             <constraint firstItem="yRY-kV-mXQ" firstAttribute="centerX" secondItem="F8d-BC-7Ox" secondAttribute="centerX" id="iws-ks-ajC"/>
                                             <constraint firstItem="ubc-5h-osd" firstAttribute="top" secondItem="eKW-co-BSt" secondAttribute="bottom" constant="8" id="l5E-fv-9bB"/>
                                             <constraint firstItem="ubc-5h-osd" firstAttribute="height" secondItem="F8d-BC-7Ox" secondAttribute="height" multiplier="0.025" id="ndP-6B-kow"/>

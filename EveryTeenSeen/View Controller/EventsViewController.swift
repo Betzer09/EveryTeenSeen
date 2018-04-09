@@ -229,6 +229,17 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        var events: [Event] = []
+        guard let unfilteredEvents = EventController.shared.events else {return}
+        
+        if eventsSearchedByDistance.count == 0 {
+            events = EventController.shared.filterEventsBy(distance: Int(UserController.shared.loadUserProfile()?.eventDistance ?? 50) , events: unfilteredEvents)
+            
+        } else {
+            events = self.eventsSearchedByDistance
+        }
+        
         guard let _ = UserController.shared.loadUserProfile() else {
             presentLoginAlert(viewController: self)
             return
@@ -236,10 +247,8 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
         
         if segue.identifier == "toEventDetailVC" {
             guard let destination = segue.destination as? EventDetailViewController,
-                let indexPath = eventsTableView.indexPathForSelectedRow,
-                let event = EventController.shared.events?[indexPath.row]
-                else {print(segue.destination);return}
-            destination.event = event
+                let indexPath = eventsTableView.indexPathForSelectedRow else {print(segue.destination); return}
+            destination.event = events[indexPath.row]
         }
     }
 }

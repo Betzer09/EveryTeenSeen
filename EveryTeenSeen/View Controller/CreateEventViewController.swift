@@ -319,6 +319,7 @@ class CreateEventViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let textView = UITextView()
+        textView.text = "Click to tell us about your event!"
         textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         let controller = UIViewController()
@@ -448,5 +449,13 @@ extension CreateEventViewController {
         self.navigationItem.titleView = happyImage
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+    }
+}
+
+extension CreateEventViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Click to tell us about your event!" {
+            textView.text = ""
+        }
     }
 }

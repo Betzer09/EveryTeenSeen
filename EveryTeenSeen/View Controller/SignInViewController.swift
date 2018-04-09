@@ -225,6 +225,11 @@ extension SignInViewController {
             txtField.layer.borderWidth = 1.0
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
 }
 
 // MARK: - User Creatation and Sign In
@@ -367,6 +372,8 @@ extension SignInViewController: UITextFieldDelegate {
         // Makes it so the keyboard disappers
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        
     }
     
     /// This returns the yShift for a TextField
@@ -441,9 +448,3 @@ extension SignInViewController: UNUserNotificationCenterDelegate {
         }
     }
 }
-
-
-
-
-
-

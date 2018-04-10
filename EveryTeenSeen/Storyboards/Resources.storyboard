@@ -41,13 +41,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU are NOT alone. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5n2-aX-bXn">
-                                <rect key="frame" x="16" y="66" width="288" height="46"/>
+                                <rect key="frame" x="8" y="66" width="304" height="68.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="P0K-B7-BxN">
-                                <rect key="frame" x="16" y="120" width="288" height="309"/>
+                                <rect key="frame" x="16" y="142.5" width="288" height="309"/>
                                 <string key="text">As a teen, you face many struggles and turbulent situations. Every Teen Seen is an event platform, but our events are a place where you can feel safe discussing difficult topics and feelings. We hope to reduce teen suicide by making you feel included in the community and providing support and resources for you.
 
 If for any reason you are feeling suicidal or know of someone in distress, please utilize the following prevention and crisis resources. </string>
@@ -56,19 +56,19 @@ If for any reason you are feeling suicidal or know of someone in distress, pleas
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="National Suicide Prevention Lifeline" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ceo-jd-Wla">
-                                <rect key="frame" x="16" y="437" width="288" height="43.5"/>
+                                <rect key="frame" x="16" y="459.5" width="288" height="43.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1-800-273-8255" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="SPX-1f-gEq">
-                                <rect key="frame" x="16" y="485.5" width="213" height="34"/>
+                                <rect key="frame" x="16" y="508" width="213" height="34"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="jiz-8W-Jwr">
-                                <rect key="frame" x="16" y="535.5" width="288" height="76.5"/>
+                                <rect key="frame" x="16" y="558" width="288" height="76.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Safe UT
 
@@ -80,13 +80,13 @@ Press to Download in the App Store</string>
                                 <size key="shadowOffset" width="2" height="1"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UY-Vv-JFd">
-                                <rect key="frame" x="16" y="581.5" width="192" height="30.5"/>
+                                <rect key="frame" x="16" y="604" width="192" height="30.5"/>
                                 <connections>
                                     <action selector="downloadUTAAppButtonPressed:" destination="HXc-yt-hct" eventType="touchUpInside" id="e9m-fH-wo4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7L-b6-tY9" userLabel="DonwloadUTA APP">
-                                <rect key="frame" x="16" y="535.5" width="96" height="30.5"/>
+                                <rect key="frame" x="16" y="558" width="96" height="30.5"/>
                                 <connections>
                                     <action selector="downloadUTAAppButtonPressed:" destination="HXc-yt-hct" eventType="touchUpInside" id="XY8-LW-tM9"/>
                                 </connections>
@@ -99,7 +99,7 @@ Press to Download in the App Store</string>
                             <constraint firstItem="SPX-1f-gEq" firstAttribute="height" secondItem="Ceo-jd-Wla" secondAttribute="height" multiplier="0.8" id="6oT-DV-pt6"/>
                             <constraint firstItem="P0K-B7-BxN" firstAttribute="centerX" secondItem="VHM-Md-l0w" secondAttribute="centerX" id="87u-n8-OsF"/>
                             <constraint firstItem="Ceo-jd-Wla" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/16" id="9D8-iW-CIV"/>
-                            <constraint firstItem="5n2-aX-bXn" firstAttribute="width" secondItem="os0-Wr-Zne" secondAttribute="width" multiplier="0.9" id="Avd-6P-Fcj"/>
+                            <constraint firstItem="5n2-aX-bXn" firstAttribute="width" secondItem="os0-Wr-Zne" secondAttribute="width" multiplier="0.95" id="Avd-6P-Fcj"/>
                             <constraint firstItem="5n2-aX-bXn" firstAttribute="top" secondItem="Hjb-RQ-4c2" secondAttribute="bottom" constant="8" id="C8C-Qi-xOU"/>
                             <constraint firstItem="Hjb-RQ-4c2" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/12" id="EEI-Kn-0Qk"/>
                             <constraint firstItem="7UY-Vv-JFd" firstAttribute="bottom" secondItem="jiz-8W-Jwr" secondAttribute="bottom" id="JD4-Sn-76y"/>
@@ -126,7 +126,7 @@ Press to Download in the App Store</string>
                             <constraint firstItem="jiz-8W-Jwr" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/9" id="q7W-ob-Zt4"/>
                             <constraint firstItem="Ceo-jd-Wla" firstAttribute="top" secondItem="P0K-B7-BxN" secondAttribute="bottom" constant="8" id="rJe-jD-Q2L"/>
                             <constraint firstItem="heQ-FH-Osd" firstAttribute="bottom" secondItem="os0-Wr-Zne" secondAttribute="bottom" id="ssq-GB-ZVa"/>
-                            <constraint firstItem="5n2-aX-bXn" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/15" id="uw4-LG-mr9"/>
+                            <constraint firstItem="5n2-aX-bXn" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/10" id="uw4-LG-mr9"/>
                             <constraint firstItem="b7L-b6-tY9" firstAttribute="top" secondItem="jiz-8W-Jwr" secondAttribute="top" id="xGZ-YR-7hW"/>
                             <constraint firstItem="os0-Wr-Zne" firstAttribute="top" secondItem="heQ-FH-Osd" secondAttribute="top" id="yqY-kB-9wv"/>
                         </constraints>

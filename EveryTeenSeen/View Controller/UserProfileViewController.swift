@@ -128,6 +128,7 @@ class UserProfileViewController: UIViewController {
         if user.usertype == UserType.leadCause.rawValue {
             usertypeLabel.text = "Admin"
             createEventButton.isHidden = false
+            self.usertypeLabel.isHidden = false
         }
         
         addressLabel.text = "\(userLocation.cityName ?? ""), \(userLocation.state ?? ""), \(userLocation.zipcode ?? "")"

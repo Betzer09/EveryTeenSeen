@@ -396,7 +396,7 @@ extension SignInViewController: UITextFieldDelegate {
     
     // Objective - C Functions
     @objc func keyboardWillShow(notification: NSNotification) {
-        
+        self.skipToEventsButton.isHidden = true
         var keyboardSize: CGRect = .zero
         
         if let keyboardRect = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? CGRect, keyboardRect.height != 0 {
@@ -416,7 +416,7 @@ extension SignInViewController: UITextFieldDelegate {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        
+        self.skipToEventsButton.isHidden = false
         if self.view.frame.origin.y != 0 {
             
             self.view.frame.origin.y += currentYShiftForKeyboard

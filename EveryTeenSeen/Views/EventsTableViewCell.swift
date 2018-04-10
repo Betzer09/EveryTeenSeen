@@ -16,11 +16,8 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var eventAddressLabel: UILabel!
     @IBOutlet weak var eventAttendingLabel: UILabel!
     @IBOutlet weak var attendingLabel: UILabel!
-    @IBOutlet weak var attendEventButton: UIButton!
     @IBOutlet weak var plusButtonImage: UIImageView!
     @IBOutlet weak var eventPhotoImageView: UIImageView!
-    
-    @IBOutlet weak var eventContentDescriptionView: UIView!
     
     // MARK: - Properties
     

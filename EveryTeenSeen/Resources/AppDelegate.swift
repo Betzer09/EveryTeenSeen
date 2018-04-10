@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
 
+        self.setUpTabBar()
         self.setUpNavigationBar()
         self.configureUserToSignIn()
         self.setUpNotificationObserver()
@@ -76,6 +77,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
+    func setUpTabBar() {
+        UITabBar.appearance().tintColor = UIColor(red: 0, green: divideNumberForColorWith(number: 122), blue: divideNumberForColorWith(number: 255), alpha: 1)
+    }
+    
     func setUpNavigationBar() {
         // Navigation Style
         UIApplication.shared.statusBarStyle = .lightContent

@@ -177,7 +177,6 @@ class EventDetailViewController: UIViewController {
             print("We are running!!")
             guard let photos = photos else {
                 self.loadingProfilePicturesAnimatorView.stopAnimating()
-                self.loadingEventsLabel.text = "Be the first to Join!"
                 return
             }
             
@@ -208,9 +207,13 @@ class EventDetailViewController: UIViewController {
                         buttons[i].isUserInteractionEnabled = false
                     }
                 }
+                self.loadingProfilePictureView.isHidden = true
+                self.loadingProfilePicturesAnimatorView.stopAnimating()
+            } else {
+                self.loadingEventsLabel.text = "Be the first to Join!"
+                self.loadingProfilePicturesAnimatorView.stopAnimating()
             }
-            self.loadingProfilePictureView.isHidden = true
-            self.loadingProfilePicturesAnimatorView.stopAnimating()
+
         }
     }
     

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tAj-R1-mex">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tAj-R1-mex">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -137,9 +137,8 @@ Press to Download in the App Store</string>
         <!--Resources-->
         <scene sceneID="Iwv-M2-gO3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xEA-FK-UTE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tAj-R1-mex" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Resources" image="heart" id="Yyr-PZ-nj6"/>
+                    <tabBarItem key="tabBarItem" title="Resources" image="file-text" id="Yyr-PZ-nj6"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tU8-oo-XQJ">
@@ -151,12 +150,13 @@ Press to Download in the App Store</string>
                         <segue destination="HXc-yt-hct" kind="relationship" relationship="rootViewController" id="j6X-9g-dc4"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xEA-FK-UTE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-679" y="1087"/>
         </scene>
     </scenes>
     <resources>
         <image name="Resources Background" width="100" height="180"/>
-        <image name="heart" width="25" height="23"/>
+        <image name="file-text" width="18" height="22"/>
     </resources>
 </document>

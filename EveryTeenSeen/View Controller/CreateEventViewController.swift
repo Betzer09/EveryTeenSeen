@@ -320,6 +320,7 @@ class CreateEventViewController: UIViewController {
         
         let textView = UITextView()
         textView.text = "Click to tell us about your event!"
+        textView.delegate = self
         textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         let controller = UIViewController()

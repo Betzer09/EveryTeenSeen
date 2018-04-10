@@ -32,7 +32,7 @@
                                 <color key="backgroundColor" red="0.52549019610000003" green="0.52549019610000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q0D-Tw-b4D">
-                                <rect key="frame" x="65.5" y="80" width="189.5" height="189.5"/>
+                                <rect key="frame" x="66" y="80" width="189" height="189.5"/>
                                 <color key="backgroundColor" red="0.52549019610000003" green="0.52549019610000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Q0D-Tw-b4D" secondAttribute="height" multiplier="1:1" id="EJe-pE-JXH"/>
@@ -157,7 +157,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYX-Ng-GGy">
-                                                <rect key="frame" x="248" y="8.5" width="64" height="30"/>
+                                                <rect key="frame" x="248" y="9" width="64" height="30"/>
                                                 <state key="normal" title="Edit">
                                                     <color key="titleColor" red="0.52549019610000003" green="0.52549019610000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -181,13 +181,13 @@
                                         <rect key="frame" x="0.0" y="94.5" width="320" height="47.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5w-F2-wCL">
-                                                <rect key="frame" x="8" y="12.5" width="213.5" height="23.5"/>
+                                                <rect key="frame" x="8" y="13" width="213.5" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <color key="textColor" red="0.38823529410000002" green="0.30980392159999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jT1-rK-hhY">
-                                                <rect key="frame" x="248" y="9" width="64" height="30"/>
+                                                <rect key="frame" x="248" y="9.5" width="64" height="30"/>
                                                 <state key="normal" title="Edit">
                                                     <color key="titleColor" red="0.52549019610000003" green="0.52549019610000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -447,15 +447,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="riv-sc-GlP" kind="relationship" relationship="viewControllers" id="mDg-h6-y1s"/>
                         <segue destination="ocj-sw-CCv" kind="relationship" relationship="viewControllers" id="daN-dR-Iy0"/>
+                        <segue destination="P2w-zy-oi7" kind="relationship" relationship="viewControllers" id="W4b-MT-F1s"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyJ-m7-Mcu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2169" y="292"/>
+            <point key="canvasLocation" x="-3146" y="292"/>
+        </scene>
+        <!--DonateNow-->
+        <scene sceneID="FxB-SS-RUd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DonateNow" id="P2w-zy-oi7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="iPp-4Y-zLg"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tfo-Ne-vKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3146" y="888"/>
         </scene>
         <!--Resources-->
         <scene sceneID="ha0-rH-D9l">
@@ -465,7 +477,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ex2-1q-dOO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1313" y="803"/>
+            <point key="canvasLocation" x="-2171" y="777"/>
         </scene>
         <!--Events-->
         <scene sceneID="4R3-94-hSv">

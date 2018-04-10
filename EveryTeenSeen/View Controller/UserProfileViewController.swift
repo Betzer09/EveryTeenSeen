@@ -36,7 +36,10 @@ class UserProfileViewController: UIViewController {
         
         guard let interest = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else{return}
         configureAllButtonsIn(view: interestsGroupView, interests: interest) { (areThereInterests) in
-            guard areThereInterests else {return}
+            guard areThereInterests else {
+                self.noInterestView.isHidden = false
+                return
+            }
             self.noInterestView.isHidden = true
         }
     }
@@ -80,6 +83,13 @@ class UserProfileViewController: UIViewController {
             InterestController.shared.createInterestWith(user: user, and: name, completion: { (done) in
                 guard done == true, let updatedUserInterests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else {return}
                 configureAllButtonsIn(view: self.interestsGroupView, interests: updatedUserInterests)
+                configureAllButtonsIn(view: self.interestsGroupView, interests: updatedUserInterests, completion: { (success) in
+                    guard success else {
+                        self.noInterestView.isHidden = false
+                        return
+                    }
+                    self.noInterestView.isHidden = true
+                })
             })
             
         }

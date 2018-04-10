@@ -74,6 +74,8 @@ class SignInViewController: UIViewController {
             // The success is true
             guard success else { self.hideIndicator() ;return}
             
+            UserController.shared.profilePicture = #imageLiteral(resourceName: "smallAvatar")
+            
             UserController.shared.fetchUserInfoFromFirebaseWith(email: email, completion: { (user, error) in
                 // If there is a user sign in and fetch the info and save it to the phone
                 guard let user = user else {
@@ -105,6 +107,7 @@ class SignInViewController: UIViewController {
                 self.createUserProfile()
                 self.hideIndicator()
                 self.requestNotificationPermission()
+                UserController.shared.profilePicture = #imageLiteral(resourceName: "smallAvatar")
                 presentEventsTabBarVC(viewController: self)
             } else {
                 self.hideIndicator()

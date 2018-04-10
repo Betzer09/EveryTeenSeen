@@ -158,7 +158,6 @@
 				2393D3A32033BFE40073F6A5 /* Event.swift */,
 				2336698A2034E3040070F17F /* Photo.swift */,
 				232344E6206021FA00BC1DA0 /* User+Convenience.swift */,
-				2347DAB1204DE04900124188 /* UserLocation+Convenience.swift */,
 				23A7F515206036AF0045AE4A /* Interest+Convenience.swift */,
 				233C08FF20697C2000396E95 /* AdminPassword.swift */,
 				231F24FF2076D5D800C94D0D /* AboutOtherUser.swift */,
@@ -174,6 +173,7 @@
 				238B554B202E1731002E128C /* UserController.swift */,
 				2393D3A52033C2380073F6A5 /* EventController.swift */,
 				2393D3A92033D5350073F6A5 /* PhotoController.swift */,
+				2347DAB1204DE04900124188 /* UserLocation+Convenience.swift */,
 				2347DAB5204DE1C200124188 /* UserLocationController.swift */,
 			);
 			path = "Model Controller";

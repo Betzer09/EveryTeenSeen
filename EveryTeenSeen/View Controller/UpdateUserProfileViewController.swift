@@ -57,7 +57,10 @@ class UpdateUserProfileViewController: UIViewController {
         
         guard let interests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else{return}
         configureAllButtonsIn(view: interestGroupView, interests: interests) { (areThereInterests) in
-            guard areThereInterests else {return}
+            guard areThereInterests else {
+                self.noInterestView.isHidden = false
+                return
+            }
             self.noInterestView.isHidden = true
         }
     }
@@ -75,7 +78,13 @@ class UpdateUserProfileViewController: UIViewController {
             InterestController.shared.delete(interest: interest)
             
             guard let updatedInterests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else {return}
-            configureAllButtonsIn(view: self.interestGroupView, interests: updatedInterests)
+            configureAllButtonsIn(view: self.interestGroupView, interests: updatedInterests) { (areThereInterests) in
+                guard areThereInterests else {
+                    self.noInterestView.isHidden = false
+                    return
+                }
+                self.noInterestView.isHidden = true
+            }
         }
     }
     

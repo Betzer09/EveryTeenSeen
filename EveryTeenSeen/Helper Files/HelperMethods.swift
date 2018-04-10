@@ -201,7 +201,7 @@ func presentLoginAlert(viewController: UIViewController) {
     
     viewController.present(alert, animated: true, completion: nil)
 }
-
+ 
 // MARK: - Colors
 
 extension UIColor {

@@ -194,9 +194,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8e-Xs-r7T">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8e-Xs-r7T">
                                                     <rect key="frame" x="272.5" y="8" width="35.5" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <inset key="contentEdgeInsets" minX="-5" minY="-5" maxX="5" maxY="5"/>
                                                     <state key="normal" title="...">
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>

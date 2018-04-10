@@ -264,9 +264,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3v-kL-Tjh">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3v-kL-Tjh">
                                                     <rect key="frame" x="272.5" y="8" width="35.5" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <inset key="contentEdgeInsets" minX="5" minY="-5" maxX="5" maxY="5"/>
                                                     <state key="normal" title="...">
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
@@ -327,7 +328,7 @@
                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIc-GD-vBw" userLabel="Search Events By Distance View">
-                                <rect key="frame" x="0.0" y="64" width="320" height="170.5"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="199"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="AAk-97-oB3">
                                         <rect key="frame" x="22" y="64" width="276" height="31"/>
@@ -338,7 +339,7 @@
                                         </connections>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gca-t2-aWW">
-                                        <rect key="frame" x="16" y="152.5" width="106.5" height="30"/>
+                                        <rect key="frame" x="16" y="159.5" width="106.5" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.76078431372549016" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Search">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -348,7 +349,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 mile radius from the city you search." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Bqw-IY-Isv">
-                                        <rect key="frame" x="16" y="102" width="288" height="42.5"/>
+                                        <rect key="frame" x="16" y="102" width="288" height="49.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -361,7 +362,7 @@
                                         </connections>
                                     </searchBar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThF-g1-4bC">
-                                        <rect key="frame" x="197.5" y="152.5" width="106.5" height="30"/>
+                                        <rect key="frame" x="197.5" y="159.5" width="106.5" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.075432751200000023" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Clear Filter">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -371,7 +372,7 @@
                                         </connections>
                                     </button>
                                     <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BMG-vu-3Gc">
-                                        <rect key="frame" x="0.0" y="56" width="320" height="114.5"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="143"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" textLabel="Y6I-S0-0p8" detailTextLabel="GRu-fq-Kao" style="IBUITableViewCellStyleSubtitle" id="ULH-UI-aCr">
@@ -440,7 +441,7 @@
                             <constraint firstAttribute="bottom" secondItem="669-ky-spW" secondAttribute="bottom" id="PeI-1b-5wc"/>
                             <constraint firstItem="669-ky-spW" firstAttribute="top" secondItem="FW2-jk-xNe" secondAttribute="top" id="QvQ-9G-kKQ"/>
                             <constraint firstItem="nIc-GD-vBw" firstAttribute="trailing" secondItem="FW2-jk-xNe" secondAttribute="trailing" id="Rjx-bd-szW"/>
-                            <constraint firstItem="nIc-GD-vBw" firstAttribute="height" secondItem="GVN-gv-O2B" secondAttribute="height" multiplier="0.3" id="eZN-VM-OFC"/>
+                            <constraint firstItem="nIc-GD-vBw" firstAttribute="height" secondItem="GVN-gv-O2B" secondAttribute="height" multiplier="0.35" id="eZN-VM-OFC"/>
                             <constraint firstAttribute="trailing" secondItem="669-ky-spW" secondAttribute="trailing" id="uOc-Kh-8Ub"/>
                             <constraint firstItem="TIC-jA-AYD" firstAttribute="width" secondItem="FW2-jk-xNe" secondAttribute="width" multiplier="1/2" id="wDn-ub-Ueg"/>
                             <constraint firstItem="669-ky-spW" firstAttribute="leading" secondItem="FW2-jk-xNe" secondAttribute="leading" id="zOA-dm-Kgc"/>

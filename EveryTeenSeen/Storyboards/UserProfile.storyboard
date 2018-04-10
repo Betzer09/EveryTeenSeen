@@ -168,7 +168,7 @@
                                                                             </constraints>
                                                                         </view>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstItem="eYv-zH-kbG" firstAttribute="centerY" secondItem="Twf-J6-Lnz" secondAttribute="centerY" id="9GS-hf-ILO"/>
                                                                         <constraint firstItem="eYv-zH-kbG" firstAttribute="height" secondItem="Twf-J6-Lnz" secondAttribute="height" multiplier="2/3" id="CMK-LO-jY1"/>
@@ -472,7 +472,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVU-oS-Kkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="exX-f6-5rf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="167.8125" y="-54.929577464788736"/>
+            <point key="canvasLocation" x="256" y="-22"/>
         </scene>
         <!--Update User Profile View Controller-->
         <scene sceneID="Ofr-yg-i1e">

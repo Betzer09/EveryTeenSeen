@@ -214,7 +214,14 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == eventsTableView {
-            return self.view.bounds.height * 0.65
+            
+            if self.view.bounds.height <= 800 {
+                print(self.view.bounds.height)
+                return self.view.bounds.height * 0.65
+            } else {
+                print(self.view.bounds.height)
+                return self.view.bounds.height * 0.53
+            }
         } else {
             return self.searchEventByDistanceGroupView.bounds.height * 0.2
         }

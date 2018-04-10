@@ -120,7 +120,12 @@ class UserProfileViewController: UIViewController {
             }
         }
         
-        profileImageView.image = UserController.shared.profilePicture
+        var image: UIImage = UserController.shared.profilePicture
+        if UserController.shared.profilePicture == #imageLiteral(resourceName: "smallAvatar") {
+            image = #imageLiteral(resourceName: "largeAvatar")
+        }
+        
+        profileImageView.image = image
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         profileImageView.clipsToBounds = true
         
@@ -213,6 +218,12 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.view.bounds.height * 0.62
+        if self.view.bounds.height <= 800 {
+            print(self.view.bounds.height)
+            return self.view.bounds.height * 0.62
+        } else {
+            print(self.view.bounds.height)
+            return self.view.bounds.height * 0.53
+        }
     }
 }

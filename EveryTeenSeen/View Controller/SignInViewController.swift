@@ -290,7 +290,7 @@ extension SignInViewController {
             
             // Before creating a user check password strength
             guard isPasswordStrongEnough else {
-                presentSimpleAlert(viewController: self, title: "Password Strength Is Weak!", message: "Password must contain a capital letter and 1 special charctor!")
+                presentSimpleAlert(viewController: self, title: "Password Strength Is Weak!", message: "Password must contain a capital letter and 1 special character!")
                 completion(false)
                 return
             }

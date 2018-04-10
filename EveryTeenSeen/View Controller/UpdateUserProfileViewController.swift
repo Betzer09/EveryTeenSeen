@@ -280,7 +280,12 @@ class UpdateUserProfileViewController: UIViewController {
             youAreAnAdminLabel.isHidden = false
         }
         
-        profileImageView.image = UserController.shared.profilePicture
+        var image: UIImage = UserController.shared.profilePicture
+        if UserController.shared.profilePicture == #imageLiteral(resourceName: "smallAvatar") {
+            image = #imageLiteral(resourceName: "largeAvatar")
+        }
+        
+        profileImageView.image = image
         
         // Set up the pop views
         submitAdminPasswordButton.layer.cornerRadius = 15

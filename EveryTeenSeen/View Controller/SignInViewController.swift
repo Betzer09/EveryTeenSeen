@@ -104,11 +104,13 @@ class SignInViewController: UIViewController {
         self.showIndicator()
         self.createFirebaseAuthUser { (success) in
             if success {
-                self.createUserProfile()
-                self.hideIndicator()
-                self.requestNotificationPermission()
-                UserController.shared.profilePicture = #imageLiteral(resourceName: "smallAvatar")
-                presentEventsTabBarVC(viewController: self)
+                self.createUserProfile(completion: { (done) in
+                    guard done else {return}
+                    self.hideIndicator()
+                    self.requestNotificationPermission()
+                    UserController.shared.profilePicture = #imageLiteral(resourceName: "smallAvatar")
+                    presentEventsTabBarVC(viewController: self)
+                })
             } else {
                 self.hideIndicator()
             }
@@ -297,14 +299,15 @@ extension SignInViewController {
     
     // MARK: - Create User Profile
     /// This creates a profile for the user in firebase
-    private func createUserProfile() {
+    private func createUserProfile(completion: @escaping (_ hasFinishedRunning: Bool) -> Void) {
         guard let fullname = fullnameTextField.text, let email = emailTextField.text?.lowercased(),
             !fullname.isEmpty, !email.isEmpty else {
                 presentSimpleAlert(viewController: self, title: "All Field Are Required", message: "")
+                completion(false)
                 return
         }
         
-        guard let zipcode = UserLocationController.shared.fetchUserLocation()?.zipcode else {NSLog("Error Creating User: There is no zipcode");return}
+        guard let zipcode = UserLocationController.shared.fetchUserLocation()?.zipcode else {NSLog("Error Creating User: There is no zipcode"); completion(false); return}
         
         CityController.shared.fetchCityWith(zipcode: zipcode, completion: { (city) in
             CityController.shared.postCityToFirebaseWith(city: city.cityName, zipcode: city.zipcode, state: city.state)
@@ -313,10 +316,12 @@ extension SignInViewController {
             UserController.shared.createUserProfile(fullname: fullname, email: email, zipcode: "\(zipcode), \(city.cityName), \(city.state)", usertype: UserType.joinCause) { (success, error) in
                 if let error = error {
                     presentSimpleAlert(viewController: self, title: "Error", message: error.localizedDescription)
+                    completion(false)
                 }
                 
                 // Save the data to the phone
                 UserController.shared.saveUserToCoreData(email: email, fullname: fullname, usertype: UserType.joinCause.rawValue, zipcode: "\(zipcode), \(city.cityName), \(city.state)" , distance: 25)
+                completion(true)
             }
         })
         

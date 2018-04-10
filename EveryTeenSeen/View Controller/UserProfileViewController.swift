@@ -47,12 +47,6 @@ class UserProfileViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    
-    // MARK: - Actions
-    @IBAction func createEventButtonPressed(_ sender: Any) {
-        presentCreateEventVC(viewController: self)
-    }
-    
     @IBAction func addInterestButtonPressed(_ sender: Any) {
         
         guard let interests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else {return}

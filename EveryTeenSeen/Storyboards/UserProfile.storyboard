@@ -265,7 +265,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="createEventButtonPressed:" destination="vXv-m3-yDA" eventType="touchUpInside" id="1Yg-e2-00V"/>
+                                                    <segue destination="kgM-fk-ebs" kind="show" id="SG5-wD-f6p"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="gHX-FH-qDe">
@@ -643,6 +643,34 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are an admin!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="GDK-jW-a98">
+                                <rect key="frame" x="107" y="470" width="106.5" height="28.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Wzx-UO-CNP">
+                                <rect key="frame" x="150" y="238.5" width="20" height="20"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smz-0Z-rX2">
+                                <rect key="frame" x="16" y="400" width="288" height="102"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go back and create your first interest!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="88t-xr-pPo">
+                                        <rect key="frame" x="14.5" y="39" width="259" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="88t-xr-pPo" firstAttribute="height" secondItem="Smz-0Z-rX2" secondAttribute="height" multiplier="1/4" id="3NQ-IZ-Wwk"/>
+                                    <constraint firstItem="88t-xr-pPo" firstAttribute="width" secondItem="Smz-0Z-rX2" secondAttribute="width" multiplier="0.9" id="S9g-oA-3Ze"/>
+                                    <constraint firstItem="88t-xr-pPo" firstAttribute="centerY" secondItem="Smz-0Z-rX2" secondAttribute="centerY" id="ZxU-5j-wgI"/>
+                                    <constraint firstItem="88t-xr-pPo" firstAttribute="centerX" secondItem="Smz-0Z-rX2" secondAttribute="centerX" id="b34-6g-vCw"/>
+                                </constraints>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33N-YW-pdW" userLabel="ActivateAdminGroupView">
                                 <rect key="frame" x="16" y="142" width="288" height="284"/>
                                 <subviews>
@@ -749,12 +777,6 @@
                                     <constraint firstItem="Rmc-Vf-odZ" firstAttribute="top" secondItem="dQP-Yg-gUy" secondAttribute="bottom" constant="4" id="yED-NU-KrA"/>
                                 </constraints>
                             </view>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are an admin!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="GDK-jW-a98">
-                                <rect key="frame" x="107" y="470" width="106.5" height="28.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SD8-wG-HG5" userLabel="Finished Updating Profile View">
                                 <rect key="frame" x="16" y="142" width="288" height="284"/>
                                 <subviews>
@@ -790,28 +812,6 @@
                                     <constraint firstItem="Xnv-jg-rI2" firstAttribute="centerX" secondItem="SD8-wG-HG5" secondAttribute="centerX" id="ltO-Fp-3Eb"/>
                                     <constraint firstItem="ePP-BB-Ukk" firstAttribute="width" secondItem="SD8-wG-HG5" secondAttribute="width" multiplier="0.5" id="pMs-aS-VS8"/>
                                     <constraint firstItem="ePP-BB-Ukk" firstAttribute="top" secondItem="Xnv-jg-rI2" secondAttribute="bottom" constant="8" id="rOU-mH-cke"/>
-                                </constraints>
-                            </view>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Wzx-UO-CNP">
-                                <rect key="frame" x="150" y="238.5" width="20" height="20"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smz-0Z-rX2">
-                                <rect key="frame" x="16" y="400" width="288" height="102"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go back and create your first interest!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="88t-xr-pPo">
-                                        <rect key="frame" x="14.5" y="39" width="259" height="25.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="88t-xr-pPo" firstAttribute="height" secondItem="Smz-0Z-rX2" secondAttribute="height" multiplier="1/4" id="3NQ-IZ-Wwk"/>
-                                    <constraint firstItem="88t-xr-pPo" firstAttribute="width" secondItem="Smz-0Z-rX2" secondAttribute="width" multiplier="0.9" id="S9g-oA-3Ze"/>
-                                    <constraint firstItem="88t-xr-pPo" firstAttribute="centerY" secondItem="Smz-0Z-rX2" secondAttribute="centerY" id="ZxU-5j-wgI"/>
-                                    <constraint firstItem="88t-xr-pPo" firstAttribute="centerX" secondItem="Smz-0Z-rX2" secondAttribute="centerX" id="b34-6g-vCw"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -907,6 +907,7 @@
                         <outlet property="maxLabelTextField" destination="RjL-sT-Uro" id="f4M-U5-0fY"/>
                         <outlet property="noInterestView" destination="Smz-0Z-rX2" id="rzz-wE-ekv"/>
                         <outlet property="profileImageView" destination="AG7-C4-Q1A" id="wJg-qE-X2I"/>
+                        <outlet property="submitAdminPasswordButton" destination="Yyo-QA-Y4G" id="kNA-nD-ojs"/>
                         <outlet property="successGroupView" destination="jZ7-po-CWH" id="MDD-Qu-GQr"/>
                         <outlet property="successImageView" destination="Xnv-jg-rI2" id="Cxs-da-Dgp"/>
                         <outlet property="uploadingProfileActivityMonitor" destination="Wzx-UO-CNP" id="fzA-MC-dQa"/>
@@ -917,6 +918,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KfL-yG-nNy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1128.75" y="-205.98591549295776"/>
+        </scene>
+        <!--CreateEvent-->
+        <scene sceneID="Qnb-l1-Ezq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CreateEvent" id="kgM-fk-ebs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iPl-pp-vUR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1147" y="383"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dYN-bJ-rKE">

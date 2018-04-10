@@ -26,6 +26,7 @@ class UpdateUserProfileViewController: UIViewController {
     @IBOutlet weak var activateAdminGroupView: UIView!
     @IBOutlet weak var adminPasswordTextfield: UITextField!
     @IBOutlet weak var incorrectPasswordMessage: UILabel!
+    @IBOutlet weak var submitAdminPasswordButton: UIButton!
     
     // Updated Profile View
     @IBOutlet weak var finishedUpdatedProfileView: UIView!
@@ -278,6 +279,7 @@ class UpdateUserProfileViewController: UIViewController {
         profileImageView.image = UserController.shared.profilePicture
         
         // Set up the pop views
+        submitAdminPasswordButton.layer.cornerRadius = 15
         activateAdminGroupView.layer.cornerRadius = 15
         successGroupView.layer.cornerRadius = 15
         finishedUpdatedProfileView.layer.cornerRadius = 15

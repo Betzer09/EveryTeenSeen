@@ -54,6 +54,7 @@ class EventsViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func searchEventByDistanceButtonPressed(_ sender: Any) {
+        
         EventController.shared.fetchAllEvents()
         self.searchEventByDistanceGroupView.isHidden = true
         guard let locationThatUserPicked = placemark else {NSLog("We don't have a location from the user!")

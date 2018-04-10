@@ -307,6 +307,7 @@
                                             <constraint firstAttribute="bottom" secondItem="j2E-Xe-mwx" secondAttribute="bottom" id="zlP-yD-K3F"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="attendEventButton" destination="biR-aG-96G" id="GJV-EE-9Tp"/>
                                             <outlet property="attendingLabel" destination="zHa-cq-vtO" id="PLw-j2-Jjp"/>
                                             <outlet property="eventAddressLabel" destination="0KV-mI-wbs" id="c6Q-Yr-Bs9"/>
                                             <outlet property="eventAttendingLabel" destination="MHG-8W-b5m" id="5rs-4V-JrH"/>

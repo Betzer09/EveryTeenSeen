@@ -18,6 +18,7 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var attendingLabel: UILabel!
     @IBOutlet weak var plusButtonImage: UIImageView!
     @IBOutlet weak var eventPhotoImageView: UIImageView!
+    @IBOutlet weak var attendEventButton: UIButton!
     
     // MARK: - Properties
     
@@ -56,34 +57,37 @@ class EventsTableViewCell: UITableViewCell {
     }
     
     @IBAction func attendEventButtonPressed(_ sender: Any) {
+        self.attendEventButton.isEnabled = false
         guard let rootvc = UIApplication.shared.keyWindow?.rootViewController else {return}
         guard let user = UserController.shared.loadUserProfile(),
             let eventPassedInToCell = event,
             let indexPath = EventController.shared.events?.index(of: eventPassedInToCell),
             let event = EventController.shared.events?[indexPath],
-            let count = event.attending?.count else {return}
+            let attending = event.attending else {return}
         
-
         if attendingLabel.text == "Attend" {
             configureLableAsNotGoing()
         
             EventController.shared.isPlanningOnAttending(event: event, user: user, isGoing: true, completion: { (stringError) in
                 guard let error = stringError else {
                     // This means there is no error update label
+                    self.attendEventButton.isEnabled = true
                     return
                 }
-                presentSimpleAlert(viewController: rootvc, title: "Unable to attend event", message: error)
+                presentSimpleAlert(viewController: rootvc, title: "Unable to attend event.", message: error)
             }, completionHandler: { (updatedEvent) in
                 guard let updatedEvent = updatedEvent, let updatedCount = updatedEvent.attending?.count else {return}
                 event.attending = updatedEvent.attending
                 self.eventAttendingLabel.text = "Attending: \(updatedCount)"
             })
+            self.attendEventButton.isEnabled = true
         } else {
             configureLabelAsGoing()
             // This shows that there are zero attending
             EventController.shared.isPlanningOnAttending(event: event, user: user, isGoing: false, completion: { (stringError) in
                 guard let error = stringError else {
-                    self.eventAttendingLabel.text = "Attending: \(count)"
+                    self.eventAttendingLabel.text = "Attending: \(attending.count)"
+                    self.attendEventButton.isEnabled = true
                     return
                 }
                 presentSimpleAlert(viewController: rootvc, title: "Unable to attend event", message: error)
@@ -92,6 +96,7 @@ class EventsTableViewCell: UITableViewCell {
                 event.attending = updatedEvent.attending
                 self.eventAttendingLabel.text = "Attending: \(updatedCount)"
             })
+            self.attendEventButton.isEnabled = true
         }
     }
     

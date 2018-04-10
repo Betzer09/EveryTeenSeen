@@ -126,6 +126,11 @@ class UpdateUserProfileViewController: UIViewController {
     
     
     @IBAction func doneEditingProfileButtonPressed(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.finishedUpdatedProfileView.isHidden = false
+            self.uploadingProfileActivityMonitor.isHidden = false
+            self.uploadingProfileActivityMonitor.startAnimating()
+        }
         guard let image = profileImageView.image?.circleMasked,
             let fullname = fullnameTextfield.text,
             let user = UserController.shared.loadUserProfile(),
@@ -142,7 +147,6 @@ class UpdateUserProfileViewController: UIViewController {
         
         guard let usertype = user.usertype else {return}
         self.updateProfileWith(user: user, image: image, email: email, fullname: fullname, usertype: usertype)
-        
     }
     
     @IBAction func sumbitAdminPasswordButtonPressed(_ sender: Any) {
@@ -294,8 +298,6 @@ class UpdateUserProfileViewController: UIViewController {
         self.successImageView.isHidden = true
         self.uploadingProfileActivityMonitor.isHidden = true
         self.exitProfileUpdateView.isHidden = true
-        self.uploadingProfileActivityMonitor.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-        
     }
     
     func fadeActivateAdminGroupIn() {

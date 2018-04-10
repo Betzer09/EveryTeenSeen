@@ -24,7 +24,7 @@ class GetStartedViewController: UIViewController {
     
     // MARK: - Properties
     var gradientLayer: CAGradientLayer!
-    let locationManager = CLLocationManager()
+    private let locationManager = CLLocationManager()
     var locationIsDenied: Bool? = false
     
     // MARK: - View LifeCycle
@@ -42,7 +42,10 @@ class GetStartedViewController: UIViewController {
         } else {
             showActivityIndicator()
             locationManager.requestWhenInUseAuthorization()
-            locationManager.requestLocation()
+            
+            DispatchQueue.main.async {
+                self.locationManager.requestLocation()
+            }
             
             guard let zip = UserLocationController.shared.fetchUserLocation()?.zipcode else {
                 NSLog("Error fetching the users zipcode during onboarding process!")
@@ -162,7 +165,9 @@ extension GetStartedViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             print("We have permission to use the user's location")
-            locationManager.requestLocation()
+            DispatchQueue.main.async {
+                self.locationManager.requestLocation()
+            }
             locationIsDenied = false
             
             // If there isn't a location create and save it
@@ -192,12 +197,14 @@ extension GetStartedViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        manager.stopUpdatingLocation()
         if let location = locations.first {
             
             guard findTheDistanceWith(lat: location.coordinate.latitude , long: location.coordinate.longitude) == true else {
                 print("Location does not need updated")
-                manager.stopUpdatingLocation()
+                
+                DispatchQueue.main.async {
+                    manager.stopUpdatingLocation()
+                }
                 return
             }
             
@@ -267,7 +274,9 @@ extension GetStartedViewController: CLLocationManagerDelegate {
                 let lat = userLocation.coordinate.latitude
                 let long = userLocation.coordinate.longitude
                 
-                self.locationManager.stopUpdatingLocation()
+                DispatchQueue.main.async {
+                    self.locationManager.stopUpdatingLocation()                    
+                }
                 
                 CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
                     guard CityController.shared.verifyLocationFor(city: city) else {

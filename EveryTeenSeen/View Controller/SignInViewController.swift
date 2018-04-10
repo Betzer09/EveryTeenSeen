@@ -195,13 +195,18 @@ class SignInViewController: UIViewController {
     }
     
     private func showIndicator() {
-        loginIndicator.startAnimating()
-        loginIndicator.isHidden = false
+        DispatchQueue.main.async {
+            self.loginIndicator.startAnimating()
+            self.loginIndicator.isHidden = false
+            
+        }
     }
     
     private func hideIndicator() {
-        loginIndicator.stopAnimating()
-        loginIndicator.isHidden = true
+        DispatchQueue.main.async {
+            self.loginIndicator.stopAnimating()
+            self.loginIndicator.isHidden = true
+        }
     }
 }
 

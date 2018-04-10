@@ -34,8 +34,11 @@ class EventsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setUpView()
-        locationManager.requestLocation()
-        eventsTableView.reloadData()
+        
+        DispatchQueue.main.async {
+            self.locationManager.requestLocation()
+            self.eventsTableView.reloadData()
+        }
     }
 
     override func viewDidLoad() {
@@ -326,13 +329,14 @@ extension EventsViewController {
 extension EventsViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        manager.stopUpdatingLocation()
         if let location = locations.first {
             
             // Checks if the location should be updated
             guard findTheDistanceWith(lat: location.coordinate.latitude , long: location.coordinate.longitude) == true else {
                 print("Location does not need updated")
-                manager.stopUpdatingLocation()
+                DispatchQueue.main.async {
+                    manager.stopUpdatingLocation()
+                }
                 return
             }
             
@@ -342,6 +346,11 @@ extension EventsViewController: CLLocationManagerDelegate {
                 
                 CityController.shared.fetchCityWith(zipcode: zip, completion: { (city) in
                     UserLocationController.shared.createLocationWith(lat: location.latitude, long: location.longitude, zip: zip, cityName: city.cityName, state: city.state)
+                    
+                    DispatchQueue.main.async {
+                        manager.stopUpdatingLocation()
+                    }
+                    
                 })
             }
         }

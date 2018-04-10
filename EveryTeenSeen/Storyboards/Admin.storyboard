@@ -706,7 +706,7 @@
                                         </connections>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gca-t2-aWW">
-                                        <rect key="frame" x="16" y="130.5" width="106.5" height="30"/>
+                                        <rect key="frame" x="16" y="152.5" width="106.5" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.76078431372549016" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Search">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -715,9 +715,9 @@
                                             <action selector="searchEventByDistanceButtonPressed:" destination="Zyi-P2-fea" eventType="touchUpInside" id="sX8-2N-x2C"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 Miles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bqw-IY-Isv">
-                                        <rect key="frame" x="80" y="102" width="160" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 mile radius from the city you search." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Bqw-IY-Isv">
+                                        <rect key="frame" x="16" y="102" width="288" height="42.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -729,7 +729,7 @@
                                         </connections>
                                     </searchBar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThF-g1-4bC">
-                                        <rect key="frame" x="197.5" y="130.5" width="106.5" height="30"/>
+                                        <rect key="frame" x="197.5" y="152.5" width="106.5" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.075432751200000023" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Clear Filter">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -778,10 +778,11 @@
                                 <constraints>
                                     <constraint firstItem="AAk-97-oB3" firstAttribute="centerX" secondItem="nIc-GD-vBw" secondAttribute="centerX" id="019-Sa-hg8"/>
                                     <constraint firstItem="ThF-g1-4bC" firstAttribute="centerY" secondItem="gca-t2-aWW" secondAttribute="centerY" id="2ro-ka-ziH"/>
+                                    <constraint firstItem="Bqw-IY-Isv" firstAttribute="height" secondItem="nIc-GD-vBw" secondAttribute="height" multiplier="1/4" id="4Pg-pD-9zL"/>
                                     <constraint firstItem="Bqw-IY-Isv" firstAttribute="centerX" secondItem="nIc-GD-vBw" secondAttribute="centerX" id="7D8-LW-JCq"/>
                                     <constraint firstAttribute="trailing" secondItem="ThF-g1-4bC" secondAttribute="trailing" constant="16" id="7t5-tN-8Qy"/>
                                     <constraint firstAttribute="trailing" secondItem="iAS-Fh-wMO" secondAttribute="trailing" id="Hc5-Rb-ozg"/>
-                                    <constraint firstItem="Bqw-IY-Isv" firstAttribute="width" secondItem="nIc-GD-vBw" secondAttribute="width" multiplier="1/2" id="L1r-9Y-Z24"/>
+                                    <constraint firstItem="Bqw-IY-Isv" firstAttribute="width" secondItem="nIc-GD-vBw" secondAttribute="width" multiplier="0.9" id="L1r-9Y-Z24"/>
                                     <constraint firstItem="BMG-vu-3Gc" firstAttribute="top" secondItem="iAS-Fh-wMO" secondAttribute="bottom" id="Mfm-S7-sfj"/>
                                     <constraint firstItem="gca-t2-aWW" firstAttribute="leading" secondItem="nIc-GD-vBw" secondAttribute="leading" constant="16" id="NeS-TZ-amf"/>
                                     <constraint firstItem="AAk-97-oB3" firstAttribute="top" secondItem="iAS-Fh-wMO" secondAttribute="bottom" constant="8" id="QHk-7N-NWg"/>

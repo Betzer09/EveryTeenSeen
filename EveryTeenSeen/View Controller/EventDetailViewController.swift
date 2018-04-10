@@ -213,7 +213,7 @@ class EventDetailViewController: UIViewController {
                 self.loadingEventsLabel.text = "Be the first to Join!"
                 self.loadingProfilePicturesAnimatorView.stopAnimating()
             }
-
+            
         }
     }
     

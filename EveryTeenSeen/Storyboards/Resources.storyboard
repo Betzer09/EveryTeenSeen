@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tAj-R1-mex">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -41,13 +41,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU are NOT alone. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5n2-aX-bXn">
-                                <rect key="frame" x="16" y="66" width="288" height="56.5"/>
+                                <rect key="frame" x="16" y="66" width="288" height="46"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="P0K-B7-BxN">
-                                <rect key="frame" x="16" y="130.5" width="288" height="343.5"/>
+                                <rect key="frame" x="16" y="120" width="288" height="309"/>
                                 <string key="text">As a teen, you face many struggles and turbulent situations. Every Teen Seen is an event platform, but our events are a place where you can feel safe discussing difficult topics and feelings. We hope to reduce teen suicide by making you feel included in the community and providing support and resources for you.
 
 If for any reason you are feeling suicidal or know of someone in distress, please utilize the following prevention and crisis resources. </string>
@@ -56,19 +56,19 @@ If for any reason you are feeling suicidal or know of someone in distress, pleas
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="National Suicide Prevention Lifeline" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ceo-jd-Wla">
-                                <rect key="frame" x="16" y="482" width="288" height="43.5"/>
+                                <rect key="frame" x="16" y="437" width="288" height="43.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1-800-273-8255" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="SPX-1f-gEq">
-                                <rect key="frame" x="16" y="530.5" width="213" height="34"/>
+                                <rect key="frame" x="16" y="485.5" width="213" height="34"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="jiz-8W-Jwr">
-                                <rect key="frame" x="16" y="572.5" width="288" height="57"/>
+                                <rect key="frame" x="16" y="535.5" width="288" height="76.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Safe UT
 
@@ -80,9 +80,15 @@ Press to Download in the App Store</string>
                                 <size key="shadowOffset" width="2" height="1"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UY-Vv-JFd">
-                                <rect key="frame" x="16" y="607" width="192" height="22.5"/>
+                                <rect key="frame" x="16" y="581.5" width="192" height="30.5"/>
                                 <connections>
                                     <action selector="downloadUTAAppButtonPressed:" destination="HXc-yt-hct" eventType="touchUpInside" id="e9m-fH-wo4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7L-b6-tY9" userLabel="DonwloadUTA APP">
+                                <rect key="frame" x="16" y="535.5" width="96" height="30.5"/>
+                                <connections>
+                                    <action selector="downloadUTAAppButtonPressed:" destination="HXc-yt-hct" eventType="touchUpInside" id="XY8-LW-tM9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -97,14 +103,17 @@ Press to Download in the App Store</string>
                             <constraint firstItem="5n2-aX-bXn" firstAttribute="top" secondItem="Hjb-RQ-4c2" secondAttribute="bottom" constant="8" id="C8C-Qi-xOU"/>
                             <constraint firstItem="Hjb-RQ-4c2" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/12" id="EEI-Kn-0Qk"/>
                             <constraint firstItem="7UY-Vv-JFd" firstAttribute="bottom" secondItem="jiz-8W-Jwr" secondAttribute="bottom" id="JD4-Sn-76y"/>
+                            <constraint firstItem="b7L-b6-tY9" firstAttribute="leading" secondItem="jiz-8W-Jwr" secondAttribute="leading" id="Ndz-ri-UKR"/>
                             <constraint firstItem="Hjb-RQ-4c2" firstAttribute="top" secondItem="heQ-FH-Osd" secondAttribute="top" id="Pi2-PG-ils"/>
-                            <constraint firstItem="P0K-B7-BxN" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/2" id="QIa-jK-CC7"/>
+                            <constraint firstItem="P0K-B7-BxN" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="0.45" id="QIa-jK-CC7"/>
                             <constraint firstItem="7UY-Vv-JFd" firstAttribute="width" secondItem="jiz-8W-Jwr" secondAttribute="width" multiplier="2/3" id="Qq8-L8-pFL"/>
                             <constraint firstItem="P0K-B7-BxN" firstAttribute="width" secondItem="os0-Wr-Zne" secondAttribute="width" multiplier="0.9" id="RCO-i6-WlS"/>
                             <constraint firstItem="Ceo-jd-Wla" firstAttribute="width" secondItem="os0-Wr-Zne" secondAttribute="width" multiplier="0.9" id="TeI-JG-KQJ"/>
                             <constraint firstItem="Hjb-RQ-4c2" firstAttribute="leading" secondItem="heQ-FH-Osd" secondAttribute="leading" id="TeY-x2-A0M"/>
                             <constraint firstItem="5n2-aX-bXn" firstAttribute="centerX" secondItem="VHM-Md-l0w" secondAttribute="centerX" id="Tvf-CZ-0v6"/>
-                            <constraint firstItem="jiz-8W-Jwr" firstAttribute="top" secondItem="SPX-1f-gEq" secondAttribute="bottom" constant="8" id="YuF-7A-3up"/>
+                            <constraint firstItem="b7L-b6-tY9" firstAttribute="height" secondItem="7UY-Vv-JFd" secondAttribute="height" id="Y67-72-cl3"/>
+                            <constraint firstItem="jiz-8W-Jwr" firstAttribute="top" secondItem="SPX-1f-gEq" secondAttribute="bottom" constant="16" id="YuF-7A-3up"/>
+                            <constraint firstItem="b7L-b6-tY9" firstAttribute="width" secondItem="7UY-Vv-JFd" secondAttribute="width" multiplier="1/2" id="azp-7o-rkE"/>
                             <constraint firstItem="SPX-1f-gEq" firstAttribute="top" secondItem="Ceo-jd-Wla" secondAttribute="bottom" constant="5" id="cJw-Qv-69c"/>
                             <constraint firstItem="os0-Wr-Zne" firstAttribute="trailing" secondItem="heQ-FH-Osd" secondAttribute="trailing" id="dBE-x3-abL"/>
                             <constraint firstItem="SPX-1f-gEq" firstAttribute="leading" secondItem="Ceo-jd-Wla" secondAttribute="leading" id="h2s-p0-PoA"/>
@@ -114,10 +123,11 @@ Press to Download in the App Store</string>
                             <constraint firstItem="jiz-8W-Jwr" firstAttribute="width" secondItem="os0-Wr-Zne" secondAttribute="width" multiplier="0.9" id="nmQ-Nd-dsF"/>
                             <constraint firstItem="7UY-Vv-JFd" firstAttribute="leading" secondItem="jiz-8W-Jwr" secondAttribute="leading" id="okI-t2-9tk"/>
                             <constraint firstItem="jiz-8W-Jwr" firstAttribute="centerX" secondItem="VHM-Md-l0w" secondAttribute="centerX" id="pKe-sX-WSE"/>
-                            <constraint firstItem="jiz-8W-Jwr" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/12" id="q7W-ob-Zt4"/>
+                            <constraint firstItem="jiz-8W-Jwr" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/9" id="q7W-ob-Zt4"/>
                             <constraint firstItem="Ceo-jd-Wla" firstAttribute="top" secondItem="P0K-B7-BxN" secondAttribute="bottom" constant="8" id="rJe-jD-Q2L"/>
                             <constraint firstItem="heQ-FH-Osd" firstAttribute="bottom" secondItem="os0-Wr-Zne" secondAttribute="bottom" id="ssq-GB-ZVa"/>
-                            <constraint firstItem="5n2-aX-bXn" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/12" id="uw4-LG-mr9"/>
+                            <constraint firstItem="5n2-aX-bXn" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/15" id="uw4-LG-mr9"/>
+                            <constraint firstItem="b7L-b6-tY9" firstAttribute="top" secondItem="jiz-8W-Jwr" secondAttribute="top" id="xGZ-YR-7hW"/>
                             <constraint firstItem="os0-Wr-Zne" firstAttribute="top" secondItem="heQ-FH-Osd" secondAttribute="top" id="yqY-kB-9wv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="heQ-FH-Osd"/>
@@ -142,7 +152,7 @@ Press to Download in the App Store</string>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tU8-oo-XQJ">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

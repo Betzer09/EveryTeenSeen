@@ -376,7 +376,7 @@ public func getAllButtons(view: UIView) -> [UIButton] {
 }
 
 /// Configure the buttons for user interests
-public func configureAllButtonsIn(view: UIView, interests: [Interest]) {
+public func configureAllButtonsIn(view: UIView, interests: [Interest], completion: @escaping (_ thereAreInterests: Bool) -> Void = {_ in}) {
     let buttons = getAllButtons(view: view)
     
     // Make all buttons have no title
@@ -388,7 +388,6 @@ public func configureAllButtonsIn(view: UIView, interests: [Interest]) {
     }
     
     if interests.count != 0 {
-        
         for i in 0...interests.count - 1 {
             let interestName = interests[i].name
             
@@ -399,6 +398,9 @@ public func configureAllButtonsIn(view: UIView, interests: [Interest]) {
                 buttons[i].layer.cornerRadius = 10
             }
         }
+        completion(true)
+    } else {
+        completion(false)
     }
 }
 
@@ -421,7 +423,7 @@ func confirmationAlert(viewController: UIViewController, title: String, message:
 }
 
 /// This is used to Init an interest without saving it into the context
- func configureAllButtonsIn(view: UIView, interests: [OtherInterest]) {
+func configureAllButtonsIn(view: UIView, interests: [OtherInterest], completion: @escaping (_ areThereInterests: Bool) -> Void = {_ in}) {
     let buttons = getAllButtons(view: view)
     
     // Make all buttons have no title
@@ -444,6 +446,10 @@ func confirmationAlert(viewController: UIViewController, title: String, message:
                 buttons[i].layer.cornerRadius = 10
             }
         }
+        
+        completion(true)
+    } else {
+        completion(false)
     }
 }
 

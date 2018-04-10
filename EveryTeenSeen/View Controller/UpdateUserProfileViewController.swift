@@ -19,6 +19,7 @@ class UpdateUserProfileViewController: UIViewController {
     @IBOutlet weak var activateAdminAccountButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var youAreAnAdminLabel: UILabel!
+    @IBOutlet weak var noInterestView: UIView!
     
     
     // Admin Group View Outlets
@@ -54,8 +55,11 @@ class UpdateUserProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         setUpView()
         
-        guard let interest = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else{return}
-        configureAllButtonsIn(view: interestGroupView, interests: interest)
+        guard let interests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else{return}
+        configureAllButtonsIn(view: interestGroupView, interests: interests) { (areThereInterests) in
+            guard areThereInterests else {return}
+            self.noInterestView.isHidden = true
+        }
     }
     
     // MARK: - Actions

@@ -82,7 +82,7 @@ class EventsViewController: UIViewController {
     }
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
-        distanceLabel.text = "\(Int(sender.value)) Miles"
+        distanceLabel.text = "\(Int(sender.value)) mile radius from the city you search."
     }
     
     @IBAction func unwindToEventsVC(segue: UIStoryboardSegue){}
@@ -306,7 +306,11 @@ extension EventsViewController {
     
     // MARK: - Objective-C Functions
     @objc func hamburgerButtonPressed() {
-        self.searchEventByDistanceGroupView.isHidden = false
+        if self.searchEventByDistanceGroupView.isHidden == false {
+            self.searchEventByDistanceGroupView.isHidden = true
+        } else {
+            self.searchEventByDistanceGroupView.isHidden = false
+        }
     }
     
     @objc func segueToProfileView() {

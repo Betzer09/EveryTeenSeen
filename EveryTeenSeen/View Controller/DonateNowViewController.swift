@@ -9,7 +9,7 @@
 import UIKit
 
 class DonateNowViewController: UIViewController, UIWebViewDelegate {
-
+    
     @IBOutlet weak var donateView: UIWebView!
     @IBOutlet weak var loadingWebActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingGroupView: UIView!
@@ -29,9 +29,13 @@ class DonateNowViewController: UIViewController, UIWebViewDelegate {
         self.loadingWebActivityIndicator.stopAnimating()
     }
     
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        NSLog("Error loading donation page: \(error.localizedDescription)")
+        presentSimpleAlert(viewController: self, title: "There was a problem loading the page!", message: "")
+    }
+    
     func fetchDonateNowPage() {
         guard let url = URL(string: "https://www.paypal.me/EveryTeenSeen") else {
-            presentSimpleAlert(viewController: self, title: "There was a problem loading the page!", message: "")
             return
         }
         

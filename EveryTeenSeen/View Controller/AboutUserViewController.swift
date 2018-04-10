@@ -9,6 +9,19 @@
 import UIKit
 
 class AboutUserViewController: UIViewController {
+
+    // MARK: - Outlets
+    @IBOutlet weak var userProfilePictureView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var interestsStackView: UIStackView!
+    
+    // No Interests View
+    @IBOutlet weak var noInterestsView: UIView!
+    
+    // LoadingContentsView
+    @IBOutlet weak var loadingContentsView: UIView!
+    @IBOutlet weak var loadingContentsIndicator: UIActivityIndicatorView!
     
     // MARK: - Propertes
     let firebaseManger = FirebaseManager()
@@ -18,19 +31,7 @@ class AboutUserViewController: UIViewController {
         }
     }
     
-    // MARK: - Outlets
-    @IBOutlet weak var userProfilePictureView: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var interestsStackView: UIStackView!
-    
-    // LoadingContentsView
-    @IBOutlet weak var loadingContentsView: UIView!
-    @IBOutlet weak var loadingContentsIndicator: UIActivityIndicatorView!
-    
-    
     // MARK: - View Life Cycle
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
@@ -69,6 +70,10 @@ class AboutUserViewController: UIViewController {
                     self.loadingContentsIndicator.stopAnimating()
                     
                     configureAllButtonsIn(view: self.interestsStackView, interests: user.interests)
+                    configureAllButtonsIn(view: self.interestsStackView, interests: user.interests, completion: { (arethereInterests) in
+                        guard arethereInterests else {return}
+                        self.noInterestsView.isHidden = true
+                    })
                 }
             })
         }

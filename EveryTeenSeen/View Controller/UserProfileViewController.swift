@@ -20,6 +20,7 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var createEventButton: UIButton!
     @IBOutlet weak var tableviewHeaderLabel: UILabel!
     @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var noInterestView: UIView!
     
     // Table View Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -34,7 +35,10 @@ class UserProfileViewController: UIViewController {
         self.setUpView()
         
         guard let interest = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else{return}
-        configureAllButtonsIn(view: interestsGroupView, interests: interest)
+        configureAllButtonsIn(view: interestsGroupView, interests: interest) { (areThereInterests) in
+            guard areThereInterests else {return}
+            self.noInterestView.isHidden = true
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,8 +133,6 @@ class UserProfileViewController: UIViewController {
         addressLabel.text = "\(userLocation.cityName ?? ""), \(userLocation.state ?? ""), \(userLocation.zipcode ?? "")"
         fullnameLabel.text = user.fullname
         distanceLabel.text = "\(user.eventDistance) mile radius"
-        
-
     }
     
     private func presentLogoutAlert(completion: @escaping(_ success: Bool) -> Void) {

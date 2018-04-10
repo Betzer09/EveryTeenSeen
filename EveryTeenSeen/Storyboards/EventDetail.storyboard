@@ -97,7 +97,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f8U-VR-nJ5">
-                                                <rect key="frame" x="16" y="707.5" width="288" height="111"/>
+                                                <rect key="frame" x="16" y="702.5" width="288" height="111"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BXF-Ye-5lj">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="51.5"/>
@@ -220,13 +220,13 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attending: 0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="SAW-QD-nyn">
-                                                <rect key="frame" x="16" y="655.5" width="144" height="36"/>
+                                                <rect key="frame" x="16" y="655.5" width="144" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Itk-Sc-lSW" userLabel="Loading View">
-                                                <rect key="frame" x="16" y="707.5" width="288" height="111"/>
+                                                <rect key="frame" x="16" y="702.5" width="288" height="111"/>
                                                 <subviews>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Rab-ik-4i6">
                                                         <rect key="frame" x="134" y="14" width="20" height="20"/>
@@ -294,7 +294,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 </constraints>
                                             </view>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHZ-rN-Blh">
-                                                <rect key="frame" x="80" y="826.5" width="160" height="40"/>
+                                                <rect key="frame" x="80" y="821.5" width="160" height="40"/>
                                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Delete Event">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -304,7 +304,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txi-vr-Ebs">
-                                                <rect key="frame" x="166.5" y="655.5" width="137.5" height="36"/>
+                                                <rect key="frame" x="166.5" y="655.5" width="137.5" height="31"/>
                                                 <color key="backgroundColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Attend event">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -377,7 +377,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                             <constraint firstItem="txi-vr-Ebs" firstAttribute="centerY" secondItem="SAW-QD-nyn" secondAttribute="centerY" id="s7I-GD-n1i"/>
                                             <constraint firstItem="FgD-QV-9bt" firstAttribute="width" secondItem="fGI-xE-w9K" secondAttribute="width" id="tZ3-tg-qBJ"/>
                                             <constraint firstItem="fO2-q7-dnr" firstAttribute="top" secondItem="gSH-Pj-eMX" secondAttribute="bottom" constant="16" id="vnw-zh-xOk"/>
-                                            <constraint firstItem="SAW-QD-nyn" firstAttribute="height" secondItem="gSH-Pj-eMX" secondAttribute="height" multiplier="0.75" id="won-9I-qFb"/>
+                                            <constraint firstItem="SAW-QD-nyn" firstAttribute="height" secondItem="gSH-Pj-eMX" secondAttribute="height" multiplier="0.65" id="won-9I-qFb"/>
                                             <constraint firstItem="Itk-Sc-lSW" firstAttribute="top" secondItem="SAW-QD-nyn" secondAttribute="bottom" constant="16" id="yMl-wa-XlY"/>
                                             <constraint firstItem="oHZ-rN-Blh" firstAttribute="width" secondItem="Zp7-TO-HeV" secondAttribute="width" multiplier="1/2" id="yRm-mm-3J4"/>
                                             <constraint firstItem="MKw-1o-Hni" firstAttribute="top" secondItem="MGg-NO-9OA" secondAttribute="bottom" constant="4" id="yXY-Wu-nak"/>
@@ -539,8 +539,8 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXC-ut-RkG">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vXC-ut-RkG">
+                                <rect key="frame" x="0.0" y="454" width="375" height="554"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Czd-SP-tp0">
                                         <rect key="frame" x="177.5" y="266.5" width="20" height="20"/>
@@ -561,6 +561,24 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                     <constraint firstItem="FAL-jM-8zM" firstAttribute="width" secondItem="vXC-ut-RkG" secondAttribute="width" multiplier="0.9" id="kEs-lh-ZHg"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qm8-dd-Lth">
+                                <rect key="frame" x="19" y="297" width="337.5" height="142"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="They havent't added any interests yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="VbH-t3-1Hu">
+                                        <rect key="frame" x="17.5" y="49.5" width="303.5" height="43"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="VbH-t3-1Hu" firstAttribute="height" secondItem="Qm8-dd-Lth" secondAttribute="height" multiplier="0.3" id="CRq-cX-5JP"/>
+                                    <constraint firstItem="VbH-t3-1Hu" firstAttribute="centerY" secondItem="Qm8-dd-Lth" secondAttribute="centerY" id="dwF-VH-q23"/>
+                                    <constraint firstItem="VbH-t3-1Hu" firstAttribute="centerX" secondItem="Qm8-dd-Lth" secondAttribute="centerX" id="tcr-Ph-n7c"/>
+                                    <constraint firstItem="VbH-t3-1Hu" firstAttribute="width" secondItem="Qm8-dd-Lth" secondAttribute="width" multiplier="0.9" id="xgf-Wf-ZxZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -568,21 +586,25 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                             <constraint firstItem="vXC-ut-RkG" firstAttribute="top" secondItem="cE2-N4-PN6" secondAttribute="top" id="7Gt-6V-m4C"/>
                             <constraint firstItem="vXC-ut-RkG" firstAttribute="bottom" secondItem="cE2-N4-PN6" secondAttribute="bottom" id="8lO-bw-wku"/>
                             <constraint firstItem="ZP0-Sx-IeP" firstAttribute="centerY" secondItem="3CZ-0s-aoY" secondAttribute="centerY" multiplier="1.15" id="BCZ-ol-dlC"/>
+                            <constraint firstItem="Qm8-dd-Lth" firstAttribute="top" secondItem="bmS-K3-nIi" secondAttribute="top" id="CMd-Dd-SOz"/>
                             <constraint firstItem="vXC-ut-RkG" firstAttribute="trailing" secondItem="cE2-N4-PN6" secondAttribute="trailing" id="EmQ-50-etG"/>
                             <constraint firstItem="vXC-ut-RkG" firstAttribute="leading" secondItem="cE2-N4-PN6" secondAttribute="leading" id="G5f-hq-xfw"/>
                             <constraint firstItem="wwh-DZ-bkC" firstAttribute="top" secondItem="aBg-tX-V6t" secondAttribute="bottom" constant="8" id="HKi-6y-p19"/>
                             <constraint firstItem="bmS-K3-nIi" firstAttribute="width" secondItem="wwh-DZ-bkC" secondAttribute="width" multiplier="2/3" id="HUA-dv-nZb"/>
                             <constraint firstItem="wwh-DZ-bkC" firstAttribute="height" secondItem="aBg-tX-V6t" secondAttribute="height" multiplier="1/6" id="IAX-6V-Usf"/>
                             <constraint firstItem="0Qd-d5-PnA" firstAttribute="top" secondItem="wwh-DZ-bkC" secondAttribute="bottom" constant="2" id="JQz-lI-XfT"/>
+                            <constraint firstItem="Qm8-dd-Lth" firstAttribute="leading" secondItem="9tU-eR-dVE" secondAttribute="leading" id="OTG-Qj-X1n"/>
                             <constraint firstItem="0Qd-d5-PnA" firstAttribute="width" secondItem="wwh-DZ-bkC" secondAttribute="width" id="Smh-xO-nhZ"/>
                             <constraint firstItem="ZP0-Sx-IeP" firstAttribute="top" secondItem="bmS-K3-nIi" secondAttribute="bottom" constant="8" id="TRX-ty-NP8"/>
                             <constraint firstItem="ZP0-Sx-IeP" firstAttribute="height" secondItem="3CZ-0s-aoY" secondAttribute="height" multiplier="1/6" id="YuS-vm-ioM"/>
                             <constraint firstItem="wwh-DZ-bkC" firstAttribute="width" secondItem="3CZ-0s-aoY" secondAttribute="width" multiplier="1/2" id="Z6G-QS-2gE"/>
+                            <constraint firstItem="Qm8-dd-Lth" firstAttribute="bottom" secondItem="9tU-eR-dVE" secondAttribute="bottom" id="Zj9-2J-0lL"/>
                             <constraint firstItem="0Qd-d5-PnA" firstAttribute="height" secondItem="wwh-DZ-bkC" secondAttribute="height" multiplier="0.6" id="cfO-6M-UUz"/>
                             <constraint firstItem="ZP0-Sx-IeP" firstAttribute="centerX" secondItem="3CZ-0s-aoY" secondAttribute="centerX" id="fhe-qS-Rrz"/>
                             <constraint firstItem="aBg-tX-V6t" firstAttribute="height" secondItem="3CZ-0s-aoY" secondAttribute="height" multiplier="1/5" id="fpN-x4-dcU"/>
                             <constraint firstItem="0Qd-d5-PnA" firstAttribute="centerX" secondItem="wwh-DZ-bkC" secondAttribute="centerX" id="hE1-ka-C80"/>
                             <constraint firstItem="ZP0-Sx-IeP" firstAttribute="width" secondItem="3CZ-0s-aoY" secondAttribute="width" multiplier="0.9" id="mIx-Ou-AdZ"/>
+                            <constraint firstItem="Qm8-dd-Lth" firstAttribute="trailing" secondItem="9tU-eR-dVE" secondAttribute="trailing" id="oeR-Bd-jBe"/>
                             <constraint firstItem="aBg-tX-V6t" firstAttribute="top" secondItem="cE2-N4-PN6" secondAttribute="top" constant="16" id="qET-Di-ke8"/>
                             <constraint firstItem="aBg-tX-V6t" firstAttribute="centerX" secondItem="3CZ-0s-aoY" secondAttribute="centerX" id="sgH-Kr-Jdo"/>
                             <constraint firstItem="FAL-jM-8zM" firstAttribute="height" secondItem="bmS-K3-nIi" secondAttribute="height" id="uuh-zU-Hgu"/>
@@ -603,6 +625,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                         <outlet property="interestsStackView" destination="9tU-eR-dVE" id="kxg-rn-XDa"/>
                         <outlet property="loadingContentsIndicator" destination="Czd-SP-tp0" id="JBV-Ng-boR"/>
                         <outlet property="loadingContentsView" destination="vXC-ut-RkG" id="64S-a8-gL2"/>
+                        <outlet property="noInterestsView" destination="Qm8-dd-Lth" id="D9A-mY-hAK"/>
                         <outlet property="userProfilePictureView" destination="aBg-tX-V6t" id="0R1-LZ-eq9"/>
                         <outlet property="usernameLabel" destination="wwh-DZ-bkC" id="yzd-nL-AQd"/>
                     </connections>

@@ -15,22 +15,23 @@ class Event: Codable, Equatable {
     }
     
     // MARK: - Properties
-    let title: String
+    var title: String
     let timestamp: String
-    let dateHeld: String
-    let eventTime: String
+    var dateHeld: String
+    var eventTime: String
     let userWhoPosted: String
     var attending: [String]? = []
-    let address: String
-    let eventInfo: String
+    var address: String
+    var eventInfo: String
     var photoURL: String? = ""
     var photo: Photo? = nil
     var reports: [[String: String]]? = [[:]]
     var lat: Double = 0
     var long: Double = 0
+    let identifer: UUID
     
     // MARK: - Init
-    init(title: String, timestamp: String = "\(Date())", dateHeld: String, userWhoPosted: String,
+    init(identifer: UUID = UUID(),title: String, timestamp: String = "\(Date())", dateHeld: String, userWhoPosted: String,
          attending: [String] = [] , address: String, eventInfo: String, eventTime: String, reports: [[String: String]] = []) {
         self.title = title
         self.timestamp = timestamp
@@ -41,6 +42,7 @@ class Event: Codable, Equatable {
         self.address = address
         self.eventInfo = eventInfo
         self.reports = reports
+        self.identifer = identifer
     }
     
     enum CodingKeys: String, CodingKey {
@@ -56,5 +58,6 @@ class Event: Codable, Equatable {
         case photoURL = "photo_url"
         case lat
         case long
+        case identifer
     }
 }

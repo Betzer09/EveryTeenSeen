@@ -51,6 +51,9 @@ class CreateEventViewController: UIViewController {
         }
     }
     
+    /// Used for segue to update event
+    var event: Event?
+    
     var timepicker = UIDatePicker()
     
     var lat: Double = 0.0
@@ -100,37 +103,53 @@ class CreateEventViewController: UIViewController {
             return
         }
         
-        EventController.shared.fetchAllEvents { (_, events) in
-            let titles = events.compactMap{$0.title}
-            if titles.contains(title) {
-                presentSimpleAlert(viewController: self, title: "Duplicate Event", message: "You can't have duplicate event names. Delete an old event or change the name.")
-                self.hideUploadEventGroup()
-                return
-            }
-        }
-        
         guard let image = selectedImageView.image else {return}
         
-        EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDateString, eventTime: eventTime, userWhoPosted: email, address: address,eventInfo:eventInfo, image: image, lat: self.lat, long: self.long) { (success) in
-                                                            
-            guard success else {presentSimpleAlert(viewController: self, title: "Error", message: "There was an error uploading the image, check everything and try again.")
-                self.hideUploadEventGroup()
-                return
+        if let event = event {
+            let updatedEvent = event
+            updatedEvent.title = title
+            updatedEvent.address = address
+            updatedEvent.lat = self.lat
+            updatedEvent.long = self.long
+            updatedEvent.eventTime = eventTime
+            updatedEvent.attending = event.attending
+            updatedEvent.eventInfo = eventInfo
+            updatedEvent.dateHeld = eventDateString
+            
+            PhotoController.shared.deletingImageFromStorageWith(eventTitle: "\(event.identifer)") { (success) in
+                guard success else {
+                    presentSimpleAlert(viewController: self, title: "There was a problem updating the event", message: "")
+                    self.hideUploadEventGroup()
+                    return
+                }
+                EventController.shared.updateEventInFirestoreWith(event: event, eventImage: image) { (success) in
+                    guard success else {presentSimpleAlert(viewController: self, title: "Error", message: "There was an error uploading the event, check everything and try again.")
+                        self.hideUploadEventGroup()
+                        return
+                    }
+                    self.showSuccessGroup()
+                }
             }
             
-            self.postEventActivityIndicator.stopAnimating()
-            self.postEventActivityIndicator.isHidden = true
-            self.eventSuccessDescritpion.isHidden = false
-            self.successfullyPostedEventLabel.isHidden = false
-            self.checkMarkImageView.isHidden = false
-            self.exitToEventsButton.isHidden = false
+        } else {
+            EventController.shared.saveEventToFireStoreWith(title: title, dateHeld: eventDateString, eventTime: eventTime, userWhoPosted: email, address: address,eventInfo:eventInfo, image: image, lat: self.lat, long: self.long) { (success) in
+                
+                guard success else {presentSimpleAlert(viewController: self, title: "Error", message: "There was an error uploading the event, check everything and try again.")
+                    self.hideUploadEventGroup()
+                    return
+                }
+                self.showSuccessGroup()
+            }
         }
     }
-    
-    
+
     @IBAction func exitButtonPressed(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-        EventController.shared.fetchAllEvents()
+        if let _ = event {
+            presentAdminTabBarVC(viewController: self)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+            EventController.shared.fetchAllEvents()
+        }
     }
     
     @IBAction func editTitleButtonPressed(_ sender: Any) {
@@ -167,7 +186,7 @@ class CreateEventViewController: UIViewController {
                 eventEndDateString = returnFormattedTimeAsStringWith(date: self.timeDatePicker.date)
             }
         }
-        
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     @IBAction func editDateButtonPressed(_ sender: Any) {
@@ -192,12 +211,14 @@ class CreateEventViewController: UIViewController {
                 eventDateLabel.text = returnFormattedDateFor(date: eventDatePicker.date)
             }
         }
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     @IBAction func editLocationButtonPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Admin", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "eventLocationVC") as? EventLocationTableViewController else {return}
         self.navigationController?.pushViewController(vc, animated: true )
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     
@@ -216,6 +237,38 @@ class CreateEventViewController: UIViewController {
         view.addGestureRecognizer(tap)
         behindTheImageView.layer.cornerRadius = 15
         eventUploadedSuccesfuallyGroupingView.layer.cornerRadius = 10
+        
+        // If there is an event update the view
+        guard let event = event else {return}
+        self.setUpViewWith(event: event)
+    }
+    
+    private func showSuccessGroup() {
+        self.postEventActivityIndicator.stopAnimating()
+        self.postEventActivityIndicator.isHidden = true
+        self.eventSuccessDescritpion.isHidden = false
+        self.successfullyPostedEventLabel.isHidden = false
+        self.checkMarkImageView.isHidden = false
+        self.exitToEventsButton.isHidden = false
+    }
+    
+    private func setUpViewWith(event: Event) {
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.navigationItem.rightBarButtonItem?.title = "Update"
+        guard let data = event.photo?.imageData,let photo = UIImage(data: data) else {return}
+        
+        self.behindTheImageView.isHidden = true
+        self.titleLabel.text = event.title
+        self.eventTimeLabel.text = event.eventTime
+        self.descriptionLabel.text = event.eventInfo
+        self.eventDateLabel.text = event.dateHeld
+        self.eventLocationLabel.text = event.address
+        self.lat = event.lat
+        self.long = event.long
+        
+        DispatchQueue.main.async {
+            self.selectedImageView.image = photo
+        }
     }
     
     private func checkLablesWith(eventTime: String, title: String, eventDateString: String, address: String, eventInfo: String) -> Bool {
@@ -305,6 +358,7 @@ class CreateEventViewController: UIViewController {
                 return
             }
             affectedLabel.text = myTextField?.text
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
@@ -319,7 +373,11 @@ class CreateEventViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let textView = UITextView()
-        textView.text = "Click to tell us about your event!"
+        if let _ = event {
+            textView.text = self.descriptionLabel.text ?? ""
+        } else {
+            textView.text = "Click to tell us about your event!"
+        }
         textView.delegate = self
         textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
@@ -346,6 +404,7 @@ class CreateEventViewController: UIViewController {
         
         let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
             self.descriptionLabel.text = textView.text
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
@@ -385,6 +444,7 @@ extension CreateEventViewController: UIImagePickerControllerDelegate, UINavigati
         selectedImageView.image = image
         camaraPhotoButton.setImage(nil, for: .normal)
         self.behindTheImageView.isHidden = true
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     private func presentCameraAndPhotoLibraryOption() {

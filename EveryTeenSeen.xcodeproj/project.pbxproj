@@ -52,6 +52,7 @@
 		239BEEC8207C13B8000BE57D /* DonateNow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239BEEC7207C13B8000BE57D /* DonateNow.storyboard */; };
 		239BEECA207C14B0000BE57D /* DonateNowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239BEEC9207C14B0000BE57D /* DonateNowViewController.swift */; };
 		239BEECE207C4DD1000BE57D /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239BEECD207C4DD1000BE57D /* CustomTabBarViewController.swift */; };
+		239BEED0207C7E0A000BE57D /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239BEECF207C7E0A000BE57D /* CreateEvent.storyboard */; };
 		23A7F516206036AF0045AE4A /* Interest+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A7F515206036AF0045AE4A /* Interest+Convenience.swift */; };
 		23A7F518206037340045AE4A /* InterestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A7F517206037340045AE4A /* InterestController.swift */; };
 		23F40B9A207565E1003DAF07 /* AboutUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F40B99207565E1003DAF07 /* AboutUserViewController.swift */; };
@@ -108,6 +109,7 @@
 		239BEEC7207C13B8000BE57D /* DonateNow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DonateNow.storyboard; sourceTree = "<group>"; };
 		239BEEC9207C14B0000BE57D /* DonateNowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateNowViewController.swift; sourceTree = "<group>"; };
 		239BEECD207C4DD1000BE57D /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
+		239BEECF207C7E0A000BE57D /* CreateEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
 		23A7F515206036AF0045AE4A /* Interest+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Interest+Convenience.swift"; sourceTree = "<group>"; };
 		23A7F517206037340045AE4A /* InterestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestController.swift; sourceTree = "<group>"; };
 		23F40B99207565E1003DAF07 /* AboutUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUserViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				230BEA892075CA3200BCFC2B /* Resources.storyboard */,
 				230BEA8B2075CE1E00BCFC2B /* EventDetail.storyboard */,
 				239BEEC7207C13B8000BE57D /* DonateNow.storyboard */,
+				239BEECF207C7E0A000BE57D /* CreateEvent.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				236155F92023F1850004DC9F /* Main.storyboard in Resources */,
 				232EC7F22054D55E00DD21D9 /* Onboarding.storyboard in Resources */,
 				230BEA8A2075CA3200BCFC2B /* Resources.storyboard in Resources */,
+				239BEED0207C7E0A000BE57D /* CreateEvent.storyboard in Resources */,
 				232344DF205D7A7000BC1DA0 /* UserProfile.storyboard in Resources */,
 				2383661F20486596002E7391 /* Admin.storyboard in Resources */,
 				230BEA8C2075CE1E00BCFC2B /* EventDetail.storyboard in Resources */,

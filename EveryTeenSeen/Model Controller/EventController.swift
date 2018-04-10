@@ -41,7 +41,7 @@ class EventController {
         event.lat = lat
     
         // Start uploading the image
-        PhotoController.shared.uploadImageToStorageWith(image: image, photoTitle: title, completion: { (imageURL) in
+        PhotoController.shared.uploadImageToStorageWith(image: image, photoTitle: "\(event.identifer)", completion: { (imageURL) in
             guard imageURL != "" else {completion(false); return}
             event.photoURL = imageURL
             
@@ -53,8 +53,7 @@ class EventController {
                 guard let stringDict = convertDataToStringDictionary(data: data) else {completion(false); return}
                 
                 let jsonDict = convertStringToDictWith(string: stringDict)
-                
-                eventDb.collection(EventController.eventKey).document(event.title).setData(jsonDict)
+                eventDb.collection(EventController.eventKey).document("\(event.identifer)").setData(jsonDict)
                 completion(true)
                 
             } catch let e {
@@ -62,6 +61,31 @@ class EventController {
                 NSLog("Error creating event!: \(e.localizedDescription) ")
                 completion(false)
             }
+        }
+    }
+    
+    func updateEventInFirestoreWith(event: Event, eventImage: UIImage, completion: @escaping (_ success: Bool) -> Void) {
+        
+        let eventDb = Firestore.firestore()
+        
+        PhotoController.shared.uploadImageToStorageWith(image: eventImage, photoTitle: "\(event.identifer)", completion: { (imageURL) in
+            event.photoURL = imageURL
+        }) { (hasFinishedPreparingURL) in
+            
+            do {
+                let data = try JSONEncoder().encode(event)
+                guard let stringDict = convertDataToStringDictionary(data: data) else {completion(false); return}
+                
+                let jsonDict = convertStringToDictWith(string: stringDict)
+                
+                eventDb.collection(EventController.eventKey).document("\(event.identifer)").setData(jsonDict)
+                completion(true)
+                
+            } catch let e {
+                NSLog("Error updating event!: \(e.localizedDescription) ")
+                completion(false)
+            }
+            
         }
     }
     
@@ -160,7 +184,7 @@ class EventController {
         
         let db = Firestore.firestore()
         
-        db.collection("\(EventController.eventKey)").document(event.title).getDocument { (snapshot, error) in
+        db.collection("\(EventController.eventKey)").document("\(event.identifer)").getDocument { (snapshot, error) in
             if let error = error {
                 NSLog("Error retriving event: \(error.localizedDescription)")
                 completion("\(error)")

@@ -18,6 +18,7 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventContentView: UIView!
     @IBOutlet weak var eventSummary: UITextView!
     @IBOutlet weak var deleteEventButton: UIButton!
+    @IBOutlet weak var editEventButton: UIButton!
     
     // Weekday Outlets
     @IBOutlet weak var weekdayLabel: UILabel!
@@ -35,6 +36,7 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var loadingProfilePicturesAnimatorView: UIActivityIndicatorView!
     @IBOutlet weak var attendingCountLabel: UILabel!
     @IBOutlet weak var loadingEventsLabel: UILabel!
+    
     
     // MARK: - Properties
     var event: Event?
@@ -58,6 +60,11 @@ class EventDetailViewController: UIViewController {
         if segue.identifier == "toUserProfileVC" {
             guard let destination = segue.destination as? AboutUserViewController, let email = emailToPassToAboutUserVC else {return}
             destination.email = email
+        }
+        
+        if segue.identifier == "updateEventVC" {
+            guard let destination = segue.destination as? CreateEventViewController, let event = event else {return}
+            destination.event = event
         }
     }
     
@@ -98,7 +105,6 @@ class EventDetailViewController: UIViewController {
             })
         }
     }
-    
     
     @IBAction func deleteEventButtonPressed(_ sender: Any) {
         guard let event = event else {return}
@@ -151,6 +157,7 @@ class EventDetailViewController: UIViewController {
         eventTimeLabel.text = event.eventTime
         attendEventButton.layer.cornerRadius = 15
         deleteEventButton.layer.cornerRadius = 15
+        editEventButton.layer.cornerRadius = 15
         
         attendingCountLabel.text = "Attending: \(attendings.count)"
         
@@ -161,6 +168,7 @@ class EventDetailViewController: UIViewController {
         
         if usertype == UserType.leadCause.rawValue {
             self.deleteEventButton.isHidden = false
+            self.editEventButton.isHidden = false
         }
         
         self.setUpCalanderLabels()

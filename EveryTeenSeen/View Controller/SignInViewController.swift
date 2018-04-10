@@ -457,7 +457,9 @@ extension SignInViewController: UNUserNotificationCenterDelegate {
         if #available(iOS 10, *) {
             UNUserNotificationCenter.current().delegate = self
             UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
-            UIApplication.shared.registerForRemoteNotifications()
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()                
+            }
         }
     }
 }

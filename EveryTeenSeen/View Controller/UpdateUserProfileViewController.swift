@@ -131,7 +131,7 @@ class UpdateUserProfileViewController: UIViewController {
             self.uploadingProfileActivityMonitor.isHidden = false
             self.uploadingProfileActivityMonitor.startAnimating()
         }
-        guard let image = profileImageView.image?.circleMasked,
+        guard let image = profileImageView.image,
             let fullname = fullnameTextfield.text,
             let user = UserController.shared.loadUserProfile(),
             let email = user.email else {
@@ -344,7 +344,7 @@ extension UpdateUserProfileViewController: UIImagePickerControllerDelegate, UINa
         delegate?.photoSelectedWithVC(image)
         
         DispatchQueue.main.async {
-            self.profileImageView.image = image
+            self.profileImageView.image = image.circleMasked ?? #imageLiteral(resourceName: "largeAvatar")
             self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
             self.profileImageView.clipsToBounds = true
         }

@@ -219,7 +219,7 @@ class EventController {
         // pull the current event
         let db = Firestore.firestore()
         
-        db.collection(EventController.eventKey).document(event.title).getDocument { (snapshot, error) in
+        db.collection(EventController.eventKey).document("\(event.identifer)").getDocument { (snapshot, error) in
             if let error = error {
                 NSLog("Error fetching event while reporting it: \(error.localizedDescription)")
                 completion(false)
@@ -350,7 +350,7 @@ class EventController {
         
         let reportsKey = "reports"
         
-        db.collection(EventController.eventKey).document(event.title).updateData([reportsKey: event.reports]) { (error) in
+        db.collection(EventController.eventKey).document("\(event.identifer)").updateData([reportsKey: event.reports]) { (error) in
             
             if let error = error {
                 NSLog("Error reporting event with title: \(event.title) becasue of error: \(error.localizedDescription)")

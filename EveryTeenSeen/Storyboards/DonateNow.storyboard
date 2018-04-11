@@ -64,7 +64,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="75B-oG-iJu"/>
                     </view>
-                    <navigationItem key="navigationItem" id="iua-LS-nuy"/>
+                    <navigationItem key="navigationItem" id="iua-LS-nuy">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="yhJ-Zw-CSW">
+                            <connections>
+                                <action selector="backButtonForWebView:" destination="7p1-bt-xFh" id="059-of-pck"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="pkL-iw-qYZ">
+                            <connections>
+                                <action selector="refreshWebContentButtonPressed:" destination="7p1-bt-xFh" id="ego-ot-Mjn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="donateView" destination="eNM-Va-juH" id="9l8-cn-XOK"/>
@@ -100,5 +111,6 @@
     </scenes>
     <resources>
         <image name="DonateNow" width="47" height="27"/>
+        <image name="back" width="17" height="16"/>
     </resources>
 </document>

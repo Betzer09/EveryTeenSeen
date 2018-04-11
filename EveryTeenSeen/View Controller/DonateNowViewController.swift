@@ -24,6 +24,17 @@ class DonateNowViewController: UIViewController, UIWebViewDelegate {
         fetchDonateNowPage()
     }
     
+    // MARK: - Actions
+    @IBAction func refreshWebContentButtonPressed(_ sender: Any) {
+        fetchDonateNowPage()
+    }
+    @IBAction func backButtonForWebView(_ sender: Any) {
+        self.donateView.goBack()
+    }
+    
+    // MARK: - Fucntions
+
+    
     func webViewDidFinishLoad(_ webView: UIWebView) {
         self.loadingGroupView.isHidden = true
         self.loadingWebActivityIndicator.stopAnimating()
@@ -35,6 +46,10 @@ class DonateNowViewController: UIViewController, UIWebViewDelegate {
     }
     
     func fetchDonateNowPage() {
+        
+        self.loadingGroupView.isHidden = false
+        self.loadingWebActivityIndicator.stopAnimating()
+        
         guard let url = URL(string: "https://www.paypal.me/EveryTeenSeen") else {
             return
         }

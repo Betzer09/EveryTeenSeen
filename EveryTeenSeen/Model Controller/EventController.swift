@@ -304,7 +304,10 @@ class EventController {
                 }
                 
                self.firebaseManager.fetchProfilePicureWith(string: user.profileImageURLString, completion: { (image) in
-                guard let image = image, let data = UIImageJPEGRepresentation(image, 1.0) else {return}
+                guard let image = image, let data = UIImageJPEGRepresentation(image, 1.0) else {
+                    userGroup.leave()
+                    return
+                }
                     let photo = Photo(imageData: data, photoPath: email)
                     profilePicures.append(photo)
                     userGroup.leave()

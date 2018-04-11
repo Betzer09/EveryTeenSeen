@@ -94,7 +94,7 @@ class EventController {
         
         PhotoController.shared.deletingImageFromStorageWith(eventTitle: "\(event.identifer)") { (success) in
             guard success else {completion(false);return}
-            db.collection("event").document(event.title).delete(completion: { (error) in
+            db.collection("event").document("\(event.identifer)").delete(completion: { (error) in
                 if let error = error {
                     NSLog("error deleting events! : \(error.localizedDescription)")
                     completion(false)

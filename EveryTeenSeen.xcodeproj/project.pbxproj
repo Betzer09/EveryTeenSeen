@@ -49,8 +49,6 @@
 		2393D3A62033C2380073F6A5 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A52033C2380073F6A5 /* EventController.swift */; };
 		2393D3AA2033D5350073F6A5 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3A92033D5350073F6A5 /* PhotoController.swift */; };
 		2393D3AC2033E6800073F6A5 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */; };
-		239BEEC8207C13B8000BE57D /* DonateNow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239BEEC7207C13B8000BE57D /* DonateNow.storyboard */; };
-		239BEECA207C14B0000BE57D /* DonateNowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239BEEC9207C14B0000BE57D /* DonateNowViewController.swift */; };
 		239BEECE207C4DD1000BE57D /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239BEECD207C4DD1000BE57D /* CustomTabBarViewController.swift */; };
 		239BEED0207C7E0A000BE57D /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239BEECF207C7E0A000BE57D /* CreateEvent.storyboard */; };
 		23A7F516206036AF0045AE4A /* Interest+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A7F515206036AF0045AE4A /* Interest+Convenience.swift */; };
@@ -106,8 +104,6 @@
 		2393D3A52033C2380073F6A5 /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		2393D3A92033D5350073F6A5 /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
 		2393D3AB2033E6800073F6A5 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
-		239BEEC7207C13B8000BE57D /* DonateNow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DonateNow.storyboard; sourceTree = "<group>"; };
-		239BEEC9207C14B0000BE57D /* DonateNowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateNowViewController.swift; sourceTree = "<group>"; };
 		239BEECD207C4DD1000BE57D /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		239BEECF207C7E0A000BE57D /* CreateEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
 		23A7F515206036AF0045AE4A /* Interest+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Interest+Convenience.swift"; sourceTree = "<group>"; };
@@ -190,7 +186,6 @@
 				232344DE205D7A7000BC1DA0 /* UserProfile.storyboard */,
 				230BEA892075CA3200BCFC2B /* Resources.storyboard */,
 				230BEA8B2075CE1E00BCFC2B /* EventDetail.storyboard */,
-				239BEEC7207C13B8000BE57D /* DonateNow.storyboard */,
 				239BEECF207C7E0A000BE57D /* CreateEvent.storyboard */,
 			);
 			path = Storyboards;
@@ -208,7 +203,6 @@
 				233C090120698E2600396E95 /* UpdateUserProfileViewController.swift */,
 				233C09032069FCD400396E95 /* EventDetailViewController.swift */,
 				23F40B99207565E1003DAF07 /* AboutUserViewController.swift */,
-				239BEEC9207C14B0000BE57D /* DonateNowViewController.swift */,
 				239BEECD207C4DD1000BE57D /* CustomTabBarViewController.swift */,
 			);
 			path = "View Controller";
@@ -363,7 +357,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				238B5556202F9E69002E128C /* LoginSignUp.storyboard in Resources */,
-				239BEEC8207C13B8000BE57D /* DonateNow.storyboard in Resources */,
 				236155FE2023F1850004DC9F /* LaunchScreen.storyboard in Resources */,
 				236155FB2023F1850004DC9F /* Assets.xcassets in Resources */,
 				236155F92023F1850004DC9F /* Main.storyboard in Resources */,
@@ -456,7 +449,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				239BEECA207C14B0000BE57D /* DonateNowViewController.swift in Sources */,
 				233C090220698E2600396E95 /* UpdateUserProfileViewController.swift in Sources */,
 				2347DAB4204DE07700124188 /* CoreDataStack.swift in Sources */,
 				232344E7206021FA00BC1DA0 /* User+Convenience.swift in Sources */,

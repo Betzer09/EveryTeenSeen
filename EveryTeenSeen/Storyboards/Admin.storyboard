@@ -84,30 +84,19 @@
                     <connections>
                         <segue destination="riv-sc-GlP" kind="relationship" relationship="viewControllers" id="mDg-h6-y1s"/>
                         <segue destination="ocj-sw-CCv" kind="relationship" relationship="viewControllers" id="daN-dR-Iy0"/>
-                        <segue destination="P2w-zy-oi7" kind="relationship" relationship="viewControllers" id="W4b-MT-F1s"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyJ-m7-Mcu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3146" y="292"/>
         </scene>
-        <!--DonateNow-->
-        <scene sceneID="FxB-SS-RUd">
-            <objects>
-                <viewControllerPlaceholder storyboardName="DonateNow" id="P2w-zy-oi7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="iPp-4Y-zLg"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tfo-Ne-vKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3146" y="888"/>
-        </scene>
         <!--Resources-->
         <scene sceneID="ha0-rH-D9l">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ex2-1q-dOO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="Resources" id="ocj-sw-CCv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="1Jj-Mi-dbG"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ex2-1q-dOO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2171" y="777"/>
         </scene>

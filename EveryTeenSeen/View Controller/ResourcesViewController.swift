@@ -115,7 +115,9 @@ extension ResourcesViewController {
             presentLoginAlert(viewController: self)
             return
         }
-        presentUserProfile(viewController: self)    }
+        presentUserProfile(viewController: self)
+        
+    }
 }
 
 

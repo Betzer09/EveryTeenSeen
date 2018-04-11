@@ -9,14 +9,18 @@
 import UIKit
 
 class CustomTabBarViewController: UITabBarController {
-
+    
+    // MARK: - Current Tab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureTabBar()
     }
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     func configureTabBar() {
         self.tabBar.unselectedItemTintColor = UIColor.black
-//        self.tabBar.barStyle = UIColor(red: 0, green: divideNumberForColorWith(number: 122), blue: divideNumberForColorWith(number: 255), alpha: 1)
     }
 }

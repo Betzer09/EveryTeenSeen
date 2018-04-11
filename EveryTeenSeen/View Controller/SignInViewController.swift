@@ -147,7 +147,7 @@ class SignInViewController: UIViewController {
     
     // MARK: - View Functions
     private func setupView() {
-        createGradientLayerWith(startpointX: 0.5, startpointY: 0.3, endpointX: 0.5, endPointY: 2, firstRed: 226, firstGreen: 206, firstBlue: 244, firstAlpha: 1, secondRed: 131, secondGreen: 0, secondBlue: 252, secondAlpha: 0.25, viewController: self)
+        createGradientLayerWith(startpointX: 0, startpointY: 0.5, endpointX: 0.25, endPointY: 1, firstRed: 226, firstGreen: 206, firstBlue: 244, firstAlpha: 1, secondRed: 131, secondGreen: 0, secondBlue: 252, secondAlpha: 0.25, viewController: self)
         configureButtonWith(button: signUpToggleButton)
         configureButtonWith(button: loginToggleButton)
         configureButtonWith(button: skipToEventsButton)
@@ -400,10 +400,11 @@ extension SignInViewController: UITextFieldDelegate {
         
         if textFieldBottomY > maximumY {
             // This makes the view shift the right amount to have the text field being edited 130 points above the keyboard if it would have been covered by the keyboard.
-            return textFieldBottomY - maximumY + 130
+            
+            return textFieldBottomY - maximumY + logUserInButton.bounds.height * 3
         } else {
             // It would go off the screen if moved, and it won't be obscured by the keyboard.
-            return logUserInButton.bounds.height + 10
+            return logUserInButton.bounds.height * 4
         }
     }
     

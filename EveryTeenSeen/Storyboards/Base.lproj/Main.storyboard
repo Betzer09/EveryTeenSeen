@@ -27,7 +27,6 @@
                     <connections>
                         <segue destination="aaP-aU-LLT" kind="relationship" relationship="viewControllers" id="FWn-cH-sIX"/>
                         <segue destination="lKr-YJ-EMI" kind="relationship" relationship="viewControllers" id="OC1-yk-YSg"/>
-                        <segue destination="apX-JZ-Blp" kind="relationship" relationship="viewControllers" id="gsQ-Yn-fUS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfi-oE-9QD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -43,16 +42,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tt8-SW-A5A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2002" y="820"/>
-        </scene>
-        <!--DonateNow-->
-        <scene sceneID="Prx-xI-e7B">
-            <objects>
-                <viewControllerPlaceholder storyboardName="DonateNow" id="apX-JZ-Blp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="QZK-qA-neZ"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jSk-iL-q4E" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1038" y="789"/>
         </scene>
         <!--Events-->
         <scene sceneID="jPf-AE-7Iw">

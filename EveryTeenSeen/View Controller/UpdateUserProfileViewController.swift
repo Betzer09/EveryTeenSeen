@@ -98,6 +98,7 @@ class UpdateUserProfileViewController: UIViewController {
         adminPasswordTextfield.text = ""
         cameraButton.isHidden = true
         profileImageView.isHidden = true
+        noInterestView.isHidden = true
     }
     
     @IBAction func chooseProfileImageButtonPressed(_ sender: Any) {
@@ -111,6 +112,15 @@ class UpdateUserProfileViewController: UIViewController {
         activateAdminAccountButton.isHidden = false
         cameraButton.isHidden = false
         profileImageView.isHidden = false
+        interestGroupView.isHidden = false
+        
+        if let interestCount = UserController.shared.loadUserProfile()?.interests?.count {
+            if interestCount > 0 {
+                noInterestView.isHidden = true
+            } else {
+                noInterestView.isHidden = false
+            }
+        }
         
         self.fadeActivateAdminGroupOut()
         view.endEditing(true)

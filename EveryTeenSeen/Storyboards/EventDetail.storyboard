@@ -228,12 +228,12 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Itk-Sc-lSW" userLabel="Loading View">
                                                 <rect key="frame" x="16" y="702.5" width="288" height="111"/>
                                                 <subviews>
-                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Rab-ik-4i6">
-                                                        <rect key="frame" x="134" y="14" width="20" height="20"/>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Rab-ik-4i6">
+                                                        <rect key="frame" x="126" y="10.5" width="37" height="37"/>
                                                         <color key="color" red="0.3803921569" green="0.47450980390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </activityIndicatorView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Attendees" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="46U-rA-Shy">
-                                                        <rect key="frame" x="72.5" y="42" width="143.5" height="27.5"/>
+                                                        <rect key="frame" x="72.5" y="55.5" width="143.5" height="27.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -241,7 +241,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="46U-rA-Shy" firstAttribute="centerY" secondItem="Itk-Sc-lSW" secondAttribute="centerY" id="8ys-zt-qdE"/>
+                                                    <constraint firstItem="46U-rA-Shy" firstAttribute="centerY" secondItem="Itk-Sc-lSW" secondAttribute="centerY" multiplier="1.25" id="8ys-zt-qdE"/>
                                                     <constraint firstItem="46U-rA-Shy" firstAttribute="width" secondItem="Itk-Sc-lSW" secondAttribute="width" multiplier="1/2" id="Cvr-39-c3R"/>
                                                     <constraint firstItem="46U-rA-Shy" firstAttribute="top" secondItem="Rab-ik-4i6" secondAttribute="bottom" constant="8" id="aaS-hA-6a5"/>
                                                     <constraint firstItem="46U-rA-Shy" firstAttribute="centerX" secondItem="Rab-ik-4i6" secondAttribute="centerX" id="fhi-UH-5fg"/>
@@ -562,28 +562,6 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXC-ut-RkG">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Czd-SP-tp0">
-                                        <rect key="frame" x="177.5" y="266.5" width="20" height="20"/>
-                                    </activityIndicatorView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoadIng User's Profile..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="FAL-jM-8zM">
-                                        <rect key="frame" x="18.5" y="317.5" width="337.5" height="23"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="Czd-SP-tp0" firstAttribute="centerX" secondItem="vXC-ut-RkG" secondAttribute="centerX" id="5mz-wL-HM0"/>
-                                    <constraint firstItem="FAL-jM-8zM" firstAttribute="centerX" secondItem="vXC-ut-RkG" secondAttribute="centerX" id="Odb-ko-RVK"/>
-                                    <constraint firstItem="Czd-SP-tp0" firstAttribute="centerY" secondItem="vXC-ut-RkG" secondAttribute="centerY" id="cQn-y5-DXO"/>
-                                    <constraint firstItem="FAL-jM-8zM" firstAttribute="top" secondItem="Czd-SP-tp0" secondAttribute="bottom" constant="31" id="hfR-bX-STn"/>
-                                    <constraint firstItem="FAL-jM-8zM" firstAttribute="width" secondItem="vXC-ut-RkG" secondAttribute="width" multiplier="0.9" id="kEs-lh-ZHg"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qm8-dd-Lth">
                                 <rect key="frame" x="19" y="297" width="337.5" height="142"/>
                                 <subviews>
@@ -600,6 +578,29 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                     <constraint firstItem="VbH-t3-1Hu" firstAttribute="centerY" secondItem="Qm8-dd-Lth" secondAttribute="centerY" id="dwF-VH-q23"/>
                                     <constraint firstItem="VbH-t3-1Hu" firstAttribute="centerX" secondItem="Qm8-dd-Lth" secondAttribute="centerX" id="tcr-Ph-n7c"/>
                                     <constraint firstItem="VbH-t3-1Hu" firstAttribute="width" secondItem="Qm8-dd-Lth" secondAttribute="width" multiplier="0.9" id="xgf-Wf-ZxZ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXC-ut-RkG">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Czd-SP-tp0">
+                                        <rect key="frame" x="169.5" y="258.5" width="37" height="37"/>
+                                        <color key="color" red="0.38823529410000002" green="0.30980392159999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoadIng User's Profile..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="FAL-jM-8zM">
+                                        <rect key="frame" x="18.5" y="326.5" width="337.5" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Czd-SP-tp0" firstAttribute="centerX" secondItem="vXC-ut-RkG" secondAttribute="centerX" id="5mz-wL-HM0"/>
+                                    <constraint firstItem="FAL-jM-8zM" firstAttribute="centerX" secondItem="vXC-ut-RkG" secondAttribute="centerX" id="Odb-ko-RVK"/>
+                                    <constraint firstItem="Czd-SP-tp0" firstAttribute="centerY" secondItem="vXC-ut-RkG" secondAttribute="centerY" id="cQn-y5-DXO"/>
+                                    <constraint firstItem="FAL-jM-8zM" firstAttribute="top" secondItem="Czd-SP-tp0" secondAttribute="bottom" constant="31" id="hfR-bX-STn"/>
+                                    <constraint firstItem="FAL-jM-8zM" firstAttribute="width" secondItem="vXC-ut-RkG" secondAttribute="width" multiplier="0.9" id="kEs-lh-ZHg"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -664,7 +665,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
         <image name="calendar" width="20" height="22"/>
         <image name="clock" width="22" height="22"/>
         <image name="defaultBackground" width="343" height="280"/>
-        <image name="largeAvatar" width="146" height="146"/>
+        <image name="largeAvatar" width="152" height="152"/>
         <image name="map-pin" width="20" height="24"/>
     </resources>
 </document>

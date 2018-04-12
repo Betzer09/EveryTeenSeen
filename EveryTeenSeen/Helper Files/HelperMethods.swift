@@ -212,10 +212,15 @@ extension UIColor {
     
     static var darkBlueAlertColor: UIColor{
       return UIColor(red: divideNumberForColorWith(number: 97), green: divideNumberForColorWith(number: 121), blue: divideNumberForColorWith(number: 255), alpha: 1)
+        
     }
     
     static var lightGreyTextColor: UIColor {
         return UIColor(red: divideNumberForColorWith(number: 134), green: divideNumberForColorWith(number: 134), blue: divideNumberForColorWith(number: 134), alpha: 1)
+    }
+    
+    static var myPurple: UIColor {
+        return UIColor(red: divideNumberForColorWith(number: 99), green: divideNumberForColorWith(number: 79), blue: divideNumberForColorWith(number: 237), alpha: 1)
     }
 }
 

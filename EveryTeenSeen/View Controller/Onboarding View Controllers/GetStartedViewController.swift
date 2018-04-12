@@ -134,7 +134,6 @@ class GetStartedViewController: UIViewController {
         acceptLocationButton.layer.cornerRadius = 15
         locationServicesGroupingView.layer.cornerRadius = 15
         getStartedButton.layer.cornerRadius = 20
-        zipcodeCheckActivityIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         zipcodeCheckActivityIndicator.isHidden = true
         
 //        configureButtonWith(button: getStartedButton)

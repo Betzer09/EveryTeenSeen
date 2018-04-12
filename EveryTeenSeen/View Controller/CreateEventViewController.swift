@@ -68,7 +68,6 @@ class CreateEventViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
-        postEventActivityIndicator.transform = CGAffineTransform(scaleX: 2, y: 2)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

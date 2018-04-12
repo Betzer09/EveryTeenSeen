@@ -181,8 +181,6 @@ class EventDetailViewController: UIViewController {
         guard let user = UserController.shared.loadUserProfile(), let usertype = user.usertype, let event = event else {return}
         
         EventController.shared.fetchAllProfilePicturesFor(event: event) { (photos) in
-            
-            print("We are running!!")
             guard let photos = photos else {
                 self.loadingProfilePicturesAnimatorView.stopAnimating()
                 return
@@ -198,7 +196,6 @@ class EventDetailViewController: UIViewController {
             
             if photos.count >= 1 {
                 for i in 0...photos.count - 1 {
-                    print("There are \(photos.count) photos and we are at index: \(i)")
                     let photo = photos[i]
                     guard let photoImage = UIImage(data: photo.imageData) else {return}
                     let resizedImage = resizeImage(image: photoImage, targetSize: CGSize(width: 50, height: 50))

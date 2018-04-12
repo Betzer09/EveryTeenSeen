@@ -29,7 +29,7 @@ class EventsViewController: UIViewController {
     var matchingItems: [MKMapItem] = []
     var placemark: MKPlacemark?
     var eventsSearchedByDistance: [Event] = []
-    
+    private let refreshControl = UIRefreshControl()
     // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -95,11 +95,15 @@ class EventsViewController: UIViewController {
     private func setUpView() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        activityIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         searchEventsByDistanceButton.layer.cornerRadius = 15
         clearFilterButton.layer.cornerRadius = 15
         locationSearchBar.sizeToFit()
         locationSearchBar.placeholder = "Search For City"
+        
+        eventsTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshEvents), for: .valueChanged)
+        refreshControl.tintColor = UIColor.myPurple
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching New Events...")
     }
     
     
@@ -130,6 +134,13 @@ class EventsViewController: UIViewController {
     private func checkIfUserHasAccount() {
         guard UserController.shared.loadUserProfile() == nil else {return}
         presentLoginAlert(viewController: self)
+    }
+    
+    @objc func refreshEvents() {
+        EventController.shared.fetchAllEvents { (success, _) in
+            guard success else {return}
+            self.refreshControl.endRefreshing()
+        }
     }
     
     // MARK: - Objective-C Functions
@@ -217,10 +228,8 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == eventsTableView {
             
             if self.view.bounds.height <= 800 {
-                print(self.view.bounds.height)
                 return self.view.bounds.height * 0.65
             } else {
-                print(self.view.bounds.height)
                 return self.view.bounds.height * 0.53
             }
         } else {

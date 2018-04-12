@@ -50,7 +50,6 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         configureAllTextfields()
         configureKeyboardNotifications()
-        loginIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
     }
     
     // MARK: - Log User In

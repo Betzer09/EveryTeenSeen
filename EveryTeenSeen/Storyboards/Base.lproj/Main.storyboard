@@ -84,7 +84,6 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="Zb8-Ji-Mhk" firstAttribute="height" secondItem="lTB-rB-9LW" secondAttribute="height" multiplier="0.8" id="Kff-EK-TfY"/>
                                         <constraint firstItem="Zb8-Ji-Mhk" firstAttribute="width" secondItem="lTB-rB-9LW" secondAttribute="width" multiplier="1/4" id="NkW-ur-T3b"/>
@@ -243,6 +242,36 @@
                                     <outlet property="delegate" destination="8Nb-rC-tVS" id="JUU-R0-gkF"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Og-Lw-hsc" userLabel="No Events Nearby View">
+                                <rect key="frame" x="0.0" y="114.5" width="320" height="453.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no events near you! Try increasing your event distance in your profile!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="JNu-O9-e4B">
+                                        <rect key="frame" x="53.5" y="154.5" width="213" height="45.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waC-E3-Y7i">
+                                        <rect key="frame" x="89.5" y="216" width="142" height="30.5"/>
+                                        <color key="backgroundColor" red="0.1019607843" green="0.85882352939999995" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="View Profile">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="viewProfileButtonPressed:" destination="8Nb-rC-tVS" eventType="touchUpInside" id="Y4x-KM-UXq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="waC-E3-Y7i" firstAttribute="centerX" secondItem="JNu-O9-e4B" secondAttribute="centerX" id="6sJ-NI-POO"/>
+                                    <constraint firstItem="JNu-O9-e4B" firstAttribute="height" secondItem="7Og-Lw-hsc" secondAttribute="height" multiplier="0.1" id="IOx-RU-N9b"/>
+                                    <constraint firstItem="waC-E3-Y7i" firstAttribute="top" secondItem="JNu-O9-e4B" secondAttribute="bottom" constant="16" id="Vj4-nF-uqA"/>
+                                    <constraint firstItem="JNu-O9-e4B" firstAttribute="width" secondItem="7Og-Lw-hsc" secondAttribute="width" multiplier="2/3" id="cEN-iW-8OQ"/>
+                                    <constraint firstItem="waC-E3-Y7i" firstAttribute="height" secondItem="JNu-O9-e4B" secondAttribute="height" multiplier="2/3" id="ewJ-RK-drX"/>
+                                    <constraint firstItem="waC-E3-Y7i" firstAttribute="width" secondItem="JNu-O9-e4B" secondAttribute="width" multiplier="2/3" id="mpJ-k5-A00"/>
+                                </constraints>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVq-Yd-2Gb" userLabel="Search Events By Distance View">
                                 <rect key="frame" x="0.0" y="64" width="320" height="170.5"/>
                                 <subviews>
@@ -348,7 +377,7 @@
                                 </constraints>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cqy-9y-SYE">
-                                <rect key="frame" x="80.5" y="208.5" width="160" height="152"/>
+                                <rect key="frame" x="80" y="208.5" width="160" height="152"/>
                                 <color key="color" red="0.38823529410000002" green="0.30980392159999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -356,12 +385,18 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="s0b-1s-PcT" secondAttribute="trailing" id="8Ka-nv-bQf"/>
                             <constraint firstItem="s0b-1s-PcT" firstAttribute="top" secondItem="tfI-3m-SGY" secondAttribute="top" id="A8I-Me-8wD"/>
+                            <constraint firstItem="JNu-O9-e4B" firstAttribute="centerX" secondItem="tfI-3m-SGY" secondAttribute="centerX" id="CRS-0d-iF3"/>
+                            <constraint firstItem="7Og-Lw-hsc" firstAttribute="bottom" secondItem="s0b-1s-PcT" secondAttribute="bottom" id="EVF-lD-M0s"/>
+                            <constraint firstItem="7Og-Lw-hsc" firstAttribute="trailing" secondItem="s0b-1s-PcT" secondAttribute="trailing" id="L7v-Ug-CkA"/>
                             <constraint firstItem="cqy-9y-SYE" firstAttribute="centerY" secondItem="sOW-4O-brY" secondAttribute="centerY" id="M9q-6P-kHJ"/>
                             <constraint firstItem="cqy-9y-SYE" firstAttribute="height" secondItem="tfI-3m-SGY" secondAttribute="height" multiplier="1/3" id="RBc-J4-bO2"/>
+                            <constraint firstItem="7Og-Lw-hsc" firstAttribute="leading" secondItem="s0b-1s-PcT" secondAttribute="leading" id="Rt8-TR-hnU"/>
                             <constraint firstItem="cqy-9y-SYE" firstAttribute="centerX" secondItem="sOW-4O-brY" secondAttribute="centerX" id="UKa-1H-nXs"/>
                             <constraint firstItem="s0b-1s-PcT" firstAttribute="leading" secondItem="tfI-3m-SGY" secondAttribute="leading" id="Wih-9i-kpU"/>
                             <constraint firstItem="YVq-Yd-2Gb" firstAttribute="height" secondItem="sOW-4O-brY" secondAttribute="height" multiplier="0.3" id="ZTH-ZB-3pf"/>
+                            <constraint firstItem="7Og-Lw-hsc" firstAttribute="height" secondItem="s0b-1s-PcT" secondAttribute="height" multiplier="0.9" id="dz9-y5-H7r"/>
                             <constraint firstAttribute="bottom" secondItem="s0b-1s-PcT" secondAttribute="bottom" id="ggg-5Z-oXQ"/>
+                            <constraint firstItem="JNu-O9-e4B" firstAttribute="centerY" secondItem="tfI-3m-SGY" secondAttribute="centerY" id="hzk-wA-ARc"/>
                             <constraint firstItem="YVq-Yd-2Gb" firstAttribute="centerX" secondItem="sOW-4O-brY" secondAttribute="centerX" id="nfs-EX-QC1"/>
                             <constraint firstItem="YVq-Yd-2Gb" firstAttribute="width" secondItem="sOW-4O-brY" secondAttribute="width" id="pyr-oK-wRA"/>
                             <constraint firstItem="YVq-Yd-2Gb" firstAttribute="top" secondItem="tfI-3m-SGY" secondAttribute="top" id="x3u-p8-ZbY"/>
@@ -377,14 +412,16 @@
                         <outlet property="eventsTableView" destination="s0b-1s-PcT" id="GWG-o7-1Q4"/>
                         <outlet property="locationSearchBar" destination="iwh-6A-TyK" id="4Nc-Op-IkA"/>
                         <outlet property="locationTableView" destination="Mla-x1-TBS" id="aR4-mC-bLI"/>
+                        <outlet property="noEventsNearybyView" destination="7Og-Lw-hsc" id="QrI-IL-H3E"/>
                         <outlet property="searchEventByDistanceGroupView" destination="YVq-Yd-2Gb" id="odT-Aa-cXf"/>
                         <outlet property="searchEventsByDistanceButton" destination="owO-3a-Y03" id="CzQ-SQ-M6r"/>
                         <outlet property="userPickedDistanceSlider" destination="3Ne-w1-ei3" id="IvV-AD-Mba"/>
+                        <outlet property="viewProfileButton" destination="waC-E3-Y7i" id="nx3-6H-rQw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Irx-rR-YYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="176" y="26"/>
+            <point key="canvasLocation" x="174.375" y="25.35211267605634"/>
         </scene>
         <!--EventDetail-->
         <scene sceneID="IyE-fi-hwZ">

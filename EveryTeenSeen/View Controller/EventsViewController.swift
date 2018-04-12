@@ -23,6 +23,10 @@ class EventsViewController: UIViewController {
     @IBOutlet weak var userPickedDistanceSlider: UISlider!
     @IBOutlet weak var clearFilterButton: UIButton!
     
+    // No Events View
+    @IBOutlet weak var noEventsNearybyView: UIView!
+    @IBOutlet weak var viewProfileButton: UIButton!
+    
     
     // MARK: - Properties
     let locationManager = CLLocationManager()
@@ -52,6 +56,9 @@ class EventsViewController: UIViewController {
     }
     
     // MARK: - Actions
+    @IBAction func viewProfileButtonPressed(_ sender: Any) {
+        presentUserProfile(viewController: self)
+    }
     
     @IBAction func searchEventByDistanceButtonPressed(_ sender: Any) {
         
@@ -97,6 +104,7 @@ class EventsViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         searchEventsByDistanceButton.layer.cornerRadius = 15
         clearFilterButton.layer.cornerRadius = 15
+        viewProfileButton.layer.cornerRadius = 15
         locationSearchBar.sizeToFit()
         locationSearchBar.placeholder = "Search For City"
         
@@ -119,14 +127,16 @@ class EventsViewController: UIViewController {
     }
     
     private func loadAllEvents(completion: @escaping (_ success: Bool) -> Void = {_ in}) {
-        EventController.shared.fetchAllEvents { (success,_) in
+        EventController.shared.fetchAllEvents { (success,events) in
             guard success else {return}
+
             DispatchQueue.main.async {
                 self.eventsTableView.reloadData()
-                self.activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
                 completion(true)
             }
+            self.checkIfThereAreEventsInRange(events: events)
         }
     }
     
@@ -139,7 +149,19 @@ class EventsViewController: UIViewController {
     @objc func refreshEvents() {
         EventController.shared.fetchAllEvents { (success, _) in
             guard success else {return}
-            self.refreshControl.endRefreshing()
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+            }
+        }
+    }
+    
+    private func checkIfThereAreEventsInRange(events: [Event]) {
+        /// Check to see if there are any events before the table view is prepared
+        if EventController.shared.filterEventsBy(distance: Int(UserController.shared.loadUserProfile()?.eventDistance ?? 50), events: events).isEmpty {
+            
+            self.noEventsNearybyView.isHidden = false
+        } else {
+            self.noEventsNearybyView.isHidden = true
         }
     }
     
@@ -148,6 +170,7 @@ class EventsViewController: UIViewController {
         DispatchQueue.main.async {
             self.eventsTableView.reloadData()
         }
+        self.checkIfThereAreEventsInRange(events: EventController.shared.events ?? [])
     }
     
     @objc func hideLocationView() {
@@ -188,6 +211,7 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 events = self.eventsSearchedByDistance
             }
+            
             cell.event = events[indexPath.row]
             
             cell.layer.cornerRadius = 15
@@ -218,6 +242,7 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 events = self.eventsSearchedByDistance
             }
+            
             return events.count
         } else {
             return matchingItems.count

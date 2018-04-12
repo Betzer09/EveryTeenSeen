@@ -38,7 +38,7 @@ class EventsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setUpView()
-        
+        self.checkIfWeNeedToRemoveUserFromAdminRights()
         DispatchQueue.main.async {
             self.locationManager.requestLocation()
             self.eventsTableView.reloadData()
@@ -141,6 +141,22 @@ class EventsViewController: UIViewController {
     }
     
     // MARK: - Functions
+    
+    func checkIfWeNeedToRemoveUserFromAdminRights() {
+        AdminPasswordController.shared.fetchAdminPasswordFromFirebase { (needToSignUserOut) in
+            guard needToSignUserOut else {return}
+            
+            let alert = UIAlertController(title: "Admin password has changed!", message: "Contact ETS for the new password until then you will not be able to create new events!", preferredStyle: .alert)
+            
+            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: { (_) in
+                presentLogoutAndSignUpPage(viewController: self)
+            })
+            
+            alert.addAction(okayAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     private func checkIfUserHasAccount() {
         guard UserController.shared.loadUserProfile() == nil else {return}
         presentLoginAlert(viewController: self)

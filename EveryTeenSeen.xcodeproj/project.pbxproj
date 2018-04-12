@@ -31,6 +31,7 @@
 		2347DAB2204DE04900124188 /* UserLocation+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347DAB1204DE04900124188 /* UserLocation+Convenience.swift */; };
 		2347DAB4204DE07700124188 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347DAB3204DE07700124188 /* CoreDataStack.swift */; };
 		2347DAB6204DE1C200124188 /* UserLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347DAB5204DE1C200124188 /* UserLocationController.swift */; };
+		23500345207FF74200735833 /* AdminPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23500344207FF74200735833 /* AdminPasswordController.swift */; };
 		235F66CE202A47E000383355 /* CityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F66CD202A47E000383355 /* CityController.swift */; };
 		236155F42023F1850004DC9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236155F32023F1850004DC9F /* AppDelegate.swift */; };
 		236155F92023F1850004DC9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236155F72023F1850004DC9F /* Main.storyboard */; };
@@ -84,6 +85,7 @@
 		2347DAB1204DE04900124188 /* UserLocation+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserLocation+Convenience.swift"; sourceTree = "<group>"; };
 		2347DAB3204DE07700124188 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		2347DAB5204DE1C200124188 /* UserLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationController.swift; sourceTree = "<group>"; };
+		23500344207FF74200735833 /* AdminPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPasswordController.swift; sourceTree = "<group>"; };
 		235F66CD202A47E000383355 /* CityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityController.swift; sourceTree = "<group>"; };
 		236155F02023F1850004DC9F /* EveryTeenSeen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryTeenSeen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		236155F32023F1850004DC9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				2393D3A92033D5350073F6A5 /* PhotoController.swift */,
 				2347DAB1204DE04900124188 /* UserLocation+Convenience.swift */,
 				2347DAB5204DE1C200124188 /* UserLocationController.swift */,
+				23500344207FF74200735833 /* AdminPasswordController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				232EC7F02054BD1400DD21D9 /* EventLocationTableViewController.swift in Sources */,
 				2347DAB6204DE1C200124188 /* UserLocationController.swift in Sources */,
 				2347DAB2204DE04900124188 /* UserLocation+Convenience.swift in Sources */,
+				23500345207FF74200735833 /* AdminPasswordController.swift in Sources */,
 				238AD1CF2056F10900ADC8DE /* EventsViewController.swift in Sources */,
 				232EC7FA2054DBFA00DD21D9 /* YoureHeardViewController.swift in Sources */,
 				232EC7FC2054DC0700DD21D9 /* YoureNotAloneViewController.swift in Sources */,

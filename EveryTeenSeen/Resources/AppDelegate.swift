@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.setUpNavigationBar()
         self.configureUserToSignIn()
         self.setUpNotificationObserver()
+        AdminPasswordController.shared.fetchAdminPasswordFromFirebase()
         application.applicationIconBadgeNumber = 0
         
         return true

@@ -179,8 +179,15 @@ class UpdateUserProfileViewController: UIViewController {
     }
     
     @IBAction func sliderValuedChanged(_ sender: UISlider) {
+        var distanceString = ""
+        if Int(sender.value) >= 100 {
+           distanceString = "\(Int(sender.value))+ mi"
+        } else {
+           distanceString = "\(Int(sender.value)) mi"
+        }
+        
         DispatchQueue.main.async {
-            self.maxLabelTextField.text = "\(Int(sender.value)) mi"
+            self.maxLabelTextField.text = distanceString
         }
         self.needsUpdated = true
     }

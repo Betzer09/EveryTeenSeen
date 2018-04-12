@@ -32,8 +32,15 @@ class EventsViewController: UIViewController {
     let locationManager = CLLocationManager()
     var matchingItems: [MKMapItem] = []
     var placemark: MKPlacemark?
-    var eventsSearchedByDistance: [Event] = []
+    var eventsSearchedByDistance: [Event] = [] {
+        didSet {
+            if eventsSearchedByDistance.count == 0 {
+                presentSimpleAlert(viewController: self, title: "Unfortunately, there are no scheduled events in this area at this time.", message: "You can try increasing your distance in your profile.")
+            }
+        }
+    }
     private let refreshControl = UIRefreshControl()
+    
     // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -102,8 +109,8 @@ class EventsViewController: UIViewController {
     private func setUpView() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        searchEventsByDistanceButton.layer.cornerRadius = 15
-        clearFilterButton.layer.cornerRadius = 15
+        searchEventsByDistanceButton.layer.cornerRadius = 10
+        clearFilterButton.layer.cornerRadius = 10
         viewProfileButton.layer.cornerRadius = 15
         locationSearchBar.sizeToFit()
         locationSearchBar.placeholder = "Search For City"
@@ -223,7 +230,6 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
             
             if eventsSearchedByDistance.count == 0 {
                 events = EventController.shared.filterEventsBy(distance: Int(distance) , events: unfilteredEvents)
-                
             } else {
                 events = self.eventsSearchedByDistance
             }

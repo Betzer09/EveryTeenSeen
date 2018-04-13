@@ -32,10 +32,11 @@ class EventsViewController: UIViewController {
     let locationManager = CLLocationManager()
     var matchingItems: [MKMapItem] = []
     var placemark: MKPlacemark?
+    var clearFilterButtonPressed = false
     var eventsSearchedByDistance: [Event] = [] {
         didSet {
-            if eventsSearchedByDistance.count == 0 {
-                presentSimpleAlert(viewController: self, title: "Unfortunately, there are no scheduled events in this area at this time.", message: "You can try increasing your distance in your profile.")
+            if eventsSearchedByDistance.count == 0 && clearFilterButtonPressed == false {
+                presentSimpleAlert(viewController: self, title: "No Events", message: "Unfortunately, there are no scheduled events in this area at this time. You can try increasing your distance in your profile.")
             }
         }
     }
@@ -68,7 +69,7 @@ class EventsViewController: UIViewController {
     }
     
     @IBAction func searchEventByDistanceButtonPressed(_ sender: Any) {
-        
+        self.clearFilterButtonPressed = false
         EventController.shared.fetchAllEvents()
         self.searchEventByDistanceGroupView.isHidden = true
         guard let locationThatUserPicked = placemark else {NSLog("We don't have a location from the user!")
@@ -92,6 +93,7 @@ class EventsViewController: UIViewController {
     }
     
     @IBAction func clearFilterButtonPressed(_ sender: Any) {
+        self.clearFilterButtonPressed = true
         self.eventsSearchedByDistance.removeAll()
         DispatchQueue.main.async {
             self.eventsTableView.reloadData()

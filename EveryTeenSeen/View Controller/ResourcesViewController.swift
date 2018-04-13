@@ -106,8 +106,19 @@ extension ResourcesViewController {
         let happyImage: UIImageView = UIImageView(image: image)
         happyImage.contentMode = .scaleAspectFit
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileButton)
+        let donateButton: UIButton = UIButton(type: .custom)
+        let donateImage = resizeImage(image:#imageLiteral(resourceName: "donateImage") , targetSize: CGSize(width: 35.0, height: 35.0))
+        donateButton.setImage(donateImage, for: .normal)
+        donateButton.addTarget(self, action: #selector(loadDonationPage), for: .touchUpInside)
+        
+        
         self.navigationItem.titleView = happyImage
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: donateButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileButton)
+    }
+    
+    @objc func loadDonationPage() {
+        openDonationPage(vc: self)
     }
     
     @objc func segueToProfileView() {

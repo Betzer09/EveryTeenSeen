@@ -201,6 +201,18 @@ func presentLoginAlert(viewController: UIViewController) {
     
     viewController.present(alert, animated: true, completion: nil)
 }
+
+func openDonationPage(vc: UIViewController) {
+    confirmationAlert(viewController: vc, title: "Do you want to donate?", message: "You will be redirected to ETS's donation page.", confirmButtonTitle: "Donate Now", cancelButtonTitle: "Cancel") { (done) in
+        guard done else {return}
+        
+        guard let url = URL(string: "https://www.paypal.me/EveryTeenSeen") else {
+            presentSimpleAlert(viewController: vc, title: "Oops", message: "There was a problem opening the page. If problem continues go to \"https://www.paypal.me/EveryTeenSeen\" website")
+            return
+        }
+        UIApplication.shared.open(url)
+    }
+}
  
 // MARK: - Colors
 
@@ -409,16 +421,18 @@ public func configureAllButtonsIn(view: UIView, interests: [Interest], completio
     }
 }
 
+
+
 /// This is a simple alert that is used to confirm the users decision
 func confirmationAlert(viewController: UIViewController, title: String, message: String, confirmButtonTitle: String, cancelButtonTitle: String, completion: @escaping (_ success: Bool) -> Void) {
     
     let action = UIAlertController(title: title, message: message, preferredStyle: .alert)
     
-    let okayAction = UIAlertAction(title: confirmButtonTitle, style: .destructive) { (_) in
+    let okayAction = UIAlertAction(title: confirmButtonTitle, style: .default) { (_) in
         completion(true)
     }
     
-    let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .cancel) { (_) in
+    let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .destructive) { (_) in
         completion(false)
     }
     

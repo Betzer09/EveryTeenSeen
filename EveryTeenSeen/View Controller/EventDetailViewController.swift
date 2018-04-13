@@ -26,6 +26,7 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var eventLocationNameLabel: UILabel!
     @IBOutlet weak var eventLocationLabel: UILabel!
+    @IBOutlet weak var donateButton: UIButton!
     
     // Bottom half outlets
     @IBOutlet weak var attendEventButton: UIButton!
@@ -69,6 +70,10 @@ class EventDetailViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    @IBAction func donateButtonPressed(_ sender: Any) {
+        openDonationPage(vc: self)
+    }
     @IBAction func attendEventButtonPressed(_ sender: Any) {
         guard let event = event, let user = UserController.shared.loadUserProfile() else {
             NSLog("Error attending event!")
@@ -158,6 +163,7 @@ class EventDetailViewController: UIViewController {
         attendEventButton.layer.cornerRadius = 15
         deleteEventButton.layer.cornerRadius = 15
         editEventButton.layer.cornerRadius = 15
+        donateButton.layer.cornerRadius = 15
         
         attendingCountLabel.text = "Attending: \(attendings.count)"
         

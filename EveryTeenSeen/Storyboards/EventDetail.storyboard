@@ -17,14 +17,14 @@
             <objects>
                 <viewController id="S5A-sk-U2g" customClass="EventDetailViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qdm-4P-Itz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="975"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAO-hz-WG2">
-                                <rect key="frame" x="0.0" y="64" width="320" height="887"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zp7-TO-HeV" userLabel="Main Background View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1050"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSH-Pj-eMX">
                                                 <rect key="frame" x="16" y="320" width="144" height="48"/>
@@ -97,13 +97,13 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f8U-VR-nJ5">
-                                                <rect key="frame" x="16" y="702.5" width="288" height="111"/>
+                                                <rect key="frame" x="16" y="702.5" width="288" height="116.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BXF-Ye-5lj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="51.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="54.5"/>
                                                         <subviews>
                                                             <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4m-qx-AdT">
-                                                                <rect key="frame" x="0.0" y="0.0" width="44" height="51.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="44" height="54.5"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -112,7 +112,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CF-i8-lLt">
-                                                                <rect key="frame" x="49" y="0.0" width="43.5" height="51.5"/>
+                                                                <rect key="frame" x="49" y="0.0" width="43.5" height="54.5"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -121,7 +121,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZM-NB-pRh">
-                                                                <rect key="frame" x="97.5" y="0.0" width="44" height="51.5"/>
+                                                                <rect key="frame" x="97.5" y="0.0" width="44" height="54.5"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -130,7 +130,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-tG-ER8">
-                                                                <rect key="frame" x="146.5" y="0.0" width="44" height="51.5"/>
+                                                                <rect key="frame" x="146.5" y="0.0" width="44" height="54.5"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -139,7 +139,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eE-By-rZp">
-                                                                <rect key="frame" x="195.5" y="0.0" width="43.5" height="51.5"/>
+                                                                <rect key="frame" x="195.5" y="0.0" width="43.5" height="54.5"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -148,7 +148,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arL-vV-8eg">
-                                                                <rect key="frame" x="244" y="0.0" width="44" height="51.5"/>
+                                                                <rect key="frame" x="244" y="0.0" width="44" height="54.5"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -159,10 +159,10 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2HF-G3-h3g">
-                                                        <rect key="frame" x="0.0" y="59.5" width="288" height="51.5"/>
+                                                        <rect key="frame" x="0.0" y="62.5" width="288" height="54"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lT3-fA-kWk">
-                                                                <rect key="frame" x="0.0" y="0.0" width="44" height="51.5"/>
+                                                                <rect key="frame" x="0.0" y="0.5" width="44" height="54"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -171,7 +171,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWb-W9-MRV">
-                                                                <rect key="frame" x="49" y="0.0" width="43.5" height="51.5"/>
+                                                                <rect key="frame" x="49" y="0.5" width="43.5" height="54"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -180,7 +180,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdy-Op-4cC">
-                                                                <rect key="frame" x="97.5" y="0.0" width="44" height="51.5"/>
+                                                                <rect key="frame" x="97.5" y="0.5" width="44" height="54"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -189,7 +189,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLo-w0-0Hn">
-                                                                <rect key="frame" x="146.5" y="0.0" width="44" height="51.5"/>
+                                                                <rect key="frame" x="146.5" y="0.5" width="44" height="54"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -198,7 +198,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKL-gb-IQw">
-                                                                <rect key="frame" x="195.5" y="0.0" width="43.5" height="51.5"/>
+                                                                <rect key="frame" x="195.5" y="0.5" width="43.5" height="54"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -207,7 +207,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SF-eZ-vi0">
-                                                                <rect key="frame" x="244" y="0.0" width="44" height="51.5"/>
+                                                                <rect key="frame" x="244" y="0.5" width="44" height="54"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -226,14 +226,14 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Itk-Sc-lSW" userLabel="Loading View">
-                                                <rect key="frame" x="16" y="702.5" width="288" height="111"/>
+                                                <rect key="frame" x="16" y="702.5" width="288" height="116.5"/>
                                                 <subviews>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Rab-ik-4i6">
-                                                        <rect key="frame" x="126" y="10.5" width="37" height="37"/>
+                                                        <rect key="frame" x="126" y="13" width="37" height="37"/>
                                                         <color key="color" red="0.3803921569" green="0.47450980390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </activityIndicatorView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Attendees" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="46U-rA-Shy">
-                                                        <rect key="frame" x="72.5" y="55.5" width="143.5" height="27.5"/>
+                                                        <rect key="frame" x="72.5" y="58" width="143.5" height="29.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -294,7 +294,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 </constraints>
                                             </view>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHZ-rN-Blh">
-                                                <rect key="frame" x="16" y="821.5" width="128" height="40"/>
+                                                <rect key="frame" x="16" y="876.5" width="128" height="42"/>
                                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Delete Event">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -314,13 +314,23 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vB-cm-eIu">
-                                                <rect key="frame" x="176" y="821" width="128" height="40"/>
+                                                <rect key="frame" x="176" y="876.5" width="128" height="42"/>
                                                 <color key="backgroundColor" red="0.52549019610000003" green="0.52549019610000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Edit Event">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <segue destination="uWe-iO-2FO" kind="show" identifier="updateEventVC" id="gre-2V-HgR"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPi-9I-Ob0">
+                                                <rect key="frame" x="80" y="826.5" width="160" height="42"/>
+                                                <color key="backgroundColor" red="0.1019607843" green="0.85882352939999995" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Donate To Event">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="donateButtonPressed:" destination="S5A-sk-U2g" eventType="touchUpInside" id="XDS-HU-XtN"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -351,6 +361,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                             <constraint firstItem="X0h-cw-HaH" firstAttribute="leading" secondItem="fO2-q7-dnr" secondAttribute="leading" id="Fj1-eY-sBT"/>
                                             <constraint firstItem="Pa4-iu-Aj6" firstAttribute="height" secondItem="MKw-1o-Hni" secondAttribute="height" id="GiZ-EZ-Gq0"/>
                                             <constraint firstItem="gSH-Pj-eMX" firstAttribute="leading" secondItem="Zp7-TO-HeV" secondAttribute="leading" constant="16" id="Gsw-bo-sTU"/>
+                                            <constraint firstItem="bPi-9I-Ob0" firstAttribute="top" secondItem="Itk-Sc-lSW" secondAttribute="bottom" constant="8" id="IFO-Wi-8w3"/>
                                             <constraint firstItem="SAW-QD-nyn" firstAttribute="leading" secondItem="Zp7-TO-HeV" secondAttribute="leading" constant="16" id="ISB-Ei-yVC"/>
                                             <constraint firstItem="a12-7F-2ye" firstAttribute="top" secondItem="Zp7-TO-HeV" secondAttribute="top" constant="16" id="KLa-0o-vsH"/>
                                             <constraint firstItem="f8U-VR-nJ5" firstAttribute="width" secondItem="Zp7-TO-HeV" secondAttribute="width" multiplier="0.9" id="KMv-6I-WG7"/>
@@ -359,6 +370,7 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                             <constraint firstItem="txi-vr-Ebs" firstAttribute="height" secondItem="SAW-QD-nyn" secondAttribute="height" id="Ogv-vF-ExQ"/>
                                             <constraint firstItem="MKw-1o-Hni" firstAttribute="leading" secondItem="MGg-NO-9OA" secondAttribute="leading" id="PPF-uM-IUd"/>
                                             <constraint firstItem="OQS-i7-pSh" firstAttribute="height" secondItem="a12-7F-2ye" secondAttribute="height" multiplier="1/4" id="Puc-qr-zhk"/>
+                                            <constraint firstItem="bPi-9I-Ob0" firstAttribute="width" secondItem="oHZ-rN-Blh" secondAttribute="width" multiplier="1.25" id="RJj-Qp-D2i"/>
                                             <constraint firstItem="gSH-Pj-eMX" firstAttribute="top" secondItem="a12-7F-2ye" secondAttribute="bottom" constant="16" id="UVf-CL-9XC"/>
                                             <constraint firstItem="OQS-i7-pSh" firstAttribute="centerX" secondItem="a12-7F-2ye" secondAttribute="centerX" id="Vi9-wR-2fU"/>
                                             <constraint firstItem="J8m-YE-9jA" firstAttribute="top" secondItem="fGI-xE-w9K" secondAttribute="top" id="W2Q-7Z-5xC"/>
@@ -368,10 +380,10 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                             <constraint firstItem="gSH-Pj-eMX" firstAttribute="width" secondItem="OQS-i7-pSh" secondAttribute="width" multiplier="1/2" id="Zey-0J-mXa"/>
                                             <constraint firstItem="Itk-Sc-lSW" firstAttribute="top" secondItem="f8U-VR-nJ5" secondAttribute="top" id="avQ-TZ-D7N"/>
                                             <constraint firstItem="Pa4-iu-Aj6" firstAttribute="leading" secondItem="J8m-YE-9jA" secondAttribute="leading" id="b4P-Jk-oow"/>
-                                            <constraint firstAttribute="height" constant="1000" id="bSk-jx-dZS"/>
+                                            <constraint firstAttribute="height" constant="1050" id="bSk-jx-dZS"/>
                                             <constraint firstItem="Pa4-iu-Aj6" firstAttribute="top" secondItem="J8m-YE-9jA" secondAttribute="bottom" constant="4" id="byv-as-MEY"/>
                                             <constraint firstItem="inV-Fc-Qq7" firstAttribute="centerY" secondItem="FgD-QV-9bt" secondAttribute="centerY" id="cBD-df-vsb"/>
-                                            <constraint firstItem="oHZ-rN-Blh" firstAttribute="top" secondItem="Itk-Sc-lSW" secondAttribute="bottom" constant="8" id="cTh-lT-S20"/>
+                                            <constraint firstItem="bPi-9I-Ob0" firstAttribute="centerX" secondItem="Zp7-TO-HeV" secondAttribute="centerX" id="e8k-V1-AII"/>
                                             <constraint firstItem="9vB-cm-eIu" firstAttribute="width" secondItem="oHZ-rN-Blh" secondAttribute="width" id="efe-ux-q2I"/>
                                             <constraint firstItem="OQS-i7-pSh" firstAttribute="bottom" secondItem="a12-7F-2ye" secondAttribute="bottom" id="fXu-C9-y0v"/>
                                             <constraint firstItem="J8m-YE-9jA" firstAttribute="leading" secondItem="fGI-xE-w9K" secondAttribute="trailing" constant="8" id="g4S-zr-Pqq"/>
@@ -380,6 +392,8 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                                             <constraint firstItem="fGI-xE-w9K" firstAttribute="top" secondItem="MKw-1o-Hni" secondAttribute="bottom" constant="16" id="juO-GZ-L5r"/>
                                             <constraint firstItem="Itk-Sc-lSW" firstAttribute="bottom" secondItem="f8U-VR-nJ5" secondAttribute="bottom" id="kQb-Qa-XzZ"/>
                                             <constraint firstItem="inV-Fc-Qq7" firstAttribute="leading" secondItem="FgD-QV-9bt" secondAttribute="trailing" constant="8" id="kVC-rz-zgl"/>
+                                            <constraint firstItem="oHZ-rN-Blh" firstAttribute="top" secondItem="bPi-9I-Ob0" secondAttribute="bottom" constant="8" id="knw-1n-1nJ"/>
+                                            <constraint firstItem="bPi-9I-Ob0" firstAttribute="height" secondItem="oHZ-rN-Blh" secondAttribute="height" id="kqM-jj-OWY"/>
                                             <constraint firstItem="txi-vr-Ebs" firstAttribute="width" secondItem="SAW-QD-nyn" secondAttribute="width" multiplier="0.95" id="lB9-Sz-3N8"/>
                                             <constraint firstItem="f8U-VR-nJ5" firstAttribute="centerX" secondItem="Zp7-TO-HeV" secondAttribute="centerX" id="m0M-H2-PxB"/>
                                             <constraint firstItem="SAW-QD-nyn" firstAttribute="width" secondItem="gSH-Pj-eMX" secondAttribute="width" id="nXv-mF-lfm"/>
@@ -419,11 +433,12 @@ What do I recommend? I always recommend staying in a Maui condo! They are like a
                     <navigationItem key="navigationItem" id="jlZ-ZN-kkz"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <size key="freeformSize" width="320" height="1000"/>
+                    <size key="freeformSize" width="320" height="975"/>
                     <connections>
                         <outlet property="attendEventButton" destination="txi-vr-Ebs" id="Fky-9p-woB"/>
                         <outlet property="attendingCountLabel" destination="SAW-QD-nyn" id="64p-eG-jzw"/>
                         <outlet property="deleteEventButton" destination="oHZ-rN-Blh" id="jJ7-3g-KMJ"/>
+                        <outlet property="donateButton" destination="bPi-9I-Ob0" id="ua4-Gi-IHf"/>
                         <outlet property="editEventButton" destination="9vB-cm-eIu" id="Yvo-aK-fim"/>
                         <outlet property="eventAddressLabel" destination="e4p-33-Mqg" id="bN0-WT-29z"/>
                         <outlet property="eventContentView" destination="OQS-i7-pSh" id="bot-KI-KEz"/>

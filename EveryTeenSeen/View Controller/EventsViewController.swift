@@ -38,6 +38,12 @@ class EventsViewController: UIViewController {
             if eventsSearchedByDistance.count == 0 && clearFilterButtonPressed == false {
                 presentSimpleAlert(viewController: self, title: "No Events", message: "Unfortunately, there are no scheduled events in this area at this time. You can try increasing your distance in your profile.")
             }
+            
+            if eventsSearchedByDistance.count > 0 {
+                noEventsNearybyView.isHidden = true
+            } else {
+                noEventsNearybyView.isHidden = false
+            }
         }
     }
     private let refreshControl = UIRefreshControl()
@@ -187,8 +193,7 @@ class EventsViewController: UIViewController {
     
     private func checkIfThereAreEventsInRange(events: [Event]) {
         /// Check to see if there are any events before the table view is prepared
-        if EventController.shared.filterEventsBy(distance: Int(UserController.shared.loadUserProfile()?.eventDistance ?? 50), events: events).isEmpty {
-            
+        if EventController.shared.filterEventsBy(distance: Int(UserController.shared.loadUserProfile()?.eventDistance ?? Int64(userPickedDistanceSlider.value)), events: events).count == 0 {
             self.noEventsNearybyView.isHidden = false
         } else {
             self.noEventsNearybyView.isHidden = true
@@ -200,7 +205,6 @@ class EventsViewController: UIViewController {
         DispatchQueue.main.async {
             self.eventsTableView.reloadData()
         }
-        self.checkIfThereAreEventsInRange(events: EventController.shared.events ?? [])
     }
     
     @objc func hideLocationView() {

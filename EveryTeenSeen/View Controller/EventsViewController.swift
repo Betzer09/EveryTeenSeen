@@ -121,6 +121,11 @@ class EventsViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refreshEvents), for: .valueChanged)
         refreshControl.tintColor = UIColor.myPurple
         refreshControl.attributedTitle = NSAttributedString(string: "Fetching New Events...")
+        
+        guard UserController.shared.loadUserProfile() != nil else {
+            self.viewProfileButton.isHidden = true
+            return
+        }
     }
     
     

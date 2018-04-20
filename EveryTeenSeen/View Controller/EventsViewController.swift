@@ -205,6 +205,16 @@ class EventsViewController: UIViewController {
         DispatchQueue.main.async {
             self.eventsTableView.reloadData()
         }
+        
+        if eventsSearchedByDistance.isEmpty {
+            let events = EventController.shared.filterEventsBy(distance: Int(UserController.shared.loadUserProfile()?.eventDistance ?? Int64(userPickedDistanceSlider.value)), events: EventController.shared.events ?? [])
+            
+            if events.count == 0 {
+                noEventsNearybyView.isHidden = false
+            } else {
+                noEventsNearybyView.isHidden = true
+            }
+        }
     }
     
     @objc func hideLocationView() {

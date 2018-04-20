@@ -51,6 +51,8 @@ extension User {
     
     convenience init?(dictionary: [String: Any], context: NSManagedObjectContext) {
         
+        // Remove the old user from the context
+        UserController.shared.deleteAllUserData(signout: false)
         self.init(context: context)
         
         guard let email = dictionary[self.emailKey] as? String,

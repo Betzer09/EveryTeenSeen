@@ -58,7 +58,7 @@ class UserProfileViewController: UIViewController {
     
         var interestTextField: UITextField!
         
-        let alert = UIAlertController(title: "Create an Interest!", message: "These will be public to Admin users in your area to help plan future events.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Create an Interest!", message: "These will be public to everyone.", preferredStyle: .alert)
         
         alert.addTextField { (textfield) in
             textfield.placeholder = "Snowboarding"
@@ -67,13 +67,17 @@ class UserProfileViewController: UIViewController {
         }
         
         let okActions = UIAlertAction(title: "Create Interest", style: .default) { (_) in
-            guard let name = interestTextField.text, let user = UserController.shared.loadUserProfile() else {return}
+            guard let name = interestTextField.text, let user = UserController.shared.loadUserProfile(), name != "" else {
+                presentSimpleAlert(viewController: self, title: "There was a problem adding your interest.", message: "")
+                return
+            }
             let interestsNames = interests.compactMap({ $0.name })
             
             if interestsNames.contains(name) {
                 presentSimpleAlert(viewController: self, title: "Oops", message: "You already have that interest!")
                 return
             }
+            
             InterestController.shared.createInterestWith(user: user, and: name, completion: { (done) in
                 guard done == true, let updatedUserInterests = UserController.shared.loadUserProfile()?.interests?.array as? [Interest] else {return}
                 configureAllButtonsIn(view: self.interestsGroupView, interests: updatedUserInterests)

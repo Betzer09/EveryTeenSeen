@@ -194,7 +194,6 @@ extension UserController {
     
     // Saves the user to CoreData
     func saveUserToCoreData(email: String, fullname: String, usertype: String, zipcode: String, distance: Int64) {
-        deleteAllUserData(signout: false)
         User(email: email, fullname: fullname, usertype: usertype, zipcode: zipcode, eventDistance: distance)
         saveToPersistentStore()
     }
@@ -202,7 +201,6 @@ extension UserController {
     // Updates the User In CoreData
     func updateUserInCoredata(user: User, email: String, fullname: String, usertype: String, zipcode: String, profileImageStringURL: String, eventDistance: Int64) {
         
-        deleteAllUserData(signout: false)
         do {
             user.setValue(email, forKey: "email")
             user.setValue(fullname, forKey: "fullname")
@@ -246,11 +244,8 @@ extension UserController {
             return
         }
         
-        if users.count > 2 {
-            // This way we leave at least one in the context.
-            for i in 0...users.count - 2 {
-                context.delete(users[i])
-            }
+        for user in users {
+            context.delete(user)
         }
         
         if signout == true {

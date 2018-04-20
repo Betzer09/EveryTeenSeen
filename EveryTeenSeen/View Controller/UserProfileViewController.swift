@@ -223,10 +223,8 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.view.bounds.height <= 800 {
-            print(self.view.bounds.height)
             return self.view.bounds.height * 0.62
         } else {
-            print(self.view.bounds.height)
             return self.view.bounds.height * 0.53
         }
     }

@@ -197,7 +197,6 @@ class EventDetailViewController: UIViewController {
             for button in buttons {
                 // Congirue the buttons
                 button.setTitle("", for: .normal)
-                button.isUserInteractionEnabled = false
             }
             
             if photos.count >= 1 {
@@ -212,11 +211,6 @@ class EventDetailViewController: UIViewController {
                         buttons[i].setTitle(photo.photoPath, for: .normal)
                         buttons[i].setTitleColor(.clear, for: .normal)
                     }
-                    if usertype == UserType.leadCause.rawValue {
-                        buttons[i].isUserInteractionEnabled = true
-                    } else {
-                        buttons[i].isUserInteractionEnabled = false
-                    }
                 }
                 self.loadingProfilePictureView.isHidden = true
                 self.loadingProfilePicturesAnimatorView.stopAnimating()
@@ -224,7 +218,6 @@ class EventDetailViewController: UIViewController {
                 self.loadingEventsLabel.text = "Be the first to Join!"
                 self.loadingProfilePicturesAnimatorView.stopAnimating()
             }
-            
         }
     }
     

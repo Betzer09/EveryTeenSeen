@@ -227,15 +227,8 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventsTableViewCell else {return UITableViewCell()}
             
             guard let unfilteredEvents = EventController.shared.events else {return UITableViewCell()}
-            let distance = UserController.shared.loadUserProfile()?.eventDistance ?? 50
-            var events: [Event] = []
             
-            if eventsSearchedByDistance.count == 0 {
-                events = EventController.shared.filterEventsBy(distance: Int(distance) , events: unfilteredEvents)
-            } else {
-                events = self.eventsSearchedByDistance
-            }
-            
+            var events = self.returnFilterered(events: unfilteredEvents)
             cell.event = events[indexPath.row]
             
             cell.layer.cornerRadius = 15
@@ -257,15 +250,7 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == eventsTableView {
             guard let unfilteredEvents = EventController.shared.events else {return 0}
-            let distance = UserController.shared.loadUserProfile()?.eventDistance ?? 50
-            var events: [Event] = []
-            
-            if eventsSearchedByDistance.count == 0 {
-                events = EventController.shared.filterEventsBy(distance: Int(distance) , events: unfilteredEvents)
-                
-            } else {
-                events = self.eventsSearchedByDistance
-            }
+            var events = returnFilterered(events: unfilteredEvents)
             
             return events.count
         } else {
@@ -299,15 +284,8 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        var events: [Event] = []
         guard let unfilteredEvents = EventController.shared.events else {return}
-        
-        if eventsSearchedByDistance.count == 0 {
-            events = EventController.shared.filterEventsBy(distance: Int(UserController.shared.loadUserProfile()?.eventDistance ?? 50) , events: unfilteredEvents)
-            
-        } else {
-            events = self.eventsSearchedByDistance
-        }
+        var events = returnFilterered(events: unfilteredEvents)
         
         guard let _ = UserController.shared.loadUserProfile() else {
             presentLoginAlert(viewController: self)
@@ -319,6 +297,22 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
                 let indexPath = eventsTableView.indexPathForSelectedRow else {print(segue.destination); return}
             destination.event = events[indexPath.row]
         }
+    }
+    
+    func returnFilterered(events: [Event]) -> [Event] {
+        
+        var filteredEvents = events
+        
+        let distance = UserController.shared.loadUserProfile()?.eventDistance ?? 50
+        
+        if eventsSearchedByDistance.count == 0 {
+            filteredEvents = EventController.shared.filterEventsBy(distance: Int(distance) , events: filteredEvents)
+            
+        } else {
+            filteredEvents = self.eventsSearchedByDistance
+        }
+        
+        return filteredEvents
     }
 }
 // MARK: - Search Bar Functions

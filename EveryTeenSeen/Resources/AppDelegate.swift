@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configureUserToSignIn()
         self.setUpNotificationObserver()
         AdminPasswordController.shared.fetchAdminPasswordFromFirebase()
+        DonationURLController.shared.fetchDonationURLPage()
         application.applicationIconBadgeNumber = 0
         
         return true

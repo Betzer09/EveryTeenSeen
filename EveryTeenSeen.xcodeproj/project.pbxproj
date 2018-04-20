@@ -54,6 +54,7 @@
 		239BEED0207C7E0A000BE57D /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239BEECF207C7E0A000BE57D /* CreateEvent.storyboard */; };
 		23A7F516206036AF0045AE4A /* Interest+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A7F515206036AF0045AE4A /* Interest+Convenience.swift */; };
 		23A7F518206037340045AE4A /* InterestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A7F517206037340045AE4A /* InterestController.swift */; };
+		23B3131A208A760F00B4D94A /* DonationURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B31319208A760F00B4D94A /* DonationURL.swift */; };
 		23F40B9A207565E1003DAF07 /* AboutUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F40B99207565E1003DAF07 /* AboutUserViewController.swift */; };
 		93C3980FB99E5FF62218949C /* Pods_EveryTeenSeen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */; };
 /* End PBXBuildFile section */
@@ -110,6 +111,7 @@
 		239BEECF207C7E0A000BE57D /* CreateEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
 		23A7F515206036AF0045AE4A /* Interest+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Interest+Convenience.swift"; sourceTree = "<group>"; };
 		23A7F517206037340045AE4A /* InterestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestController.swift; sourceTree = "<group>"; };
+		23B31319208A760F00B4D94A /* DonationURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationURL.swift; sourceTree = "<group>"; };
 		23F40B99207565E1003DAF07 /* AboutUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUserViewController.swift; sourceTree = "<group>"; };
 		93CF1B89DBE804FD14EC2F71 /* Pods_EveryTeenSeen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EveryTeenSeen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B8742448B544813C4C79FE /* Pods-EveryTeenSeen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryTeenSeen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EveryTeenSeen/Pods-EveryTeenSeen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				23A7F515206036AF0045AE4A /* Interest+Convenience.swift */,
 				233C08FF20697C2000396E95 /* AdminPassword.swift */,
 				231F24FF2076D5D800C94D0D /* AboutOtherUser.swift */,
+				23B31319208A760F00B4D94A /* DonationURL.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				2336698B2034E3040070F17F /* Photo.swift in Sources */,
 				232EC7FE2054E98900DD21D9 /* GetStartedViewController.swift in Sources */,
 				2393D3AC2033E6800073F6A5 /* CreateEventViewController.swift in Sources */,
+				23B3131A208A760F00B4D94A /* DonationURL.swift in Sources */,
 				23250CF3202431130033B85D /* City.swift in Sources */,
 				232EC7F52054D67000DD21D9 /* OnboardingViewController.swift in Sources */,
 				2393D3A62033C2380073F6A5 /* EventController.swift in Sources */,

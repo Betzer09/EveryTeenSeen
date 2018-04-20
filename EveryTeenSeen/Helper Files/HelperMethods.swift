@@ -206,8 +206,8 @@ func openDonationPage(vc: UIViewController) {
     confirmationAlert(viewController: vc, title: "Do you want to donate?", message: "You will be redirected to ETS's donation page.", confirmButtonTitle: "Donate Now", cancelButtonTitle: "Cancel") { (done) in
         guard done else {return}
         
-        guard let url = URL(string: "https://www.paypal.me/EveryTeenSeen") else {
-            presentSimpleAlert(viewController: vc, title: "Oops", message: "There was a problem opening the page. If problem continues go to \"https://www.paypal.me/EveryTeenSeen\" website")
+        guard let stringURL = DonationURLController.shared.donationURLString, let url = URL(string: stringURL) else {
+            presentSimpleAlert(viewController: vc, title: "Oops", message: "There was a problem opening the page.")
             return
         }
         UIApplication.shared.open(url)

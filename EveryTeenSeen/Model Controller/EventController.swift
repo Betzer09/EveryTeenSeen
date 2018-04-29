@@ -24,10 +24,24 @@ class EventController {
     static let shared = EventController()
     let firebaseManager = FirebaseManager()
     
-    var events: [Event]? = [] {
+    /// All Events on Firebase
+    var allEvents: [Event]? = [] {
         didSet {
             NotificationCenter.default.post(name: EventController.eventWasUpdatedNotifcation, object: nil)
         }
+    }
+    
+    /// Events near the user
+    var eventsNearUserLocation: [Event] {
+        guard let allEvents = allEvents else {return []}
+        let userDistance = UserController.shared.loadUserProfile()?.eventDistance ?? 50
+        
+        if userDistance >= 100 {
+            return allEvents
+        } else {
+            return allEvents.filter( { findTheDistanceBetweenUserLocationAndEventWith(lat: $0.lat, long: $0.long) <= Double(userDistance)})            
+        }
+        
     }
     
     // MARK: - Firebase Functions
@@ -151,20 +165,10 @@ class EventController {
             eventGroup.notify(queue: .main, execute: {
                 let sortedEvent = events.sorted(by: { convertStringToDateWith(stringDate: $0.dateHeld)! > convertStringToDateWith(stringDate: $1.dateHeld)!})
                 
-                self.events = sortedEvent
+                self.allEvents = sortedEvent
                 completion(true, sortedEvent)
             })
         }
-    }
-    
-    func filterEventsBy(distance: Int, events: [Event]) -> [Event] {
-        var eventsFilteredByDistance: [Event] = []
-        if distance >= 100 {
-            eventsFilteredByDistance = events
-        } else {
-            eventsFilteredByDistance = events.filter( { findTheDistanceBetweenUserLocationWithEvent(lat: $0.lat, long: $0.long) <= Double(distance) } )
-        }
-        return eventsFilteredByDistance
     }
     
     func fetchImageForEventWith(event: Event, completion: @escaping(_ success: Bool) -> Void) {
@@ -384,3 +388,26 @@ class EventController {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

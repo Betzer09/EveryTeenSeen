@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class EventDetailViewController: UIViewController {
     
@@ -75,6 +76,7 @@ class EventDetailViewController: UIViewController {
         openDonationPage(vc: self)
     }
     @IBAction func attendEventButtonPressed(_ sender: Any) {
+        self.checkIfUserHasRatedTheApp()
         guard let event = event, let user = UserController.shared.loadUserProfile() else {
             NSLog("Error attending event!")
             return
@@ -143,8 +145,32 @@ class EventDetailViewController: UIViewController {
         }
     }
     
-    
     // MARK: - Functions
+    
+    func checkIfUserHasRatedTheApp() {
+        let userDefaults = UserDefaults.standard
+        
+        let hasRated = userDefaults.object(forKey: "hasRatedApp")
+        let hasAttenedEventBefore = userDefaults.object(forKey: "hasAttendedFirstEvent")
+        
+        if let _ = hasRated, let _ = hasAttenedEventBefore {
+            return
+        } else {
+            userDefaults.set(true, forKey: "hasRatedApp")
+            userDefaults.set(true, forKey: "hasAttendedFirstEvent")
+            presentSimpleAlert(viewController: self, title: "Congratulations!", message: "Way to attend your first Event! We are excited to have you!") { (success) in
+                guard success else {return}
+                if #available(iOS 10.3, *) {
+                    SKStoreReviewController.requestReview()
+                } else {
+                    // Fallback on earlier versions
+                    return
+                }
+            }
+            
+        }
+    }
+    
     private func setUpView() {
         
         guard let event = event,
@@ -184,7 +210,7 @@ class EventDetailViewController: UIViewController {
     
     /// Configures all of the attending buttons
     private func setUpProfilePictureForAttending() {
-        guard let user = UserController.shared.loadUserProfile(), let usertype = user.usertype, let event = event else {return}
+        guard let user = UserController.shared.loadUserProfile(), let event = event else {return}
         
         EventController.shared.fetchAllProfilePicturesFor(event: event) { (photos) in
             guard let photos = photos else {

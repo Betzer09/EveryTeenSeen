@@ -61,8 +61,8 @@ class EventsTableViewCell: UITableViewCell {
         guard let rootvc = UIApplication.shared.keyWindow?.rootViewController else {return}
         guard let user = UserController.shared.loadUserProfile(),
             let eventPassedInToCell = event,
-            let indexPath = EventController.shared.events?.index(of: eventPassedInToCell),
-            let event = EventController.shared.events?[indexPath],
+            let indexPath = EventController.shared.allEvents?.index(of: eventPassedInToCell),
+            let event = EventController.shared.allEvents?[indexPath],
             let attending = event.attending else {return}
         
         if attendingLabel.text == "Attend" {

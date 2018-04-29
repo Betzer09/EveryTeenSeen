@@ -494,8 +494,8 @@ func findTheDistanceWith(lat: Double, long: Double) -> Bool {
 }
 
 /// Finds the distance between two points using the user's location in miles
-func findTheDistanceBetweenUserLocationWithEvent(lat: Double, long: Double) -> Double {
-    guard let location = UserLocationController.shared.fetchUserLocation() else {NSLog("Error filtering distacne by location"); return 0.0}
+func findTheDistanceBetweenUserLocationAndEventWith(lat: Double, long: Double) -> Double {
+    guard let location = UserLocationController.shared.fetchUserLocation() else {NSLog("Could not filter events because they don't have a location!"); return 0.0}
     
     let userCoordinate = CLLocation(latitude: location.latitude, longitude: location.longitude)
     let eventCoordinate = CLLocation(latitude: lat, longitude: long)

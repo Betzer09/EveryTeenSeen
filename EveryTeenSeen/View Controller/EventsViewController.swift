@@ -32,40 +32,52 @@ class EventsViewController: UIViewController {
     let locationManager = CLLocationManager()
     var matchingItems: [MKMapItem] = []
     var placemark: MKPlacemark?
-    var clearFilterButtonPressed = false
-    var eventsSearchedByDistance: [Event] = [] {
-        didSet {
-            if eventsSearchedByDistance.count == 0 && clearFilterButtonPressed == false {
-                presentSimpleAlert(viewController: self, title: "No Events", message: "Unfortunately, there are no scheduled events in this area at this time. You can try increasing your distance in your profile.")
+    
+    private let refreshControl = UIRefreshControl()
+    private var searchButtonPressed = false
+    /// These events should be used by the table view
+    private var events: [Event]? {
+        didSet{
+            self.reloadTableView()
+            if events?.count == 0 {
+                self.noEventsNearybyView.isHidden = false
+            } else {
+                self.noEventsNearybyView.isHidden = true
             }
             
-            if eventsSearchedByDistance.count > 0 {
-                noEventsNearybyView.isHidden = true
-            } else {
-                noEventsNearybyView.isHidden = false
+            if searchButtonPressed && events?.count == 0 {
+                guard let placemark = placemark else {return}
+                presentSimpleAlert(viewController: self, title: "No Events Found", message: "Unfortunately, there are no events near \(placemark.name ?? ""). You can try increasing the distance from the city you picked and try againf.")
             }
         }
     }
-    private let refreshControl = UIRefreshControl()
+    
     
     // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setUpView()
         self.checkIfWeNeedToRemoveUserFromAdminRights()
+        EventController.shared.fetchAllEvents { (success, fetchedEvents) in
+            guard success else {return}
+            
+            self.configurePropertiesForTableView()
+            
+        }
         DispatchQueue.main.async {
             self.locationManager.requestLocation()
-            self.eventsTableView.reloadData()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpNotificationObservers()
         self.configureNavigationBar()
         self.loadAllEvents { (success) in
             guard success else {return}
+            self.configurePropertiesForTableView()
             self.checkIfUserHasAccount()
+            self.viewProfileButton.isEnabled = true
         }
     }
     
@@ -75,34 +87,21 @@ class EventsViewController: UIViewController {
     }
     
     @IBAction func searchEventByDistanceButtonPressed(_ sender: Any) {
-        self.clearFilterButtonPressed = false
-        EventController.shared.fetchAllEvents()
+        self.searchButtonPressed = true
+        EventController.shared.fetchAllEvents { (success, _) in
+            guard success else {return}
+            self.configurePropertiesForTableView()
+        }
         self.searchEventByDistanceGroupView.isHidden = true
-        guard let locationThatUserPicked = placemark else {NSLog("We don't have a location from the user!")
-            presentSimpleAlert(viewController: self, title: "You need to pick a city!", message: "")
-            return
-        }
-        guard let events = EventController.shared.events else {return}
-        var filteredEvents: [Event] = []
-        for event in events {
-            let distance = findTheDistanceBetweenTwoPoints(firstLat: locationThatUserPicked.coordinate.latitude, firstLong: locationThatUserPicked.coordinate.longitude, secondLat: event.lat, secondLong:  event.long)
-        
-            if Int(distance) <= Int(userPickedDistanceSlider.value) {
-                filteredEvents.append(event)
-            }
-        }
-        
-        self.eventsSearchedByDistance = filteredEvents
-        DispatchQueue.main.async {
-            self.eventsTableView.reloadData()
-        }
     }
     
     @IBAction func clearFilterButtonPressed(_ sender: Any) {
-        self.clearFilterButtonPressed = true
-        self.eventsSearchedByDistance.removeAll()
+        self.searchButtonPressed = false
+        EventController.shared.fetchAllEvents { (success, _) in
+            guard success else {return}
+            self.configurePropertiesForTableView()
+        }
         DispatchQueue.main.async {
-            self.eventsTableView.reloadData()
             self.searchEventByDistanceGroupView.isHidden = true
         }
     }
@@ -112,7 +111,7 @@ class EventsViewController: UIViewController {
     }
     
     @IBAction func unwindToEventsVC(segue: UIStoryboardSegue){}
-
+    
     // MARK: - Set Up View
     private func setUpView() {
         locationManager.delegate = self
@@ -121,7 +120,7 @@ class EventsViewController: UIViewController {
         clearFilterButton.layer.cornerRadius = 10
         viewProfileButton.layer.cornerRadius = 15
         locationSearchBar.sizeToFit()
-        locationSearchBar.placeholder = "Search For City"
+        locationSearchBar.placeholder = "Search For A City"
         
         eventsTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshEvents), for: .valueChanged)
@@ -149,18 +148,51 @@ class EventsViewController: UIViewController {
     private func loadAllEvents(completion: @escaping (_ success: Bool) -> Void = {_ in}) {
         EventController.shared.fetchAllEvents { (success,events) in
             guard success else {return}
-
+            
             DispatchQueue.main.async {
-                self.eventsTableView.reloadData()
                 self.activityIndicator.isHidden = true
                 self.activityIndicator.stopAnimating()
                 completion(true)
             }
-            self.checkIfThereAreEventsInRange(events: events)
         }
     }
     
     // MARK: - Functions
+    
+    /// Sets the events property
+    func configurePropertiesForTableView() {
+        // We need to know if there is a user
+        // We need to know if the search button has been pressed
+        let allEvents = EventController.shared.allEvents ?? []
+        if let _ = UserController.shared.loadUserProfile() {
+            if searchButtonPressed {
+                // return events near city
+                returnEventsNearCityWith(allEvents: allEvents)
+            } else {
+                // return events near user
+                self.events = EventController.shared.eventsNearUserLocation
+            }
+        } else {
+            // There is not a user return all events within a 50 mile radius
+            if searchButtonPressed {
+                // Returns events near city
+                returnEventsNearCityWith(allEvents: allEvents)
+            } else {
+                // Returns within a 50 mile radius
+                guard let location = UserLocationController.shared.fetchUserLocation() else {return}
+                self.events = allEvents.filter({ findTheDistanceBetweenTwoPoints(firstLat: location.latitude, firstLong: location.longitude, secondLat: $0.lat, secondLong: $0.long) <= Double(50)})
+            }
+        }
+    }
+    
+    /// Returns all the events near a city
+    private func returnEventsNearCityWith(allEvents: [Event]) {
+        guard let placemark = placemark else {
+            presentSimpleAlert(viewController: self, title: "Try picking another City", message: "")
+            return
+        }
+        self.events = allEvents.filter({ findTheDistanceBetweenTwoPoints(firstLat: placemark.coordinate.latitude, firstLong: placemark.coordinate.longitude, secondLat: $0.lat, secondLong: $0.long) <= Double(userPickedDistanceSlider.value)})
+    }
     
     func checkIfWeNeedToRemoveUserFromAdminRights() {
         AdminPasswordController.shared.fetchAdminPasswordFromFirebase { (needToSignUserOut) in
@@ -191,29 +223,10 @@ class EventsViewController: UIViewController {
         }
     }
     
-    private func checkIfThereAreEventsInRange(events: [Event]) {
-        /// Check to see if there are any events before the table view is prepared
-        if EventController.shared.filterEventsBy(distance: Int(UserController.shared.loadUserProfile()?.eventDistance ?? Int64(userPickedDistanceSlider.value)), events: events).count == 0 {
-            self.noEventsNearybyView.isHidden = false
-        } else {
-            self.noEventsNearybyView.isHidden = true
-        }
-    }
-    
     // MARK: - Objective-C Functions
     @objc func reloadTableView() {
         DispatchQueue.main.async {
             self.eventsTableView.reloadData()
-        }
-        
-        if eventsSearchedByDistance.isEmpty {
-            let events = EventController.shared.filterEventsBy(distance: Int(UserController.shared.loadUserProfile()?.eventDistance ?? Int64(userPickedDistanceSlider.value)), events: EventController.shared.events ?? [])
-            
-            if events.count == 0 {
-                noEventsNearybyView.isHidden = false
-            } else {
-                noEventsNearybyView.isHidden = true
-            }
         }
     }
     
@@ -245,9 +258,10 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == eventsTableView {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventsTableViewCell else {return UITableViewCell()}
             
-            guard let unfilteredEvents = EventController.shared.events else {return UITableViewCell()}
-            
-            var events = self.returnFilterered(events: unfilteredEvents)
+            guard let events = events else {return UITableViewCell()}
+            if events.count == 0 {
+                return UITableViewCell()
+            }
             cell.event = events[indexPath.row]
             
             cell.layer.cornerRadius = 15
@@ -268,9 +282,7 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == eventsTableView {
-            guard let unfilteredEvents = EventController.shared.events else {return 0}
-            var events = returnFilterered(events: unfilteredEvents)
-            
+            guard let events = events else {return 0}
             return events.count
         } else {
             return matchingItems.count
@@ -279,7 +291,6 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == eventsTableView {
-            
             if self.view.bounds.height <= 800 {
                 return self.view.bounds.height * 0.65
             } else {
@@ -303,8 +314,7 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let unfilteredEvents = EventController.shared.events else {return}
-        var events = returnFilterered(events: unfilteredEvents)
+        guard let events = events else {return}
         
         guard let _ = UserController.shared.loadUserProfile() else {
             presentLoginAlert(viewController: self)
@@ -316,22 +326,6 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
                 let indexPath = eventsTableView.indexPathForSelectedRow else {print(segue.destination); return}
             destination.event = events[indexPath.row]
         }
-    }
-    
-    func returnFilterered(events: [Event]) -> [Event] {
-        
-        var filteredEvents = events
-        
-        let distance = UserController.shared.loadUserProfile()?.eventDistance ?? 50
-        
-        if eventsSearchedByDistance.count == 0 {
-            filteredEvents = EventController.shared.filterEventsBy(distance: Int(distance) , events: filteredEvents)
-            
-        } else {
-            filteredEvents = self.eventsSearchedByDistance
-        }
-        
-        return filteredEvents
     }
 }
 // MARK: - Search Bar Functions
@@ -373,7 +367,7 @@ extension EventsViewController {
             }
         }
         let profileImage = smallAvatar
-
+        
         profileButton.setImage(profileImage, for: .normal)
         profileButton.addTarget(self, action: #selector(segueToProfileView), for: .touchUpInside)
         
@@ -450,9 +444,9 @@ extension EventsViewController: CLLocationManagerDelegate {
             }
             
             guard let placemark = placemarks?.first, let zip = placemark.postalCode else {
-                    completion(nil)
-                    NSLog("Error updating user locaiton in function: \(#function)")
-                    return
+                completion(nil)
+                NSLog("Error updating user locaiton in function: \(#function)")
+                return
             }
             
             let lat = userLocation.coordinate.latitude

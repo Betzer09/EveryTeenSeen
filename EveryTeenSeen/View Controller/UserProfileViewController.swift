@@ -208,7 +208,7 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
         cell.selectionStyle = .none
         
         
-        guard let allEvents = EventController.shared.events else {return UITableViewCell()}
+        guard let allEvents = EventController.shared.allEvents else {return UITableViewCell()}
         let events = setUpTableViewWith(events: allEvents)
         cell.event = events[indexPath.row]
         
@@ -216,7 +216,7 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let allEvents = EventController.shared.events else {return 0}
+        guard let allEvents = EventController.shared.allEvents else {return 0}
         let events = setUpTableViewWith(events: allEvents)
         return events.count
     }

@@ -99,6 +99,7 @@ class UpdateUserProfileViewController: UIViewController {
         cameraButton.isHidden = true
         profileImageView.isHidden = true
         noInterestView.isHidden = true
+        interestGroupView.isHidden = true
     }
     
     @IBAction func chooseProfileImageButtonPressed(_ sender: Any) {

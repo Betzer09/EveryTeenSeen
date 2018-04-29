@@ -115,7 +115,7 @@ HEARD</string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Nzc-rK-hNt">
-                                <rect key="frame" x="16" y="190" width="288" height="189"/>
+                                <rect key="frame" x="16" y="202" width="288" height="165"/>
                                 <string key="text">You’re 
 NOT ALONE</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="150"/>
@@ -129,7 +129,7 @@ NOT ALONE</string>
                             <constraint firstItem="mKS-SV-nga" firstAttribute="bottom" secondItem="tNa-il-Blz" secondAttribute="bottom" id="PfC-Eq-BUz"/>
                             <constraint firstItem="Nzc-rK-hNt" firstAttribute="width" secondItem="tNa-il-Blz" secondAttribute="width" multiplier="0.9" id="Ubt-ZK-Ayk"/>
                             <constraint firstItem="tNa-il-Blz" firstAttribute="top" secondItem="fvW-vX-eFB" secondAttribute="top" id="bpr-Dx-uG8"/>
-                            <constraint firstItem="Nzc-rK-hNt" firstAttribute="height" secondItem="tNa-il-Blz" secondAttribute="height" multiplier="1/3" id="dW4-St-Sqn"/>
+                            <constraint firstItem="Nzc-rK-hNt" firstAttribute="height" secondItem="tNa-il-Blz" secondAttribute="height" multiplier="0.29" id="dW4-St-Sqn"/>
                             <constraint firstItem="Nzc-rK-hNt" firstAttribute="centerX" secondItem="fvW-vX-eFB" secondAttribute="centerX" id="fGV-xp-X9L"/>
                             <constraint firstItem="Nzc-rK-hNt" firstAttribute="centerY" secondItem="fvW-vX-eFB" secondAttribute="centerY" id="i2S-gs-WXH"/>
                             <constraint firstItem="mKS-SV-nga" firstAttribute="trailing" secondItem="tNa-il-Blz" secondAttribute="trailing" id="mxb-R4-UUo"/>

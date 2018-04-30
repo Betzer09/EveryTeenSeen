@@ -132,7 +132,9 @@ Press to Download in the App Store</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="heQ-FH-Osd"/>
                     </scrollView>
-                    <navigationItem key="navigationItem" id="irD-iH-E4o"/>
+                    <navigationItem key="navigationItem" id="irD-iH-E4o">
+                        <barButtonItem key="leftBarButtonItem" id="ZO9-X3-TDU"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <size key="freeformSize" width="320" height="800"/>
                     <connections>

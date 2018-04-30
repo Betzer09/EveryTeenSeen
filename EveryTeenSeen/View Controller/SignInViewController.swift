@@ -88,11 +88,13 @@ class SignInViewController: UIViewController {
                 // Check for the kind of user
                 if user.usertype == UserType.leadCause.rawValue {
                     self.requestNotificationPermission()
-                    presentAdminTabBarVC(viewController: self)
+                    presentAdminTabBarVCAsRootViewControllerOn(viewController: self)
                 } else {
                     self.requestNotificationPermission()
-                    presentEventsTabBarVC(viewController: self)
+                    presentEventsVCAsTheRootViewControllerWith(viewController: self)
                 }
+                
+                self.view.endEditing(true)
                 
             })
         }
@@ -108,7 +110,7 @@ class SignInViewController: UIViewController {
                     self.hideIndicator()
                     self.requestNotificationPermission()
                     UserController.shared.profilePicture = #imageLiteral(resourceName: "smallAvatar")
-                    presentEventsTabBarVC(viewController: self)
+                    presentEventsVCAsTheRootViewControllerWith(viewController: self)
                 })
             } else {
                 self.hideIndicator()

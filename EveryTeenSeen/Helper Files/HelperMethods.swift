@@ -143,22 +143,52 @@ func presentEventsTabBarVC(viewController: UIViewController) {
     }
 }
 
-func presentLogoutAndSignUpPage(viewController: UIViewController) {
-    let storyboard: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
-    let vc = storyboard.instantiateViewController(withIdentifier: "loginVC")
+func presentEventsVCAsTheRootViewControllerWith(viewController: UIViewController) {
+    let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    appDelegate.window?.rootViewController = vc
+    appDelegate.window?.makeKeyAndVisible()
     
     DispatchQueue.main.async {
-        viewController.present(vc, animated: true, completion: nil)        
+        vc.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 func presentAdminTabBarVC(viewController: UIViewController) {
     let storyboard: UIStoryboard = UIStoryboard(name: "Admin", bundle: nil)
     let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")
+    
     DispatchQueue.main.async {
         viewController.present(vc, animated: true, completion: nil)
     }
 }
+
+func presentAdminTabBarVCAsRootViewControllerOn(viewController: UIViewController) {
+    let storyboard: UIStoryboard = UIStoryboard(name: "Admin", bundle: nil)
+    let vc = storyboard.instantiateViewController(withIdentifier: "MainUserTab")
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    appDelegate.window?.rootViewController = vc
+    appDelegate.window?.makeKeyAndVisible()
+    
+    
+    DispatchQueue.main.async {
+        vc.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+func presentLogoutAndSignUpPage(viewController: UIViewController) {
+    let storyboard: UIStoryboard = UIStoryboard(name: "LoginSignUp", bundle: nil)
+    let vc = storyboard.instantiateViewController(withIdentifier: "loginVC")
+    
+    DispatchQueue.main.async {
+        viewController.present(vc, animated: true, completion: nil)
+    }
+}
+
+
 
 func presentUserProfile(viewController: UIViewController) {
     let storyboard: UIStoryboard = UIStoryboard(name: "UserProfile", bundle: nil)

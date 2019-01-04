@@ -14,13 +14,14 @@ import FirebaseMessaging
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        Messaging.messaging().delegate = self
 
         self.setUpTabBar()
         self.setUpNavigationBar()
@@ -37,9 +38,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // Convert token to string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        
         // Print it to console
         print("APNs device token: \(deviceTokenString)")
+    }
+    
+    // Called when APNs failed to register the device for push notifications
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        // Print the error to console (you should alert the user that registration failed)
+        print("APNs registration failed: \(error)")
+    }
+    
+    // This runs when the user actually interatacts with the notification, like when the app is open and it comes down, or they interact with it from the lock screen.
+    func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
+        // Print notification payload data
+        print("Push notification received: \(data)")
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -52,23 +64,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().shouldEstablishDirectChannel = false
     }
     
-    // Called when APNs failed to register the device for push notifications
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        // Print the error to console (you should alert the user that registration failed)
-        print("APNs registration failed: \(error)")
-    }
-    
-    // This runs when the user actually interatacts with the notification, like when the app is open and it comes down, or they interact with it from the lock screen. 
-    func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
-        // Print notification payload data
-        print("Push notification received: \(data)")
-    }
     
     @objc func refreshToken(notificaiton: NSNotification) {
-        guard let refreshToken = InstanceID.instanceID().token() else {return}
-        
-        print("*** \(refreshToken) ***")
-        
+        InstanceID.instanceID().instanceID(handler: { (result, error) in
+            if let error = error {
+                debugPrint(error)
+            }
+            print("*** \(String(describing: result?.instanceID)) ***")
+            
+        })
         FBHandler()
     }
     
@@ -81,6 +85,7 @@ extension AppDelegate {
     func setUpTabBar() {
         UITabBar.appearance().tintColor = UIColor(red: 0, green: divideNumberForColorWith(number: 122), blue: divideNumberForColorWith(number: 255), alpha: 1)
     }
+    
     
     func setUpNavigationBar() {
         // Navigation Style

@@ -52,7 +52,6 @@ class EventsViewController: UIViewController {
         self.checkIfWeNeedToRemoveUserFromAdminRights()
         DispatchQueue.main.async {
             self.locationManager.requestLocation()
-            self.eventsTableView.reloadData()
         }
     }
 

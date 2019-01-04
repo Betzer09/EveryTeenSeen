@@ -321,7 +321,7 @@ extension EventDetailViewController {
     // MARK: - Objective-C Functions
     @objc func backButtonPressed() {
         DispatchQueue.main.async {
-            self.navigationController?.popViewController(animated: true)            
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

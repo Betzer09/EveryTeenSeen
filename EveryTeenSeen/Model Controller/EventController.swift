@@ -358,7 +358,7 @@ class EventController {
         
         let reportsKey = "reports"
         
-        db.collection(EventController.eventKey).document("\(event.identifer)").updateData([reportsKey: event.reports]) { (error) in
+        db.collection(EventController.eventKey).document("\(event.identifer)").updateData([reportsKey: event.reports as Any]) { (error) in
             
             if let error = error {
                 NSLog("Error reporting event with title: \(event.title) becasue of error: \(error.localizedDescription)")
@@ -374,7 +374,7 @@ class EventController {
         let db = Firestore.firestore()
         
         let attendingKey = "attending"
-        db.collection(EventController.eventKey).document("\(event.identifer)").updateData([attendingKey: event.attending]) { (error) in
+        db.collection(EventController.eventKey).document("\(event.identifer)").updateData([attendingKey: event.attending as Any]) { (error) in
             if let error = error {
                 NSLog("Error updating event: \(event.title) becasue of error: \(error.localizedDescription)")
             } else {

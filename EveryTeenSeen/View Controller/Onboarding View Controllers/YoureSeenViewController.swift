@@ -45,22 +45,3 @@ class YoureSeenViewController: UIViewController {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -160,9 +160,9 @@ class EventController {
     func filterEventsBy(distance: Int, events: [Event]) -> [Event] {
         var eventsFilteredByDistance: [Event] = []
         if distance >= 100 {
-           eventsFilteredByDistance = events.filter( { findTheDistanceBetweenUserLocationWithEvent(lat: $0.lat, long: $0.long) <= Double(distance) } )
-        } else {
             eventsFilteredByDistance = events
+        } else {
+            eventsFilteredByDistance = events.filter( { findTheDistanceBetweenUserLocationWithEvent(lat: $0.lat, long: $0.long) <= Double(distance) } )
         }
         return eventsFilteredByDistance
     }

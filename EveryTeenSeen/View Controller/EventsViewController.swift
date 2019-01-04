@@ -35,8 +35,11 @@ class EventsViewController: UIViewController {
     var clearFilterButtonPressed = false
     var eventsSearchedByDistance: [Event] = [] {
         didSet {
-            if eventsSearchedByDistance.count == 0 && clearFilterButtonPressed == false {
+            if eventsSearchedByDistance.count == 0 && clearFilterButtonPressed == true {
                 presentSimpleAlert(viewController: self, title: "No Events", message: "Unfortunately, there are no scheduled events in this area at this time. You can try increasing your distance in your profile.")
+                noEventsNearybyView.isHidden = false
+            } else {
+                noEventsNearybyView.isHidden = true
             }
         }
     }
@@ -81,7 +84,7 @@ class EventsViewController: UIViewController {
         for event in events {
             let distance = findTheDistanceBetweenTwoPoints(firstLat: locationThatUserPicked.coordinate.latitude, firstLong: locationThatUserPicked.coordinate.longitude, secondLat: event.lat, secondLong:  event.long)
         
-            if Int(distance) <= Int(userPickedDistanceSlider.value) {
+            if Int(userPickedDistanceSlider.value) <= Int(distance)   {
                 filteredEvents.append(event)
             }
         }
@@ -195,7 +198,9 @@ class EventsViewController: UIViewController {
         DispatchQueue.main.async {
             self.eventsTableView.reloadData()
         }
-        self.checkIfThereAreEventsInRange(events: EventController.shared.events ?? [])
+        if eventsSearchedByDistance.isEmpty {
+            self.checkIfThereAreEventsInRange(events: EventController.shared.events ?? [])
+        }
     }
     
     @objc func hideLocationView() {

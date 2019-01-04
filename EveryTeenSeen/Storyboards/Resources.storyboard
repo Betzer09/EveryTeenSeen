@@ -1,53 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tAj-R1-mex">
-    <device id="retina4_0" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tAj-R1-mex">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Resources View Controller-->
-        <scene sceneID="Giz-KK-12c">
+        <scene sceneID="mnQ-LI-6UY">
             <objects>
-                <viewController id="HXc-yt-hct" customClass="ResourcesViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="VHM-Md-l0w">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="751"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <viewController id="Mcb-Ea-8bl" customClass="ResourcesViewController" customModule="EveryTeenSeen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6mx-0L-eLE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Resources Background" translatesAutoresizingMaskIntoConstraints="NO" id="os0-Wr-Zne">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="687"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Resources Background" translatesAutoresizingMaskIntoConstraints="NO" id="8Ue-Vh-oai">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hjb-RQ-4c2">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resources" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="pAY-Oa-Tcf">
-                                        <rect key="frame" x="11" y="8.5" width="106.5" height="40.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gya-Bf-ZeF">
+                                <rect key="frame" x="0.0" y="138" width="375" height="591"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ec-UX-hVK">
+                                <rect key="frame" x="0.0" y="88" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="pAY-Oa-Tcf" firstAttribute="centerX" secondItem="Hjb-RQ-4c2" secondAttribute="centerX" multiplier="0.4" id="216-CO-Pez"/>
-                                    <constraint firstItem="pAY-Oa-Tcf" firstAttribute="height" secondItem="Hjb-RQ-4c2" secondAttribute="height" multiplier="0.7" id="Vd4-2E-lJW"/>
-                                    <constraint firstItem="pAY-Oa-Tcf" firstAttribute="centerY" secondItem="Hjb-RQ-4c2" secondAttribute="centerY" id="gzT-Ro-MXc"/>
-                                    <constraint firstItem="pAY-Oa-Tcf" firstAttribute="width" secondItem="Hjb-RQ-4c2" secondAttribute="width" multiplier="1/3" id="vin-Ir-x0S"/>
+                                    <constraint firstAttribute="height" constant="50" id="oGu-mX-1l9"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU are NOT alone. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5n2-aX-bXn">
-                                <rect key="frame" x="8" y="66" width="304" height="68.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resources" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="kjf-ZB-C61">
+                                <rect key="frame" x="8" y="95.666666666666671" width="125" height="35.000000000000014"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="P0K-B7-BxN">
-                                <rect key="frame" x="16" y="142.5" width="288" height="309"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="JwM-IZ-zBR">
+                                <rect key="frame" x="8" y="214.00000000000003" width="359" height="295.66666666666674"/>
                                 <string key="text">As a teen, you face many struggles and turbulent situations. Every Teen Seen is an event platform, but our events are a place where you can feel safe discussing difficult topics and feelings. We hope to reduce teen suicide by making you feel included in the community and providing support and resources for you.
 
 If for any reason you are feeling suicidal or know of someone in distress, please utilize the following prevention and crisis resources. </string>
@@ -55,94 +47,96 @@ If for any reason you are feeling suicidal or know of someone in distress, pleas
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="National Suicide Prevention Lifeline" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ceo-jd-Wla">
-                                <rect key="frame" x="16" y="459.5" width="288" height="43.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gG-pd-UnW">
+                                <rect key="frame" x="8" y="673.66666666666663" width="179.66666666666666" height="25"/>
+                                <state key="normal" title="Press to Download">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="downloadUTAAppButtonPressed:" destination="Mcb-Ea-8bl" eventType="touchUpInside" id="hHT-gG-RgJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="National Suicide Prevention Lifeline" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="tEy-C0-PdO">
+                                <rect key="frame" x="8" y="517.66666666666663" width="359" height="50"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1-800-273-8255" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="SPX-1f-gEq">
-                                <rect key="frame" x="16" y="508" width="213" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1-800-273-8255" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QDf-gF-Ms9">
+                                <rect key="frame" x="8" y="575.66666666666663" width="179.66666666666666" height="50"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="jiz-8W-Jwr">
-                                <rect key="frame" x="16" y="558" width="288" height="76.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Safe UT
-
-Press to Download in the App Store</string>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTj-4U-UoO" userLabel="DonwloadUTA APP">
+                                <rect key="frame" x="8" y="640.66666666666663" width="89.666666666666671" height="25"/>
+                                <state key="normal" title="Safe UT App">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="downloadUTAAppButtonPressed:" destination="Mcb-Ea-8bl" eventType="touchUpInside" id="ouV-Fn-wuq"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU are NOT alone. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sXx-Hv-HeL">
+                                <rect key="frame" x="8" y="146" width="359" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="XMw-7N-PCd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.1963317215" green="0.1987611792" blue="0.1417067847" alpha="0.81073943660000003" colorSpace="custom" customColorSpace="sRGB"/>
-                                <size key="shadowOffset" width="2" height="1"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UY-Vv-JFd">
-                                <rect key="frame" x="16" y="604" width="192" height="30.5"/>
-                                <connections>
-                                    <action selector="downloadUTAAppButtonPressed:" destination="HXc-yt-hct" eventType="touchUpInside" id="e9m-fH-wo4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7L-b6-tY9" userLabel="DonwloadUTA APP">
-                                <rect key="frame" x="16" y="558" width="96" height="30.5"/>
-                                <connections>
-                                    <action selector="downloadUTAAppButtonPressed:" destination="HXc-yt-hct" eventType="touchUpInside" id="XY8-LW-tM9"/>
-                                </connections>
-                            </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="os0-Wr-Zne" firstAttribute="leading" secondItem="heQ-FH-Osd" secondAttribute="leading" id="0aw-Uu-HlU"/>
-                            <constraint firstItem="Hjb-RQ-4c2" firstAttribute="trailing" secondItem="heQ-FH-Osd" secondAttribute="trailing" id="1pZ-Td-KPq"/>
-                            <constraint firstItem="Ceo-jd-Wla" firstAttribute="centerX" secondItem="VHM-Md-l0w" secondAttribute="centerX" id="2E6-v1-U4e"/>
-                            <constraint firstItem="SPX-1f-gEq" firstAttribute="height" secondItem="Ceo-jd-Wla" secondAttribute="height" multiplier="0.8" id="6oT-DV-pt6"/>
-                            <constraint firstItem="P0K-B7-BxN" firstAttribute="centerX" secondItem="VHM-Md-l0w" secondAttribute="centerX" id="87u-n8-OsF"/>
-                            <constraint firstItem="Ceo-jd-Wla" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/16" id="9D8-iW-CIV"/>
-                            <constraint firstItem="5n2-aX-bXn" firstAttribute="width" secondItem="os0-Wr-Zne" secondAttribute="width" multiplier="0.95" id="Avd-6P-Fcj"/>
-                            <constraint firstItem="5n2-aX-bXn" firstAttribute="top" secondItem="Hjb-RQ-4c2" secondAttribute="bottom" constant="8" id="C8C-Qi-xOU"/>
-                            <constraint firstItem="Hjb-RQ-4c2" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/12" id="EEI-Kn-0Qk"/>
-                            <constraint firstItem="7UY-Vv-JFd" firstAttribute="bottom" secondItem="jiz-8W-Jwr" secondAttribute="bottom" id="JD4-Sn-76y"/>
-                            <constraint firstItem="b7L-b6-tY9" firstAttribute="leading" secondItem="jiz-8W-Jwr" secondAttribute="leading" id="Ndz-ri-UKR"/>
-                            <constraint firstItem="Hjb-RQ-4c2" firstAttribute="top" secondItem="heQ-FH-Osd" secondAttribute="top" id="Pi2-PG-ils"/>
-                            <constraint firstItem="P0K-B7-BxN" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="0.45" id="QIa-jK-CC7"/>
-                            <constraint firstItem="7UY-Vv-JFd" firstAttribute="width" secondItem="jiz-8W-Jwr" secondAttribute="width" multiplier="2/3" id="Qq8-L8-pFL"/>
-                            <constraint firstItem="P0K-B7-BxN" firstAttribute="width" secondItem="os0-Wr-Zne" secondAttribute="width" multiplier="0.9" id="RCO-i6-WlS"/>
-                            <constraint firstItem="Ceo-jd-Wla" firstAttribute="width" secondItem="os0-Wr-Zne" secondAttribute="width" multiplier="0.9" id="TeI-JG-KQJ"/>
-                            <constraint firstItem="Hjb-RQ-4c2" firstAttribute="leading" secondItem="heQ-FH-Osd" secondAttribute="leading" id="TeY-x2-A0M"/>
-                            <constraint firstItem="5n2-aX-bXn" firstAttribute="centerX" secondItem="VHM-Md-l0w" secondAttribute="centerX" id="Tvf-CZ-0v6"/>
-                            <constraint firstItem="b7L-b6-tY9" firstAttribute="height" secondItem="7UY-Vv-JFd" secondAttribute="height" id="Y67-72-cl3"/>
-                            <constraint firstItem="jiz-8W-Jwr" firstAttribute="top" secondItem="SPX-1f-gEq" secondAttribute="bottom" constant="16" id="YuF-7A-3up"/>
-                            <constraint firstItem="b7L-b6-tY9" firstAttribute="width" secondItem="7UY-Vv-JFd" secondAttribute="width" multiplier="1/2" id="azp-7o-rkE"/>
-                            <constraint firstItem="SPX-1f-gEq" firstAttribute="top" secondItem="Ceo-jd-Wla" secondAttribute="bottom" constant="5" id="cJw-Qv-69c"/>
-                            <constraint firstItem="os0-Wr-Zne" firstAttribute="trailing" secondItem="heQ-FH-Osd" secondAttribute="trailing" id="dBE-x3-abL"/>
-                            <constraint firstItem="SPX-1f-gEq" firstAttribute="leading" secondItem="Ceo-jd-Wla" secondAttribute="leading" id="h2s-p0-PoA"/>
-                            <constraint firstItem="7UY-Vv-JFd" firstAttribute="height" secondItem="jiz-8W-Jwr" secondAttribute="height" multiplier="0.4" id="hi4-zP-bYI"/>
-                            <constraint firstItem="SPX-1f-gEq" firstAttribute="width" secondItem="os0-Wr-Zne" secondAttribute="width" multiplier="2/3" id="nbZ-bO-xeB"/>
-                            <constraint firstItem="P0K-B7-BxN" firstAttribute="top" secondItem="5n2-aX-bXn" secondAttribute="bottom" constant="8" id="njc-cV-SbP"/>
-                            <constraint firstItem="jiz-8W-Jwr" firstAttribute="width" secondItem="os0-Wr-Zne" secondAttribute="width" multiplier="0.9" id="nmQ-Nd-dsF"/>
-                            <constraint firstItem="7UY-Vv-JFd" firstAttribute="leading" secondItem="jiz-8W-Jwr" secondAttribute="leading" id="okI-t2-9tk"/>
-                            <constraint firstItem="jiz-8W-Jwr" firstAttribute="centerX" secondItem="VHM-Md-l0w" secondAttribute="centerX" id="pKe-sX-WSE"/>
-                            <constraint firstItem="jiz-8W-Jwr" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/9" id="q7W-ob-Zt4"/>
-                            <constraint firstItem="Ceo-jd-Wla" firstAttribute="top" secondItem="P0K-B7-BxN" secondAttribute="bottom" constant="8" id="rJe-jD-Q2L"/>
-                            <constraint firstItem="heQ-FH-Osd" firstAttribute="bottom" secondItem="os0-Wr-Zne" secondAttribute="bottom" id="ssq-GB-ZVa"/>
-                            <constraint firstItem="5n2-aX-bXn" firstAttribute="height" secondItem="os0-Wr-Zne" secondAttribute="height" multiplier="1/10" id="uw4-LG-mr9"/>
-                            <constraint firstItem="b7L-b6-tY9" firstAttribute="top" secondItem="jiz-8W-Jwr" secondAttribute="top" id="xGZ-YR-7hW"/>
-                            <constraint firstItem="os0-Wr-Zne" firstAttribute="top" secondItem="heQ-FH-Osd" secondAttribute="top" id="yqY-kB-9wv"/>
+                            <constraint firstItem="kjf-ZB-C61" firstAttribute="leading" secondItem="CLg-Ex-ZBu" secondAttribute="leading" constant="8" id="03s-yu-j9O"/>
+                            <constraint firstItem="tEy-C0-PdO" firstAttribute="centerX" secondItem="6mx-0L-eLE" secondAttribute="centerX" id="0Cm-v3-nZQ"/>
+                            <constraint firstItem="JwM-IZ-zBR" firstAttribute="width" secondItem="sXx-Hv-HeL" secondAttribute="width" id="1zD-Hb-cQ7"/>
+                            <constraint firstItem="0gG-pd-UnW" firstAttribute="leading" secondItem="WTj-4U-UoO" secondAttribute="leading" id="525-A2-9jN"/>
+                            <constraint firstItem="8Ue-Vh-oai" firstAttribute="leading" secondItem="CLg-Ex-ZBu" secondAttribute="leading" id="5cx-DC-6A6"/>
+                            <constraint firstItem="JwM-IZ-zBR" firstAttribute="height" secondItem="Gya-Bf-ZeF" secondAttribute="height" multiplier="0.5" id="8Qz-8R-d6u"/>
+                            <constraint firstItem="0gG-pd-UnW" firstAttribute="width" secondItem="QDf-gF-Ms9" secondAttribute="width" id="8VT-9l-CaC"/>
+                            <constraint firstItem="tEy-C0-PdO" firstAttribute="top" secondItem="JwM-IZ-zBR" secondAttribute="bottom" constant="8" id="8aw-sK-Zdz"/>
+                            <constraint firstItem="0gG-pd-UnW" firstAttribute="height" secondItem="WTj-4U-UoO" secondAttribute="height" id="A6D-Bh-EHV"/>
+                            <constraint firstItem="8Ue-Vh-oai" firstAttribute="top" secondItem="CLg-Ex-ZBu" secondAttribute="top" id="BZN-13-gZQ"/>
+                            <constraint firstItem="CLg-Ex-ZBu" firstAttribute="trailing" secondItem="8Ue-Vh-oai" secondAttribute="trailing" id="E9J-YI-eOl"/>
+                            <constraint firstItem="sXx-Hv-HeL" firstAttribute="top" secondItem="9ec-UX-hVK" secondAttribute="bottom" constant="8" id="G4P-G8-IJJ"/>
+                            <constraint firstItem="9ec-UX-hVK" firstAttribute="top" secondItem="CLg-Ex-ZBu" secondAttribute="top" id="GZC-N0-ceD"/>
+                            <constraint firstItem="JwM-IZ-zBR" firstAttribute="centerX" secondItem="6mx-0L-eLE" secondAttribute="centerX" id="Jj2-sJ-LAu"/>
+                            <constraint firstItem="WTj-4U-UoO" firstAttribute="leading" secondItem="QDf-gF-Ms9" secondAttribute="leading" id="KML-Yi-Faf"/>
+                            <constraint firstItem="Gya-Bf-ZeF" firstAttribute="top" secondItem="9ec-UX-hVK" secondAttribute="bottom" id="L60-V7-JlR"/>
+                            <constraint firstItem="tEy-C0-PdO" firstAttribute="height" secondItem="9ec-UX-hVK" secondAttribute="height" id="P8V-QG-Oa6"/>
+                            <constraint firstItem="QDf-gF-Ms9" firstAttribute="height" secondItem="tEy-C0-PdO" secondAttribute="height" id="QPd-Ai-TeS"/>
+                            <constraint firstAttribute="trailing" secondItem="sXx-Hv-HeL" secondAttribute="trailing" constant="8" id="Qh1-AP-T5y"/>
+                            <constraint firstItem="tEy-C0-PdO" firstAttribute="width" secondItem="JwM-IZ-zBR" secondAttribute="width" id="Ro2-35-fVQ"/>
+                            <constraint firstItem="WTj-4U-UoO" firstAttribute="width" secondItem="QDf-gF-Ms9" secondAttribute="width" multiplier="1/2" id="T6o-oY-HZT"/>
+                            <constraint firstItem="CLg-Ex-ZBu" firstAttribute="bottom" secondItem="8Ue-Vh-oai" secondAttribute="bottom" id="Uww-r0-nfi"/>
+                            <constraint firstItem="QDf-gF-Ms9" firstAttribute="leading" secondItem="tEy-C0-PdO" secondAttribute="leading" id="VkZ-qE-fWr"/>
+                            <constraint firstItem="kjf-ZB-C61" firstAttribute="height" secondItem="9ec-UX-hVK" secondAttribute="height" multiplier="0.7" id="Yda-RC-2tT"/>
+                            <constraint firstItem="QDf-gF-Ms9" firstAttribute="width" secondItem="tEy-C0-PdO" secondAttribute="width" multiplier="1/2" id="Zvf-zf-EPr"/>
+                            <constraint firstItem="QDf-gF-Ms9" firstAttribute="top" secondItem="tEy-C0-PdO" secondAttribute="bottom" constant="8" id="ZwP-9e-nf1"/>
+                            <constraint firstItem="9ec-UX-hVK" firstAttribute="leading" secondItem="CLg-Ex-ZBu" secondAttribute="leading" id="aQ7-hr-ygn"/>
+                            <constraint firstItem="sXx-Hv-HeL" firstAttribute="leading" secondItem="6mx-0L-eLE" secondAttribute="leading" constant="8" id="ao6-r3-2Ug"/>
+                            <constraint firstItem="sXx-Hv-HeL" firstAttribute="centerX" secondItem="6mx-0L-eLE" secondAttribute="centerX" id="dZa-qf-6KL"/>
+                            <constraint firstItem="WTj-4U-UoO" firstAttribute="height" secondItem="QDf-gF-Ms9" secondAttribute="height" multiplier="1/2" id="dwd-6G-qlw"/>
+                            <constraint firstItem="CLg-Ex-ZBu" firstAttribute="trailing" secondItem="9ec-UX-hVK" secondAttribute="trailing" id="hFz-Fw-OaB"/>
+                            <constraint firstItem="WTj-4U-UoO" firstAttribute="top" secondItem="QDf-gF-Ms9" secondAttribute="bottom" constant="15" id="jOC-uv-tKP"/>
+                            <constraint firstItem="Gya-Bf-ZeF" firstAttribute="bottom" secondItem="CLg-Ex-ZBu" secondAttribute="bottom" id="kBO-eK-eM8"/>
+                            <constraint firstItem="kjf-ZB-C61" firstAttribute="width" secondItem="9ec-UX-hVK" secondAttribute="width" multiplier="1/3" id="oPA-mN-I9c"/>
+                            <constraint firstItem="Gya-Bf-ZeF" firstAttribute="trailing" secondItem="CLg-Ex-ZBu" secondAttribute="trailing" id="pnu-JZ-9sW"/>
+                            <constraint firstItem="Gya-Bf-ZeF" firstAttribute="leading" secondItem="CLg-Ex-ZBu" secondAttribute="leading" id="rht-2W-sjj"/>
+                            <constraint firstItem="0gG-pd-UnW" firstAttribute="top" secondItem="WTj-4U-UoO" secondAttribute="bottom" constant="8" id="s6P-Y9-1HE"/>
+                            <constraint firstItem="kjf-ZB-C61" firstAttribute="centerY" secondItem="9ec-UX-hVK" secondAttribute="centerY" id="t0e-1Z-rie"/>
+                            <constraint firstItem="JwM-IZ-zBR" firstAttribute="top" secondItem="sXx-Hv-HeL" secondAttribute="bottom" constant="8" id="u3k-RV-mx2"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="heQ-FH-Osd"/>
-                    </scrollView>
-                    <navigationItem key="navigationItem" id="irD-iH-E4o"/>
+                        <viewLayoutGuide key="safeArea" id="CLg-Ex-ZBu"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8g9-pA-C7Y"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <size key="freeformSize" width="320" height="800"/>
-                    <connections>
-                        <outlet property="downloadUTAAppButton" destination="7UY-Vv-JFd" id="ODD-Nz-rw1"/>
-                        <outlet property="resouresBackgroundImage" destination="os0-Wr-Zne" id="JGB-sb-sn6"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qql-sk-gsp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hnr-sT-K35" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="290" y="1086"/>
+            <point key="canvasLocation" x="89" y="1087"/>
         </scene>
         <!--Resources-->
         <scene sceneID="Iwv-M2-gO3">
@@ -152,12 +146,12 @@ Press to Download in the App Store</string>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tU8-oo-XQJ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="HXc-yt-hct" kind="relationship" relationship="rootViewController" id="j6X-9g-dc4"/>
+                        <segue destination="Mcb-Ea-8bl" kind="relationship" relationship="rootViewController" id="sYc-G4-zut"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEA-FK-UTE" userLabel="First Responder" sceneMemberID="firstResponder"/>

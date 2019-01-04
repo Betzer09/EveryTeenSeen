@@ -10,7 +10,6 @@ import UIKit
 
 class ResourcesViewController: UIViewController {
     
-    @IBOutlet weak var resouresBackgroundImage: UIImageView!
     @IBOutlet weak var downloadUTAAppButton: UIButton!
 
     override func viewWillAppear(_ animated: Bool) {

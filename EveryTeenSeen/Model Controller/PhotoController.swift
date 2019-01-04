@@ -54,9 +54,19 @@ class PhotoController {
                 }
             }
             
-            guard let imageURL = metadata?.downloadURL()?.absoluteString else {NSLog("Error with imageDownloadURL"); return}
-            completion(imageURL)
-            completionHandler(true)
+            
+            storageRef.downloadURL(completion: { (url, error) in
+                if let error = error {
+                    debugPrint(error.localizedDescription)
+                }
+                
+                guard let url = url?.absoluteString else {return}
+                completion(url)
+                completionHandler(true)
+            })
+
+//            guard let imageURL = metadata?.downloadURL()?.absoluteString else {NSLog("Error with imageDownloadURL"); return}
+//            completion(imageURL)
             
         }
         

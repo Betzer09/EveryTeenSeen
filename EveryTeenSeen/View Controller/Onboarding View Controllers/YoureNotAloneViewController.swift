@@ -18,8 +18,8 @@ class YoureNotAloneViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.createGradientLayer()
-        self.view.bringSubview(toFront: imageView)
-        self.view.bringSubview(toFront: notAloneLabel)
+        self.view.bringSubviewToFront(imageView)
+        self.view.bringSubviewToFront(notAloneLabel)
     }
     
     override func viewDidLoad() {

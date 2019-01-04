@@ -22,7 +22,7 @@ class PhotoController {
         let photoStorage = Storage.storage()
         var storageRef = photoStorage.reference()
         
-        guard let data = UIImageJPEGRepresentation(image, 0.25) else {completionHandler(false) ;return}
+        guard let data = image.jpegData(compressionQuality: 0.25) else {completionHandler(false) ;return}
         
         // Create the file metaData
         let metadata = StorageMetadata()

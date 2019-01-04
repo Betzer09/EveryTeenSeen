@@ -338,9 +338,9 @@ class CreateEventViewController: UIViewController {
         alert.view.tintColor = UIColor.white
         
         
-        alert.setValue(NSAttributedString(string: title, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.white]), forKey: "attributedTitle")
+        alert.setValue(NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor : UIColor.white]), forKey: "attributedTitle")
         
-        alert.setValue(NSAttributedString(string: message, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.white]), forKey: "attributedMessage")
+        alert.setValue(NSAttributedString(string: message, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor : UIColor.white]), forKey: "attributedMessage")
         
         alert.addTextField { (textfield) in
             textfield.placeholder = placeHolderTextField
@@ -392,14 +392,14 @@ class CreateEventViewController: UIViewController {
         
         let subview = (alert.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
         subview.backgroundColor = UIColor.darkBlueAlertColor
-        alert.view.bringSubview(toFront: subview)
+        alert.view.bringSubviewToFront(subview)
         
         alert.view.tintColor = UIColor.black
         
         
-        alert.setValue(NSAttributedString(string: title, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.black]), forKey: "attributedTitle")
+        alert.setValue(NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor : UIColor.black]), forKey: "attributedTitle")
         
-        alert.setValue(NSAttributedString(string: message, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.black]), forKey: "attributedMessage")
+        alert.setValue(NSAttributedString(string: message, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor : UIColor.black]), forKey: "attributedMessage")
         
         let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
             self.descriptionLabel.text = textView.text
@@ -428,12 +428,15 @@ class CreateEventViewController: UIViewController {
 extension CreateEventViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // Picking an iamge from libary
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         var image: UIImage!
         
-        if let img = info[UIImagePickerControllerEditedImage] as? UIImage {
+        if let img = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as? UIImage {
             image = img
-        } else if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        } else if let img = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage {
             image = img
         }
         
@@ -518,4 +521,14 @@ extension CreateEventViewController: UITextViewDelegate {
             textView.text = ""
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

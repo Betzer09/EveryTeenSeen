@@ -81,7 +81,7 @@ extension EventLocationTableViewController {
         hamburgerButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         hamburgerButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: hamburgerButton)
         self.navigationItem.title = "Search Locations"

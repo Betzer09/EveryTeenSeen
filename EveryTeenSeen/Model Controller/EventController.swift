@@ -309,7 +309,7 @@ class EventController {
                 }
                 
                self.firebaseManager.fetchProfilePicureWith(string: user.profileImageURLString, completion: { (image) in
-                guard let image = image, let data = UIImageJPEGRepresentation(image, 1.0) else {
+                guard let image = image, let data = image.jpegData(compressionQuality: 1.0) else {
                     userGroup.leave()
                     return
                 }

@@ -159,14 +159,14 @@ class EventsTableViewCell: UITableViewCell {
         
         let subview = (alert.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
         subview.backgroundColor = UIColor.darkBlueAlertColor
-        alert.view.bringSubview(toFront: subview)
+        alert.view.bringSubviewToFront(subview)
         
         alert.view.tintColor = UIColor.black
         
         
-        alert.setValue(NSAttributedString(string: title, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.black]), forKey: "attributedTitle")
+        alert.setValue(NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor : UIColor.black]), forKey: "attributedTitle")
         
-        alert.setValue(NSAttributedString(string: message, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.black]), forKey: "attributedMessage")
+        alert.setValue(NSAttributedString(string: message, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor : UIColor.black]), forKey: "attributedMessage")
         
         let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
             EventController.shared.reportEventWith(userEmail: email, message: textView.text, event: event, completion: { (success) in

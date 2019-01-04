@@ -351,14 +351,17 @@ class UpdateUserProfileViewController: UIViewController {
 extension UpdateUserProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // Picking an iamge from libary
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         var image: UIImage!
         
         self.profileImageView.image = nil
         
-        if let img = info[UIImagePickerControllerEditedImage] as? UIImage {
+        if let img = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as? UIImage {
             image = img
-        } else if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        } else if let img = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage {
             image = img
         }
         
@@ -453,4 +456,14 @@ extension UpdateUserProfileViewController: UITextFieldDelegate {
             self.needsUpdated = true
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

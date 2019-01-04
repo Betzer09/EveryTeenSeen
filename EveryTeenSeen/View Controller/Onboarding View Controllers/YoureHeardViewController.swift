@@ -18,8 +18,8 @@ class YoureHeardViewController: UIViewController {
         super.viewWillAppear(animated)
 
         createGradientLayer()
-        self.view.bringSubview(toFront: imageView)
-        self.view.bringSubview(toFront: youreHeardLabel)
+        self.view.bringSubviewToFront(imageView)
+        self.view.bringSubviewToFront(youreHeardLabel)
     }
     
     // MARK: - Properties

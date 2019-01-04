@@ -132,7 +132,7 @@ class EventsViewController: UIViewController {
     
     private func setTableViewHeight() {
         self.eventsTableView.estimatedRowHeight = self.view.bounds.height * 0.7
-        self.eventsTableView.rowHeight = UITableViewAutomaticDimension
+        self.eventsTableView.rowHeight = UITableView.automaticDimension
     }
     
     private func loadAllEvents(completion: @escaping (_ success: Bool) -> Void = {_ in}) {

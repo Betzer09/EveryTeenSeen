@@ -229,7 +229,7 @@ extension SignInViewController {
         
         for txtField in allTextFields {
             txtField.layer.cornerRadius = 10
-            txtField.attributedPlaceholder = NSAttributedString(string: txtField.placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+            txtField.attributedPlaceholder = NSAttributedString(string: txtField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
             txtField.layer.borderColor = UIColor.white.cgColor
             txtField.layer.borderWidth = 1.0
         }
@@ -378,8 +378,8 @@ extension SignInViewController: UITextFieldDelegate {
     
     // Notificaitons
     func configureKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         // Makes it so the keyboard disappers
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -412,7 +412,7 @@ extension SignInViewController: UITextFieldDelegate {
         self.skipToEventsButton.isHidden = true
         var keyboardSize: CGRect = .zero
         
-        if let keyboardRect = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? CGRect, keyboardRect.height != 0 {
+        if let keyboardRect = notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect, keyboardRect.height != 0 {
             keyboardSize = keyboardRect
         } else if let keyboardRect = notification.userInfo?["UIKeyboardBoundsUserInfoKey"] as? CGRect {
             keyboardSize = keyboardRect

@@ -23,8 +23,8 @@ class YoureSeenViewController: UIViewController {
         super.viewWillAppear(animated)
         
         createGradientLayer()
-        self.view.bringSubview(toFront: imageView)
-        self.view.bringSubview(toFront: youreSeenLabel)
+        self.view.bringSubviewToFront(imageView)
+        self.view.bringSubviewToFront(youreSeenLabel)
     }
     
     private func createGradientLayer() {

@@ -86,7 +86,7 @@ class GetStartedViewController: UIViewController {
         gradientLayer.colors = [lightBlue.cgColor, purple.cgColor]
         
         self.backgroundLayer.layer.addSublayer(gradientLayer)
-        self.view.sendSubview(toBack: backgroundLayer)
+        self.view.sendSubviewToBack(backgroundLayer)
     }
     
     private func presentLocationServicesAlert() {
@@ -146,7 +146,7 @@ class GetStartedViewController: UIViewController {
             self.zipcodeCheckActivityIndicator.isHidden = false
             self.zipcodeCheckActivityIndicator.startAnimating()
         }
-        locationServicesGroupingView.bringSubview(toFront: zipcodeCheckActivityIndicator)
+        locationServicesGroupingView.bringSubviewToFront(zipcodeCheckActivityIndicator)
     }
     
     private func hideActivityIndicator() {
@@ -236,8 +236,8 @@ extension GetStartedViewController: CLLocationManagerDelegate {
         
         let settingsAlert = UIAlertAction(title: "Go to settings", style: .default) { (_) in
             // Naviate them to settings
-            if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
-                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSettings, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }
         }
         
@@ -289,4 +289,9 @@ extension GetStartedViewController: CLLocationManagerDelegate {
                 
             })
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

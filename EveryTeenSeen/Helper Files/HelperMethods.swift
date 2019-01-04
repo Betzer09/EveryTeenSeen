@@ -364,7 +364,7 @@ public func createBlurEffectOn(view: UIView) {
     blurEffectView.frame = view.bounds
     blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     view.addSubview(blurEffectView)
-    view.sendSubview(toBack: blurEffectView)
+    view.sendSubviewToBack(blurEffectView)
     
     
 }
@@ -518,7 +518,7 @@ func findTheDistanceBetweenTwoPoints(firstLat: Double, firstLong: Double, second
 func updateSearchResults(for searchBar: UISearchBar, completion: @escaping(_ matchingItems: [MKMapItem]) -> Void) {
     guard let searchBarText = searchBar.text else {return}
     
-    let request = MKLocalSearchRequest()
+    let request = MKLocalSearch.Request()
     request.naturalLanguageQuery = searchBarText
     
     guard let location = UserLocationController.shared.fetchUserLocation() else {return}
@@ -526,8 +526,8 @@ func updateSearchResults(for searchBar: UISearchBar, completion: @escaping(_ mat
     let clLocationCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
     
     // With in a 5 mile span both ways
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(clLocationCoordinate, 1000, 1000)
-    request.region = MKCoordinateRegionMake(clLocationCoordinate, coordinateRegion.span)
+    let coordinateRegion = MKCoordinateRegion.init(center: clLocationCoordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+    request.region = MKCoordinateRegion.init(center: clLocationCoordinate, span: coordinateRegion.span)
     
     let search = MKLocalSearch(request: request)
     search.start { (results, error) in

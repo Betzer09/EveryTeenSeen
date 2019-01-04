@@ -35,7 +35,7 @@ class ResourcesViewController: UIViewController {
             guard answer else {return}
             let urlStr = "https://itunes.apple.com/us/app/safeut/id1052510262?mt=8"
             if #available(iOS 10.0, *) {
-                UIApplication.shared.open(URL(string: urlStr)!, options: [:], completionHandler: nil)
+                UIApplication.shared.open(URL(string: urlStr)!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                 
             } else {
                 UIApplication.shared.openURL(URL(string: urlStr)!)
@@ -147,3 +147,8 @@ extension ResourcesViewController {
 
 
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}

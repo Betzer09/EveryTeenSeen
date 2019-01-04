@@ -3,7 +3,7 @@ This app is here to help people come together in the Every Teen Seen 2018 Moveme
 The reason I took on this project was because the owner was super passionate about what he was teaching and I really belived in what he was preaching. Since I believed so much in him I
 offered to devlop this app for him completely free in hopes that I too could help make a difference.
 
-#Privacy Policy 
+# Privacy Policy 
 We believe that your information is yours alone, only things that you want to be public will be public for example, your interests that you post on your profile, your profile picture, and events that you've created if you're an admin. We don't share your personal information with anyone.
 
 ## Download In the AppStore

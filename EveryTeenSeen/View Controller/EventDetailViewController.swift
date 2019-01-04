@@ -113,11 +113,12 @@ class EventDetailViewController: UIViewController {
     
     @IBAction func deleteEventButtonPressed(_ sender: Any) {
         guard let event = event else {return}
-        confirmationAlert(viewController: self, title: "Are you sure you want to delete \(event.title)?", message: "This action can't be reversed!", confirmButtonTitle: "Delete Event", cancelButtonTitle: "Cancel") { (done) in
+        confirmationAlert(viewController: self, title: "Are you sure you want to delete \"\(event.title)\"?", message: "This action can't be reversed!", confirmButtonTitle: "Delete Event", cancelButtonTitle: "Cancel") { (done) in
             guard done else {return}
             EventController.shared.deleteEventFromFireBase(event: event) { (done) in
                 if done {
-                    presentSimpleAlert(viewController: self, title: "Success!", message: "\(event.title) has been deleted succesfully!", completion: { (done) in
+                    presentSimpleAlert(viewController: self, title: "Success!",
+                                       message: "\"\(event.title)\" has been deleted succesfully!", completion: { (done) in
                         guard done else {return}
                         EventController.shared.fetchAllEvents()
                         self.navigationController?.popViewController(animated: true)
